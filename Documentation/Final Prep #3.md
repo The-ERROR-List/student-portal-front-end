@@ -6,6 +6,6 @@
 
 * applied other relevant safeguards or processes that we mentioned in our Git  Workflow from part 1 of our project planning.
 
-* created a basic [README.MD](../README.MD)
+* created a basic [README.MD](../README.md)
 ## PM Tools
 * [trello]()
