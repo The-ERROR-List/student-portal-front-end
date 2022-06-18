@@ -14,12 +14,14 @@ export default function Signup(props) {
 
     }
     return (
-        <form onSubmit={adminSignHandler}>
-            <input type="text" placeholder="User Name" value={userName} onChange={(e) => setUserName(e.target.value)} />
-            <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Admin Sign Up</button>
-        </form>
+        <>
+        </>
+        // <form onSubmit={adminSignHandler}>
+        //     <input type="text" placeholder="User Name" value={userName} onChange={(e) => setUserName(e.target.value)} />
+        //     <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        //     <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        //     <button type="submit">Admin Sign Up</button>
+        // </form>
     )
 
 }

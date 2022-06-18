@@ -12,7 +12,7 @@ export default function Auth(props) {
 
     const signUp = async (userName,email,password, role,firstName="",lastName="",gender="",nationality="",major="",department="") => {
         if (role === 'admin') {
-            axios.post('https://stu-portal-prod-app.herokuapp.com/signup/admin', {
+            axios.post('https://student-portal-asac.herokuapp.com/signup/admin', {
                 userName: userName,
                 email: email,
                 password: password,
@@ -23,7 +23,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'student') {
-            axios.post('https://stu-portal-prod-app.herokuapp.com/signup/std-teacher', {
+            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
                 userName: userName,
                 email: email,
                 password: password,
@@ -39,7 +39,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'teacher') {
-            axios.post('https://stu-portal-prod-app.herokuapp.com/signup/std-teacher', {
+            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
                 userName: userName,
                 email: email,
                 password: password,
@@ -55,7 +55,7 @@ export default function Auth(props) {
         }
     }
     const signIn  = async(userName,password)=>{
-        axios.post('https://stu-portal-prod-app.herokuapp.com/signin', {
+        axios.post('https://student-portal-asac.herokuapp.com/signin', {
             userName: userName,
             password: password
         },{headers:{'Authorization':`Basic ${base64.encode(`${userName}:${password}`)}`}}).then(res=>{
