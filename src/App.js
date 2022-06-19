@@ -1,12 +1,17 @@
+
+import './App.sass';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/header/header';
 import Auth from "./context/Auth";
 import Login from "./components/login/login";
-import Signup from "./components/signup/signup";
+// import Signup from "./components/signup/signup";
 function App() {
   return (
-    <div>
+    <div className="App">
+      <Header />
       <Auth>
         <Login />
-        <Signup />
+        {/* <Signup /> */}
       </Auth>
     </div>
   );
