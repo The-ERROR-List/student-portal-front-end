@@ -1,8 +1,4 @@
 
-/* * {
-  
-  font-family: Arial, Helvetica, sans-serif;
-} */
 
 * {
   box-sizing: border-box;
@@ -46,14 +42,7 @@ label{
   color: #fafafa;
   margin-bottom: 20px;
 }
-/* Full-width input fields */
-/* input[type=email], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #525151;
-} */
+
 
 input[type=email]:focus, input[type=password]:focus {
   background-color: rgb(102, 102, 102);
@@ -63,7 +52,7 @@ input[type=email]:focus, input[type=password]:focus {
 
 /* Set a style for the submit button */
 .btn {
-  /* background-color: #093ff0; */
+ 
  border-radius: 10px;
   color: white;
   padding: 16px 20px;
