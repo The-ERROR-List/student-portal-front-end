@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+.image{
+  
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  /* height: 100%;  */
+  background-image: url("../../images/login_bg.jpg");
+  height: 840px;
+  
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+#container {
+  background-color: rgb(46, 46, 46); 
+  background-color: rgba(51, 51, 51, 0.4); 
+  color: #000000;
+  /* font-weight: bold; */
+  font-size: 20px;
+  border: 3px solid #fafafa;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  padding: 20px;
+  text-align: center;
+  
+}
+label{
+  color: #fafafa;
+  margin-bottom: 20px;
+}
+
+
+input[type=email]:focus, input[type=password]:focus {
+  background-color: rgb(102, 102, 102);
+  opacity: .7;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+#btn {
+ 
+ border-radius: 10px;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 1;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.btn:hover {
+  /* opacity: .7; */
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin: 5px 0 22px 0;
+  background: #525151;
+
+}
+
+.icon {
+  padding: 5px;
+  background: #525151;
+  color: white;
+  min-width: 40px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 3px solid rgb(151, 151, 151);
+}
