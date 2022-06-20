@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import cookie from 'react-cookies';
 // import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
 import { AuthContext } from "../../context/Auth";
@@ -46,6 +47,7 @@ export default function Admin() {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookie.load("token")}`,
       },
       body: JSON.stringify({
         userName: infoTeacher.userName,
