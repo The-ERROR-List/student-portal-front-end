@@ -1,15 +1,16 @@
 import React, { useState, useContext } from "react";
-import cookie from 'react-cookies';
-// import { useDispatch, useSelector } from "react-redux";
+// import cookie from 'react-cookies';
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
 import { AuthContext } from "../../context/Auth";
-import axios from "axios";
+import cookie from 'react-cookies';
+// import axios from "axios";
 export default function Admin() {
   const auth = useContext(AuthContext);
   // console.log(111111111,auth);
-  // const data = useSelector((state) => state.teacher.infoTeacher);
+  const data = useSelector((state) => state.teacher.infoTeacher);
   // console.log(111111111, data);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [infoTeacher, setInfoTeacher] = useState({
     userName: "",
@@ -31,55 +32,12 @@ export default function Admin() {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    // auth.signUp({
-    //   userName: infoTeacher.userName,
-    //   email: infoTeacher.email,
-    //   password: infoTeacher.password,
-    //   role: "teacher",
-    //   firstName: infoTeacher.firstName,
-    //   lastName: infoTeacher.lastName,
-    //   gender: infoTeacher.gender,
-    //   nationality: infoTeacher.nationality,
-    //   department: infoTeacher.department,
-    // });
-    // if(auth.Authorized('delete')){
-      fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${cookie.load("token")}`,
-      },
-      body: JSON.stringify({
-        userName: infoTeacher.userName,
-        email: infoTeacher.email,
-        password: infoTeacher.password,
-        role: infoTeacher.role,
-        firstName: infoTeacher.firstName,
-        lastName: infoTeacher.lastName,
-        gender: infoTeacher.gender,
-        nationality: infoTeacher.nationality,
-        department: infoTeacher.department,
-      })
-    })
-      .then((response) => {
-        console.log("res",response.json());
-        response.json()
-      })
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
-    
     console.log("infTeacher", infoTeacher);
-    // dispatch( {type: "add_teacher" , payload:infoTeacher})
+    dispatch( {type: "add_teacher" , payload:infoTeacher})
   };
 
   return (
     <div>
-      {/* <div class="image"></div> */}
       <Form style={{ width: "70%", margin: "auto" }} onSubmit={handelSubmit}>
         <Row>
           <Col md={6}>
@@ -186,7 +144,7 @@ export default function Admin() {
             onChange={handelChange}
           />
         </FormGroup>
-
+        {/* <Button>update</Button> */}
         <Button>Add</Button>
       </Form>
     </div>
