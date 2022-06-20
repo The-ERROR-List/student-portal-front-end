@@ -1,18 +1,22 @@
 // import './App.scss';
 // import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Auth from "./context/Auth";
 import Login from "./components/login/login";
 import Main from "./components/main/main";
+import Content from "./components/content/content";
 function App() {
   return (
-    <div className="App">
-      
-      <Auth>
+    <>
+      <Content />
+      {/* <div className="App">
+       <Auth>
         <Main />
         <Login />
-      </Auth>
-    </div>
+      </Auth> 
+    </div> */}
+    </>
+
   );
 }
 
