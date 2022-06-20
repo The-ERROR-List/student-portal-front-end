@@ -1,7 +1,7 @@
 // import add_teacherOn from "./action";
 // import axios from "axios";
 // const baseURL = "https://student-portal-asac.herokuapp.com/signup/std-teacher";
-// import {createTeacher} from './action';
+import {createTeacher} from './action';
 
 export const initialState = {
   infoTeacher: [],
@@ -14,6 +14,7 @@ export default function teacherReducer(state = initialState, action) {
     case "add_teacher":
       let data = [...state.infoTeacher];
       data.push(payload);
+      createTeacher(payload)
       return {
         infoTeacher: data,
       };
