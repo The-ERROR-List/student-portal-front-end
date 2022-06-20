@@ -5,14 +5,14 @@ import cookie from 'react-cookies';
 import base64 from 'base-64';
 
 export const AuthContext = React.createContext();
-
+const api = "https://student-portal-asac2022.herokuapp.com/";
 export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const signUp = async (userName, email, password, role, firstName = "", lastName = "", gender = "", nationality = "", major = "", department = "") => {
         if (role === 'admin') {
-            axios.post('https://student-portal-asac.herokuapp.com/signup/admin', {
+            axios.post(`${api}/signup/admin`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -23,7 +23,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'student') {
-            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
+            axios.post(`${api}/signup/std-teacher`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -40,7 +40,7 @@ export default function Auth(props) {
         }
         else if (role === 'teacher') {
             console.log(role);
-            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
+            axios.post(`${api}/signup/std-teacher`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -56,7 +56,7 @@ export default function Auth(props) {
         }
     }
     const signIn = async (userName, password) => {
-        axios.post('https://student-portal-asac.herokuapp.com/signin', {
+        axios.post(`${api}/signin`, {
             userName: userName,
             password: password
         }, { headers: { 'Authorization': `Basic ${base64.encode(`${userName}:${password}`)}` } }).then(res => {

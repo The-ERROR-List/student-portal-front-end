@@ -1,5 +1,5 @@
 // import axios from "axios";
-// // const api = "https://student-portal-asac.herokuapp.com/signup/std-teacher";
+const api = "https://student-portal-asac2022.herokuapp.com/";
 import cookie from 'react-cookies';
 // export function createTeacher(payload){
 //   return  (axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
@@ -17,7 +17,7 @@ import cookie from 'react-cookies';
 //             }))
 // }
 export function createTeacher(payload){
-fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
+fetch(`${api}/signup/std-teacher`, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
       });
     }
 export function createStudent(payload){
-    fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
+    fetch(`${api}/signup/std-teacher`, {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
