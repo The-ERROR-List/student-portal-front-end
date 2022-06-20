@@ -49,37 +49,37 @@ fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
     }
 
 
-    export function updateTeacher(payload){
-        fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${cookie.load("token")}`,
+    // export function updateTeacher(payload){
+    //     fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
+    //           method: "PUT",
+    //           headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Bearer ${cookie.load("token")}`,
         
-              },
-              body: JSON.stringify({
-                userName: payload.userName,
-                        email: payload.email,
-                        password: payload.password,
-                        role: payload.role,
-                        firstName: payload.firstName,
-                        lastName: payload.lastName,
-                        gender: payload.gender,
-                        nationality: payload.nationality,
-                        department: payload.department
-              })
-            })
-              .then((response) => {
-                console.log("response",response.json());
-               return response
-              })
-              .then((data) => {
-                console.log("Success:", data);
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
-            }
+    //           },
+    //           body: JSON.stringify({
+    //             userName: payload.userName,
+    //                     email: payload.email,
+    //                     password: payload.password,
+    //                     role: payload.role,
+    //                     firstName: payload.firstName,
+    //                     lastName: payload.lastName,
+    //                     gender: payload.gender,
+    //                     nationality: payload.nationality,
+    //                     department: payload.department
+    //           })
+    //         })
+    //           .then((response) => {
+    //             console.log("response",response.json());
+    //            return response
+    //           })
+    //           .then((data) => {
+    //             console.log("Success:", data);
+    //           })
+    //           .catch((error) => {
+    //             console.error("Error:", error);
+    //           });
+    //         }
 //===============================admin =======================================
     // axios("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
     //   method: "POST", // or 'PUT'
