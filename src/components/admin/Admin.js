@@ -1,21 +1,84 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
-
-// userName: userName,
-// email: email,
-// password: password,
-// role: role,
-// firstName: firstName,
-// lastName: lastName,
-// gender: gender,
-// nationality: nationality,
-// department: department
-
+import { AuthContext } from "../../context/Auth";
+import axios from "axios";
 export default function Admin() {
+  const auth = useContext(AuthContext);
+  // console.log(111111111,auth);
+  // const data = useSelector((state) => state.teacher.infoTeacher);
+  // console.log(111111111, data);
+  // const dispatch = useDispatch();
+
+  const [infoTeacher, setInfoTeacher] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    role: "",
+    firstName: "",
+    lastName: "",
+    gender: "",
+    nationality: "",
+    department: "",
+  });
+
+  const handelChange = (e) => {
+    e.preventDefault();
+    setInfoTeacher({ ...infoTeacher, [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value });
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    // auth.signUp({
+    //   userName: infoTeacher.userName,
+    //   email: infoTeacher.email,
+    //   password: infoTeacher.password,
+    //   role: "teacher",
+    //   firstName: infoTeacher.firstName,
+    //   lastName: infoTeacher.lastName,
+    //   gender: infoTeacher.gender,
+    //   nationality: infoTeacher.nationality,
+    //   department: infoTeacher.department,
+    // });
+    // if(auth.Authorized('delete')){
+      fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName: infoTeacher.userName,
+        email: infoTeacher.email,
+        password: infoTeacher.password,
+        role: infoTeacher.role,
+        firstName: infoTeacher.firstName,
+        lastName: infoTeacher.lastName,
+        gender: infoTeacher.gender,
+        nationality: infoTeacher.nationality,
+        department: infoTeacher.department,
+      })
+    })
+      .then((response) => {
+        console.log("res",response.json());
+        response.json()
+      })
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    
+    console.log("infTeacher", infoTeacher);
+    // dispatch( {type: "add_teacher" , payload:infoTeacher})
+  };
+
   return (
     <div>
-      <div class="image"></div>
-      <Form style={{ width: "70%", margin: "auto" }}>
+      {/* <div class="image"></div> */}
+      <Form style={{ width: "70%", margin: "auto" }} onSubmit={handelSubmit}>
         <Row>
           <Col md={6}>
             <FormGroup>
@@ -23,17 +86,20 @@ export default function Admin() {
               <Input
                 id="userName"
                 name="userName"
-                placeholder="with a placeholder"
-                type="email"
+                placeholder="userName..."
+                type="userName"
+                onChange={handelChange}
               />
             </FormGroup>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
-                id="exampleEmail"
+                id="email"
                 name="email"
-                placeholder="with a placeholder"
+                // value="email"
+                placeholder="Email..."
                 type="email"
+                onChange={handelChange}
               />
             </FormGroup>
           </Col>
@@ -45,6 +111,7 @@ export default function Admin() {
                 name="password"
                 placeholder="password placeholder"
                 type="password"
+                onChange={handelChange}
               />
             </FormGroup>
           </Col>
@@ -57,18 +124,17 @@ export default function Admin() {
                 id="firstName"
                 name="firstName"
                 placeholder="First Name..."
+                onChange={handelChange}
               />
             </FormGroup>
-          {/* </Col>
-        </Row> */}
-        {/* <Row> */}
-          {/* <Col md={6}> */}
+
             <FormGroup>
               <Label for="lastName">Last Name </Label>
               <Input
                 id="lastName"
                 name="lastName"
                 placeholder="Last Name...."
+                onChange={handelChange}
               />
             </FormGroup>
           </Col>
@@ -76,30 +142,50 @@ export default function Admin() {
         <Row>
           <Col md={6}>
             <FormGroup>
-              <Label for="exampleCity">City</Label>
-              <Input id="exampleCity" name="city" />
+              <Label for="role">role</Label>
+              <Input
+                id="role"
+                name="role"
+                placeholder="role"
+                onChange={handelChange}
+              />
             </FormGroup>
           </Col>
           <Col md={4}>
             <FormGroup>
-              <Label for="exampleState">State</Label>
-              <Input id="exampleState" name="state" />
+              <Label for="gender">gender</Label>
+              <Input
+                id="gender"
+                name="gender"
+                placeholder="gender"
+                onChange={handelChange}
+              />
             </FormGroup>
           </Col>
           <Col md={2}>
             <FormGroup>
-              <Label for="exampleZip">Zip</Label>
-              <Input id="exampleZip" name="zip" />
+              <Label for="nationality">nationality</Label>
+              <Input
+                id="nationality"
+                name="nationality"
+                placeholder="nationality"
+                onChange={handelChange}
+              />
             </FormGroup>
           </Col>
         </Row>
-        <FormGroup check>
-          <Input id="exampleCheck" name="check" type="checkbox" />
-          <Label check for="exampleCheck">
-            Check me out
-          </Label>
+
+        <FormGroup>
+          <Label for="department">department</Label>
+          <Input
+            id="department"
+            name="department"
+            placeholder="department"
+            onChange={handelChange}
+          />
         </FormGroup>
-        <Button>Sign in</Button>
+
+        <Button>Add</Button>
       </Form>
     </div>
   );

@@ -1,22 +1,17 @@
-
-import './App.sass';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/header/header';
-// import Auth from "./context/Auth";
-// import { When } from 'react-if'
-import Admin from './components/admin/Admin';
-// import Login from "./components/login/Login";
-// import Signup from "./components/signup/signup";
+// import './App.scss';
+// import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Auth from "./context/Auth";
+import Login from "./components/login/login";
+import Main from "./components/main/main";
 function App() {
   return (
     <div className="App">
-
-      <Header />
-      <Admin/>
-      {/* <Auth> */}
-        {/* <Login /> */}
-        {/* <Signup /> */}
-      {/* </Auth> */}
+      
+      <Auth>
+        <Main />
+        <Login />
+      </Auth>
     </div>
   );
 }
