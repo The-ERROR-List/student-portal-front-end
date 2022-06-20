@@ -1,3 +1,4 @@
+import {createStudent} from "./action";
 export const initialState = {
   infoStudent: [],
 };
@@ -9,7 +10,7 @@ export default function studentReducer(state = initialState, action) {
     case "add_student":
       let data = [...state.infoStudent];
       data.push(payload);
-    
+      createStudent(payload);
       return {
         infoStudent: data,
       };
