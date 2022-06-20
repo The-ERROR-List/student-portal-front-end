@@ -1,6 +1,7 @@
 // import axios from "axios";
-const api = "https://student-portal-asac2022.herokuapp.com/";
 import cookie from 'react-cookies';
+const api = "https://student-portal-asac2022.herokuapp.com/";
+
 // export function createTeacher(payload){
 //   return  (axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
 //                 userName: payload.userName,

@@ -5,7 +5,7 @@ import cookie from 'react-cookies';
 import base64 from 'base-64';
 
 export const AuthContext = React.createContext();
-const api = "https://student-portal-asac2022.herokuapp.com/";
+const api = "https://student-portal-asac2022.herokuapp.com";
 export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -88,6 +88,9 @@ export default function Auth(props) {
     const Authorized = (action) => {
         return user?.action?.includes(action);
     }
+    const role = (role) => {
+        return user?.role?.includes(role);
+    }
     const state = {
         user,
         isLoggedIn,
@@ -96,7 +99,8 @@ export default function Auth(props) {
         signOut,
         Authorized,
         setUser,
-        setIsLoggedIn
+        setIsLoggedIn,
+        role
     }
     useEffect(() => {
         const data = cookie.load('token');
