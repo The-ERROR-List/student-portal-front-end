@@ -1,12 +1,12 @@
 import "./login.scss";
 import React from "react";
 import { Button } from "react-bootstrap";
-// import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Auth";
 import { useContext, useState } from "react";
 import { When } from "react-if";
 export default function Login() {
     const auth = useContext(AuthContext);
+    const [passwordShown, setPasswordShown] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const logInHandler = (event) => {
@@ -17,21 +17,18 @@ export default function Login() {
 
     }
 
-
-    const showPassword = () => {
-        var x = document.getElementById("myInput");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
+    //show password
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
     };
 
+
     return (
-        <div>
-            {/* <div class="bg-image"></div> */}
+        <div id='body'>
+            {/* <div id="bg-image"></div> */}
             <When condition={!auth.isLoggedIn}>
-                <div class="image"></div>
+
+                <div id="image"></div>
 
                 <div id="container">
                     <span
@@ -51,7 +48,6 @@ export default function Login() {
                             <div>
                                 <label for="user name"  >User Name</label>
                             </div>
-                            {/* <div class="col-12" style={{display:"flex", alignItems:"center"}}> */}
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
                                 <input
@@ -60,7 +56,6 @@ export default function Login() {
                                     id="text"
                                     name="text"
                                     placeholder="Enter User Name...."
-                                    //   onChange={e => setUsername(e.target.value)}
                                     value={userName}
                                     onChange={(e) => setUserName(e.target.value)}
 
@@ -76,29 +71,28 @@ export default function Login() {
                                 <i class="fa fa-key icon"></i>
                                 <input
                                     class="input-field"
-                                    type="password"
                                     name="password"
                                     id="myInput"
                                     placeholder="Enter password...."
-                                    //   onChange={e => setPassword(e.target.value)}
                                     value={password}
+                                    type={passwordShown ? "text" : "password"}
                                     onChange={(e) => setPassword(e.target.value)}
-
                                     required
                                 />
                             </div>
                         </div>
-                        <div style={{ display: "flex" }}>
-                            <span>
+                        <div style={{ display: "flex"}}>
+                            <span >
                                 <input
                                     style={{
                                         marginTop: "6px",
                                         width: "25px",
                                         height: "20px",
-                                        marginRight: "5px",
+                                        marginRight: "10px",
                                     }}
                                     type="checkbox"
-                                    onClick={showPassword}
+                                    onClick={togglePassword}
+
                                 />
                             </span>
                             <span>
@@ -112,7 +106,6 @@ export default function Login() {
                                 display: "flex",
                                 justifyContent: "center",
                                 marginTop: "15px",
-                                //   color: "white"
                             }}
                         >
                             Forgot your password?
@@ -125,7 +118,6 @@ export default function Login() {
                                 type="submit"
                                 class="btn-primary"
                                 id="btn"
-                            // onClick={handelLogIn}
                             >
                                 Sign In
                             </Button>
@@ -134,7 +126,7 @@ export default function Login() {
                 </div>
             </When>
             <When condition={auth.isLoggedIn}>
-                <button onClick={auth.signOut} style={{ marginLeft: 500 }}>Sign Out</button>
+                <Button onClick={auth.signOut} style={{ marginLeft: 500 }}>Sign Out</Button>
             </When>
         </div>
     );

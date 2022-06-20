@@ -35,6 +35,7 @@ function OffCanvasExample({ name,icon, ...props }) {
 }
 const Header = () => {
     const options = [
+       
         {
             name: 'Account',
             icon:<AccountCircleOutlinedIcon fontSize="large" sx={{ fontSize: 30 }} color="white"/>,

@@ -10,7 +10,7 @@ export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const signUp = async (userName,email,password, role,firstName="",lastName="",gender="",nationality="",major="",department="") => {
+    const signUp = async (userName, email, password, role, firstName = "", lastName = "", gender = "", nationality = "", major = "", department = "") => {
         if (role === 'admin') {
             axios.post('https://student-portal-asac.herokuapp.com/signup/admin', {
                 userName: userName,
@@ -39,6 +39,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'teacher') {
+            console.log(role);
             axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
                 userName: userName,
                 email: email,
@@ -49,18 +50,18 @@ export default function Auth(props) {
                 gender: gender,
                 nationality: nationality,
                 department: department
-            }).then(res=>{
+            }).then(res => {
                 console.log(res)
             })
         }
     }
-    const signIn  = async(userName,password)=>{
+    const signIn = async (userName, password) => {
         axios.post('https://student-portal-asac.herokuapp.com/signin', {
             userName: userName,
             password: password
-        },{headers:{'Authorization':`Basic ${base64.encode(`${userName}:${password}`)}`}}).then(res=>{
+        }, { headers: { 'Authorization': `Basic ${base64.encode(`${userName}:${password}`)}` } }).then(res => {
             console.log(res);
-           validToken(res.data)
+            validToken(res.data);
         })
     }
     const signOut = () => {
@@ -69,17 +70,17 @@ export default function Auth(props) {
         cookie.remove('token');
     }
     const validToken = (user) => {
-        if(user){
+        if (user) {
             const validUser = JWT(user.token);
-            if(validUser){
+            if (validUser) {
                 setUser(user);
                 setIsLoggedIn(true);
-                cookie.save('token',user);
-            }else{
+                cookie.save('token', user.token);
+            } else {
                 setIsLoggedIn(false);
                 setUser({});
             }
-        }else{
+        } else {
             setIsLoggedIn(false);
             setUser({});
         }
@@ -99,7 +100,7 @@ export default function Auth(props) {
     }
     useEffect(() => {
         const data = cookie.load('token');
-        if(data){
+        if (data) {
             validToken(data);
         }
     }, []);
