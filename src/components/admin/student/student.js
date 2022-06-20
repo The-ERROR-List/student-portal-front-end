@@ -2,12 +2,38 @@ import { Table, Form, Row, Col, FormGroup, Label, Input } from 'reactstrap'
 import { Button, Modal } from 'react-bootstrap'
 import { useState } from 'react'
 import './student.scss'
+import { useDispatch, useSelector } from 'react-redux'
 function Submit() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const data = useSelector((state) => state.student.infoStudent);
 
+    const dispatch = useDispatch();
+    const [infoStudent, setinfoStudent] = useState({
+        userName: "",
+        email: "",
+        password: "",
+        role: "",
+        firstName: "",
+        lastName: "",
+        gender: "",
+        nationality: "",
+        major: "",
+      });
+    
+      const handelChange = (e) => {
+        e.preventDefault();
+        setinfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
+        console.log({ [e.target.name]: e.target.value });
+      };
+    
+      const handelSubmit = (e) => {
+        e.preventDefault();
+        console.log("infTeacher", infoStudent);
+        dispatch( {type: "add_student" , payload:infoStudent})
+      };
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
@@ -19,7 +45,8 @@ function Submit() {
                     <Modal.Title>Student form</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form style={{ width: "70%", margin: "auto" }} >
+                    <Form onSubmit={handelSubmit} style={{ width: "70%", margin: "auto" }} >
+
                         <Row>
                             <Col md={6}>
                                 <FormGroup>
@@ -29,6 +56,7 @@ function Submit() {
                                         name="userName"
                                         placeholder="userName..."
                                         type="userName"
+                                        onChange={handelChange}
                                     />
                                 </FormGroup>
                                 <FormGroup>
@@ -39,6 +67,7 @@ function Submit() {
                                         // value="email"
                                         placeholder="Email..."
                                         type="email"
+                                        onChange={handelChange}
                                     />
                                 </FormGroup>
                             </Col>
@@ -50,6 +79,7 @@ function Submit() {
                                         name="password"
                                         placeholder="password placeholder"
                                         type="password"
+                                        onChange={handelChange}
                                     />
                                 </FormGroup>
                             </Col>
@@ -62,6 +92,7 @@ function Submit() {
                                         id="firstName"
                                         name="firstName"
                                         placeholder="First Name..."
+                                        onChange={handelChange}
                                     />
                                 </FormGroup>
                                 <FormGroup>
@@ -70,6 +101,7 @@ function Submit() {
                                         id="lastName"
                                         name="lastName"
                                         placeholder="Last Name...."
+                                        onChange={handelChange}
                                     />
                                 </FormGroup>
                             </Col>
@@ -91,6 +123,7 @@ function Submit() {
                                         id="role"
                                         name="role"
                                         placeholder="role"
+                                        onChange={handelChange}
 
                                     />
                                 </FormGroup>
@@ -102,6 +135,7 @@ function Submit() {
                                         id="gender"
                                         name="gender"
                                         placeholder="gender"
+                                        onChange={handelChange}
 
                                     />
                                 </FormGroup>
@@ -113,6 +147,7 @@ function Submit() {
                                         id="nationality"
                                         name="nationality"
                                         placeholder="nationality"
+                                        onChange={handelChange}
 
                                     />
                                 </FormGroup>
@@ -125,11 +160,13 @@ function Submit() {
                                 id="major"
                                 name="major"
                                 placeholder="major"
-
+                                onChange={handelChange}
                             />
                         </FormGroup>
 
-                        {/* <Button>Add</Button> */}
+                        <Button variant="primary" onClick={handleClose}>
+                            Add Student
+                        </Button>         
                     </Form>
 
                 </Modal.Body>
@@ -137,20 +174,18 @@ function Submit() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Add Student
-                    </Button>
+
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
-const Teacher = () => {
+const Student = () => {
     return (
-        <div className="teacher">
+        <div className="Student">
             <h1>Student</h1>
             <Submit />
-            <Table className="teacher-table">
+            <Table className="Student-table">
                 <thead>
                     <tr>
                         <th>
@@ -239,4 +274,4 @@ const Teacher = () => {
         </div>
     )
 }
-export default Teacher;
+export default Student;
