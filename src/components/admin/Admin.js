@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
 import { AuthContext } from "../../context/Auth";
+import cookie from 'react-cookies';
 import axios from "axios";
 export default function Admin() {
   const auth = useContext(AuthContext);
@@ -42,10 +43,25 @@ export default function Admin() {
     //   department: infoTeacher.department,
     // });
     // if(auth.Authorized('delete')){
+      // axios.post('http://localhost:3000/signup/std-teacher', {
+      //           userName: infoTeacher.userName,
+      //           email: infoTeacher.email,
+      //           password: infoTeacher.password,
+      //           role: infoTeacher.role,
+      //           firstName: infoTeacher.firstName,
+      //           lastName: infoTeacher.lastName,
+      //           gender: infoTeacher.gender,
+      //           nationality: infoTeacher.nationality,
+      //           department: infoTeacher.department
+      //       }).then( res => {
+      //           console.log(res)
+      //       })
       fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${cookie.load("token")}`,
+
       },
       body: JSON.stringify({
         userName: infoTeacher.userName,
@@ -60,8 +76,8 @@ export default function Admin() {
       })
     })
       .then((response) => {
-        console.log("res",response.json());
-        response.json()
+        console.log("response",response.json());
+       return response
       })
       .then((data) => {
         console.log("Success:", data);

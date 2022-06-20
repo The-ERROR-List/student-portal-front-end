@@ -1,8 +1,8 @@
-import axios from "axios";
-// const api = "https://student-portal-asac.herokuapp.com/signup/std-teacher";
+// import axios from "axios";
+// // const api = "https://student-portal-asac.herokuapp.com/signup/std-teacher";
 
 // export function createTeacher(payload){
-//   return  (axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
+//   return  (axios.post('http://localhost:3000/signup/std-teacher', {
 //                 userName: payload.userName,
 //                 email: payload.email,
 //                 password: payload.password,
@@ -18,7 +18,7 @@ import axios from "axios";
 // }
 
 
-    // fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
+    // axios("http://localhost:3000/signup/std-teacher", {
     //   method: "POST", // or 'PUT'
     //   headers: {
     //     "Content-Type": "application/json",

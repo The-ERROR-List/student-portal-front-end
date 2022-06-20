@@ -39,6 +39,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'teacher') {
+            console.log(role);
             axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
                 userName: userName,
                 email: email,
@@ -74,7 +75,7 @@ export default function Auth(props) {
             if (validUser) {
                 setUser(user);
                 setIsLoggedIn(true);
-                cookie.save('token', user);
+                cookie.save('token', user.token);
             } else {
                 setIsLoggedIn(false);
                 setUser({});
