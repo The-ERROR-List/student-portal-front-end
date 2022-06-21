@@ -120,21 +120,11 @@ const state=useContext(StateContext)
                             <Col md={3}>
                                 <FormGroup>
                                     <Label for="role">role</Label>
-                                    {/* <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            role
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>Teacher</li>
-                                            
-                                        </ul>
-                                        </div> */}
                                     <Input
                                         id="role"
                                         name="role"
                                         placeholder="role"
                                         onChange={handelChange}
-
                                     />
                                 </FormGroup>
                             </Col>
@@ -146,7 +136,6 @@ const state=useContext(StateContext)
                                         name="gender"
                                         placeholder="gender"
                                         onChange={handelChange}
-
                                     />
                                 </FormGroup>
                             </Col>
