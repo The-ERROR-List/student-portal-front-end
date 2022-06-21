@@ -16,13 +16,12 @@ export const initialState = {
 };
 
 export default function teacherReducer(state = initialState, action) {
-  let { type, data, payload } = action;
+  let { type,  payload } = action;
 
 
   switch (type) {
     case addTeacher:
 
-      
       createTeacher(payload)
       return {
         ...state
