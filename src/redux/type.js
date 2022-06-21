@@ -21,3 +21,6 @@ export const deleteStudent='delete_student';
 export const deleteTeacher='delete_teacher';
 export const deleteCourse='delete_course';
 export const deleteClass='delete_class';
+//------------------
+//Teachers types
+

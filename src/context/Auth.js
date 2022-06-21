@@ -68,6 +68,7 @@ export default function Auth(props) {
         setIsLoggedIn(false);
         setUser({});
         cookie.remove('token');
+        cookie.remove('id');
     }
     const validToken = (user) => {
         if (user) {
@@ -76,6 +77,7 @@ export default function Auth(props) {
                 setUser(user);
                 setIsLoggedIn(true);
                 cookie.save('token', user.token);
+                cookie.save('id',user.id)
             } else {
                 setIsLoggedIn(false);
                 setUser({});
@@ -105,7 +107,8 @@ export default function Auth(props) {
     useEffect(() => {
         const data = cookie.load('token');
         if (data) {
-            validToken(data);
+            // validToken(data);
+            setIsLoggedIn(true);
         }
     }, []);
     return (
