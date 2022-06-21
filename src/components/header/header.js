@@ -63,7 +63,7 @@ const Header = () => {
                             <Nav.Link href="#home" style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}}><SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Nav.Link>
                         </div>
                         {options.map((props, idx) => (
-                            <div className='btn'>
+                            <div key={idx} className='btn'>
                                 <OffCanvasExample key={idx} {...props} />
                             </div>
                             

@@ -1,13 +1,17 @@
 import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
 import { Modal } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { StateContext } from "../../../context/State";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from '../../../redux/type'
+import { getTeacher } from '../../../redux/type'
+import {getTeacherApi} from '../../../redux/action'
+
 import './teacher.scss'
 function Submit() {
   const state = useContext(StateContext)
   const dispatch = useDispatch();
+  
 
   const [infoTeacher, setInfoTeacher] = useState({
     userName: "",
@@ -20,6 +24,11 @@ function Submit() {
     nationality: "",
     department: "",
   });
+  // const get =()=> {
+  //   dispatch(getTeacher)
+  // }
+
+
 
   const handelChange = (e) => {
     e.preventDefault();
@@ -31,7 +40,9 @@ function Submit() {
     e.preventDefault();
     // console.log("infTeacher", infoTeacher);
     dispatch({ type: addTeacher, payload: infoTeacher });
+    dispatch({type:getTeacher, payload: 'get'})
     state.handleClose();
+    
   };
 
   return (
@@ -175,14 +186,23 @@ function Submit() {
   );
 }
 const Teacher = () => {
+  const teachers =useSelector(state => state.teacher.apiInfoTeacher)
+  const dispatch = useDispatch()
+
+  // useEffect(()=>{
+  //   dispatch({type:"get_teacher",payload})
+  // },[])
+  
+  console.log(teachers,'teachers')
   return (
+    
     <div className="teacher">
+      <Button color="success" onClick={()=>dispatch({type:getTeacher,payload:'get'})}>get</Button>
       <h1>Teachers</h1>
       <Submit />
       <Table  hover className="teacher-table">
         <thead>
           <tr>
-            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Username</th>
@@ -190,32 +210,20 @@ const Teacher = () => {
             <th>Department</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
+        {/* <tbody>
+          {teachers.map((teacher,i)=>{
+            return(
+              <tr key={i}>
+              <td>{teacher.firstName}</td>
+              <td>{teacher.lastName}</td>
+              <td>{teacher.userName}</td>
+              <td>{teacher.nationality}</td>
+              <td>{teacher.department}</td>
+            </tr>
+            )
+          })}
+          
+        </tbody> */}
       </Table>
       
     </div>
