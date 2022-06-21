@@ -1,18 +1,24 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  Table,
+  Form,
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 import { Modal } from "react-bootstrap";
-import { useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
 import { useDispatch, useSelector } from "react-redux";
-import { addTeacher } from '../../../redux/type'
-import { getTeacher } from '../../../redux/type'
-import {getTeacherApi} from '../../../redux/action'
+import { addTeacher } from "../../../redux/type";
+import { getTeacherAction } from "../../../redux/teacher";
+import "./teacher.scss";
 
-import './teacher.scss'
 function Submit() {
-  const state = useContext(StateContext)
+  const state = useContext(StateContext);
   const dispatch = useDispatch();
-  
-
   const [infoTeacher, setInfoTeacher] = useState({
     userName: "",
     email: "",
@@ -24,11 +30,6 @@ function Submit() {
     nationality: "",
     department: "",
   });
-  // const get =()=> {
-  //   dispatch(getTeacher)
-  // }
-
-
 
   const handelChange = (e) => {
     e.preventDefault();
@@ -40,26 +41,26 @@ function Submit() {
     e.preventDefault();
     // console.log("infTeacher", infoTeacher);
     dispatch({ type: addTeacher, payload: infoTeacher });
-    dispatch({type:getTeacher, payload: 'get'})
     state.handleClose();
-    
   };
+
+  //invoke
+  useEffect(() => {
+    dispatch(getTeacherAction());
+  }, [handelSubmit]);
 
   return (
     <>
-      <Button
-        color="success"
-        onClick={state.handleShow}
-      >
+      <Button color="success" onClick={state.handleShow}>
         Add Teacher
       </Button>
-      <Button
-        color="warning"
-      >
-        Update information
-      </Button>
+      <Button color="warning">Update information</Button>
 
-      <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
+      <Modal
+        show={state.show}
+        onHide={state.handleClose}
+        class="modal-dialog modal-lg"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Teacher form</Modal.Title>
         </Modal.Header>
@@ -171,13 +172,13 @@ function Submit() {
               />
             </FormGroup>
 
-            <Button color='success' onClick={handelSubmit}>
+            <Button color="success" onClick={handelSubmit}>
               Add Teacher
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color='danger' onClick={state.handleClose}>
+          <Button color="danger" onClick={state.handleClose}>
             Close
           </Button>
         </Modal.Footer>
@@ -186,21 +187,13 @@ function Submit() {
   );
 }
 const Teacher = () => {
-  const teachers =useSelector(state => state.teacher.apiInfoTeacher)
-  const dispatch = useDispatch()
-
-  // useEffect(()=>{
-  //   dispatch({type:"get_teacher",payload})
-  // },[])
-  
-  console.log(teachers,'teachers')
+  const teachers = useSelector((state) => state.teacher.infoTeacher);
+  // console.log(1111111111111111,teachers);
   return (
-    
     <div className="teacher">
-      <Button color="success" onClick={()=>dispatch({type:getTeacher,payload:'get'})}>get</Button>
       <h1>Teachers</h1>
       <Submit />
-      <Table  hover className="teacher-table">
+      <Table hover className="teacher-table">
         <thead>
           <tr>
             <th>First Name</th>
@@ -210,22 +203,20 @@ const Teacher = () => {
             <th>Department</th>
           </tr>
         </thead>
-        {/* <tbody>
-          {teachers.map((teacher,i)=>{
-            return(
+        <tbody>
+          {teachers.map((teacher, i) => {
+            return (
               <tr key={i}>
-              <td>{teacher.firstName}</td>
-              <td>{teacher.lastName}</td>
-              <td>{teacher.userName}</td>
-              <td>{teacher.nationality}</td>
-              <td>{teacher.department}</td>
-            </tr>
-            )
+                <td>{teacher.firstName}</td>
+                <td>{teacher.lastName}</td>
+                <td>{teacher.userName}</td>
+                <td>{teacher.nationality}</td>
+                <td>{teacher.department}</td>
+              </tr>
+            );
           })}
-          
-        </tbody> */}
+        </tbody>
       </Table>
-      
     </div>
   );
 };

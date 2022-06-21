@@ -1,7 +1,7 @@
 import Header from "../header/header";
 import { AuthContext } from "../../context/Auth";
 import { When } from "react-if";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Admin from "../admin/Admin";
 import Student from "../student/Student";
 import Teacher from "../teacher/Teacher";
@@ -23,16 +23,19 @@ const users = [
     check: "teacher",
   },
 ];
+
+//Solve this problem when refresh !!
 function Main() {
   const auth = useContext(AuthContext);
 
   return (
+    
     <div className="main">
       <When condition={auth.isLoggedIn}>
         <Header />
         {users.map((user,i) => (
           <div key={i} className="main-content">
-            <When condition={auth.user.role === user.check}>
+            <When condition={auth.role(user.check)}>
               {user.renderComponent}
             </When>
           </div>

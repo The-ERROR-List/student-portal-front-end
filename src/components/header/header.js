@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
@@ -17,9 +16,7 @@ function OffCanvasExample({ name,icon, ...props }) {
 
     return (
         <>
-            {/* <Button variant="primary" onClick={toggleShow} className="me-2">
-                
-            </Button> */}
+            
             <span onClick={toggleShow} style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}} className="" >{icon}<br/>{name}</span>
             <Offcanvas show={show} onHide={handleClose} {...props} style={{ marginLeft: "140px" }}>
                 <Offcanvas.Header closeButton>
@@ -57,10 +54,10 @@ const Header = () => {
             <Navbar bg="dark" variant="dark">
                 <Container >
                     <Nav className="me-auto cont" >
-                        <Navbar.Brand href="#home"><SchoolOutlinedIcon sx={{ fontSize: 70 , color: "white", textAlign:'center' ,marginLeft:"20px",marginTop:"-30px" }} /></Navbar.Brand>
+                        <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70 , color: "white", textAlign:'center' ,marginLeft:"20px",marginTop:"-30px" }} /></Navbar.Brand>
                         <hr style={{ color: "white" }}/>
                         <div className='btn'>
-                            <Nav.Link href="#home" style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}}><SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Nav.Link>
+                            <Nav.Link href="/" style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}}><SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Nav.Link>
                         </div>
                         {options.map((props, idx) => (
                             <div key={idx} className='btn'>

@@ -105,7 +105,7 @@ export default function Auth(props) {
     useEffect(() => {
         const data = cookie.load('token');
         if (data) {
-            validToken(data);
+            setIsLoggedIn(true);
         }
     }, []);
     return (
