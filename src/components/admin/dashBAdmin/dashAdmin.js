@@ -33,9 +33,9 @@ export default function DashboardAdmin() {
     <div>
       <div>
         <Row>
-          {categories.map((category) => (
-            <Col key={category.id} sm="3">
-              <Card  body>
+          {categories.map((category,i) => (
+            <Col key={i} sm="3">
+              <Card key={i}  body>
                 <CardTitle style={{ fontWeight: 500 }} tag="h4">
                   {category.name}
                 </CardTitle>

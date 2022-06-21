@@ -30,8 +30,8 @@ function Main() {
     <div className="main">
       <When condition={auth.isLoggedIn}>
         <Header />
-        {users.map((user) => (
-          <div key={user.id} className="main-content">
+        {users.map((user,i) => (
+          <div key={i} className="main-content">
             <When condition={auth.user.role === user.check}>
               {user.renderComponent}
             </When>
