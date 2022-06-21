@@ -5,7 +5,7 @@ import cookie from 'react-cookies';
 import base64 from 'base-64';
 
 export const AuthContext = React.createContext();
-const api = "https://student-portal-asac2022.herokuapp.com";
+const api = "https://student-portal-asac.herokuapp.com";
 export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -56,7 +56,7 @@ export default function Auth(props) {
         }
     }
     const signIn = async (userName, password) => {
-        axios.post(`${api}/signin`, {
+           axios.post(`${api}/signin`, {
             userName: userName,
             password: password
         }, { headers: { 'Authorization': `Basic ${base64.encode(`${userName}:${password}`)}` } }).then(res => {

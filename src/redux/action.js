@@ -1,134 +1,121 @@
-// import axios from "axios";
+
 import cookie from 'react-cookies';
-const api = "https://student-portal-asac2022.herokuapp.com/";
+const api = "https://student-portal-asac2022.herokuapp.com";
 
-// export function createTeacher(payload){
-//   return  (axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
-//                 userName: payload.userName,
-//                 email: payload.email,
-//                 password: payload.password,
-//                 role: payload.role,
-//                 firstName: payload.firstName,
-//                 lastName: payload.lastName,
-//                 gender: payload.gender,
-//                 nationality: payload.nationality,
-//                 department: payload.department
-//             }).then( res => {
-//                 console.log(res)
-//             }))
-// }
-export function createTeacher(payload){
-fetch(`${api}/signup/std-teacher`, {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${cookie.load("token")}`,
+//============================create data================================
 
-      },
-      body: JSON.stringify({
-        userName: payload.userName,
-                email: payload.email,
-                password: payload.password,
-                role: payload.role,
-                firstName: payload.firstName,
-                lastName: payload.lastName,
-                gender: payload.gender,
-                nationality: payload.nationality,
-                department: payload.department
-      })
+//1.  create Teacher 
+export function createTeacher(payload) {
+  fetch(`${api}/signup/std-teacher`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+
+    },
+    body: JSON.stringify({
+      userName: payload.userName,
+      email: payload.email,
+      password: payload.password,
+      role: payload.role,
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      gender: payload.gender,
+      nationality: payload.nationality,
+      department: payload.department
     })
-      .then((response) => {
-        console.log("response",response.json());
-       return response
-      })
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    }
-export function createStudent(payload){
-    fetch(`${api}/signup/std-teacher`, {
-        method: "POST", // or 'PUT'
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${cookie.load("token")}`,
-        },
-        body: JSON.stringify({
-            userName: payload.userName,
-            email: payload.email,
-            password: payload.password,
-            role: payload.role,
-            firstName: payload.firstName,
-            lastName: payload.lastName,
-            gender: payload.gender,
-            nationality: payload.nationality,
-            major: payload.major
-
+  })
+    .then((response) => {
+      console.log("response", response.json());
+      return response
     })
-    }).then((response)=>{
-        console.log("response",response.json());
-        return response
-    }).then((data)=>{
-        console.log("Success:", data);
-
-    }).catch((error) => {
-        console.error("Error:", error);
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
     });
 }
 
-    // export function updateTeacher(payload){
-    //     fetch("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
-    //           method: "PUT",
-    //           headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `Bearer ${cookie.load("token")}`,
-        
-    //           },
-    //           body: JSON.stringify({
-    //             userName: payload.userName,
-    //                     email: payload.email,
-    //                     password: payload.password,
-    //                     role: payload.role,
-    //                     firstName: payload.firstName,
-    //                     lastName: payload.lastName,
-    //                     gender: payload.gender,
-    //                     nationality: payload.nationality,
-    //                     department: payload.department
-    //           })
-    //         })
-    //           .then((response) => {
-    //             console.log("response",response.json());
-    //            return response
-    //           })
-    //           .then((data) => {
-    //             console.log("Success:", data);
-    //           })
-    //           .catch((error) => {
-    //             console.error("Error:", error);
-    //           });
-    //         }
-//===============================admin =======================================
-    // axios("https://student-portal-asac.herokuapp.com/signup/std-teacher", {
-    //   method: "POST", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify( {userName: infoTeacher.userName,
-    //     email: infoTeacher.email,
-    //     password: infoTeacher.password,
-    //     role: infoTeacher.role,
-    //     firstName: infoTeacher.firstName,
-    //     lastName: infoTeacher.lastName,
-    //     gender: infoTeacher.gender,
-    //     nationality: infoTeacher.nationality,
-    //     department: infoTeacher.department }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+//2.  create Student 
+export function createStudent(payload) {
+  fetch(`${api}/signup/std-teacher`, {
+    method: "POST", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      userName: payload.userName,
+      email: payload.email,
+      password: payload.password,
+      role: payload.role,
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      gender: payload.gender,
+      nationality: payload.nationality,
+      major: payload.major
+
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+//3.  create Course
+// export function createCourse(payload) {
+//   fetch(`${api}/signup/??`, {
+//     method: "POST", // or 'PUT'
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${cookie.load("token")}`,
+//     },
+//     body: JSON.stringify({
+
+
+//     })
+//   }).then((response) => {
+//     console.log("response", response.json());
+//     return response
+//   }).then((data) => {
+//     console.log("Success:", data);
+
+//   }).catch((error) => {
+//     console.error("Error:", error);
+//   });
+// }
+
+// //4.  create Class
+// export function createClass(payload) {
+//   fetch(`${api}/signup/??`, {
+//     method: "POST", // or 'PUT'
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${cookie.load("token")}`,
+//     },
+//     body: JSON.stringify({
+
+
+//     })
+//   }).then((response) => {
+//     console.log("response", response.json());
+//     return response
+//   }).then((data) => {
+//     console.log("Success:", data);
+
+//   }).catch((error) => {
+//     console.error("Error:", error);
+//   });
+// }
+
+//==========================2.update data=================
+
+//==========================3.get data====================
+
+//==========================4.delete data=================

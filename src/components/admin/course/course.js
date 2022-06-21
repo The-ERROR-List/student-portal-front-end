@@ -1,27 +1,33 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
-import { Button, Modal } from "react-bootstrap";
-import { useState } from "react";
-import "./student.scss";
+import { Table, Form, Row, Col, FormGroup, Label, Input,Button } from "reactstrap";
+import {  Modal } from "react-bootstrap";
+import { StateContext } from "../../../context/State";
+import { useState,useContext } from "react";
+import "./course.scss";
 function Submit() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const state=useContext(StateContext);
+  
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        color="success"
+        onClick={state.handleShow}
+      >
         Add Course
       </Button>
 
-      <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">
+      <Button
+        color="warning"
+      >
+        Update information
+      </Button>
+      <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
         <Modal.Header closeButton>
           <Modal.Title>Course form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form style={{ width: "70%", margin: "auto" }}>
             <Row>
-              <Col md={6}>
+              <Col md={12}>
                 <FormGroup>
                   <Label for="userName">userName</Label>
                   <Input
@@ -40,15 +46,24 @@ function Submit() {
                     type="text"
                   />
                 </FormGroup>
+                <FormGroup>
+                  <Label for="GradeCourse">Grade course</Label>
+                  <Input
+                    id="Grade"
+                    name="Grade"
+                    placeholder="Grade..."
+                    type="number"
+                  />
+                </FormGroup>
               </Col>
             </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button color="danger" onClick={state.handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button  color="success" onClick={state.handleClose}>
             Add Course
           </Button>
         </Modal.Footer>
@@ -58,29 +73,34 @@ function Submit() {
 }
 const Course = () => {
   return (
-    <div className="course">
+    <div   className="course">
       <h1>Course</h1>
       <Submit />
-      <Table className="course-table">
+      <Table hover className="course-table">
         <thead>
           <tr>
             <th>#</th>
             <th>Course Name</th>
+            <th>Grade Course </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
+            <td>50/50</td>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
+            <td>100/100</td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>Larry</td>
+            <td>50/50</td>
           </tr>
+          
         </tbody>
       </Table>
     </div>
