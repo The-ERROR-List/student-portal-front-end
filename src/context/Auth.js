@@ -102,12 +102,12 @@ export default function Auth(props) {
         setIsLoggedIn,
         role
     }
-    // useEffect(() => {
-    //     const data = cookie.load('token');
-    //     if (data) {
-    //         validToken(data);
-    //     }
-    // }, []);
+    useEffect(() => {
+        const data = cookie.load('token');
+        if (data) {
+            validToken(data);
+        }
+    }, []);
     return (
         <AuthContext.Provider value={state}>
             {props.children}
