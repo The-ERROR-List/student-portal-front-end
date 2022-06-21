@@ -1,27 +1,34 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
-import { Button, Modal } from "react-bootstrap";
-import { useState } from "react";
-import "./student.scss";
+import { Table, Form, Row, Col, FormGroup, Label, Input,Button } from "reactstrap";
+import {  Modal } from "react-bootstrap";
+import { StateContext } from "../../../context/State";
+import { useState,useContext } from "react";
+import "./class.scss";
+
 function Submit() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const state=useContext(StateContext);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+       <Button
+        color="success"
+        
+        onClick={state.handleShow}
+      >
         Add Class
       </Button>
-
-      <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">
+      <Button
+        color="warning"
+        
+      >
+        Update information
+      </Button>
+      <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
         <Modal.Header closeButton>
           <Modal.Title>Class form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form style={{ width: "70%", margin: "auto" }}>
             <Row>
-              <Col md={6}>
+              <Col md={16}>
                 <FormGroup>
                   <Label for="className">Class Name</Label>
                   <Input
@@ -55,10 +62,10 @@ function Submit() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button color="success" onClick={state.handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button color="danger" onClick={state.handleClose}>
             Add Class
           </Button>
         </Modal.Footer>
@@ -68,10 +75,10 @@ function Submit() {
 }
 const Class = () => {
   return (
-    <div className="class">
+    <div   className="class">
       <h1>Class</h1>
       <Submit />
-      <Table className="class-table">
+      <Table  hover className="class-table">
         <thead>
           <tr>
             <th>#</th>

@@ -1,17 +1,17 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input } from 'reactstrap'
-import { Button, Modal } from 'react-bootstrap'
-import { useState } from 'react'
-import './student.scss'
+import { Table, Form, Row, Col, FormGroup, Label, Input,Button } from 'reactstrap'
+import {  Modal } from 'react-bootstrap'
+import { useState,useContext } from 'react'
+import { StateContext } from "../../../context/State";
+import { addStudent } from '../../../redux/type'
 import { useDispatch, useSelector } from 'react-redux'
+import './student.scss'
 function Submit() {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const data = useSelector((state) => state.student.infoStudent);
+    
+const state=useContext(StateContext)
+    // const data = useSelector((state) => state.student.infoStudent);
 
     const dispatch = useDispatch();
-    const [infoStudent, setinfoStudent] = useState({
+    const [infoStudent, setInfoStudent] = useState({
         userName: "",
         email: "",
         password: "",
@@ -21,26 +21,36 @@ function Submit() {
         gender: "",
         nationality: "",
         major: "",
-      });
-    
-      const handelChange = (e) => {
+    });
+
+    const handelChange = (e) => {
         e.preventDefault();
-        setinfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
+        setInfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
         console.log({ [e.target.name]: e.target.value });
-      };
-    
-      const handelSubmit = (e) => {
+    };
+
+    const handelSubmit = (e) => {
         e.preventDefault();
         console.log("infTeacher", infoStudent);
-        dispatch( {type: "add_student" , payload:infoStudent})
-      };
+        dispatch({ type: addStudent, payload: infoStudent })
+        state.handleClose()
+    };
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button
+                color="success"
+                onClick={state.handleShow}
+            >
                 Add Student
             </Button>
+            <Button
+                color="warning"
+                
+            >
+                Update information
+            </Button>
 
-            <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">
+            <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Student form</Modal.Title>
                 </Modal.Header>
@@ -164,14 +174,14 @@ function Submit() {
                             />
                         </FormGroup>
 
-                        <Button variant="primary" onClick={handleClose}>
+                        <Button color="success" onClick={handelSubmit}>
                             Add Student
-                        </Button>         
+                        </Button>
                     </Form>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button     color="danger" onClick={state.handleClose}>
                         Close
                     </Button>
 
@@ -182,10 +192,10 @@ function Submit() {
 }
 const Student = () => {
     return (
-        <div className="Student">
+        <div  className="Student">
             <h1>Student</h1>
             <Submit />
-            <Table className="Student-table">
+            <Table  hover className="Student-table">
                 <thead>
                     <tr>
                         <th>
