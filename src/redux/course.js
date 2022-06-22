@@ -41,12 +41,7 @@ export default function courseReducer(state = initialState, action) {
         return {
           ...state
         };
-      // case getAllCourseToTeacher:
-
-      //   return {
-      //     teacherIntoCourse:dataTeacherIntoCourse
-      //   }
-
+     
     case updateCourse:
 
       return {

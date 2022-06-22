@@ -8,12 +8,14 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 import { getTeacherAction } from "../../../redux/teacher";
+import { deleteTeacher } from "../../../redux/type";
 import "./teacher.scss";
 
 function Submit() {
@@ -44,6 +46,7 @@ function Submit() {
     state.handleClose();
   };
 
+ 
   //invoke
   useEffect(() => {
     dispatch(getTeacherAction());
@@ -188,12 +191,16 @@ function Submit() {
 }
 const Teacher = () => {
   const teachers = useSelector((state) => state.teacher.infoTeacher);
-  // console.log(1111111111111111,teachers);
+  const dispatch=useDispatch();
+  console.log(1111111111111111,teachers);
+  const deleteFromDB=(idToDelete)=>{
+    dispatch({type:deleteTeacher,payloadDelete:idToDelete})
+  }
   return (
     <div className="teacher">
       <h1>Teachers</h1>
       <Submit />
-      <Table hover className="teacher-table">
+      <Table  className="teacher-table">
         <thead>
           <tr>
             <th>First Name</th>
@@ -212,6 +219,7 @@ const Teacher = () => {
                 <td>{teacher.userName}</td>
                 <td>{teacher.nationality}</td>
                 <td>{teacher.department}</td>
+                <DeleteIcon sx={{ fontSize:50 }} onClick={()=>deleteFromDB(teacher.id)} />
               </tr>
             );
           })}

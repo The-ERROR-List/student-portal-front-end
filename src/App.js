@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <Auth>
-      <State>
-        <Main />
-        <Login />
+        <State>
+          <Main />
+          <Login />
         </State>
       </Auth>
     </div>

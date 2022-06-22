@@ -5,6 +5,8 @@ import { StateContext } from "../../../context/State";
 import { addStudent } from '../../../redux/type'
 import { useDispatch, useSelector } from 'react-redux'
 import { getStudentAction } from '../../../redux/student';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteStudent } from '../../../redux/type';
 import './student.scss'
 function Submit() {
 
@@ -187,6 +189,10 @@ function Submit() {
 }
 const Student = () => {
     const students = useSelector((state) => state.student.infoStudent);
+    const dispatch=useDispatch()
+    const deleteFromDB=(idToDelete)=>{
+    dispatch({type:deleteStudent,payloadDelete:idToDelete})
+  }
     return (
         <div className="Student">
             <h1>Student</h1>
@@ -220,6 +226,7 @@ const Student = () => {
                                 <td>{student.userName}</td>
                                 <td>{student.nationality}</td>
                                 <td>{student.major}</td>
+                                <DeleteIcon sx={{ fontSize:50 }} onClick={()=>deleteFromDB(student.id)} />
                             </tr>
                         );
                     })}

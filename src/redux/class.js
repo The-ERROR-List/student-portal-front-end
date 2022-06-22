@@ -45,6 +45,7 @@ export function selectClass(payload) {
   return {
     type: addClass,
     payload: payload,
+    
   };
 }
 
