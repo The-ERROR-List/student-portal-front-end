@@ -1,10 +1,13 @@
+import axios from 'axios';
+import cookie from 'react-cookies';
 import { addStudent } from "./type";
 import { updateStudent } from "./type";
 import { getStudent } from "./type";
 import { deleteStudent } from "./type";
-
-
 import { createStudent } from "./action";
+
+const api = "https://student-portal-asac.herokuapp.com";
+
 export const initialState = {
   infoStudent: [],
 };
@@ -14,17 +17,16 @@ export default function studentReducer(state = initialState, action) {
 
   switch (type) {
     case addStudent:
-      let data = [...state.infoStudent];
-      data.push(payload);
+      
       createStudent(payload);
       return {
-        infoStudent: data,
+        ...state
       };
 
     case getStudent:
 
       return {
-
+        infoStudent: payload
       };
 
     case updateStudent:
@@ -48,4 +50,18 @@ export function selectStudent(payload) {
     type: addStudent,
     payload: payload,
   };
+}
+
+
+export const getStudentAction = () => {
+  return async (dispatch) => {
+    const res = await axios.get(`${api}/allstudents`, {
+      headers: {
+
+        "Authorization": `Bearer ${cookie.load("token")}`,
+      },
+    })
+    // console.log("resssssssss", payload);
+    dispatch({ type:  getStudent, payload: res.data.students })
+  }
 }

@@ -35,7 +35,7 @@ const Teacher = () => {
                     )
                 })}
             </div> */}
-            <div>
+            {/* <div>
             <Row>
           {state.courses[0].map((course, index) => (
             <Col key={course.id} sm="3">
@@ -52,7 +52,7 @@ const Teacher = () => {
             </Col>
           ))}
         </Row>
-            </div>
+            </div> */}
         </>
 
     )

@@ -1,14 +1,24 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  Table,
+  Form,
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 import { Modal } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
 import { useDispatch, useSelector } from "react-redux";
-import { addTeacher } from '../../../redux/type'
-import './teacher.scss'
-function Submit() {
-  const state = useContext(StateContext)
-  const dispatch = useDispatch();
+import { addTeacher } from "../../../redux/type";
+import { getTeacherAction } from "../../../redux/teacher";
+import "./teacher.scss";
 
+function Submit() {
+  const state = useContext(StateContext);
+  const dispatch = useDispatch();
   const [infoTeacher, setInfoTeacher] = useState({
     userName: "",
     email: "",
@@ -34,21 +44,23 @@ function Submit() {
     state.handleClose();
   };
 
+  //invoke
+  useEffect(() => {
+    dispatch(getTeacherAction());
+  }, [handelSubmit]);
+
   return (
     <>
-      <Button
-        color="success"
-        onClick={state.handleShow}
-      >
+      <Button color="success" onClick={state.handleShow}>
         Add Teacher
       </Button>
-      <Button
-        color="warning"
-      >
-        Update information
-      </Button>
+      <Button color="warning">Update information</Button>
 
-      <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
+      <Modal
+        show={state.show}
+        onHide={state.handleClose}
+        class="modal-dialog modal-lg"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Teacher form</Modal.Title>
         </Modal.Header>
@@ -160,13 +172,13 @@ function Submit() {
               />
             </FormGroup>
 
-            <Button color='success' onClick={handelSubmit}>
+            <Button color="success" onClick={handelSubmit}>
               Add Teacher
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color='danger' onClick={state.handleClose}>
+          <Button color="danger" onClick={state.handleClose}>
             Close
           </Button>
         </Modal.Footer>
@@ -175,14 +187,15 @@ function Submit() {
   );
 }
 const Teacher = () => {
+  const teachers = useSelector((state) => state.teacher.infoTeacher);
+  // console.log(1111111111111111,teachers);
   return (
     <div className="teacher">
       <h1>Teachers</h1>
       <Submit />
-      <Table  hover className="teacher-table">
+      <Table hover className="teacher-table">
         <thead>
           <tr>
-            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Username</th>
@@ -191,33 +204,19 @@ const Teacher = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          {teachers.map((teacher, i) => {
+            return (
+              <tr key={i}>
+                <td>{teacher.firstName}</td>
+                <td>{teacher.lastName}</td>
+                <td>{teacher.userName}</td>
+                <td>{teacher.nationality}</td>
+                <td>{teacher.department}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
-      
     </div>
   );
 };

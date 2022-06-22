@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies';
 export const StateContext = React.createContext();
-const api = "https://student-portal-asac2022.herokuapp.com";
+const api = "http://localhost:3001";
 
 export default function State(props) {
     const [selectComponent, setSelectCategory] = useState("");

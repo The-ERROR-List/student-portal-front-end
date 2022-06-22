@@ -5,7 +5,8 @@ import cookie from 'react-cookies';
 import base64 from 'base-64';
 
 export const AuthContext = React.createContext();
-const api = "https://student-portal-asac.herokuapp.com";
+const api = "http://localhost:3001";
+//http://localhost:3001
 export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -77,6 +78,7 @@ export default function Auth(props) {
                 setUser(user);
                 setIsLoggedIn(true);
                 cookie.save('token', user.token);
+                console.log(user)
                 cookie.save('id',user.id)
             } else {
                 setIsLoggedIn(false);
@@ -107,7 +109,6 @@ export default function Auth(props) {
     useEffect(() => {
         const data = cookie.load('token');
         if (data) {
-            // validToken(data);
             setIsLoggedIn(true);
         }
     }, []);

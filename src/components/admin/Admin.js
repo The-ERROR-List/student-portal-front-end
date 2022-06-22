@@ -10,11 +10,11 @@ import { StateContext } from "../../context/State";
 const components = [
   {
     renderComponent: <Teacher />,
-    check:"Teacher Side"
+    check: "Teacher Side"
   },
   {
     renderComponent: <Student />,
-    check:"Student Side"
+    check: "Student Side"
   },
   {
     renderComponent: <Course />,
@@ -22,7 +22,7 @@ const components = [
   },
   {
     renderComponent: <Class />,
-    check:"Class Side"
+    check: "Class Side"
   },
 ];
 export default function Admin() {
@@ -32,12 +32,12 @@ export default function Admin() {
       <div >
         <DashboardAdmin />
       </div>
-      <div style={{marginTop:"15px"}}>
-      {components.map((component)=>(
-      <When condition={state.selectComponent === component.check}>
-        {component.renderComponent}
-      </When>
-      ))}
+      <div style={{ marginTop: "15px" }}>
+        {components.map((component) => (
+          <When condition={state.selectComponent === component.check}>
+            {component.renderComponent}
+          </When>
+        ))}
       </div>
     </div>
   );

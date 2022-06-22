@@ -1,6 +1,6 @@
 
 import cookie from 'react-cookies';
-const api = "https://student-portal-asac2022.herokuapp.com";
+const api = "https://student-portal-asac.herokuapp.com";
 
 //============================create data================================
 
@@ -40,7 +40,7 @@ export function createTeacher(payload) {
 //2.  create Student 
 export function createStudent(payload) {
   fetch(`${api}/signup/std-teacher`, {
-    method: "POST", // or 'PUT'
+    method: "POST", 
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,
