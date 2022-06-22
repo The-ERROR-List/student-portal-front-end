@@ -69,19 +69,24 @@ export default function Auth(props) {
         setIsLoggedIn(false);
         setUser({});
         cookie.remove('token');
-        cookie.remove('id');
+        cookie.remove('id');//teacher and student 
+        // cookie.remove('userid')//all users
         cookie.remove('role')
     }
     const validToken = (user) => {
         if (user) {
-            const validUser = JWT(user.token);
+            const validUser = JWT(user.userInfo.token);
+            console.log(user)
             if (validUser) {
-                setUser(user);
+                setUser(user.userInfo);
                 setIsLoggedIn(true);
-                cookie.save('token', user.token);
+                cookie.save('token', user.userInfo.token);
                 console.log(user)
-                cookie.save('id',user.id)
-                cookie.save('role',user.role)
+                if(user.userInfo.role === "teacher" || user.userInfo.role==="student"){
+                    cookie.save('id',user.newId)
+                }
+                // cookie.save('userid',user.userInfo.id)
+                cookie.save('role',user.userInfo.role)
             } else {
                 setIsLoggedIn(false);
                 setUser({});
