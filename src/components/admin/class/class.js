@@ -17,21 +17,17 @@ import { addClass } from "../../../redux/type";
 import "./class.scss";
 
 function Submit() {
-  const dataTeacher = useSelector((state) => state.teacher.infoTeacher);
-  const dataCourse = useSelector((state) => state.course.infoCourse);
 
   const dispatch = useDispatch();
   const state = useContext(StateContext);
   const [infoClass, setInfoClass] = useState({
     className: "",
-    courseId: "",
-    teacherId: "",
+    courseName: "",
+    userName: "",
+    classTime:"",
+    
   });
-  // const [infoShow, setinfoShow] = useState({
-  //   className: "",
-  //   courseId: "",
-  //   teacherId: "",
-  // });
+
 
 
   const handelChange = (e) => {
@@ -100,6 +96,19 @@ function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
+                
+                <FormGroup>
+                  <Label for="classTime">Class Time</Label>
+                  <Input
+                    id="classTime"
+                    name="classTime"
+                    placeholder="Class Time..."
+                    type="classTime"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+                
+                
               </Col>
             </Row>
 
@@ -129,6 +138,8 @@ const Class = () => {
             <th>Class Name</th>
             <th>Course Name</th>
             <th>Teacher Name</th>
+            <th>class Time</th>
+
           </tr>
         </thead>
         <tbody>
@@ -140,8 +151,9 @@ const Class = () => {
             <td>
               {classinfo.className}
             </td>
-            {/* <td>{class.courseId}</td>
-            <td>{class.teacherId}</td> */}
+            <td>{classinfo.courseName}</td>
+            <td>{classinfo.teacherName}</td>
+            <td>{classinfo.classTime}</td>
           </tr>
           );
           })
