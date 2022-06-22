@@ -6,6 +6,7 @@ import Admin from "../admin/Admin";
 import Student from "../student/Student";
 import Teacher from "../teacher/Teacher";
 import "./main.scss";
+import cookie from "react-cookies"
 const users = [
   {
     id:1,
@@ -35,7 +36,7 @@ function Main() {
         <Header />
         {users.map((user,i) => (
           <div key={i} className="main-content">
-            <When condition={auth.role(user.check)}>
+            <When condition={cookie.load('role')=== user.check}>
               {user.renderComponent}
             </When>
           </div>

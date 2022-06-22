@@ -80,6 +80,7 @@ export default function Auth(props) {
                 cookie.save('token', user.token);
                 console.log(user)
                 cookie.save('id',user.id)
+                cookie.save('role',user.role)
             } else {
                 setIsLoggedIn(false);
                 setUser({});
