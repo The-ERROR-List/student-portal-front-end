@@ -3,9 +3,10 @@ import { updateTeacher } from "./type";
 import { getTeacher } from "./type";
 import { deleteTeacher } from "./type";
 import { createTeacher } from './action';
+import {deleteTeacherById} from './action';
 import axios from 'axios';
 import cookie from 'react-cookies';
-import {api} from './type';
+import { api } from './type';
 
 
 export const initialState = {
@@ -15,7 +16,7 @@ export const initialState = {
 };
 
 export default function teacherReducer(state = initialState, action) {
-  let { type,  payload } = action;
+  let { type, payload, payloadDelete } = action;
 
 
   switch (type) {
@@ -35,9 +36,9 @@ export default function teacherReducer(state = initialState, action) {
 
       };
     case deleteTeacher:
-
+      deleteTeacherById(payloadDelete)
       return {
-
+        ...state
       };
     default:
       return state;

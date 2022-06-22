@@ -145,3 +145,82 @@ export function addCourse2Teacher(payload) {
 //==========================3.get data====================
 
 //==========================4.delete data=================
+
+//1.delete Teacher by id
+
+export function deleteTeacherById(deleteTeacher){
+  fetch(`${api}/teacher/${deleteTeacher}`, {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    }
+  }).then((result) => {
+    console.log("result", result.json());
+    return result
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+//2. delete student by id
+
+export function deleteStudentById(deleteStudent){
+  fetch(`${api}/student/${deleteStudent}`, {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    }
+  }).then((result) => {
+    console.log("result", result.json());
+    return result
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+//3.deleteCourseById
+export function deleteCourseById(deleteCourse){
+  fetch(`${api}/courses/${deleteCourse}`, {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    }
+  }).then((result) => {
+    console.log("result", result.json());
+    return result
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+//4.deleteClassesById
+
+export function deleteClassesById(deleteClasses){
+  fetch(`${api}/classes/${deleteClasses}`, {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    }
+  }).then((result) => {
+    console.log("result", result.json());
+    return result
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  })
+}

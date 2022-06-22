@@ -5,7 +5,8 @@ import { updateStudent } from "./type";
 import { getStudent } from "./type";
 import { deleteStudent } from "./type";
 import { createStudent } from "./action";
-import {api} from './type';
+import { api } from './type';
+import { deleteStudentById } from "./action";
 // const api = "http://localhost:3030";
 
 export const initialState = {
@@ -13,11 +14,11 @@ export const initialState = {
 };
 
 export default function studentReducer(state = initialState, action) {
-  let { type, payload } = action;
+  let { type, payload, payloadDelete } = action;
 
   switch (type) {
     case addStudent:
-      
+
       createStudent(payload);
       return {
         ...state
@@ -36,9 +37,9 @@ export default function studentReducer(state = initialState, action) {
       };
 
     case deleteStudent:
-
+      deleteStudentById(payloadDelete)
       return {
-
+        ...state
       };
     default:
       return state;
@@ -62,6 +63,6 @@ export const getStudentAction = () => {
       },
     })
     // console.log("resssssssss", payload);
-    dispatch({ type:  getStudent, payload: res.data.students })
+    dispatch({ type: getStudent, payload: res.data.students })
   }
 }
