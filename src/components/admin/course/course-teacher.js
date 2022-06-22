@@ -2,44 +2,47 @@ import {
     Card,
     CardGroup,
     CardBody,
-    CardBody,
     CardImg,
     CardTitle,
     Button,
-    CardGroup
+    CardSubtitle,
+    CardText,
 } from 'reactstrap'
+import { Accordion } from "react-bootstrap";
 
 
-export default function Course_Card() {
+export default function Course_Card(props) {
     return (
         <div>
 
 
-            <CardGroup>
-                <Card>
-                    <CardImg
-                        alt="Card image cap"
-                        src="https://picsum.photos/318/180"
-                        top
-                        width="100%"
-                    />
-                    <CardBody>
-                        <CardTitle tag="h5">
-                            Card title
+            <CardGroup style={{width:"420px"}}>
+                <Card >
+                    <CardBody >
+                        <CardTitle tag="h5" style={{textAlign:"center"}}>
+                            {props.course.courseName}
                         </CardTitle>
-                        <CardSubtitle
+                        {/* <CardSubtitle
                             className="mb-2 text-muted"
                             tag="h6"
                         >
                             Card subtitle
-                        </CardSubtitle>
-                        <CardText>
-                            This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                        </CardText>
-                        <Button>
-                            Button
-                        </Button>
+                        </CardSubtitle> */}
                     </CardBody>
+                    <Accordion defaultActiveKey="0" style={{width:"400px"}}>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Teachers</Accordion.Header>
+                            <Accordion.Body>
+
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Classes</Accordion.Header>
+                            <Accordion.Body>
+
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
                 </Card>
             </CardGroup>
 

@@ -5,6 +5,7 @@ import { deleteCourse } from "./type";
 import { createCourse } from './action';
 import { addCourseToTeacher } from "./type";
 import { getAllCourseToTeacher } from "./type";
+import {addCourse2Teacher} from './action'
 
 import axios from 'axios';
 import cookie from 'react-cookies';
@@ -36,9 +37,10 @@ export default function courseReducer(state = initialState, action) {
       
 //getAllCourseToTeacher 
       case addCourseToTeacher:
-
+        addCourse2Teacher(payload)
       
         return {
+          ...state
         };
   
     case updateCourse:
@@ -61,6 +63,12 @@ export function selectCourse(payload) {
     type: addCourse,
     payload: payload,
   };
+}
+export function addTeacher(payload) {
+  return { 
+    type:addCourseToTeacher,
+    payload: payload,
+  }
 }
 
 export const getCourseAction = () => {
