@@ -101,8 +101,8 @@ export function createClass(payload) {
     },
     body: JSON.stringify({
       className:payload.className,
-      courseId:payload.courseId,
-      teacherId:payload.teacherId
+      courseName:payload.courseName,
+      userName:payload.userName
 
     })
   }).then((response) => {

@@ -69,6 +69,7 @@ export default function Auth(props) {
         setIsLoggedIn(false);
         setUser({});
         cookie.remove('token');
+        cookie.remove('id');
     }
     const validToken = (user) => {
         if (user) {
@@ -77,6 +78,8 @@ export default function Auth(props) {
                 setUser(user);
                 setIsLoggedIn(true);
                 cookie.save('token', user.token);
+                console.log(user)
+                cookie.save('id',user.id)
             } else {
                 setIsLoggedIn(false);
                 setUser({});

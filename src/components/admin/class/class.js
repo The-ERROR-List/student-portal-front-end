@@ -33,6 +33,7 @@ function Submit() {
   //   teacherId: "",
   // });
 
+
   const handelChange = (e) => {
     e.preventDefault();
     setInfoClass({ ...infoClass, [e.target.name]: e.target.value });
@@ -46,9 +47,9 @@ function Submit() {
     state.handleClose();
   };
 
-  // useEffect(() => {
-  //   dispatch(getClassAction());
-  // }, [handelSubmit]);
+  useEffect(() => {
+    dispatch(getClassAction());
+  }, [handelSubmit]);
 
   return (
     <>
@@ -82,7 +83,7 @@ function Submit() {
                   <Label for="courseName">Course Name</Label>
                   <Input
                     id="course"
-                    name="courseId"
+                    name="courseName"
                     placeholder="Course..."
                     type="text"
                     onChange={handelChange}
@@ -93,7 +94,7 @@ function Submit() {
                   <Label for="userName">userName Teacher</Label>
                   <Input
                     id="userName"
-                    name="teacherId"
+                    name="userName"
                     placeholder="userName..."
                     type="userName"
                     onChange={handelChange}
@@ -127,22 +128,24 @@ const Class = () => {
           <tr>
             <th>Class Name</th>
             <th>Course Name</th>
-            <th>Teacher userName</th>
+            <th>Teacher Name</th>
           </tr>
         </thead>
         <tbody>
-          {/* {
-            classes.map((class, i) => {
-            return (
+          {
+            classes.map((classinfo, i) => {
+            return(
+              
           <tr key={i}>
             <td>
-              {class.className}
+              {classinfo.className}
             </td>
-            <td>{class.courseId}</td>
-            <td>{class.teacherId}</td>
+            {/* <td>{class.courseId}</td>
+            <td>{class.teacherId}</td> */}
           </tr>
           );
-          })} */}
+          })
+        }
         </tbody>
       </Table>
     </div>
