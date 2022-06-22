@@ -102,7 +102,8 @@ export function createClass(payload) {
     body: JSON.stringify({
       className:payload.className,
       courseName:payload.courseName,
-      userName:payload.userName
+      userName:payload.userName,
+      classTime : payload.classTime,
 
     })
   }).then((response) => {
