@@ -76,14 +76,14 @@ export const getCourseAction = () => {
 }
 //=====
 // getAllCourseToTeacher 
-export const getAllCourseToTeacher = () => {
-  return async (dispatch) => {
-    const res = await axios.get(`${api}/?/${id}`, {
-      headers: {
+// export const getAllCourseToTeacher = () => {
+//   return async (dispatch) => {
+//     const res = await axios.get(`${api}/?/${id}`, {
+//       headers: {
 
-        "Authorization": `Bearer ${cookie.load("token")}`,
-      },
-    })
-    dispatch({ type: getCourse, data: res.data })
-  }
-}
+//         "Authorization": `Bearer ${cookie.load("token")}`,
+//       },
+//     })
+//     dispatch({ type: getCourse, data: res.data })
+//   }
+// }
