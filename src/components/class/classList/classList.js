@@ -49,14 +49,14 @@ function Submit() {
                                 </FormGroup>
                             </Col>
                         </Row>
+                        <Button color="success" onClick={state.handleClose}>
+                        Add Student
+                    </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={state.handleClose}>
                         Close
-                    </Button>
-                    <Button color="success" onClick={state.handleClose}>
-                        Add Student
                     </Button>
                 </Modal.Footer>
             </Modal>
