@@ -139,13 +139,13 @@ const Course = () => {
   useEffect(() => {
     dispatch(getCourseAction());
   }, []);
-  // console.log(111111111111111,courses);
+  console.log(111111111111111,courses);
   return (
     <div className="course">
       <h1>Course</h1>
       {/* <Submit /> */}
       <AddTeacher/>
-      <Table hover className="course-table">
+      {/* <Table hover className="course-table"> */}
         {/* <thead>
           <tr>
             <th>Course Name</th>
@@ -153,6 +153,7 @@ const Course = () => {
           </tr>
         </thead> */}
         {/* <tbody> */}
+        
           {courses.map((course, i) => {
             return (
               // <tr key={i}>
@@ -161,11 +162,12 @@ const Course = () => {
               //     {course.courseGrade}/{course.courseGrade}
               //   </td>
               // </tr>
+
               <CourseCard key={i} course = {course}/>
             );
           })}
         {/* </tbody> */}
-      </Table>
+      {/* </Table> */}
 
     </div>
   );

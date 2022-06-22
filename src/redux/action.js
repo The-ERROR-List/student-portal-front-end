@@ -127,6 +127,7 @@ export function addCourse2Teacher(payload) {
     body: JSON.stringify({
       userName:payload.userName,//teacher
       courseName:payload.courseName,
+      courseDescription:''
     })
   }).then((response) => {
     console.log("response", response.json());

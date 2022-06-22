@@ -9,13 +9,22 @@ import {
     CardText,
 } from 'reactstrap'
 import { Accordion } from "react-bootstrap";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {getAllCourse2Teacher} from '../../../redux/teacherToCourse'
 
 
 export default function Course_Card(props) {
+
+    const selector = useSelector(state=>state.teacherTocourse.teacherIntoCourse)
+    console.log(selector,'selector');
+    const dispatch = useDispatch();
+    useEffect(() =>{
+        dispatch(getAllCourse2Teacher(props.course.id))
+    },[dispatch, props.course.id,selector])
+
     return (
         <div>
-
-
             <CardGroup style={{width:"420px"}}>
                 <Card >
                     <CardBody >
@@ -33,7 +42,14 @@ export default function Course_Card(props) {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Teachers</Accordion.Header>
                             <Accordion.Body>
-
+                                <ul>
+                                {selector.map((teacher,i)=>{
+                                    return(
+                                        <li>{teacher.TeacherName}</li>
+                                    )
+                                })}
+                                    
+                                </ul>
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
