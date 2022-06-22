@@ -30,20 +30,29 @@ function Submit() {
                         <Row>
                             <Col md={16}>
                                 <FormGroup>
-                                    <Label for="className">Student Name</Label>
+                                    <Label for="userName">userName</Label>
                                     <Input
-                                        id="class"
-                                        name="class"
-                                        placeholder="class..."
+                                        id="userName"
+                                        name="userName"
+                                        placeholder="userName..."
                                         type="text"
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="courseName">Geade</Label>
+                                    <Label for="className">className</Label>
                                     <Input
-                                        id="Geade"
-                                        name="Geade"
-                                        placeholder="Geade..."
+                                        id="className"
+                                        name="className"
+                                        placeholder="className..."
+                                        type="text"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="Grade">Student Grade</Label>
+                                    <Input
+                                        id="Grade"
+                                        name="Grade"
+                                        placeholder="Grade..."
                                         type="text"
                                     />
                                 </FormGroup>
@@ -67,6 +76,7 @@ const ClassList = () => {
     const auth = useContext(AuthContext);
     return (
         <div>
+            <h1>{}</h1>
             <When condition={auth.user.role === 'admin'}>
                 <Submit />
             </When>
