@@ -117,7 +117,7 @@ export function createClass(payload) {
   });
 }
 //====================================
-export function addCourseToTeacher(payload) {
+export function addCourse2Teacher(payload) {
   fetch(`${api}/add-course-toTeacher`, {
     method: "POST", // or 'PUT'
     headers: {
@@ -127,10 +127,11 @@ export function addCourseToTeacher(payload) {
     body: JSON.stringify({
       userName:payload.userName,//teacher
       courseName:payload.courseName,
+      courseDescription:''
     })
   }).then((response) => {
     console.log("response", response.json());
-    return response.json()
+    return response
   }).then((data) => {
     console.log("Success:", data);
 

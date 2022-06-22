@@ -5,6 +5,7 @@ import { deleteCourse } from "./type";
 import { createCourse } from './action';
 import { addCourseToTeacher } from "./type";
 import { getAllCourseToTeacher } from "./type";
+import {addCourse2Teacher} from './action'
 
 import axios from 'axios';
 import cookie from 'react-cookies';
@@ -12,7 +13,6 @@ import { api } from './type';
 
 export const initialState = {
   infoCourse: [],
-  idCourse:[],
 };
 
 export default function courseReducer(state = initialState, action) {
@@ -36,11 +36,17 @@ export default function courseReducer(state = initialState, action) {
       
 //getAllCourseToTeacher 
       case addCourseToTeacher:
-
+        addCourse2Teacher(payload)
       
         return {
+          ...state
         };
-  
+      // case getAllCourseToTeacher:
+
+      //   return {
+      //     teacherIntoCourse:dataTeacherIntoCourse
+      //   }
+
     case updateCourse:
 
       return {
@@ -62,6 +68,12 @@ export function selectCourse(payload) {
     payload: payload,
   };
 }
+// export function addTeacher(payload) {
+//   return { 
+//     type:addCourseToTeacher,
+//     payload: payload,
+//   }
+// }
 
 export const getCourseAction = () => {
   return async (dispatch) => {
@@ -76,14 +88,14 @@ export const getCourseAction = () => {
 }
 //=====
 // getAllCourseToTeacher 
-// export const getAllCourseToTeacher = () => {
+// export const getAllCourse2Teacher = (id) => {
 //   return async (dispatch) => {
-//     const res = await axios.get(`${api}/?/${id}`, {
+//     const res = await axios.get(`${api}/all-teachers-for-course/${id}`, {
 //       headers: {
 
 //         "Authorization": `Bearer ${cookie.load("token")}`,
 //       },
 //     })
-//     dispatch({ type: getCourse, data: res.data })
+//     dispatch({ type: getAllCourseToTeacher, dataTeacherIntoCourse: res.data })
 //   }
 // }
