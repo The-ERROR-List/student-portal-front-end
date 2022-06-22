@@ -24,8 +24,8 @@ function Submit() {
     className: "",
     courseName: "",
     userName: "",
-    classTime:"",
-    
+    classTime: "",
+
   });
 
 
@@ -52,7 +52,7 @@ function Submit() {
       <Button color="success" onClick={state.handleShow}>
         Add Class
       </Button>
-      <Button color="warning">Update information</Button>
+      <Button color="warning">add course </Button>
       <Modal
         show={state.show}
         onHide={state.handleClose}
@@ -96,7 +96,7 @@ function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
-                
+
                 <FormGroup>
                   <Label for="classTime">Class Time</Label>
                   <Input
@@ -107,8 +107,8 @@ function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
-                
-                
+
+
               </Col>
             </Row>
 
@@ -144,20 +144,20 @@ const Class = () => {
         </thead>
         <tbody>
           {
-            classes.map((classinfo, i) => {
-            return(
-              
-          <tr key={i}>
-            <td>
-              {classinfo.className}
-            </td>
-            <td>{classinfo.courseName}</td>
-            <td>{classinfo.teacherName}</td>
-            <td>{classinfo.classTime}</td>
-          </tr>
-          );
-          })
-        }
+            classes.map((classInfo, i) => {
+              return (
+
+                <tr key={i}>
+                  <td>
+                    {classInfo.className}
+                  </td>
+                  <td>{classInfo.courseName}</td>
+                  <td>{classInfo.teacherName}</td>
+                  <td>{classInfo.classTime}</td>
+                </tr>
+              );
+            })
+          }
         </tbody>
       </Table>
     </div>
