@@ -1,27 +1,63 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input,Button } from "reactstrap";
-import {  Modal } from "react-bootstrap";
+import {
+  Table,
+  Form,
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
+import { Modal } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
-import { useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getClassAction } from "../../../redux/class";
+import { addClass } from "../../../redux/type";
 import "./class.scss";
 
 function Submit() {
-  const state=useContext(StateContext);
+
+  const dispatch = useDispatch();
+  const state = useContext(StateContext);
+  const [infoClass, setInfoClass] = useState({
+    className: "",
+    courseName: "",
+    userName: "",
+    classTime:"",
+    
+  });
+
+
+
+  const handelChange = (e) => {
+    e.preventDefault();
+    setInfoClass({ ...infoClass, [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value });
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    console.log("infoClass", infoClass);
+    dispatch({ type: addClass, payload: infoClass });
+    state.handleClose();
+  };
+
+  useEffect(() => {
+    dispatch(getClassAction());
+  }, [handelSubmit]);
+
   return (
     <>
-       <Button
-        color="success"
-        
-        onClick={state.handleShow}
-      >
+      <Button color="success" onClick={state.handleShow}>
         Add Class
       </Button>
-      <Button
-        color="warning"
-        
+      <Button color="warning">Update information</Button>
+      <Modal
+        show={state.show}
+        onHide={state.handleClose}
+        class="modal-dialog modal-lg"
       >
-        Update information
-      </Button>
-      <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
         <Modal.Header closeButton>
           <Modal.Title>Class form</Modal.Title>
         </Modal.Header>
@@ -33,40 +69,57 @@ function Submit() {
                   <Label for="className">Class Name</Label>
                   <Input
                     id="class"
-                    name="class"
+                    name="className"
                     placeholder="class..."
                     type="text"
+                    onChange={handelChange}
                   />
                 </FormGroup>
                 <FormGroup>
                   <Label for="courseName">Course Name</Label>
                   <Input
                     id="course"
-                    name="course"
+                    name="courseName"
                     placeholder="Course..."
                     type="text"
+                    onChange={handelChange}
                   />
                 </FormGroup>
 
                 <FormGroup>
-                  <Label for="userName">userName</Label>
+                  <Label for="userName">userName Teacher</Label>
                   <Input
                     id="userName"
                     name="userName"
                     placeholder="userName..."
                     type="userName"
+                    onChange={handelChange}
                   />
                 </FormGroup>
+                
+                <FormGroup>
+                  <Label for="classTime">Class Time</Label>
+                  <Input
+                    id="classTime"
+                    name="classTime"
+                    placeholder="Class Time..."
+                    type="classTime"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+                
+                
               </Col>
             </Row>
+
+            <Button color="success" onClick={handelSubmit}>
+              Add Class
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="success" onClick={state.handleClose}>
-            Close
-          </Button>
           <Button color="danger" onClick={state.handleClose}>
-            Add Class
+            Close
           </Button>
         </Modal.Footer>
       </Modal>
@@ -74,38 +127,37 @@ function Submit() {
   );
 }
 const Class = () => {
+  const classes = useSelector((state) => state.class.infoClass);
   return (
-    <div   className="class">
+    <div className="class">
       <h1>Class</h1>
       <Submit />
-      <Table  hover className="class-table">
+      <Table hover className="class-table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Class Name</th>
-            <th>Couse Name</th>
+            <th>Course Name</th>
             <th>Teacher Name</th>
+            <th>class Time</th>
+
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <th>Couse Name</th>
-            <th>Teacher Name</th>
+          {
+            classes.map((classinfo, i) => {
+            return(
+              
+          <tr key={i}>
+            <td>
+              {classinfo.className}
+            </td>
+            <td>{classinfo.courseName}</td>
+            <td>{classinfo.teacherName}</td>
+            <td>{classinfo.classTime}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <th>Couse Name</th>
-            <th>Teacher Name</th>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <th>Couse Name</th>
-            <th>Teacher Name</th>
-          </tr>
+          );
+          })
+        }
         </tbody>
       </Table>
     </div>

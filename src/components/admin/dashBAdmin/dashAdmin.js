@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Card, CardTitle, CardText, Button } from "reactstrap";
 import { StateContext } from "../../../context/State";
 import { useContext } from "react";
@@ -28,10 +28,13 @@ const categories = [
 ];
 
 export default function DashboardAdmin() {
+  // useEffect(()=>{
+
+  // })
   const state = useContext(StateContext);
   return (
     <div>
-      <div>
+     <div>
         <Row>
           {categories.map((category,i) => (
             <Col key={i} sm="3">
@@ -48,7 +51,7 @@ export default function DashboardAdmin() {
             </Col>
           ))}
         </Row>
-      </div>
+      </div> 
     </div>
   );
 }
