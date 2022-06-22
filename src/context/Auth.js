@@ -70,6 +70,7 @@ export default function Auth(props) {
         setUser({});
         cookie.remove('token');
         cookie.remove('id');
+        cookie.remove('role')
     }
     const validToken = (user) => {
         if (user) {
