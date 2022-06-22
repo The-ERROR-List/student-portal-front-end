@@ -19,10 +19,8 @@ function Submit() {
   const state = useContext(StateContext);
   const dispatch = useDispatch();
   const [infoCourse, setInfoCourse] = useState({
-
     courseName: "",
     courseGrade: "",
-  
   });
 
   const handelChange = (e) => {
@@ -38,18 +36,54 @@ function Submit() {
     state.handleClose();
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log();
+  };
+
   useEffect(() => {
     dispatch(getCourseAction());
   }, [handelSubmit]);
 
   return (
     <>
-      <Button color="success" onClick={state.handleShow}>
+      {/* <Button color="success" onClick={state.handleShow}>
         Add Course
       </Button>
 
-      <Button color="warning">Update information</Button>
+      <Button color="warning" onClick={handleClick}>
+        add course to teacher
+      </Button>
+
       <Modal
+        show={state.show}
+        onHide={state.handleClose}
+        class="modal-dialog modal-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Course form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form style={{ width: "70%", margin: "auto" }}>
+            <Row>
+              <Col md={12}>
+                <FormGroup>
+                  <Label for="courseName">Course Name</Label>
+                  <Input
+                    id="course"
+                    name="courseName"
+                    placeholder="Course..."
+                    type="text"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+          </Form>
+        </Modal.Body>
+      </Modal> */}
+
+      {/* <Modal
         show={state.show}
         onHide={state.handleClose}
         class="modal-dialog modal-lg"
@@ -93,7 +127,7 @@ function Submit() {
             Close
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

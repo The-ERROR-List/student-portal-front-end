@@ -116,6 +116,28 @@ export function createClass(payload) {
     console.error("Error:", error);
   });
 }
+//====================================
+export function addCourseToTeacher(payload) {
+  fetch(`${api}/add-course-toTeacher`, {
+    method: "POST", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      userName:payload.userName,//teacher
+      courseName:payload.courseName,
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response.json()
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
 
 //==========================2.update data=================
 
