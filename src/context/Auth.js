@@ -3,10 +3,10 @@ import JWT from 'jwt-decode';
 import axios from 'axios';
 import cookie from 'react-cookies';
 import base64 from 'base-64';
-
+import {api} from '../redux/type'
 export const AuthContext = React.createContext();
-const api = "http://localhost:3001";
-//http://localhost:3001
+
+
 export default function Auth(props) {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);

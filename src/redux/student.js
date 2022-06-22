@@ -5,8 +5,8 @@ import { updateStudent } from "./type";
 import { getStudent } from "./type";
 import { deleteStudent } from "./type";
 import { createStudent } from "./action";
-
-const api = "https://student-portal-asac.herokuapp.com";
+import {api} from './type';
+// const api = "http://localhost:3030";
 
 export const initialState = {
   infoStudent: [],

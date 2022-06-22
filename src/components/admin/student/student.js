@@ -9,7 +9,6 @@ import './student.scss'
 function Submit() {
 
     const state = useContext(StateContext)
-    // const data = useSelector((state) => state.student.infoStudent);
 
 
     const dispatch = useDispatch();

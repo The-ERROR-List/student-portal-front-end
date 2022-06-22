@@ -2,11 +2,10 @@ import { addTeacher } from "./type";
 import { updateTeacher } from "./type";
 import { getTeacher } from "./type";
 import { deleteTeacher } from "./type";
-// import { getTeacherApi } from "./action";
 import { createTeacher } from './action';
 import axios from 'axios';
 import cookie from 'react-cookies';
-const api = "https://student-portal-asac.herokuapp.com";
+import {api} from './type';
 
 
 export const initialState = {
