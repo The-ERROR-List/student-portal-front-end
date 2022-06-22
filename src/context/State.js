@@ -23,7 +23,7 @@ export default function State(props) {
         headers: {'Authorization':`Bearer ${cookie.load("token")}`}
         });
        
-         setCourses([...courses,response.data]);
+         setCourses(...courses,response.data);
         // setCourses(course);
         console.log(response.data);
     }
