@@ -43,6 +43,7 @@ const TeacherClasses = (props) => {
                             return (
                                 <>
                                     <Link to={`/class/${classforTeacher.id}`}>
+
                                         <Col key={index} sm="3">
                                             <Card key={index} body>
                                                 <CardTitle style={{ fontWeight: 500 }} tag="h4">
