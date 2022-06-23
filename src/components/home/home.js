@@ -20,7 +20,6 @@ function Home() {
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
-
             </Routes>
           </When>
       

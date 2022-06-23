@@ -1,4 +1,4 @@
-// import ClassList  from './classList/classList'
+import ClassList  from './classList/classList'
 import ClassTool from "./classTool/classTool";
 import './class.scss'
 import TeacherClasses from '../teacher/teacher-classes/teacher-classes'
