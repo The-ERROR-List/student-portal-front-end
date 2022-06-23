@@ -22,7 +22,9 @@ const TeacherClasses = (props) => {
     };
 
     useEffect(() => {
-        fetchItems()
+        if(cookie.load('role') === 'teacher'){
+            fetchItems()
+        }
         console.log('params', params.id);
         console.log('idteacher', cookie.load('id'))
     }, [])
