@@ -16,7 +16,8 @@ import { getClassAction } from "../../../redux/class";
 import { addClass } from "../../../redux/type";
 import {Link} from 'react-router-dom'
 import "./class.scss";
-
+import {deleteClass} from '../../../redux/type';
+import DeleteIcon from "@mui/icons-material/Delete";
 function Submit() {
 
   const dispatch = useDispatch();
@@ -129,6 +130,11 @@ function Submit() {
 }
 const Class = () => {
   const classes = useSelector((state) => state.class.infoClass);
+  const dispatch=useDispatch()
+    const deleteFromDB=(idToDelete)=>{
+    dispatch({type:deleteClass,payloadDelete:idToDelete})
+  }
+ 
   return (
     <div className="class">
       <h1>Class</h1>
@@ -156,6 +162,7 @@ const Class = () => {
                   <td>{classInfo.courseName}</td>
                   <td>{classInfo.teacherName}</td>
                   <td>{classInfo.classTime}</td>
+                  <DeleteIcon sx={{ fontSize:50 }} onClick={()=>{deleteFromDB(classInfo.id)}}/>
                 </tr>
               );
             })
