@@ -16,8 +16,8 @@ export const initialState = {
 };
 
 export default function courseReducer(state = initialState, action) {
-  let { type, data, payload ,courseId} = action;
-  // console.log("ppppppppp", payload);
+  let { type, data, payload ,payloadDelete} = action;
+  console.log("ppppppppp", payloadDelete);
   switch (type) {
     case addCourse:
 
@@ -48,7 +48,7 @@ export default function courseReducer(state = initialState, action) {
       };
 
     case deleteCourse:
-      deleteCourseById(courseId)
+      deleteCourseById(payloadDelete)
       return {
 ...state
       };

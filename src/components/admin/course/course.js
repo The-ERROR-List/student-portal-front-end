@@ -14,9 +14,10 @@ import { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCourseAction } from "../../../redux/course";
 import { addCourse } from "../../../redux/type";
-import AddTeacher from './addTeacher'
+import AddTeacher from "./addTeacher";
 import "./course.scss";
-import CourseCard from './course-teacher'
+import CourseCard from "./course-teacher";
+
 function Submit() {
   const state = useContext(StateContext);
   const dispatch = useDispatch();
@@ -139,36 +140,35 @@ const Course = () => {
   useEffect(() => {
     dispatch(getCourseAction());
   }, []);
-  console.log(111111111111111,courses);
+  console.log(111111111111111, courses);
   return (
     <div className="course">
       <h1>Course</h1>
       {/* <Submit /> */}
-      <AddTeacher/>
+      <AddTeacher />
       {/* <Table hover className="course-table"> */}
-        {/* <thead>
+      {/* <thead>
           <tr>
             <th>Course Name</th>
             <th>Grade Course </th>
           </tr>
         </thead> */}
-        {/* <tbody> */}
-        
-          {courses.map((course, i) => {
-            return (
-              // <tr key={i}>
-              //   <td>{course.courseName}</td>
-              //   <td>
-              //     {course.courseGrade}/{course.courseGrade}
-              //   </td>
-              // </tr>
+      {/* <tbody> */}
 
-              <CourseCard key={i} course = {course}/>
-            );
-          })}
-        {/* </tbody> */}
+      {courses.map((course, i) => {
+        return (
+          // <tr key={i}>
+          //   <td>{course.courseName}</td>
+          //   <td>
+          //     {course.courseGrade}/{course.courseGrade}
+          //   </td>
+          // </tr>
+
+          <CourseCard key={i} course={course} />
+        );
+      })}
+      {/* </tbody> */}
       {/* </Table> */}
-
     </div>
   );
 };

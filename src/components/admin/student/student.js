@@ -226,7 +226,7 @@ const Student = () => {
                                 <td>{student.userName}</td>
                                 <td>{student.nationality}</td>
                                 <td>{student.major}</td>
-                                <DeleteIcon sx={{ fontSize:50 }} onClick={()=>deleteFromDB(student.id)} />
+                            <DeleteIcon sx={{ fontSize:50 }} onClick={()=>deleteFromDB(student.id)} />
                             </tr>
                         );
                     })}
