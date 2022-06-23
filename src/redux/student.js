@@ -1,17 +1,45 @@
+import axios from 'axios';
+import cookie from 'react-cookies';
+import { addStudent } from "./type";
+import { updateStudent } from "./type";
+import { getStudent } from "./type";
+import { deleteStudent } from "./type";
+import { createStudent } from "./action";
+import { api } from './type';
+import { deleteStudentById } from "./action";
+// const api = "http://localhost:3030";
+
 export const initialState = {
   infoStudent: [],
 };
 
 export default function studentReducer(state = initialState, action) {
-  let { type, payload } = action;
+  let { type, payload, payloadDelete } = action;
 
   switch (type) {
-    case "add_student":
-      let data = [...state.infoStudent];
-      data.push(payload);
-    
+    case addStudent:
+
+      createStudent(payload);
       return {
-        infoStudent: data,
+        ...state
+      };
+
+    case getStudent:
+
+      return {
+        infoStudent: payload
+      };
+
+    case updateStudent:
+
+      return {
+
+      };
+
+    case deleteStudent:
+      deleteStudentById(payloadDelete)
+      return {
+        ...state
       };
     default:
       return state;
@@ -20,7 +48,21 @@ export default function studentReducer(state = initialState, action) {
 
 export function selectStudent(payload) {
   return {
-    type: "add_student",
+    type: addStudent,
     payload: payload,
   };
+}
+
+
+export const getStudentAction = () => {
+  return async (dispatch) => {
+    const res = await axios.get(`${api}/allstudents`, {
+      headers: {
+
+        "Authorization": `Bearer ${cookie.load("token")}`,
+      },
+    })
+    // console.log("resssssssss", payload);
+    dispatch({ type: getStudent, payload: res.data.students })
+  }
 }

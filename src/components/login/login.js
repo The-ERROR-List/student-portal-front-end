@@ -25,7 +25,7 @@ export default function Login() {
 
     return (
         <div id='body'>
-            {/* <div id="bg-image"></div> */}
+
             <When condition={!auth.isLoggedIn}>
 
                 <div id="image"></div>
@@ -81,7 +81,7 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div style={{ display: "flex"}}>
+                        <div style={{ display: "flex" }}>
                             <span >
                                 <input
                                     style={{

@@ -3,8 +3,9 @@ import JWT from 'jwt-decode';
 import axios from 'axios';
 import cookie from 'react-cookies';
 import base64 from 'base-64';
-
+import {api} from '../redux/type'
 export const AuthContext = React.createContext();
+
 
 export default function Auth(props) {
     const [user, setUser] = useState({});
@@ -12,7 +13,7 @@ export default function Auth(props) {
 
     const signUp = async (userName, email, password, role, firstName = "", lastName = "", gender = "", nationality = "", major = "", department = "") => {
         if (role === 'admin') {
-            axios.post('https://student-portal-asac.herokuapp.com/signup/admin', {
+            axios.post(`${api}/signup/admin`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -23,7 +24,7 @@ export default function Auth(props) {
                 })
         }
         else if (role === 'student') {
-            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
+            axios.post(`${api}/signup/std-teacher`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -40,7 +41,7 @@ export default function Auth(props) {
         }
         else if (role === 'teacher') {
             console.log(role);
-            axios.post('https://student-portal-asac.herokuapp.com/signup/std-teacher', {
+            axios.post(`${api}/signup/std-teacher`, {
                 userName: userName,
                 email: email,
                 password: password,
@@ -56,7 +57,7 @@ export default function Auth(props) {
         }
     }
     const signIn = async (userName, password) => {
-        axios.post('https://student-portal-asac.herokuapp.com/signin', {
+           axios.post(`${api}/signin`, {
             userName: userName,
             password: password
         }, { headers: { 'Authorization': `Basic ${base64.encode(`${userName}:${password}`)}` } }).then(res => {
@@ -68,14 +69,24 @@ export default function Auth(props) {
         setIsLoggedIn(false);
         setUser({});
         cookie.remove('token');
+        cookie.remove('id');//teacher and student 
+        // cookie.remove('userid')//all users
+        cookie.remove('role')
     }
     const validToken = (user) => {
         if (user) {
-            const validUser = JWT(user.token);
+            const validUser = JWT(user.userInfo.token);
+            console.log(user)
             if (validUser) {
-                setUser(user);
+                setUser(user.userInfo);
                 setIsLoggedIn(true);
-                cookie.save('token', user.token);
+                cookie.save('token', user.userInfo.token);
+                console.log(user)
+                if(user.userInfo.role === "teacher" || user.userInfo.role==="student"){
+                    cookie.save('id',user.newId)
+                }
+                // cookie.save('userid',user.userInfo.id)
+                cookie.save('role',user.userInfo.role)
             } else {
                 setIsLoggedIn(false);
                 setUser({});
@@ -88,6 +99,9 @@ export default function Auth(props) {
     const Authorized = (action) => {
         return user?.action?.includes(action);
     }
+    const role = (role) => {
+        return user?.role?.includes(role);
+    }
     const state = {
         user,
         isLoggedIn,
@@ -96,12 +110,13 @@ export default function Auth(props) {
         signOut,
         Authorized,
         setUser,
-        setIsLoggedIn
+        setIsLoggedIn,
+        role
     }
     useEffect(() => {
         const data = cookie.load('token');
         if (data) {
-            validToken(data);
+            setIsLoggedIn(true);
         }
     }, []);
     return (
