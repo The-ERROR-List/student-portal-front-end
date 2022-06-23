@@ -4,8 +4,8 @@ import { When } from "react-if";
 import { useContext, useEffect } from "react";
 
 import Main from "../main/main";
-// import "./main.scss";
 import { Routes, Route } from "react-router-dom";
+import TeacherClasses from "../teacher/teacher-classes/teacher-classes";
 import Class from "../class/class";
 
 function Home() {
@@ -17,11 +17,17 @@ function Home() {
   
           <When condition={auth.isLoggedIn}>
             <Header />
+            <div style={{marginLeft:"150px"}}>
             <Routes>
             <Route path="/" element = {<Main/>}/>
-            <Route path="/course/:id" element={<Class />} />
+            <Route path="/course/:id" element={<TeacherClasses/>} />
+            <Route path="/class/:id" element={<Class/>} />
+            <Route path="/adminClass/:id" element={<Class />} />
 
             </Routes>
+            </div>
+            
+           
           </When>
       
       </div>
