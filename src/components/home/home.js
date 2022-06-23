@@ -4,10 +4,9 @@ import { When } from "react-if";
 import { useContext, useEffect } from "react";
 
 import Main from "../main/main";
-// import "./main.scss";
 import { Routes, Route } from "react-router-dom";
 import TeacherClasses from "../teacher/teacher-classes/teacher-classes";
-import ClassList from "../class/classList/classList";
+import Class from "../class/class";
 
 function Home() {
     const auth = useContext(AuthContext);
@@ -22,7 +21,9 @@ function Home() {
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
-            <Route path="/class/:id" element={<ClassList/>} />
+            <Route path="/class/:id" element={<Class/>} />
+            <Route path="/adminClass/:id" element={<Class />} />
+
             </Routes>
             </div>
             
