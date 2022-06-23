@@ -21,7 +21,7 @@ export default function Course_Card(props) {
     const dispatch = useDispatch();
     useEffect(() =>{
         dispatch(getAllCourse2Teacher(props.course.id))
-    },[dispatch, props.course.id,selector])
+    },[])
 
     return (
         <div>
