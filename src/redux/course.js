@@ -6,7 +6,7 @@ import { createCourse } from './action';
 import { addCourseToTeacher } from "./type";
 import { getAllCourseToTeacher } from "./type";
 import {addCourse2Teacher} from './action'
-
+import {deleteCourseById} from './action'
 import axios from 'axios';
 import cookie from 'react-cookies';
 import { api } from './type';
@@ -16,7 +16,7 @@ export const initialState = {
 };
 
 export default function courseReducer(state = initialState, action) {
-  let { type, data, payload } = action;
+  let { type, data, payload ,courseId} = action;
   // console.log("ppppppppp", payload);
   switch (type) {
     case addCourse:
@@ -48,9 +48,9 @@ export default function courseReducer(state = initialState, action) {
       };
 
     case deleteCourse:
-
+      deleteCourseById(courseId)
       return {
-
+...state
       };
     default:
       return state;
