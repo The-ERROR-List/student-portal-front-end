@@ -36,20 +36,17 @@ function Main() {
     <div className="main">
   
 
-        <When condition={auth.isLoggedIn}>
-          <Header />
+       
           {users.map((user, i) => (
             <div key={i} className="main-content">
               <When condition={cookie.load("role") === user.check}>
                 {user.renderComponent}
-                <Routes>
-                <Route path="/course/:id" element={<Class />} />
-                </Routes>
+              
               </When>
              
             </div>
           ))}
-        </When>
+        
     
     </div>
   );
