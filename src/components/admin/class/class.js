@@ -17,7 +17,6 @@ import { addClass } from "../../../redux/type";
 import "./class.scss";
 
 function Submit() {
-
   const dispatch = useDispatch();
   const state = useContext(StateContext);
   const [infoClass, setInfoClass] = useState({
@@ -25,7 +24,6 @@ function Submit() {
     courseName: "",
     userName: "",
     classTime: "",
-
   });
 
 
