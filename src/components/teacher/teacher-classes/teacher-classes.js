@@ -24,6 +24,7 @@ const TeacherClasses = (props) => {
     useEffect(() => {
         if(cookie.load('role') === 'teacher'){
             fetchItems()
+            
         }
         console.log('params', params.id);
         console.log('idteacher', cookie.load('id'))
