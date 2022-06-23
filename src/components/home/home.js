@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react";
 import Main from "../main/main";
 // import "./main.scss";
 import { Routes, Route } from "react-router-dom";
-import Class from "../class/class";
+import TeacherClasses from "../teacher/teacher-classes/teacher-classes";
 
 function Home() {
     const auth = useContext(AuthContext);
@@ -19,7 +19,7 @@ function Home() {
             <Header />
             <Routes>
             <Route path="/" element = {<Main/>}/>
-            <Route path="/course/:id" element={<Class />} />
+            <Route path="/course/:id" element={<TeacherClasses/>} />
 
             </Routes>
           </When>
