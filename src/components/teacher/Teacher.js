@@ -16,7 +16,7 @@ const Teacher = () => {
   // const teachersCourses = state.getCourses();
   return (
 
-    <div >
+    <div style={{marginRight:"70px"}}>
       <Card >
         <CardBody>
           <CardText>
