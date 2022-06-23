@@ -23,6 +23,7 @@ function Home() {
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
             <Route path="/class/:id" element={<ClassList/>} />
+            <Route path="/class/:id" element={<ClassList/>} />
             </Routes>
             </div>
             
