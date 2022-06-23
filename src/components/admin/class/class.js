@@ -14,6 +14,7 @@ import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getClassAction } from "../../../redux/class";
 import { addClass } from "../../../redux/type";
+import {Link} from 'react-router-dom'
 import "./class.scss";
 
 function Submit() {
@@ -145,11 +146,12 @@ const Class = () => {
         <tbody>
           {
             classes.map((classInfo, i) => {
+              console.log(classInfo,"2222222")
               return (
 
                 <tr key={i}>
                   <td>
-                    {classInfo.className}
+                  <Link to={`/class/${classInfo.id}`}>{classInfo.className}</Link>
                   </td>
                   <td>{classInfo.courseName}</td>
                   <td>{classInfo.teacherName}</td>
