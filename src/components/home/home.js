@@ -20,6 +20,7 @@ function Home() {
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<Class />} />
+            <Route path="/adminClass/:id" element={<Class />} />
 
             </Routes>
           </When>

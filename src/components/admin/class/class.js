@@ -151,7 +151,7 @@ const Class = () => {
 
                 <tr key={i}>
                   <td>
-                  <Link to={`/class/${classInfo.id}`}>{classInfo.className}</Link>
+                  <Link to={`/adminClass/${classInfo.id}`}>{classInfo.className}</Link>
                   </td>
                   <td>{classInfo.courseName}</td>
                   <td>{classInfo.teacherName}</td>
