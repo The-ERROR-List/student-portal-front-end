@@ -95,34 +95,41 @@ const ClassList = () => {
   useEffect(() => {
     fetchStudents();
     console.log("paramssssss", params);
-    console.log("studentssssss", students);
   }, []);
 
   return (
     <div>
-      <h1>{}</h1>
+      {console.log(students.students)}
+
+      <h1>{ }</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
 
-      <Table size="">
+      <Table size="" style={{marginLeft :"20px"}}>
         <thead>
           <tr>
-            <th>First Name + Last Name</th>
+            <th> Student Name</th>
             <When condition={auth.user.role !== "student"}>
               <th>Grade</th>
             </When>
           </tr>
         </thead>
         <tbody>
-          {students.map((studentListed, indx) => {
-            <tr>
-              <td>{ `${studentListed.firstName} ${studentListed.lastName}`}</td>
-              <When condition={auth.user.role !== "student"}>
-                <td>{studentListed.studentGrade}</td>
-              </When>
-            </tr>;
-          })}
+
+          {
+            students.students ?
+              students.students.map((studentListed, indx) => {
+               return( <tr key={indx}>
+                  <td>{studentListed.studentName}</td>
+                  <When condition={auth.user.role !== "student"}>
+                    <td>{studentListed.studentGrade}</td>
+                  </When>
+                </tr>
+              )}
+              ) : null
+              
+          }
         </tbody>
       </Table>
     </div>

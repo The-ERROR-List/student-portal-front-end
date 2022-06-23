@@ -34,7 +34,7 @@ const TeacherClasses = (props) => {
     return (
         <div>
             {console.log('resss', classes)}
-            <h1>Hello i'm teacher classes</h1>
+            <h1> Teacher classes</h1>
             <Row style={{ marginTop: "20px" }}>
 
                 {

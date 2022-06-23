@@ -18,12 +18,15 @@ function Home() {
   
           <When condition={auth.isLoggedIn}>
             <Header />
+            <div style={{marginLeft:"150px"}}>
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
             <Route path="/class/:id" element={<ClassList/>} />
-
             </Routes>
+            </div>
+            
+           
           </When>
       
       </div>
