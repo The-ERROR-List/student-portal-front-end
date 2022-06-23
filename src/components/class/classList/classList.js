@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/Auth";
+import cookie from "react-cookies";
 import { When } from "react-if";
 function Submit() {
     const state = useContext(StateContext);
@@ -77,7 +78,7 @@ const ClassList = () => {
     return (
         <div>
             <h1>{}</h1>
-            <When condition={auth.user.role === 'admin'}>
+            <When condition={cookie.load("role") === 'admin'}>
                 <Submit />
             </When>
             <Table

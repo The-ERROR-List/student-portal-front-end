@@ -11,24 +11,26 @@ import {
 import { Accordion } from "react-bootstrap";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {getAllCourse2Teacher} from '../../../redux/teacherToCourse'
+import { getAllCourse2Teacher } from '../../../redux/teacherToCourse'
 
 
 export default function Course_Card(props) {
 
-    const selector = useSelector(state=>state.teacherTocourse.teacherIntoCourse)
-    console.log(selector,'selector');
+    const selector = useSelector(state => state.teacherTocourse.teacherIntoCourse)
     const dispatch = useDispatch();
-    useEffect(() =>{
+
+
+    useEffect(() => {
         dispatch(getAllCourse2Teacher(props.course.id))
-    },[dispatch, props.course.id,selector])
+
+    }, [selector])
 
     return (
         <div>
-            <CardGroup style={{width:"420px"}}>
+            <CardGroup style={{ width: "420px" }}>
                 <Card >
                     <CardBody >
-                        <CardTitle tag="h5" style={{textAlign:"center"}}>
+                        <CardTitle tag="h5" style={{ textAlign: "center" }}>
                             {props.course.courseName}
                         </CardTitle>
                         {/* <CardSubtitle
@@ -38,17 +40,17 @@ export default function Course_Card(props) {
                             Card subtitle
                         </CardSubtitle> */}
                     </CardBody>
-                    <Accordion defaultActiveKey="0" style={{width:"400px"}}>
+                    <Accordion defaultActiveKey="0" style={{ width: "400px" }}>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Teachers</Accordion.Header>
                             <Accordion.Body>
                                 <ul>
-                                {selector.map((teacher,i)=>{
-                                    return(
-                                        <li>{teacher.TeacherName}</li>
-                                    )
-                                })}
-                                    
+                                    {selector.map((teacher, i) => {
+                                        return (
+                                            <li>{teacher.TeacherName}</li>
+                                        )
+                                    })}
+
                                 </ul>
                             </Accordion.Body>
                         </Accordion.Item>
