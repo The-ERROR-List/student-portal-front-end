@@ -1,4 +1,4 @@
-// import ClassList  from './classList/classList'
+import ClassList  from './classList/classList'
 import ClassTool from "./classTool/classTool";
 import axios from 'axios';
 import cookie from 'react-cookies';
@@ -8,6 +8,7 @@ import './class.scss'
 
 const Class = () => {
 let params = useParams()
+
   const fetchItems = async () => {
 
     const response = await axios.get(
@@ -18,15 +19,16 @@ let params = useParams()
   };
 
   useEffect(()=> {
-    fetchItems()
-    console.log(params.id);
-    console.log(cookie.load('id'))
+    if(cookie.load('role') === 'teacher'){
+      fetchItems()
+    }
+    
   }, [])
 
 
   return (
     <div id="classcomp">
-      {/* <ClassList/> */}
+      <ClassList/>
       <ClassTool />
     </div>
   );
