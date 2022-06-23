@@ -187,8 +187,8 @@ export function deleteStudentById(deleteStudent){
 }
 
 //3.deleteCourseById
-export function deleteCourseById(deleteCourse){
-  fetch(`${api}/courses/${deleteCourse}`, {
+export function deleteCourseById(payloadDelete){
+  fetch(`${api}/courses/${payloadDelete}`, {
     method: "DELETE", 
     headers: {
       "Content-Type": "application/json",

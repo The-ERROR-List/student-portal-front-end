@@ -25,6 +25,7 @@ export default function Auth(props) {
         }
         else if (role === 'student') {
             axios.post(`${api}/signup/std-teacher`, {
+                
                 userName: userName,
                 email: email,
                 password: password,
