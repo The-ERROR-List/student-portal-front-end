@@ -14,7 +14,6 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import { When } from "react-if";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function Submit() {
@@ -78,14 +77,14 @@ function Submit() {
     </>
   );
 }
-const ClassList = () => {
+const ClassList = (props) => {
   const auth = useContext(AuthContext);
   const [students, setStudents] = useState([]);
-  const params = useParams();
+  ;
 
   const fetchStudents = async () => {
     let response = await axios.get(
-      `http://localhost:3001/get-allStudents-inClass/${params.id}`,
+      `http://localhost:3001/get-allStudents-inClass/${props.id}`,
       { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
     );
 
@@ -94,7 +93,7 @@ const ClassList = () => {
 
   useEffect(() => {
     fetchStudents();
-    console.log("paramssssss", params);
+    console.log("paramssssss", props.id);
   }, []);
 
   return (
