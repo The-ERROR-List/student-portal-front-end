@@ -15,7 +15,7 @@ import { AuthContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import { When } from "react-if";
 import axios from "axios";
-
+import { api } from '../../../redux/type'
 function Submit() {
   const state = useContext(StateContext);
   return (
@@ -84,7 +84,8 @@ const ClassList = (props) => {
 
   const fetchStudents = async () => {
     let response = await axios.get(
-      `http://localhost:3001/get-allStudents-inClass/${props.id}`,
+
+      `${api}/get-allStudents-inClass/${props.id}`,
       { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
     );
 
@@ -105,7 +106,7 @@ const ClassList = (props) => {
         <Submit />
       </When>
 
-      <Table size="" style={{marginLeft :"20px"}}>
+      <Table size="" style={{ marginLeft: "20px" }}>
         <thead>
           <tr>
             <th> Student Name</th>
@@ -119,15 +120,16 @@ const ClassList = (props) => {
           {
             students.students ?
               students.students.map((studentListed, indx) => {
-               return( <tr key={indx}>
+                return (<tr key={indx}>
                   <td>{studentListed.studentName}</td>
                   <When condition={auth.user.role !== "student"}>
                     <td>{studentListed.studentGrade}</td>
                   </When>
                 </tr>
-              )}
+                )
+              }
               ) : null
-              
+
           }
         </tbody>
       </Table>
