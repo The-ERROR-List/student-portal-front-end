@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Row, Col, Card, CardTitle, CardText, Button, CardBody,CardImg } from "reactstrap";
 // import Card from 'react-bootstrap/Card';
-
+import {Link} from 'react-router-dom';
 import { StateContext } from "../../context/State";
 import { When } from "react-if";
 const Teacher = () => {
@@ -16,12 +16,7 @@ const Teacher = () => {
   // const teachersCourses = state.getCourses();
   return (
 
-    <div >
-      {/* <p>              
-            {
-             `welcome ${state.courses.TeacherName}` 
-            }
-          </p> */}
+    <div style={{marginRight:"70px"}}>
       <Card >
         <CardBody>
           <CardText>
@@ -36,22 +31,20 @@ const Teacher = () => {
         {
           state.courses.TeacherCourses ?
             state.courses.TeacherCourses.map((course, i) => (
+              <Link to={`/course/${course['course id']}`}>
               <Col key={i} sm="3">
                 <Card key={i} body>
                 <CardImg top width="100%" src={course['course Image']} alt="Card image cap" />
 
                   <CardTitle style={{ fontWeight: 500 }} tag="h4">
-                    {course['course Name']}
+                    {course['course Name ']}
                   </CardTitle>
                   <CardText>
                     {course['course Description']}
                   </CardText>
-                  <Button color="primary"
-                            onClick={() => state.getCourses()}>
-                            go to classes {}
-                          </Button>
                 </Card>
               </Col>
+              </Link>
             )) : null
         }
       </Row>

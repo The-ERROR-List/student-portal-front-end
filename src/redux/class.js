@@ -6,13 +6,15 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 import { api } from './type';
 import { createClass } from './action';
+import {deleteClassesById} from './action';
+
 
 export const initialState = {
   infoClass: [],
 };
 
 export default function classReducer(state = initialState, action) {
-  let { type, data ,payload } = action;
+  let { type, data ,payload ,payloadDelete} = action;
 
   switch (type) {
     case addClass:
@@ -33,8 +35,9 @@ export default function classReducer(state = initialState, action) {
       };
     case deleteClass:
 
+ deleteClassesById(payloadDelete)
       return {
-
+...state
       };
     default:
       return state;
