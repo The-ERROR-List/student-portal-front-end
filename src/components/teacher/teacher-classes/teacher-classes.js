@@ -1,4 +1,5 @@
 // import ClassList  from './classList/classList'
+import {api} from '../../../redux/type'
 import axios from 'axios';
 import cookie from 'react-cookies';
 import { useEffect, useState } from "react";
@@ -40,6 +41,7 @@ const TeacherClasses = (props) => {
                 {
                     classes.classes ?
                     classes.classes.map((classforTeacher, index) => {
+                        {console.log(classforTeacher.id)}
                             return (
                                 <>
                                     <Link to={`/class/${classforTeacher.id}`}>
@@ -47,7 +49,8 @@ const TeacherClasses = (props) => {
                                         <Col key={index} sm="3">
                                             <Card key={index} body>
                                                 <CardTitle style={{ fontWeight: 500 }} tag="h4">
-                                                    {classforTeacher.className}
+                                                    {classforTeacher.className
+                                                    }
                                                 </CardTitle>
                                                 <CardText>
                                                     {classforTeacher.classTime}

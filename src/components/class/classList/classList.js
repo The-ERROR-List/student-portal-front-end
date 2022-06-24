@@ -1,3 +1,4 @@
+import {api} from'../../../redux/type'
 import {
   Table,
   Form,
@@ -81,6 +82,8 @@ const ClassList = (props) => {
   const auth = useContext(AuthContext);
   const [students, setStudents] = useState([]);
   ;
+  
+  console.log('propsStuside',props)
 
   const fetchStudents = async () => {
     let response = await axios.get(
@@ -93,7 +96,7 @@ const ClassList = (props) => {
 
   useEffect(() => {
     fetchStudents();
-    console.log("paramssssss", props.id);
+    // console.log("paramssssss", props.id);
   }, []);
 
   return (
