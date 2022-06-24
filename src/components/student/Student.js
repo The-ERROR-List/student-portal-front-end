@@ -1,9 +1,9 @@
-import Class from '../class/class.js';
+import Classes from './classes'
 const Student =()=>{
     return(
         <div>
             <h1>Student</h1>
-            <Class />
+            <Classes />
         </div>
     )
 }
