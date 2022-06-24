@@ -29,3 +29,6 @@ export const deleteClass='delete_class';
 
 export const addCourseToTeacher='add_courseTo_teacher';
 export const getAllCourseToTeacher='get_allCourse_teacher';
+
+//type to student view
+export const getClassesForStudents = 'get_classes_for_students';

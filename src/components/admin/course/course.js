@@ -46,7 +46,7 @@ function Submit() {
 
   useEffect(() => {
     dispatch(getCourseAction());
-  }, [handelSubmit]);
+  }, []);
 
   return (
     <>
