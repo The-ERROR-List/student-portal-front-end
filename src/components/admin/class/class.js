@@ -19,7 +19,6 @@ import "./class.scss";
 import {deleteClass} from '../../../redux/type';
 import DeleteIcon from "@mui/icons-material/Delete";
 function Submit() {
-
   const dispatch = useDispatch();
   const state = useContext(StateContext);
   const [infoClass, setInfoClass] = useState({
@@ -27,7 +26,6 @@ function Submit() {
     courseName: "",
     userName: "",
     classTime: "",
-
   });
 
 

@@ -8,7 +8,8 @@ import {
   Input,
   Button,
 } from "reactstrap";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
@@ -16,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
+import { updateTeacher } from "../../../redux/type";
+
 import "./teacher.scss";
 
 function Submit() {
@@ -42,11 +45,10 @@ function Submit() {
   const handelSubmit = (e) => {
     e.preventDefault();
     // console.log("infTeacher", infoTeacher);
-    dispatch({ type: addTeacher, payload: infoTeacher });
+    dispatch({ type: addTeacher, payload: infoTeacher, cc: infoTeacher });
     state.handleClose();
   };
 
- 
   //invoke
   useEffect(() => {
     dispatch(getTeacherAction());
@@ -190,17 +192,51 @@ function Submit() {
   );
 }
 const Teacher = () => {
+  // const [display, setDisplay] = useState(false);
+  const [infoUpdate, setInfoUpdate] = useState({
+    teacherId: "",
+    userName: "",
+    email: "",
+    password: "",
+    role: "",
+    firstName: "",
+    lastName: "",
+    gender: "",
+    nationality: "",
+    department: "",
+  });
   const teachers = useSelector((state) => state.teacher.infoTeacher);
-  const dispatch=useDispatch();
-  console.log(1111111111111111,teachers);
-  const deleteFromDB=(idToDelete)=>{
-    dispatch({type:deleteTeacher,payloadDelete:idToDelete})
-  }
+  const dispatch = useDispatch();
+  const state = useContext(StateContext);
+  const handelChange = (e) => {
+    e.preventDefault();
+    setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value });
+  };
+  console.log(infoUpdate);
+  const updateOnDB = (Update) => {
+    setInfoUpdate({
+      teacherId: Update.id,
+      userName: Update.userName,
+      // email: Update.email,
+      // password: Update.password,
+      role: Update.role,
+      firstName: Update.firstName,
+      lastName: Update.lastName,
+      // gender:Update.gender,
+      nationality: Update.nationality,
+      department: Update.department,
+    });
+  };
+
+  const deleteFromDB = (idToDelete) => {
+    dispatch({ type: deleteTeacher, payloadDelete: idToDelete });
+  };
   return (
     <div className="teacher">
       <h1>Teachers</h1>
       <Submit />
-      <Table  className="teacher-table">
+      <Table className="teacher-table">
         <thead>
           <tr>
             <th>First Name</th>
@@ -219,12 +255,72 @@ const Teacher = () => {
                 <td>{teacher.userName}</td>
                 <td>{teacher.nationality}</td>
                 <td>{teacher.department}</td>
-                <DeleteIcon sx={{ fontSize:50 }} onClick={()=>deleteFromDB(teacher.id)} />
+                <DeleteIcon
+                  sx={{ fontSize: 50 }}
+                  color="secondary"
+                  onClick={() => deleteFromDB(teacher.id)}
+                />
+                <EditIcon
+                  sx={{ fontSize: 50 }}
+                  onClick={() => {
+                    updateOnDB(teacher);
+                  }}
+                />
               </tr>
             );
           })}
         </tbody>
       </Table>
+      <div>
+        <tr>
+          <td>
+            <input
+              type="text"
+              value={infoUpdate.userName}
+              onChange={(e) => {
+                setInfoUpdate(e.target.value);
+              }}
+            />
+          </td>
+          <td>
+          <input
+            type="text"
+            value={infoUpdate.firstName}
+            onChange={(e) => {
+              setInfoUpdate(e.target.value);
+            }}
+          />
+          </td>
+          <br />
+          <br />
+          <input
+            type="text"
+            value={infoUpdate.lastName}
+            onChange={(e) => {
+              setInfoUpdate(e.target.value);
+            }}
+          />
+          <br />
+          <input
+            type="text"
+            value={infoUpdate.department}
+            onChange={(e) => {
+              setInfoUpdate(e.target.value);
+            }}
+          />
+          <br />
+          <input
+            type="text"
+            value={infoUpdate.nationality}
+            onChange={(e) => {
+              setInfoUpdate(e.target.value);
+            }}
+          />
+          <br />
+          <br />
+        </tr>
+        <button>Update User</button>
+      </div>
     </div>
   );
 };
