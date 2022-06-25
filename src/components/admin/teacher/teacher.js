@@ -18,7 +18,7 @@ import { addTeacher } from "../../../redux/type";
 import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
 import { updateTeacher } from "../../../redux/type";
-
+import Avatar from 'react-avatar';
 import "./teacher.scss";
 
 function Submit() {
@@ -194,41 +194,28 @@ function Submit() {
 
 const Teacher = () => {
   // const [display, setDisplay] = useState(false);
-  const [infoUpdate, setInfoUpdate] = useState({
-    teacherId: "",
-    userName: "",
-    email: "",
-    password: "",
-    role: "",
-    firstName: "",
-    lastName: "",
-    gender: "",
-    nationality: "",
-    department: "",
-  });
+  // const [infoUpdate, setInfoUpdate] = useState({
+  //   teacherId: "",
+  //   userName: "",
+  //   email: "",
+  //   password: "",
+  //   role: "",
+  //   firstName: "",
+  //   lastName: "",
+  //   gender: "",
+  //   nationality: "",
+  //   department: "",
+  // });
   const teachers = useSelector((state) => state.teacher.infoTeacher);
   const dispatch = useDispatch();
-  const state = useContext(StateContext);
+  // const state = useContext(StateContext);
 
-  const handelChange = (e) => {
-    e.preventDefault();
-    setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
-  };
+  // const handelChange = (e) => {
+  //   e.preventDefault();
+  //   setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
+  // };
 
-  const updateOnDB = (Update) => {
-    setInfoUpdate({
-      teacherId: Update.id,
-      userName: Update.userName,
-      // email: Update.email,
-      // password: Update.password,
-      role: Update.role,
-      firstName: Update.firstName,
-      lastName: Update.lastName,
-      // gender:Update.gender,
-      nationality: Update.nationality,
-      department: Update.department,
-    });
-  };
+
 
   const deleteFromDB = (idToDelete) => {
     dispatch({ type: deleteTeacher, payloadDelete: idToDelete });
@@ -240,6 +227,7 @@ const Teacher = () => {
       <Table className="teacher-table">
         <thead>
           <tr>
+            <th>Image Teacher</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Username</th>
@@ -251,6 +239,7 @@ const Teacher = () => {
           {teachers.map((teacher, i) => {
             return (
               <tr key={i}>
+                <td><Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'aqua'])} size={50} round="50%" name={teacher.firstName} /></td>
                 <td>{teacher.firstName}</td>
                 <td>{teacher.lastName}</td>
                 <td>{teacher.userName}</td>
@@ -263,65 +252,14 @@ const Teacher = () => {
                 />
                 <EditIcon
                   sx={{ fontSize: 50 }}
-                  onClick={() => {
-                    updateOnDB(teacher);
-                  }}
+
                 />
               </tr>
             );
           })}
         </tbody>
       </Table>
-      <div>
-        <tr>
-          <td>
-            <input
-              type="text"
-              value={infoUpdate.userName}
-              onChange={(e) => {
-                setInfoUpdate(e.target.value);
-              }}
-            />
-          </td>
-          <td>
-            <input
-              type="text"
-              value={infoUpdate.firstName}
-              onChange={(e) => {
-                setInfoUpdate(e.target.value);
-              }}
-            />
-          </td>
-          <br />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.lastName}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.department}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.nationality}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <br />
-        </tr>
-        <button>Update User</button>
-      </div>
+
     </div>
   );
 };
