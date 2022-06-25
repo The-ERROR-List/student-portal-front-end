@@ -16,9 +16,29 @@ import { AuthContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import { When } from "react-if";
 import axios from "axios";
-import { api } from '../../../redux/type'
+import { api } from "../../../redux/type";
+import { useSelector, useDispatch } from "react-redux";
+import { addStudentInClass } from "../../../redux/type";
+
 function Submit() {
+  const dispatch = useDispatch();
   const state = useContext(StateContext);
+  const [infoStudents, setInfoStudents] = useState({
+    className: "",
+    userName: "",
+    studentGrade: "",
+  });
+
+  function handelChange(e) {
+    e.preventDefault();
+    setInfoStudents({ ...infoStudents, [e.target.name]: e.target.value });
+  }
+
+  function handelSubmit(e) {
+    e.preventDefault();
+    dispatch({ type: addStudentInClass, payload: infoStudents });
+    state.handleClose();
+  }
   return (
     <>
       <Button color="success" onClick={state.handleShow}>
@@ -44,6 +64,7 @@ function Submit() {
                     name="userName"
                     placeholder="userName..."
                     type="text"
+                    onChange={handelChange}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -53,20 +74,22 @@ function Submit() {
                     name="className"
                     placeholder="className..."
                     type="text"
+                    onChange={handelChange}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="Grade">Student Grade</Label>
+                  <Label for="studentGrade">Student Grade</Label>
                   <Input
-                    id="Grade"
-                    name="Grade"
-                    placeholder="Grade..."
+                    id="studentGrade"
+                    name="studentGrade"
+                    placeholder="studentGrade..."
                     type="text"
+                    onChange={handelChange}
                   />
                 </FormGroup>
               </Col>
             </Row>
-            <Button color="success" onClick={state.handleClose}>
+            <Button color="success" onSubmit={handelSubmit}>
               Add Student
             </Button>
           </Form>
@@ -80,14 +103,16 @@ function Submit() {
 }
 const ClassList = (props) => {
   const auth = useContext(AuthContext);
+  const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
-  ;
+
+ 
   
   console.log('propsStuside',props)
 
+
   const fetchStudents = async () => {
     let response = await axios.get(
-
       `${api}/get-allStudents-inClass/${props.id}`,
       { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
     );
@@ -96,15 +121,18 @@ const ClassList = (props) => {
   };
 
   useEffect(() => {
-    fetchStudents();
-    // console.log("paramssssss", props.id);
-  }, []);
+    fetchStudents()
+    console.log("paramssssss", props.id);
+  }, [state.toggleRender,
+    state.toggleRenderTeacher]);
+
+
 
   return (
     <div>
       {console.log(students.students)}
 
-      <h1>{ }</h1>
+      <h1>{}</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
@@ -119,21 +147,18 @@ const ClassList = (props) => {
           </tr>
         </thead>
         <tbody>
-
-          {
-            students.students ?
-              students.students.map((studentListed, indx) => {
-                return (<tr key={indx}>
-                  <td>{studentListed.studentName}</td>
-                  <When condition={auth.user.role !== "student"}>
-                    <td>{studentListed.studentGrade}</td>
-                  </When>
-                </tr>
-                )
-              }
-              ) : null
-
-          }
+          {students.students
+            ? students.students.map((studentListed, indx) => {
+                return (
+                  <tr key={indx}>
+                    <td>{studentListed.studentName}</td>
+                    <When condition={auth.user.role !== "student"}>
+                      <td>{studentListed.studentGrade}</td>
+                    </When>
+                  </tr>
+                );
+              })
+            : null}
         </tbody>
       </Table>
     </div>

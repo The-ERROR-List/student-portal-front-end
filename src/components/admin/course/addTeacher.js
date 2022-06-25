@@ -27,7 +27,7 @@ export default function AddTeacher() {
 
     const handelSubmit = (e) => {
         e.preventDefault();
-        console.log("infoCourse", infoCourse);
+        // console.log("infoCourse", infoCourse);
         dispatch({ type: addCourseToTeacher, payload: infoCourse });
         state.handleClose();
     };

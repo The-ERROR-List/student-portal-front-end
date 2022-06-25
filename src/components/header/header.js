@@ -8,6 +8,7 @@ import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './header.scss'
 import { useState } from 'react';
+import {Link} from 'react-router-dom'
 function OffCanvasExample({ name,icon, ...props }) {
     const [show, setShow] = useState(false);
 
@@ -57,7 +58,11 @@ const Header = () => {
                         <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70 , color: "white", textAlign:'center' ,marginLeft:"20px",marginTop:"-30px" }} /></Navbar.Brand>
                         <hr style={{ color: "white" }}/>
                         <div className='btn'>
-                            <Nav.Link href="/" style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}}><SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Nav.Link>
+
+                            <Nav.Link href="/" style={{textAlign: 'center', marginTop: '15px' ,color: 'white'}}
+                            >
+                            <Link to='/'>
+                            <SpeedOutlinedIcon  sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Link></Nav.Link>
                         </div>
                         {options.map((props, idx) => (
                             <div key={idx} className='btn'>

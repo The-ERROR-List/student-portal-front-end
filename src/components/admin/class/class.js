@@ -33,19 +33,19 @@ function Submit() {
   const handelChange = (e) => {
     e.preventDefault();
     setInfoClass({ ...infoClass, [e.target.name]: e.target.value });
-    console.log({ [e.target.name]: e.target.value });
+    // console.log({ [e.target.name]: e.target.value });
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log("infoClass", infoClass);
+    // console.log("infoClass", infoClass);
     dispatch({ type: addClass, payload: infoClass });
     state.handleClose();
   };
 
   useEffect(() => {
     dispatch(getClassAction());
-  }, [handelSubmit]);
+  }, [handelChange]);
 
   return (
     <>
@@ -150,7 +150,7 @@ const Class = () => {
         <tbody>
           {
             classes.map((classInfo, i) => {
-              console.log(classInfo,"2222222")
+              {/* console.log(classInfo,"2222222") */}
               return (
 
                 <tr key={i}>
