@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import {api} from '../../../redux/type';
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
@@ -17,7 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
-import { updateTeacher } from "../../../redux/type";
+// import { updateTeacher, getTeacherId } from "../../../redux/type";
+
+import cookie from "react-cookies";
 
 import "./teacher.scss";
 
@@ -58,7 +61,6 @@ function Submit() {
       <Button color="success" onClick={state.handleShow}>
         Add Teacher
       </Button>
-      <Button color="warning">Update information</Button>
 
       <Modal
         show={state.show}
@@ -178,7 +180,7 @@ function Submit() {
                 onChange={handelChange}
               />
             </FormGroup>
-            {/* onClick={handelSubmit} */}
+            
             <Button color="success">Add Teacher</Button>
           </Form>
         </Modal.Body>
@@ -193,9 +195,8 @@ function Submit() {
 }
 
 const Teacher = () => {
-  // const [display, setDisplay] = useState(false);
+  const [ids, setId] = useState({id:''});
   const [infoUpdate, setInfoUpdate] = useState({
-    teacherId: "",
     userName: "",
     email: "",
     password: "",
@@ -215,28 +216,67 @@ const Teacher = () => {
     setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
   };
 
-  const updateOnDB = (Update) => {
-    setInfoUpdate({
-      teacherId: Update.id,
-      userName: Update.userName,
-      // email: Update.email,
-      // password: Update.password,
-      role: Update.role,
-      firstName: Update.firstName,
-      lastName: Update.lastName,
-      // gender:Update.gender,
-      nationality: Update.nationality,
-      department: Update.department,
-    });
-  };
+  // const updateOnDB = (Update) => {
+  //   setInfoUpdate({
+      
+  //     userName: Update.userName,
+  //     email: Update.email,
+  //     password: Update.password,
+  //     role: Update.role,
+  //     firstName: Update.firstName,
+  //     lastName: Update.lastName,
+  //     gender:Update.gender,
+  //     nationality: Update.nationality,
+  //     department: Update.department,
+  //   });
+  // };
 
   const deleteFromDB = (idToDelete) => {
+    
     dispatch({ type: deleteTeacher, payloadDelete: idToDelete });
   };
+
+  function updateUser (e) {
+    e.preventDefault();
+    let items = { ...infoUpdate };
+    fetch(`${api}/teacher/${ids.id}`, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${cookie.load("token")}`,
+      },
+      body: JSON.stringify({
+        userName: infoUpdate.userName,
+        email: infoUpdate.email,
+        password: infoUpdate.password,
+        role: infoUpdate.role,
+        firstName: infoUpdate.firstName,
+        lastName: infoUpdate.lastName,
+        gender: infoUpdate.gender,
+        nationality: infoUpdate.nationality,
+        department: infoUpdate.department
+      })
+    }).then((res) => res.json().then((data) => {console.warn(data)}));
+    
+
+  }
+  useEffect(() => {
+    dispatch(getTeacherAction());
+  }
+  , []);
+  function idUser (id){
+    setId({
+      ...ids,
+      id: id,
+    });
+  }
   return (
     <div className="teacher">
       <h1>Teachers</h1>
       <Submit />
+      {teachers.map((teacher, i) => {
+            return (
+              <>
       <Table className="teacher-table">
         <thead>
           <tr>
@@ -248,8 +288,7 @@ const Teacher = () => {
           </tr>
         </thead>
         <tbody>
-          {teachers.map((teacher, i) => {
-            return (
+          
               <tr key={i}>
                 <td>{teacher.firstName}</td>
                 <td>{teacher.lastName}</td>
@@ -263,65 +302,147 @@ const Teacher = () => {
                 />
                 <EditIcon
                   sx={{ fontSize: 50 }}
-                  onClick={() => {
-                    updateOnDB(teacher);
-                  }}
+                  onClick={ () => idUser(teacher.id)}
                 />
               </tr>
-            );
-          })}
+            
+         
         </tbody>
       </Table>
-      <div>
-        <tr>
-          <td>
-            <input
-              type="text"
-              value={infoUpdate.userName}
-              onChange={(e) => {
-                setInfoUpdate(e.target.value);
-              }}
-            />
-          </td>
-          <td>
-            <input
-              type="text"
-              value={infoUpdate.firstName}
-              onChange={(e) => {
-                setInfoUpdate(e.target.value);
-              }}
-            />
-          </td>
-          <br />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.lastName}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.department}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <input
-            type="text"
-            value={infoUpdate.nationality}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
-          <br />
-          <br />
-        </tr>
-        <button>Update User</button>
-      </div>
+      <Button color="success" onClick={state.handleShow}>
+        Add Teacher
+      </Button>
+      <Modal
+        show={state.show}
+        onHide={state.handleClose}
+        class="modal-dialog modal-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Teacher form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form
+            // onSubmit={updateUser}
+            style={{ width: "70%", margin: "auto" }}
+          >
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="userName1">userName</Label>
+                  <Input
+                    id="userName1"
+                    name="userName"
+                    placeholder="userName..."
+                    type="userName"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="exampleEmail1">Email</Label>
+                  <Input
+                    id="email1"
+                    name="email"
+                    // value="email";
+                    placeholder="Email..."
+                    type="email"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="examplePassword1">Password</Label>
+                  <Input
+                    id="examplePassword1"
+                    name="password"
+                    placeholder="password placeholder"
+                    type="password"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="firstName1">First Name</Label>
+                  <Input
+                    id="firstName1"
+                    name="firstName"
+                    placeholder="First Name..."
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="lastName1">Last Name </Label>
+                  <Input
+                    id="lastName1"
+                    name="lastName"
+                    placeholder="Last Name...."
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={3}>
+                <FormGroup>
+                  <Label for="role1">role</Label>
+
+                  <Input
+                    id="role1"
+                    name="role"
+                    placeholder="role"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label for="gender1">gender</Label>
+                  <Input
+                    id="gender1"
+                    name="gender"
+                    placeholder="gender"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="nationality1">nationality</Label>
+                  <Input
+                    id="nationality1"
+                    name="nationality"
+                    placeholder="nationality"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <FormGroup>
+              <Label for="department1">department</Label>
+              <Input
+                id="department1"
+                name="department"
+                placeholder="department"
+                onChange={handelChange}
+              />
+            </FormGroup>
+            <Button color="warning" onClick={updateUser}>Update information</Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="danger" onClick={state.handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/* <Button color="warning" onClick={state.handleUpdateShow}>Update information</Button> */}
+      </>
+      );
+       })}
     </div>
   );
 };
