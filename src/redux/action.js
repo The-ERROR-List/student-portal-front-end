@@ -167,7 +167,7 @@ export function addStudentToClass(payload) {
 
 
 
-//==========================2.update data=================
+//==========================2.update Teacher data=================
 
 
 export function updateTeacherDB( payloadUpdate) {
@@ -187,6 +187,39 @@ export function updateTeacherDB( payloadUpdate) {
       gender: payloadUpdate.gender,
       nationality: payloadUpdate.nationality,
       department: payloadUpdate.department
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+
+
+//==========================2.update Student data=================
+
+export function updateStudentDB( payloadUpdate) {
+  fetch(`${api}/student/${payloadUpdate.id}`, {
+    method: "PUT", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      userName: payloadUpdate.userName,
+      email: payloadUpdate.email,
+      password: payloadUpdate.password,
+      role: payloadUpdate.role,
+      firstName: payloadUpdate.firstName,
+      lastName: payloadUpdate.lastName,
+      gender: payloadUpdate.gender,
+      nationality: payloadUpdate.nationality,
+      major: payloadUpdate.major
     })
   }).then((response) => {
     console.log("response", response.json());
