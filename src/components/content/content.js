@@ -14,6 +14,7 @@ import {
   Input,
 
 } from "reactstrap";
+import { When } from "react-if";
 const Content = (props) => {
   const state = useContext(StateContext)
   // const [textArea, setTextArea] = useState("");
@@ -49,7 +50,10 @@ const Content = (props) => {
     })
   }
   useEffect(() => {
-    getContents()
+    if(cookie.load('role')==='teacher'||cookie.load('role')==='student'){
+      getContents()
+
+    }
   }, [])
 
   const deleteContent = ((id, indx) => {
@@ -94,13 +98,20 @@ function ShowContent() {
                   <p>{classContent.contentBody}</p>
                   <p>{classContent.contentLink}</p>
                   <p>{classContent.contentCategory}</p>
+                  <When condition={cookie.load('role')==='teacher'}>
                   <button onClick={() => deleteContent(classContent.id, indx)}>
                     Delete content
                   </button>
+                  </When>
+                 
                   <br />
+                  <When condition={cookie.load('role')==='teacher'}>
+
                   <button onClick={state.handleShow}>
                     update content
                   </button>
+                  </When>
+
                 </div>
 
                 <Modal
@@ -171,6 +182,8 @@ function ShowContent() {
 
 return (
   <>
+  <When condition={cookie.load('role')==='teacher'}>
+
     <form onSubmit={handleSubmit}>
       <label for="contentTitle" style={{ color: "black" }}>content Title</label>
       <input className="input-class" id="contentTitle" name="contentTitle" value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} />
@@ -188,6 +201,8 @@ return (
         Add Content
       </button>
     </form>
+    </When>
+
     <ShowContent />
 
   </>
