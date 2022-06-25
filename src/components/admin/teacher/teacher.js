@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import {api} from '../../../redux/type';
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../context/State";
@@ -17,9 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
-import { updateTeacher, getTeacherId } from "../../../redux/type";
-import cookie from "js-cookie";
-import {api} from '../../../redux/type';
+// import { updateTeacher, getTeacherId } from "../../../redux/type";
+
+import cookie from "react-cookies";
 
 import "./teacher.scss";
 
@@ -179,7 +180,7 @@ function Submit() {
                 onChange={handelChange}
               />
             </FormGroup>
-            {/* onClick={handelSubmit} */}
+            
             <Button color="success">Add Teacher</Button>
           </Form>
         </Modal.Body>
@@ -194,9 +195,8 @@ function Submit() {
 }
 
 const Teacher = () => {
-  // const [display, setDisplay] = useState(false);
+  const [ids, setId] = useState({id:''});
   const [infoUpdate, setInfoUpdate] = useState({
-    teacherId: "",
     userName: "",
     email: "",
     password: "",
@@ -238,15 +238,24 @@ const Teacher = () => {
 
   function updateUser (e) {
     e.preventDefault();
-    const id = e.target.id;
     let items = { ...infoUpdate };
-    fetch(`${api}/teacher/${id}`, {
+    fetch(`${api}/teacher/${ids.id}`, {
       method: "PUT", 
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${cookie.load("token")}`,
       },
-      body: JSON.stringify(items),
+      body: JSON.stringify({
+        userName: infoUpdate.userName,
+        email: infoUpdate.email,
+        password: infoUpdate.password,
+        role: infoUpdate.role,
+        firstName: infoUpdate.firstName,
+        lastName: infoUpdate.lastName,
+        gender: infoUpdate.gender,
+        nationality: infoUpdate.nationality,
+        department: infoUpdate.department
+      })
     }).then((res) => res.json().then((data) => {console.warn(data)}));
     
 
@@ -255,16 +264,19 @@ const Teacher = () => {
     dispatch(getTeacherAction());
   }
   , []);
-  function teacherID (id){
-    setInfoUpdate({
-      ...infoUpdate,
-      teacherId: id,
+  function idUser (id){
+    setId({
+      ...ids,
+      id: id,
     });
   }
   return (
     <div className="teacher">
       <h1>Teachers</h1>
       <Submit />
+      {teachers.map((teacher, i) => {
+            return (
+              <>
       <Table className="teacher-table">
         <thead>
           <tr>
@@ -276,8 +288,7 @@ const Teacher = () => {
           </tr>
         </thead>
         <tbody>
-          {teachers.map((teacher, i) => {
-            return (
+          
               <tr key={i}>
                 <td>{teacher.firstName}</td>
                 <td>{teacher.lastName}</td>
@@ -291,13 +302,16 @@ const Teacher = () => {
                 />
                 <EditIcon
                   sx={{ fontSize: 50 }}
-                  // onClick={ () => idUser(teacher.id)}
+                  onClick={ () => idUser(teacher.id)}
                 />
               </tr>
-            );
-          })}
+            
+         
         </tbody>
       </Table>
+      <Button color="success" onClick={state.handleShow}>
+        Add Teacher
+      </Button>
       <Modal
         show={state.show}
         onHide={state.handleClose}
@@ -425,7 +439,10 @@ const Teacher = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Button color="warning" onClick={state.handleUpdateShow}>Update information</Button>
+      {/* <Button color="warning" onClick={state.handleUpdateShow}>Update information</Button> */}
+      </>
+      );
+       })}
     </div>
   );
 };

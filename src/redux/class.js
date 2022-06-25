@@ -6,7 +6,7 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 import { api } from './type';
 import { createClass } from './action';
-import {deleteClassesById, updateClassDB} from './action';
+import {deleteClassesById} from './action';
 
 
 export const initialState = {
@@ -14,7 +14,7 @@ export const initialState = {
 };
 
 export default function classReducer(state = initialState, action) {
-  let { type, data ,payload ,payloadDelete, payloadUpdate} = action;
+  let { type, data ,payload ,payloadDelete} = action;
 
   switch (type) {
     case addClass:
@@ -29,9 +29,9 @@ export default function classReducer(state = initialState, action) {
         infoClass:data
       };
     case updateClass:
-      updateClassDB(payloadUpdate) 
+      // updateClassDB(payloadUpdate) 
       return {
-        ...state
+      
       };
     case deleteClass:
 
