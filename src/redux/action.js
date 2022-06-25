@@ -170,8 +170,8 @@ export function addStudentToClass(payload) {
 //==========================2.update Teacher data=================
 
 
-export function updateTeacherDB( payloadUpdate) {
-  fetch(`${api}/teacher/${payloadUpdate.id}`, {
+export function updateTeacherDB( payloadUpdate, payloadId) {
+  fetch(`${api}/teacher/${payloadId}`, {
     method: "PUT", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -201,7 +201,7 @@ export function updateTeacherDB( payloadUpdate) {
 
 
 
-//==========================2.update Student data=================
+//==========================3.update Student data=================
 
 export function updateStudentDB( payloadUpdate) {
   fetch(`${api}/student/${payloadUpdate.id}`, {
@@ -232,6 +232,55 @@ export function updateStudentDB( payloadUpdate) {
   });
 }
 
+//==========================4.update Course data=================
+
+export function updateCourseDB( payloadUpdate) {
+  fetch(`${api}/course/${payloadUpdate.id}`, {
+    method: "PUT", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      courseName: payloadUpdate.courseName,
+      courseGrade: payloadUpdate.courseGrade
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+//==========================5.update Class data=================
+
+export function updateClass (payloadUpdate) {
+  fetch(`${api}/class/${payloadUpdate.id}`, {
+    method: "PUT", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      className: payloadUpdate.className,
+      courseName: payloadUpdate.courseName,
+      userName: payloadUpdate.userName,
+      classTime: payloadUpdate.classTime,
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
 
 
 

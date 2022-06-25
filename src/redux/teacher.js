@@ -19,8 +19,8 @@ export const initialState = {
 };
 
 export default function teacherReducer(state = initialState, action) {
-  let { type, payload, payloadDelete, payloadUpdate } = action;
-console.log(payloadUpdate,"+++++++++++++++++++++");
+  let { type, payload, payloadDelete} = action;
+// console.log(payloadId,"+++++++++++++++++++++", payloadUpdate);
 
   switch (type) {
     case addTeacher:
@@ -34,9 +34,9 @@ console.log(payloadUpdate,"+++++++++++++++++++++");
         infoTeacher: payload
       }
     case updateTeacher:
-      updateTeacherDB( payloadUpdate)
+      // updateTeacherDB( payloadUpdate, payloadId)
       return {
-        ...state
+        // ...state
       };
     case deleteTeacher:
       deleteTeacherById(payloadDelete)

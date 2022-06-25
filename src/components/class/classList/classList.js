@@ -1,4 +1,4 @@
-import {api} from'../../../redux/type'
+import {api} from'../../../redux/type';
 import {
   Table,
   Form,
@@ -16,8 +16,7 @@ import { AuthContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import { When } from "react-if";
 import axios from "axios";
-import { api } from "../../../redux/type";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
 
 function Submit() {
