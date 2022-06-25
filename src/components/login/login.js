@@ -137,7 +137,6 @@ export default function Login() {
                     </form>
                 </div>
             </When>
-            auth.signOut
             <When condition={auth.isLoggedIn}>
                 <Button onClick={handelSignOut} style={{ marginLeft: 500 }}>Sign Out</Button>
             </When>
