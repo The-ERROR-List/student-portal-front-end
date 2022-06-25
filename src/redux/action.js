@@ -77,8 +77,8 @@ export function createCourse(payload) {
       "Authorization": `Bearer ${cookie.load("token")}`,
     },
     body: JSON.stringify({
-      courseName:payload.courseName,
-      courseGrade:payload.courseGrade
+      courseName: payload.courseName,
+      courseGrade: payload.courseGrade
     })
   }).then((response) => {
     console.log("response", response.json());
@@ -100,10 +100,10 @@ export function createClass(payload) {
       "Authorization": `Bearer ${cookie.load("token")}`,
     },
     body: JSON.stringify({
-      className:payload.className,
-      courseName:payload.courseName,
-      userName:payload.userName,
-      classTime : payload.classTime,
+      className: payload.className,
+      courseName: payload.courseName,
+      userName: payload.userName,
+      classTime: payload.classTime,
 
     })
   }).then((response) => {
@@ -125,9 +125,9 @@ export function addCourse2Teacher(payload) {
       "Authorization": `Bearer ${cookie.load("token")}`,
     },
     body: JSON.stringify({
-      userName:payload.userName,//teacher
-      courseName:payload.courseName,
-      courseDescription:''
+      userName: payload.userName,//teacher
+      courseName: payload.courseName,
+      courseDescription: ''
     })
   }).then((response) => {
     console.log("response", response.json());
@@ -140,26 +140,53 @@ export function addCourse2Teacher(payload) {
   });
 }
 
+//=========add students in class================
+
+export function addStudentToClass(payload) {
+  fetch(`${api}/add-students-toClass`, {
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${cookie.load("token")}`,
+    },
+    body: JSON.stringify({
+      className: payload.className,
+      userName: payload.userName,
+      studentGrade: payload.studentGrade
+    })
+  }).then((response) => {
+    console.log("response", response.json());
+    return response
+  }).then((data) => {
+    console.log("Success:", data);
+
+  }).catch((error) => {
+    console.error("Error:", error);
+  });
+}
+
+
+
 //==========================2.update data=================
 
 
-export function updateTeacherDB(payload,payloadUpdate) {
-  fetch(`${api}/teacher/${payloadUpdate}`, {
+export function updateTeacherDB( payloadUpdate) {
+  fetch(`${api}/teacher/${payloadUpdate.id}`, {
     method: "PUT", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,
     },
     body: JSON.stringify({
-      userName: payload.userName,
-      email: payload.email,
-      password: payload.password,
-      role: payload.role,
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-      gender: payload.gender,
-      nationality: payload.nationality,
-      department: payload.department
+      userName: payloadUpdate.userName,
+      email: payloadUpdate.email,
+      password: payloadUpdate.password,
+      role: payloadUpdate.role,
+      firstName: payloadUpdate.firstName,
+      lastName: payloadUpdate.lastName,
+      gender: payloadUpdate.gender,
+      nationality: payloadUpdate.nationality,
+      department: payloadUpdate.department
     })
   }).then((response) => {
     console.log("response", response.json());
@@ -194,9 +221,9 @@ export function updateTeacherDB(payload,payloadUpdate) {
 
 //1.delete Teacher by id
 
-export function deleteTeacherById(deleteTeacher){
+export function deleteTeacherById(deleteTeacher) {
   fetch(`${api}/teacher/${deleteTeacher}`, {
-    method: "DELETE", 
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,
@@ -214,9 +241,9 @@ export function deleteTeacherById(deleteTeacher){
 
 //2. delete student by id
 
-export function deleteStudentById(deleteStudent){
+export function deleteStudentById(deleteStudent) {
   fetch(`${api}/student/${deleteStudent}`, {
-    method: "DELETE", 
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,
@@ -233,9 +260,9 @@ export function deleteStudentById(deleteStudent){
 }
 
 //3.deleteCourseById
-export function deleteCourseById(payloadDelete){
+export function deleteCourseById(payloadDelete) {
   fetch(`${api}/courses/${payloadDelete}`, {
-    method: "DELETE", 
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,
@@ -253,9 +280,9 @@ export function deleteCourseById(payloadDelete){
 
 //4.deleteClassesById
 
-export function deleteClassesById(deleteClasses){
+export function deleteClassesById(deleteClasses) {
   fetch(`${api}/classes/${deleteClasses}`, {
-    method: "DELETE", 
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${cookie.load("token")}`,

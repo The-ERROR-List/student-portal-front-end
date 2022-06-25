@@ -9,25 +9,28 @@ import {
   CardText,
 } from "reactstrap";
 import { Accordion } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect,useState,useContext} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCourse2Teacher } from "../../../redux/teacherToCourse";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {deleteCourse} from '../../../redux/type';
-
+import { StateContext } from "../../../context/State";
 export default function Course_Card(props) {
     console.log(props.course,'++++++++++');
   const selector = useSelector(
     (state) => state.teacherTocourse.teacherIntoCourse
   );
   const dispatch = useDispatch();
+  const state = useContext(StateContext);
+
   const deleteFromDB=(idToDelete)=>{
     dispatch({type:deleteCourse,payloadDelete:idToDelete})
   }
 
   useEffect(() => {
     dispatch(getAllCourse2Teacher(props.course.id));
-  }, [selector]);
+  }, [state.toggleRender,
+    state.toggleRenderTeacher]);
 
   return (
     <div>

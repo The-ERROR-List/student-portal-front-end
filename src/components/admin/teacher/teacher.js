@@ -23,6 +23,7 @@ import "./teacher.scss";
 
 function Submit() {
   const state = useContext(StateContext);
+  const teachers = useSelector((state) => state.teacher.infoTeacher);
   const dispatch = useDispatch();
   const [infoTeacher, setInfoTeacher] = useState({
     userName: "",
@@ -39,20 +40,18 @@ function Submit() {
   const handelChange = (e) => {
     e.preventDefault();
     setInfoTeacher({ ...infoTeacher, [e.target.name]: e.target.value });
-    console.log({ [e.target.name]: e.target.value });
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    // console.log("infTeacher", infoTeacher);
-    dispatch({ type: addTeacher, payload: infoTeacher, cc: infoTeacher });
+    dispatch({ type: addTeacher, payload: infoTeacher });
     state.handleClose();
   };
 
   //invoke
   useEffect(() => {
     dispatch(getTeacherAction());
-  }, [handelSubmit]);
+  }, [teachers.id]);
 
   return (
     <>
@@ -70,7 +69,10 @@ function Submit() {
           <Modal.Title>Teacher form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form style={{ width: "70%", margin: "auto" }}>
+          <Form
+            onSubmit={handelSubmit}
+            style={{ width: "70%", margin: "auto" }}
+          >
             <Row>
               <Col md={6}>
                 <FormGroup>
@@ -88,7 +90,7 @@ function Submit() {
                   <Input
                     id="email"
                     name="email"
-                    // value="email"
+                    // value="email";
                     placeholder="Email..."
                     type="email"
                     onChange={handelChange}
@@ -176,10 +178,8 @@ function Submit() {
                 onChange={handelChange}
               />
             </FormGroup>
-
-            <Button color="success" onClick={handelSubmit}>
-              Add Teacher
-            </Button>
+            {/* onClick={handelSubmit} */}
+            <Button color="success">Add Teacher</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -191,6 +191,7 @@ function Submit() {
     </>
   );
 }
+
 const Teacher = () => {
   // const [display, setDisplay] = useState(false);
   const [infoUpdate, setInfoUpdate] = useState({
@@ -208,12 +209,12 @@ const Teacher = () => {
   const teachers = useSelector((state) => state.teacher.infoTeacher);
   const dispatch = useDispatch();
   const state = useContext(StateContext);
+
   const handelChange = (e) => {
     e.preventDefault();
     setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
-    console.log({ [e.target.name]: e.target.value });
   };
-  console.log(infoUpdate);
+
   const updateOnDB = (Update) => {
     setInfoUpdate({
       teacherId: Update.id,
@@ -283,13 +284,13 @@ const Teacher = () => {
             />
           </td>
           <td>
-          <input
-            type="text"
-            value={infoUpdate.firstName}
-            onChange={(e) => {
-              setInfoUpdate(e.target.value);
-            }}
-          />
+            <input
+              type="text"
+              value={infoUpdate.firstName}
+              onChange={(e) => {
+                setInfoUpdate(e.target.value);
+              }}
+            />
           </td>
           <br />
           <br />

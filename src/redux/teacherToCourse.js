@@ -13,7 +13,7 @@ export const initialState = {
 
 export default function courseToCourseReducer(state = initialState, action) {
     let { type,payload, dataTeacherIntoCourse } = action;
-    // console.log("ppppppppp", payload);
+    
     switch (type) {
 
         case getAllCourseToTeacher:

@@ -29,19 +29,19 @@ function Submit() {
     const handelChange = (e) => {
         e.preventDefault();
         setInfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
-        console.log({ [e.target.name]: e.target.value });
     };
 
-    const handelSubmit = (e) => {
+  function  handelSubmit (e) {
         e.preventDefault();
-        // console.log("infTeacher", infoStudent);
         dispatch({ type: addStudent, payload: infoStudent })
         state.handleClose()
     };
 
     useEffect(() => {
         dispatch(getStudentAction());
-    }, [handelSubmit]);
+    },[handelSubmit] );
+
+    
 
     return (
         <>

@@ -4,7 +4,10 @@ import { Button } from "react-bootstrap";
 import { AuthContext } from "../../context/Auth";
 import { useContext, useState } from "react";
 import { When } from "react-if";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+
+    const navigate = useNavigate();
     const auth = useContext(AuthContext);
     const [passwordShown, setPasswordShown] = useState(false);
     const [userName, setUserName] = useState("");
@@ -22,7 +25,15 @@ export default function Login() {
         setPasswordShown(!passwordShown);
     };
 
-
+    function redirectHistory() {
+        navigate('')
+    }
+    
+    function  handelSignOut(){
+        auth.signOut()
+        redirectHistory()
+    }
+    
     return (
         <div id='body'>
 
@@ -118,6 +129,7 @@ export default function Login() {
                                 type="submit"
                                 class="btn-primary"
                                 id="btn"
+                                onClick={redirectHistory}
                             >
                                 Sign In
                             </Button>
@@ -125,8 +137,9 @@ export default function Login() {
                     </form>
                 </div>
             </When>
+            auth.signOut
             <When condition={auth.isLoggedIn}>
-                <Button onClick={auth.signOut} style={{ marginLeft: 500 }}>Sign Out</Button>
+                <Button onClick={handelSignOut} style={{ marginLeft: 500 }}>Sign Out</Button>
             </When>
         </div>
     );

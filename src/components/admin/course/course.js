@@ -29,24 +29,19 @@ function Submit() {
   const handelChange = (e) => {
     e.preventDefault();
     setInfoCourse({ ...infoCourse, [e.target.name]: e.target.value });
-    console.log({ [e.target.name]: e.target.value });
+    // console.log({ [e.target.name]: e.target.value });
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log("infoCourse", infoCourse);
+    // console.log("infoCourse", infoCourse);
     dispatch({ type: addCourse, payload: infoCourse });
     state.handleClose();
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log();
-  };
-
   useEffect(() => {
     dispatch(getCourseAction());
-  }, []);
+  }, [handelChange]);
 
   return (
     <>
@@ -134,13 +129,16 @@ function Submit() {
     </>
   );
 }
+
 const Course = () => {
   const courses = useSelector((state) => state.course.infoCourse);
+  const state = useContext(StateContext);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCourseAction());
-  }, []);
-  console.log(111111111111111, courses);
+  }, [state.toggleRender,
+    state.toggleRenderTeacher]);
+ 
   return (
     <div className="course">
       <h1>Course</h1>
