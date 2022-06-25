@@ -10,12 +10,14 @@ const Class = () => {
   console.log('params',params.id)
   return (
     <div id="classcomp">
-      <When condition={cookie.load('role')==="teacher"}>
+      {/* <When condition={cookie.load('role')==="teacher"}> */}
       <ClassTool />
       
-      </When>
+      {/* </When> */}
       <ClassList id={params.id}/>
+      {/* <When condition={cookie.load('role')==='teacher'}> */}
       <Content id={params.id}/>
+      {/* </When> */}
     </div>
   );
 };
