@@ -1,6 +1,4 @@
-import { AuthContext } from "../../context/Auth";
 import { When } from "react-if";
-import { useContext } from "react";
 import Admin from "../admin/Admin";
 import Student from "../student/Student";
 import Teacher from "../teacher/Teacher";
