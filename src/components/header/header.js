@@ -52,7 +52,7 @@ const Header = () => {
 
     return (
         <div className='nav'>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark"  >
                 <Container >
                     <Nav className="me-auto cont" >
                         <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70 , color: "white", textAlign:'center' ,marginLeft:"20px",marginTop:"-30px" }} /></Navbar.Brand>

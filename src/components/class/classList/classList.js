@@ -1,4 +1,3 @@
-import {api} from'../../../redux/type'
 import {
   Table,
   Form,
