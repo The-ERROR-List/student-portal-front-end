@@ -12,10 +12,15 @@ import { getAllCourse2Teacher } from "../../../redux/teacherToCourse";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteCourse } from '../../../redux/type';
 import { StateContext } from "../../../context/State";
+import {getAllClassesToCourse} from '../../../redux/classesInCourse'
 export default function Course_Card(props) {
   console.log(props.course, '++++++++++');
   const selector = useSelector(
     (state) => state.teacherTocourse.teacherIntoCourse
+  );
+
+  const classesIn = useSelector(
+    (state) => state.classesInCourse.infoClassesIntoCourse
   );
   const dispatch = useDispatch();
   const state = useContext(StateContext);
@@ -26,6 +31,7 @@ export default function Course_Card(props) {
 
   useEffect(() => {
     dispatch(getAllCourse2Teacher(props.course.id));
+    dispatch(getAllClassesToCourse())
   }, []);
 
   return (
@@ -55,10 +61,7 @@ export default function Course_Card(props) {
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Classes</Accordion.Header>
-              <Accordion.Body></Accordion.Body>
-            </Accordion.Item>
+          
           </Accordion>
         </Card>
       </CardGroup>
