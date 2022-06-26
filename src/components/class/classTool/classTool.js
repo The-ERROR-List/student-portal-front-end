@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from 'react';
 import { Modal, Button, FormGroup } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { When } from 'react-if';
+import JoinChat from "../../chat/joinChat"
+
 const ClassTool = () => {
     const state = useContext(StateContext)
     const [meeting, setMeeting] = useState({})
@@ -50,8 +52,8 @@ const ClassTool = () => {
 
                             meeting.Meeting ?
                                 //  meeting.Meeting.start_url:null
-                                <button onClick={()=>{
-                                    console.log('url',meeting.Meeting.join_url)
+                                <button onClick={() => {
+                                    console.log('url', meeting.Meeting.join_url)
                                 }}>
                                     <a href={meeting.Meeting.start_url}>
                                         open zoom link
@@ -85,17 +87,17 @@ const ClassTool = () => {
                         {
 
                             joinUrl ?
-                            //  meeting.Meeting.start_url:null
-                            <button onClick={()=>{
-                                console.log(joinUrl)
-                            }}>
-                                <a href={joinUrl}>
-                                    open zoom link
-                                </a>
-                            </button>
-                            : <p>
-                                no Meetings Available
-                            </p>
+                                //  meeting.Meeting.start_url:null
+                                <button onClick={() => {
+                                    console.log(joinUrl)
+                                }}>
+                                    <a href={joinUrl}>
+                                        open zoom link
+                                    </a>
+                                </button>
+                                : <p>
+                                    no Meetings Available
+                                </p>
                         }
                     </Modal.Body>
                     <Modal.Footer>
@@ -107,7 +109,8 @@ const ClassTool = () => {
 
             </When>
 
-
+            <JoinChat />
+  
 
         </div>
     )
