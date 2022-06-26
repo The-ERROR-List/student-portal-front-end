@@ -1,3 +1,4 @@
+
 import {
   Table,
   Form,
@@ -17,8 +18,7 @@ import { When } from "react-if";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
-import {api} from'../../../redux/type'
-
+import {api} from '../../../redux/type';
 function Submit() {
   const dispatch = useDispatch();
   const state = useContext(StateContext);

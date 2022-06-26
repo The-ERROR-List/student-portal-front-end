@@ -29,9 +29,9 @@ export default function classReducer(state = initialState, action) {
         infoClass:data
       };
     case updateClass:
-
+      // updateClassDB(payloadUpdate) 
       return {
-
+      
       };
     case deleteClass:
 

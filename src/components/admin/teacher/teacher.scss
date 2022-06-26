@@ -1,7 +1,20 @@
-.teacher{
-    // margin: 0 0 0 200px;
-    width: 900px;
+.admin-teacher{
+    display: flex;
+    flex-direction: column;
+    
     .teacher-table{
-        margin: 20px 0 0 0;
+        margin-left: 30px;
+        margin-right: 88px;
+        // display: flex;
+
+        .headerTable{
+            font-size: 25px;
+            font-weight: 700;
+        }
+        .content-table{
+        font-size: 23px;
+        align-items: center;
+        margin-top: 5px;
+        }
     }
-}
+    }

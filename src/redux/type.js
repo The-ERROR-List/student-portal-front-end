@@ -1,6 +1,6 @@
 // api
 
-export const api = 'http://localhost:3001';
+export const api = 'http://localhost:4003';
 
 //types add action
 export const addStudent = 'add_student';
@@ -34,3 +34,6 @@ export const getAllCourseToTeacher = 'get_allCourse_teacher';
 
 //type to student view
 export const getClassesForStudents = 'get_classes_for_students';
+
+//type for teacher id
+export const getTeacherId = 'get_teacher_id';
