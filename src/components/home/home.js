@@ -15,19 +15,19 @@ import Content from '../class/content/content'
 import UpdateContents from'../class/content/update-content'
 
 function Home() {
-  const auth = useContext(AuthContext);
-
-  return (
-    <div className="main">
-
-
-      <When condition={auth.isLoggedIn}>
-        <Header />
-        <div style={{ marginLeft: "150px" }}>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/course/:id" element={<TeacherClasses />} />
-            <Route path="/class/:id" element={<Class />} />
+    const auth = useContext(AuthContext);
+  
+    return (
+      <div className="home">
+    
+  
+          <When condition={auth.isLoggedIn}>
+            <Header />
+            <div style={{marginLeft:"150px"}}>
+            <Routes>
+            <Route path="/" element = {<Main/>}/>
+            <Route path="/course/:id" element={<TeacherClasses/>} />
+            <Route path="/class/:id" element={<Class/>} />
             <Route path="/adminClass/:id" element={<Class />} />
             <Route path="/class-student/:id" element={<Class />} />
             <Route path="/admin-teacher" element={<AdminTeacher />} />
