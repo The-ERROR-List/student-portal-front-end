@@ -11,7 +11,6 @@ import {
 import { Modal, Alert, Breadcrumb, BreadcrumbItem } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { StateContext } from "../../../context/State";
-import { addStudent } from "../../../redux/type";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentAction } from "../../../redux/student";
 import DeleteIcon from "@mui/icons-material/Delete"; //*
@@ -279,7 +278,7 @@ const Student = () => {
               </FormGroup>
 
               <Button color="success" onClick={updateUser}>
-                Update Student
+                Update Information Student
               </Button>
             </Form>
           </Modal.Body>

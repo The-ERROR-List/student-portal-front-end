@@ -9,7 +9,6 @@ import {
 } from "reactstrap";
 import { Modal } from "react-bootstrap";
 import {  useState } from "react";
-
 import { useDispatch } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 export default function AddStudent() {
@@ -77,7 +76,6 @@ export default function AddStudent() {
                                     <Input
                                         id="email"
                                         name="email"
-                                        // value="email";
                                         placeholder="Email..."
                                         type="email"
                                         onChange={handelChange}

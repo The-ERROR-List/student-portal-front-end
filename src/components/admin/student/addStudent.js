@@ -1,16 +1,11 @@
-import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap'
-import { Modal, Alert, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
-import { useState, useContext, useEffect } from 'react'
-import { StateContext } from "../../../context/State";
+import {  Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap'
+import { Modal} from 'react-bootstrap'
+import { useState,  useEffect } from 'react'
+
 import { addStudent } from '../../../redux/type'
 import { useDispatch, useSelector } from 'react-redux'
 import { getStudentAction } from '../../../redux/student';
-import DeleteIcon from '@mui/icons-material/Delete';//*
-import { deleteStudent } from '../../../redux/type';//*
-import cookie from 'react-cookies';
-import EditIcon from "@mui/icons-material/Edit";
-import { api } from '../../../redux/type';
-import Avatar from 'react-avatar';
+
 import './student.scss'
 
 export default function AddStudent() {
