@@ -33,11 +33,9 @@ import "./course.scss";
 
 export default function Course_Card(props) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(props.course, '++++++++++');
   const selector = useSelector(
     (state) => state.teacherTocourse.teacherIntoCourse
   );
@@ -71,7 +69,7 @@ export default function Course_Card(props) {
         courseImg: infoUpdate.courseImg,
       })
     }).then((res) => res.json().then((data) => { console.console(data) }));
-    console.log('infoooooooooo',infoUpdate)
+    
 
     handleClose();
   }
@@ -100,7 +98,7 @@ export default function Course_Card(props) {
             class="modal-dialog modal-lg"
           >
             <Modal.Header closeButton>
-              <Modal.Title>Course form</Modal.Title>
+              <Modal.Title>Update information Course</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form style={{ width: "70%", margin: "auto" }}>
@@ -148,7 +146,7 @@ export default function Course_Card(props) {
                     onChange={handelChange}
                   />
                 </FormGroup>
-                <Button color="success" onClick={updateUser}>
+                <Button color="warning" onClick={updateUser}>
                   update Course
                 </Button>
               </Form>
@@ -189,7 +187,6 @@ export default function Course_Card(props) {
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
-           
           </Accordion>
         </Card>
       </CardGroup>
