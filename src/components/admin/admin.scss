@@ -1,13 +1,12 @@
 .admin {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+   
 
     .admin-cards {
         display: flex;
-        gap: 90px;
         margin-top: 40px;
-
+        justify-content: space-around;
         .admin-teacher {
             :hover {
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
