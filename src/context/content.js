@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies';
 import { api } from '../redux/type';
@@ -11,7 +11,8 @@ export default function Content(props) {
     const [contentCategory, setContentCategory] = useState("")
     const [content, setContent] = useState([])
     const [show, setShow] = useState(true)
-  
+    const [names, setNames] = useState({})
+
     const addContent = async (e) => {
         e.preventDefault();
         console.log('1', contentTitle, '2', contentBody, '3', contentLink, '4', contentCategory)
@@ -28,30 +29,26 @@ export default function Content(props) {
             setContent([...content, response.data.Content]);
 
         })
-    
+
     };
 
+    // useEffect(()=>{
+
+    // })
     const updateContent = (id => {
         console.log('contentid', id);
-        // let updatedContent = content.map(ele => {
-        //   if (ele.id === id) {
-        //     return ele
-        //   }
-        // })
-        // console.log('1111222233333',updatedContent)
         let result = axios.patch(`${api}/content/${id}`, {
-            contentTitle: content.contentTitle,
-            contentBody: content.contentBody,
-            contentLink: content.contentLink,
+            contentTitle: contentTitle,
+            contentBody: contentBody,
+            contentLink: contentLink,
         }, {
             headers: { Authorization: `Bearer ${cookie.load("token")}` },
 
         }).then((result) => {
-            console.log('result for update',result.data)
+            console.log('result for update', result.data)
             setContent([...content, result.data.Content])
 
         }
-
         )
         setShow(false)
     })
@@ -80,7 +77,7 @@ export default function Content(props) {
         show,
         setShow,
 
-      
+
     }
     return (
         <contentContext.Provider value={state}>
