@@ -26,10 +26,10 @@ const Content = (props) => {
     })
   }
   useEffect(() => {
-    if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
+    // if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
       getContents()
 
-    }
+    // }
   }, [])
 
 
@@ -81,7 +81,7 @@ const Content = (props) => {
 
   return (
     <>
-      <When condition={cookie.load('role') === 'teacher'}>
+      <When condition={cookie.load('role') !== 'student'}>
 
         <form onSubmit={(e) =>
           contentC.addContent(e)
