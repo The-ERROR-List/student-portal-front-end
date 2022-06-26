@@ -10,6 +10,8 @@ export default function Content(props) {
     const [contentLink, setContentLink] = useState("")
     const [contentCategory, setContentCategory] = useState("")
     const [content, setContent] = useState([])
+    const [show, setShow] = useState(true)
+  
     const addContent = async (e) => {
         e.preventDefault();
         console.log('1', contentTitle, '2', contentBody, '3', contentLink, '4', contentCategory)
@@ -26,6 +28,7 @@ export default function Content(props) {
             setContent([...content, response.data.Content]);
 
         })
+    
     };
 
     const updateContent = (id => {
@@ -50,6 +53,7 @@ export default function Content(props) {
         }
 
         )
+        setShow(false)
     })
     const deleteContent = ((id, indx) => {
         console.log('sssssssss', id)
@@ -73,6 +77,9 @@ export default function Content(props) {
         contentBody,
         contentLink,
         contentCategory,
+        show,
+        setShow,
+
       
     }
     return (
