@@ -26,10 +26,10 @@ const Content = (props) => {
     })
   }
   useEffect(() => {
-    if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
+    // if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
       getContents()
 
-    }
+    // }
   }, [])
 
 
@@ -47,7 +47,7 @@ const Content = (props) => {
                     <p>{classContent.contentBody}</p>
                     <p>{classContent.contentLink}</p>
                     <p>{classContent.contentCategory}</p>
-                    <When condition={cookie.load('role') === 'teacher'}>
+                    <When condition={cookie.load('role') !== 'student'}>
                       <button onClick={() =>
                         contentC.deleteContent(classContent.id, indx)
 
@@ -57,7 +57,7 @@ const Content = (props) => {
                     </When>
 
                     <br />
-                    <When condition={cookie.load('role') === 'teacher'}>
+                    <When condition={cookie.load('role') !== 'student'}>
 
                       <Link to={`/updateContent/${classContent.id}`}>
                         <button >
@@ -81,7 +81,7 @@ const Content = (props) => {
 
   return (
     <>
-      <When condition={cookie.load('role') === 'teacher'}>
+      <When condition={cookie.load('role') !== 'student'}>
 
         <form onSubmit={(e) =>
           contentC.addContent(e)

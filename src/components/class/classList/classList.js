@@ -19,6 +19,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
 import {api} from '../../../redux/type';
+import { useParams } from "react-router-dom";
+
 import { Routes, Route } from "react-router-dom";
 
 function Submit() {
@@ -103,6 +105,8 @@ function Submit() {
   );
 }
 const ClassList = (props) => {
+  const params = useParams();
+
   const auth = useContext(AuthContext);
   const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
@@ -114,7 +118,7 @@ const ClassList = (props) => {
 
   const fetchStudents = async () => {
     let response = await axios.get(
-      `${api}/get-allStudents-inClass/${props.id}`,
+      `${api}/get-allStudents-inClass/${params.id}`,
       { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
     );
 
@@ -123,7 +127,7 @@ const ClassList = (props) => {
 
   useEffect(() => {
     fetchStudents()
-    console.log("paramssssss", props.id);
+    console.log("paramssssss", params.id);
   }, [state.toggleRender,
     state.toggleRenderTeacher]);
 
