@@ -11,9 +11,12 @@ import { StateContext } from "../../../context/State";
 import { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addCourseToTeacher } from "../../../redux/type";
-export default function AddTeacher() {
+export default function AddTeacherToCourse() {
     const state = useContext(StateContext);
     const dispatch = useDispatch();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [infoCourse, setInfoCourse] = useState({
         userName: "",
         courseName: "",
@@ -22,37 +25,23 @@ export default function AddTeacher() {
     const handelChange = (e) => {
         e.preventDefault();
         setInfoCourse({ ...infoCourse, [e.target.name]: e.target.value });
-        console.log({ [e.target.name]: e.target.value });
     };
 
     const handelSubmit = (e) => {
         e.preventDefault();
-        // console.log("infoCourse", infoCourse);
         dispatch({ type: addCourseToTeacher, payload: infoCourse });
-        state.handleClose();
+       handleClose();
     };
 
-    // const handleClick = (e) => {
-    //     e.preventDefault();
-    //     console.log();
-    // };
-
-    // useEffect(() => {
-    //     dispatch(getCourseAction());
-    // }, [handelSubmit]);
-
+    
     return (
         <>
-            <Button color="warning" onClick={state.handleShow}>
+            <Button color="warning" onClick={handleShow}>
                 Add Course To Teacher
             </Button>
-
-
-
-            
             <Modal
-                show={state.show}
-                onHide={state.handleClose}
+                show={show}
+                onHide={handleClose}
                 class="modal-dialog modal-lg"
             >
                 <Modal.Header closeButton>
@@ -79,7 +68,7 @@ export default function AddTeacher() {
                             <Input
                                 id="userName"
                                 name="userName"
-                                placeholder="userName..."
+                                placeholder="Teacher userName..."
                                 type="userName"
                                 onChange={handelChange}
                             />
@@ -90,7 +79,7 @@ export default function AddTeacher() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button color="danger" onClick={state.handleClose}>
+                    <Button color="danger" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>

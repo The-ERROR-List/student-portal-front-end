@@ -1,11 +1,8 @@
 import { addCourseToTeacher } from "./type";
 import { getAllCourseToTeacher } from "./type";
-
-
 import axios from 'axios';
 import cookie from 'react-cookies';
 import { api } from './type';
-
 export const initialState = {
 
     teacherIntoCourse: [],
