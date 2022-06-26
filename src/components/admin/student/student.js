@@ -1,5 +1,5 @@
 import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap'
-import { Modal } from 'react-bootstrap'
+import { Modal, Alert, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
 import { useState, useContext, useEffect } from 'react'
 import { StateContext } from "../../../context/State";
 import { addStudent } from '../../../redux/type'
@@ -10,6 +10,7 @@ import { deleteStudent } from '../../../redux/type';//*
 import cookie from 'react-cookies';
 import EditIcon from "@mui/icons-material/Edit";
 import { api } from '../../../redux/type';
+import Avatar from 'react-avatar';
 import './student.scss'
 function Submit() {
 
@@ -48,17 +49,11 @@ function Submit() {
 
     return (
         <>
-            {/* <Button
+            <Button
                 color="success"
                 onClick={state.handleShow}
             >
                 Add Student
-            </Button>
-            <Button
-                color="warning"
-
-            >
-                Update information
             </Button>
 
             <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
@@ -186,7 +181,7 @@ function Submit() {
                     </Button>
 
                 </Modal.Footer>
-            </Modal> */}
+            </Modal>
         </>
     );
 }
@@ -245,15 +240,41 @@ const Student = () => {
         });
     }
     return (
-        <div className="Student">
-            <h1>Student</h1>
+        <div className="admin-student">
+            <Alert style={{
+                fontSize: "30px",
+                marginTop: "20px",
+                marginRight: "60px",
+                marginLeft: "55px",
+            }} >
+                <div style={{ display: "flex" }}>
+                    <Breadcrumb listTag="div">
+                        <BreadcrumbItem
+                            href="/"
+                            tag="a"
+                        >
+                            Dashboard/
+                        </BreadcrumbItem>
+                    </Breadcrumb>
+                    <Breadcrumb listTag="div">
+                        <BreadcrumbItem
+                            href="/admin-student"
+                            tag="a"
+                        >
+                            Student
+                        </BreadcrumbItem>
+                    </Breadcrumb>
+                </div>
+            </Alert>
+            <div className='student-table' >
             <Submit />
             {students.map((student, i) => {
                 return (
                     <>
                         <Table hover className="Student-table">
-                            <thead>
+                            <thead className='headerTable'>
                                 <tr>
+                                    <th >Image Student</th>
                                     <th>
                                         First Name
                                     </th>
@@ -269,22 +290,24 @@ const Student = () => {
                                     <th>
                                         Major
                                     </th>
+                                    <th>Operations</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr key={i}>
+                                <tr className='content-table' key={i}>
+                                <td><Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'aqua'])} size={50} round="50%" name={student.firstName} /></td>
                                     <td>{student.firstName}</td>
                                     <td>{student.lastName}</td>
                                     <td>{student.userName}</td>
                                     <td>{student.nationality}</td>
                                     <td>{student.major}</td>
-                                    <DeleteIcon sx={{ fontSize: 50 }} onClick={() => deleteFromDB(student.id)} />
+                                    <DeleteIcon sx={{ fontSize: 67 }} onClick={() => deleteFromDB(student.id)} />
                                     <EditIcon
-                                        sx={{ fontSize: 50 }}
+                                        sx={{ fontSize: 67 }}
                                         onClick={() => {
                                             idUser(student.id)
-                                             state.handleShow()
+                                            state.handleShow()
                                         }}
                                     />
                                 </tr>
@@ -294,7 +317,7 @@ const Student = () => {
                         </Table>
                         <Button
                             color="success"
-                            // onClick={state.handleShow}
+                        // onClick={state.handleShow}
                         >
                             Add Student
                         </Button>
@@ -434,6 +457,7 @@ const Student = () => {
                     </>
                 );
             })}
+        </div>
         </div>
     )
 }
