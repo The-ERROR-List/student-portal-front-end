@@ -1,20 +1,21 @@
-.admin-teacher{
+.admin-teacher {
     display: flex;
     flex-direction: column;
-    
-    .teacher-table{
+
+    .teacher-table {
         margin-left: 30px;
         margin-right: 88px;
         // display: flex;
 
-        .headerTable{
+        .headerTable {
             font-size: 25px;
             font-weight: 700;
         }
-        .content-table{
-        font-size: 23px;
-        align-items: center;
-        margin-top: 5px;
+
+        .content-table {
+            font-size: 23px;
+            align-items: center;
+            margin-top: 5px;
         }
     }
-    }
+}

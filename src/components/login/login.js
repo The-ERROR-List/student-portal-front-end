@@ -30,15 +30,12 @@ export default function Login() {
         navigate('')
     }
     
-    function  handelSignOut(){
-        auth.signOut()
-        redirectHistory()
-    }
+   
     
     return (
         
         <When condition={!auth.isLoggedIn}>
-        <div className='body1'>
+                <div className='body1'>
 
               
 
@@ -142,7 +139,9 @@ export default function Login() {
                         </div>
                     </form>
                 </div>
-        </div>
+                </div>
+                
             </When>
+        
     );
 }

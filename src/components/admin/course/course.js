@@ -8,7 +8,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
-import { Modal } from "react-bootstrap";
+import { Modal,Alert,Breadcrumb,BreadcrumbItem } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +24,7 @@ function Submit() {
   const [infoCourse, setInfoCourse] = useState({
     courseName: "",
     courseGrade: "",
+    courseImg:""
   });
 
   const handelChange = (e) => {
@@ -41,7 +42,7 @@ function Submit() {
 
   useEffect(() => {
     dispatch(getCourseAction());
-  }, [handelChange]);
+  }, []);
 
   return (
     <>
@@ -115,6 +116,16 @@ function Submit() {
                 onChange={handelChange}
               />
             </FormGroup>
+            <FormGroup>
+              <Label for="courseImg">Course Img</Label>
+              <Input
+                id="courseImg"
+                name="courseImg"
+                placeholder="Image..."
+                type="text"
+                onChange={handelChange}
+              />
+            </FormGroup>
             <Button color="success" onClick={handelSubmit}>
               Add Course
             </Button>
@@ -136,14 +147,40 @@ const Course = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCourseAction());
-  }, [state.toggleRender,
-    state.toggleRenderTeacher]);
+  }, []);
  
   return (
-    <div className="course">
-      <h1>Course</h1>
+    <div className="admin-coures">
+      <Alert style={{
+        fontSize: "30px",
+        marginTop: "20px",
+        marginRight: "60px",
+        marginLeft: "55px",
+      }} >
+        <div style={{ display: "flex" }}>
+          <Breadcrumb listTag="div">
+            <BreadcrumbItem
+              href="/"
+              tag="a"
+            >
+              Dashboard/
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Breadcrumb listTag="div">
+            <BreadcrumbItem
+              href="/admin-course"
+              tag="a"
+            >
+              Course
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </div>
+
+      </Alert>
+      <div className="course-cards">
+
       {/* <Submit /> */}
-      <AddTeacher />
+      {/* <AddTeacher /> */}
       {/* <Table hover className="course-table"> */}
       {/* <thead>
           <tr>
@@ -167,6 +204,7 @@ const Course = () => {
       })}
       {/* </tbody> */}
       {/* </Table> */}
+      </div>
     </div>
   );
 };
