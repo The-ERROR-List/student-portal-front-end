@@ -34,3 +34,6 @@ export const getAllCourseToTeacher = 'get_allCourse_teacher';
 
 //type to student view
 export const getClassesForStudents = 'get_classes_for_students';
+
+//type for teacher id
+export const getTeacherId = 'get_teacher_id';

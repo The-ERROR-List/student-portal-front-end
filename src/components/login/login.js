@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/Auth";
 import { useContext, useState } from "react";
 import { When } from "react-if";
 import { useNavigate } from "react-router-dom";
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import { fontWeight } from "@mui/system";
 export default function Login() {
 
     const navigate = useNavigate();
@@ -35,24 +37,29 @@ export default function Login() {
     }
     
     return (
-        <div id='body'>
+        <div className='body1'>
 
             <When condition={!auth.isLoggedIn}>
 
-                <div id="image"></div>
+              
 
                 <div id="container">
-                    <span
+                
+                    <div 
                         style={{
                             display: "flex",
                             justifyContent: "center",
                             marginBottom: "30px",
                             fontSize: "35px",
-                            color: "white"
+                            color: "white",
+                            fontWeight:"bold",
+                            marginLeft:"5px"
                         }}
-                    >
-                        Sign In
-                    </span>
+                    > 
+                    <span > <SchoolOutlinedIcon sx={{ fontSize: 60 }} /> </span>
+                   
+                     <span style={{fontSize:"35px"}}>Sign In</span> 
+                    </div>
                     <hr style={{ color: "white", marginBottom: "15px" }} />
                     <form onSubmit={logInHandler}>
                         <div class="row">
@@ -92,11 +99,11 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex",marginLeft:"7px" }}>
                             <span >
                                 <input
                                     style={{
-                                        marginTop: "6px",
+                                        marginTop: "25px",
                                         width: "25px",
                                         height: "20px",
                                         marginRight: "10px",

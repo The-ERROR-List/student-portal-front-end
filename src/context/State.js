@@ -7,6 +7,7 @@ export const StateContext = React.createContext();
 export default function State(props) {
     const [selectComponent, setSelectCategory] = useState("");
     const [show, setShow] = useState(false);
+    const [updateShow, setUpdateShow] = useState(false);
     const [toggleRender, setToggleRender] = useState(false);
     const [toggleRenderTeacher, setToggleRenderTeacher] = useState(true);
     const [courses, setCourses] = useState([]);
@@ -14,6 +15,13 @@ export default function State(props) {
         setSelectCategory(component);
         console.log(selectComponent);
     };
+
+function handleUpdateShow() {
+    setUpdateShow(true);
+}
+function handleUpdateClose() {
+    setUpdateShow(false);
+}
 
     function effect(){
         setToggleRender(true)
