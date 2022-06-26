@@ -36,6 +36,12 @@ export default function Course_Card(props) {
     <div>
       <CardGroup style={{ width: "420px" }}>
         <Card>
+        <CardImg
+                top
+                src={props.course.courseImg}
+                
+                alt={"Course"}
+              />
           <CardBody>
             <CardTitle tag="h5" style={{ textAlign: "center" }}>
               {props.course.courseName}

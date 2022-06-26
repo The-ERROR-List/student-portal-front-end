@@ -78,7 +78,8 @@ export function createCourse(payload) {
     },
     body: JSON.stringify({
       courseName: payload.courseName,
-      courseGrade: payload.courseGrade
+      courseGrade: payload.courseGrade,
+      courseImg: payload.courseImg
     })
   }).then((response) => {
     console.log("response", response.json());
