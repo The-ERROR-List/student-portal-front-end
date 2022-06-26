@@ -6,7 +6,6 @@ import { useContext, useState } from "react";
 import { When } from "react-if";
 import { useNavigate } from "react-router-dom";
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import { fontWeight } from "@mui/system";
 export default function Login() {
 
     const navigate = useNavigate();
@@ -37,9 +36,9 @@ export default function Login() {
     }
     
     return (
+        
+        <When condition={!auth.isLoggedIn}>
         <div className='body1'>
-
-            <When condition={!auth.isLoggedIn}>
 
               
 
@@ -143,10 +142,7 @@ export default function Login() {
                         </div>
                     </form>
                 </div>
-            </When>
-            <When condition={auth.isLoggedIn}>
-                <Button onClick={handelSignOut} style={{ marginLeft: 500 }}>Sign Out</Button>
-            </When>
         </div>
+            </When>
     );
 }
