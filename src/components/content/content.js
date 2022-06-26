@@ -23,6 +23,7 @@ const Content = (props) => {
   const [contentLink, setContentLink] = useState("")
   const [contentCategory, setContentCategory] = useState("")
   const [content, setContent] = useState([])
+  const [names,setNames]=useState({})
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('1', contentTitle, '2', contentBody, '3', contentLink, '4', contentCategory)
@@ -39,6 +40,11 @@ const Content = (props) => {
       setContent([...content, response.data.Content]);
     })
   };
+  const handelChangeforUpdate=(e)=>{
+    e.preventDefault()
+    setNames({...names,[e.target.name]:e.target.value})
+    console.log(names)
+  }
 
 
   const getContents = () => {
@@ -57,6 +63,7 @@ const Content = (props) => {
   }, [])
 
   const deleteContent = ((id, indx) => {
+    console.log('sssssssss',id)
     axios.delete(`${api}/content/${id}`, {
       headers: { Authorization: `Bearer ${cookie.load("token")}` },
     }).then(
@@ -73,15 +80,14 @@ const Content = (props) => {
     })
     console.log('1111222233333',updatedContent.id)
     let result = axios.patch(`${api}/content/${updatedContent.id}`, {
-      contentTitle: contentTitle,
-      contentBody: contentBody,
-      contentLink: contentLink,
+      contentTitle: names.contentTitle,
+      contentBody: names.contentBody,
+      contentLink: names.contentLink,
     }, {
       headers: { Authorization: `Bearer ${cookie.load("token")}` },
 
     }).then(
       setContent([...content, result.data.Content])
-
     )
 })
 
@@ -123,18 +129,23 @@ function ShowContent() {
                     <Modal.Title>Edit Content Model</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <Form style={{ width: "70%", margin: "auto" }} onSubmit={()=>updateContent(classContent.id, indx)}>
+                    <Form style={{ width: "70%", margin: "auto" }}>
                       <Row>
                         <Col md={12}>
                           <FormGroup>
                             <Label for="contentTitle">content Title</Label>
                             <Input
+
                               id="contentTitle"
                               name="contentTitle"
-                              value={contentTitle}
+                              // value={contentTitle}
                               placeholder="content Title..."
                               type="text"
-                              onChange={(e) => setContentTitle(e.target.value)}
+                              onChange={(e)=>{
+                                setContentTitle(e.target.value)
+                                 handelChangeforUpdate(e) 
+                              }}
+                              
                             />
                           </FormGroup>
                         </Col>
@@ -146,21 +157,23 @@ function ShowContent() {
                           name="contentBody"
                           placeholder="content Body..."
                           type="contentBody"
-                          value={contentBody}
-
-                          onChange={(e) => setContentBody(e.target.value)} />
+                          // value={contentBody}
+                          onChange={(e)=>{
+                            setContentBody(e.target.value)
+                          }}                           />
                         <Label for="contentLink">content Link</Label>
                         <Input
                           id="contentLink"
                           name="contentLink"
                           placeholder="content Link..."
                           type="contentLink"
-                          value={contentLink}
-
-                          onChange={(e) => setContentLink(e.target.value)} />
+                          onChange={(e)=>{
+                            setContentLink(e.target.value)
+                          }}                       
+                          />
 
                       </FormGroup>
-                      <Button color="success" type="submit">
+                      <Button color="success" onClick={()=>updateContent(classContent.id, indx)} >
                         update Content
                       </Button>
                     </Form>
