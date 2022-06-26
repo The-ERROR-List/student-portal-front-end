@@ -75,6 +75,7 @@ export default function Auth(props) {
         cookie.remove('id');//teacher and student 
         // cookie.remove('userid')//all users
         cookie.remove('role')
+        cookie.remove('username')
     }
     const validToken = (user) => {
         if (user) {
@@ -83,6 +84,7 @@ export default function Auth(props) {
             if (validUser) {
                 setUser(user.userInfo);
                 setIsLoggedIn(true);
+                cookie.save('username',user.userInfo.userName)
                 cookie.save('token', user.userInfo.token);
                 console.log(user)
                 if(user.userInfo.role === "teacher" || user.userInfo.role==="student"){
