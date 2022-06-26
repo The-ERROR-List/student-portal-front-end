@@ -27,9 +27,9 @@ function Home() {
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
-            <Route path="/class/:id" element={<Class/>} />
+            <Route path="/class/:id/*" element={<Class/>} />
             <Route path="/adminClass/:id/*" element={<Class />} />
-            <Route path="/class-student/:id" element={<Class />} />
+            <Route path="/class-student/:id/*" element={<Class />} />
             <Route path="/admin-teacher" element={<AdminTeacher />} />
             <Route path="/admin-student" element={<AdminStudent />} />
             <Route path="/admin-course" element={<AdminCourse />} />
