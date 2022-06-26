@@ -1,33 +1,33 @@
 import ClassList from './classList/classList'
 import ClassTool from "./classTool/classTool";
 import Content from './content/content';
+import Announcement from './announcement/announcement';
 import './class.scss'
 import { useParams } from "react-router-dom";
-import { When } from 'react-if';
-import cookie from 'react-cookies';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import Nav from './navBar/nav'
 const Class = () => {
   const params = useParams();
-  console.log('params', params.id)
+  console.log('params', params)
   return (
-    <div id="classcomp">
-      {/* <When condition={cookie.load('role')==="teacher"}> */}
-      <ClassTool />
-
-      {/* </When> */}
-      <ClassList id={params.id} />
-      {/* <When condition={cookie.load('role')==='teacher'}> */}
-      {/* <Content id={params.id} /> */}
-      {/* </When> */}
-
-      <Link to={`/content-class/${params.id}`}>
-        go to content
-      </Link>
-
-
+    <div className="classcomp">
+      <div className="header">
+        <Link to={`*`}><h1 id='classname' >ClassName</h1></Link>
+      </div>
+      <div className="navs">
+        <Nav id={params.id} />
+      </div>
+      <Outlet />
+      <div className="class-render" style={{ margin: "70px 0 0 0" }}>
+        <Routes>
+          <Route path='*' element={<Announcement id={params.id}/>}/>
+          <Route path="content-class/:id" element={<Content />} />
+          <Route path="classList/:id" element={<ClassList />} />
+          <Route path="ClassTool/:id" element={<ClassTool />} />
+        </Routes>
+      </div>
     </div>
-
   );
 };
 export default Class;

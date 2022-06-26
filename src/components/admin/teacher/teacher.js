@@ -11,8 +11,8 @@ import {
   BreadcrumbItem
 } from "reactstrap";
 import { Alert } from 'react-bootstrap'
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { api } from '../../../redux/type';
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
