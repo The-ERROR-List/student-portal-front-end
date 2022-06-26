@@ -52,7 +52,7 @@ function Submit() {
       <Button color="success" onClick={state.handleShow}>
         Add Class
       </Button>
-      <Button color="warning">add course </Button>
+  
       <Modal
         show={state.show}
         onHide={state.handleClose}
