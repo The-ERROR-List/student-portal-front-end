@@ -211,7 +211,6 @@ const Student = () => {
 
     function updateUser(e) {
         e.preventDefault();
-        let items = { ...infoUpdate };
         fetch(`${api}/student/${ids.id}`, {
             method: "PUT",
             headers: {
@@ -267,197 +266,181 @@ const Student = () => {
                 </div>
             </Alert>
             <div className='student-table' >
-            <Submit />
-            {students.map((student, i) => {
-                return (
-                    <>
-                        <Table hover className="Student-table">
-                            <thead className='headerTable'>
-                                <tr>
-                                    <th >Image Student</th>
-                                    <th>
-                                        First Name
-                                    </th>
-                                    <th>
-                                        Last Name
-                                    </th>
-                                    <th>
-                                        Username
-                                    </th>
-                                    <th>
-                                        Nationality
-                                    </th>
-                                    <th>
-                                        Major
-                                    </th>
-                                    <th>Operations</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <Submit />
 
-                                <tr className='content-table' key={i}>
-                                <td><Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'aqua'])} size={50} round="50%" name={student.firstName} /></td>
-                                    <td>{student.firstName}</td>
-                                    <td>{student.lastName}</td>
-                                    <td>{student.userName}</td>
-                                    <td>{student.nationality}</td>
-                                    <td>{student.major}</td>
-                                    <DeleteIcon sx={{ fontSize: 67 }} onClick={() => deleteFromDB(student.id)} />
-                                    <EditIcon
-                                        sx={{ fontSize: 67 }}
-                                        onClick={() => {
-                                            idUser(student.id)
-                                            state.handleShow()
-                                        }}
-                                    />
-                                </tr>
-
-
-                            </tbody>
-                        </Table>
-                        <Button
-                            color="success"
-                        // onClick={state.handleShow}
-                        >
-                            Add Student
-                        </Button>
-                        <Button
-                            color="warning"
-
-                        >
-                            Update information
-                        </Button>
-
-                        <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
-                            <Modal.Header closeButton>
-                                <Modal.Title>Student form</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <Form style={{ width: "70%", margin: "auto" }} >
-
-                                    <Row>
-                                        <Col md={6}>
-                                            <FormGroup>
-                                                <Label for="userName">userName</Label>
-                                                <Input
-                                                    id="userName"
-                                                    name="userName"
-                                                    placeholder="userName..."
-                                                    type="userName"
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                            <FormGroup>
-                                                <Label for="exampleEmail">Email</Label>
-                                                <Input
-                                                    id="email"
-                                                    name="email"
-                                                    // value="email"
-                                                    placeholder="Email..."
-                                                    type="email"
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                        <Col md={6}>
-                                            <FormGroup>
-                                                <Label for="examplePassword">Password</Label>
-                                                <Input
-                                                    id="examplePassword"
-                                                    name="password"
-                                                    placeholder="password placeholder"
-                                                    type="password"
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col md={6}>
-                                            <FormGroup>
-                                                <Label for="firstName">First Name</Label>
-                                                <Input
-                                                    id="firstName"
-                                                    name="firstName"
-                                                    placeholder="First Name..."
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                            <FormGroup>
-                                                <Label for="lastName">Last Name </Label>
-                                                <Input
-                                                    id="lastName"
-                                                    name="lastName"
-                                                    placeholder="Last Name...."
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col md={3}>
-                                            <FormGroup>
-                                                <Label for="role">role</Label>
-                                                <Input
-                                                    id="role"
-                                                    name="role"
-                                                    placeholder="role"
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                        <Col md={3}>
-                                            <FormGroup>
-                                                <Label for="gender">gender</Label>
-                                                <Input
-                                                    id="gender"
-                                                    name="gender"
-                                                    placeholder="gender"
-                                                    onChange={handelChange}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                        <Col md={6}>
-                                            <FormGroup>
-                                                <Label for="nationality">nationality</Label>
-                                                <Input
-                                                    id="nationality"
-                                                    name="nationality"
-                                                    placeholder="nationality"
-                                                    onChange={handelChange}
-
-                                                />
-                                            </FormGroup>
-                                        </Col>
-                                    </Row>
-
+                <Table hover className="Student-table">
+                    <thead className='headerTable'>
+                        <tr>
+                            <th >Image Student</th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Username
+                            </th>
+                            <th>
+                                Nationality
+                            </th>
+                            <th>
+                                Major
+                            </th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {students.map((student, i) => {
+                            return (
+                                <>
+                                    <tr className='content-table' key={i}>
+                                        <td><Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'aqua'])} size={50} round="50%" name={student.firstName} /></td>
+                                        <td>{student.firstName}</td>
+                                        <td>{student.lastName}</td>
+                                        <td>{student.userName}</td>
+                                        <td>{student.nationality}</td>
+                                        <td>{student.major}</td>
+                                        <DeleteIcon sx={{ fontSize: 67 }} onClick={() => deleteFromDB(student.id)} />
+                                        <EditIcon
+                                            sx={{ fontSize: 67 }}
+                                            onClick={() => {
+                                                idUser(student.id)
+                                                state.handleShow()
+                                            }}
+                                        />
+                                    </tr>
+                                </>
+                            );
+                        })}
+                    </tbody>
+                </Table>
+                <Modal show={state.show} onHide={state.handleClose} class="modal-dialog modal-lg">
+                    <Modal.Header closeButton>
+                        <Modal.Title>Student form</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form style={{ width: "70%", margin: "auto" }} >
+                            <Row>
+                                <Col md={6}>
                                     <FormGroup>
-                                        <Label for="major">major</Label>
+                                        <Label for="userName">userName</Label>
                                         <Input
-                                            id="major"
-                                            name="major"
-                                            placeholder="major"
+                                            id="userName"
+                                            name="userName"
+                                            placeholder="userName..."
+                                            type="userName"
                                             onChange={handelChange}
                                         />
                                     </FormGroup>
+                                    <FormGroup>
+                                        <Label for="exampleEmail">Email</Label>
+                                        <Input
+                                            id="email"
+                                            name="email"
+                                            placeholder="Email..."
+                                            type="email"
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="examplePassword">Password</Label>
+                                        <Input
+                                            id="examplePassword"
+                                            name="password"
+                                            placeholder="password placeholder"
+                                            type="password"
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="firstName">First Name</Label>
+                                        <Input
+                                            id="firstName"
+                                            name="firstName"
+                                            placeholder="First Name..."
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for="lastName">Last Name </Label>
+                                        <Input
+                                            id="lastName"
+                                            name="lastName"
+                                            placeholder="Last Name...."
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={3}>
+                                    <FormGroup>
+                                        <Label for="role">role</Label>
+                                        <Input
+                                            id="role"
+                                            name="role"
+                                            placeholder="role"
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col md={3}>
+                                    <FormGroup>
+                                        <Label for="gender">gender</Label>
+                                        <Input
+                                            id="gender"
+                                            name="gender"
+                                            placeholder="gender"
+                                            onChange={handelChange}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="nationality">nationality</Label>
+                                        <Input
+                                            id="nationality"
+                                            name="nationality"
+                                            placeholder="nationality"
+                                            onChange={handelChange}
 
-                                    <Button color="success" onClick={updateUser}>
-                                        Update Student
-                                    </Button>
-                                </Form>
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
 
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button color="danger" onClick={state.handleClose}>
-                                    Close
-                                </Button>
+                            <FormGroup>
+                                <Label for="major">major</Label>
+                                <Input
+                                    id="major"
+                                    name="major"
+                                    placeholder="major"
+                                    onChange={handelChange}
+                                />
+                            </FormGroup>
 
-                            </Modal.Footer>
-                        </Modal>
-                    </>
-                );
-            })}
-        </div>
+                            <Button color="success" onClick={updateUser}>
+                                Update Student
+                            </Button>
+                        </Form>
+
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button color="danger" onClick={state.handleClose}>
+                            Close
+                        </Button>
+
+                    </Modal.Footer>
+                </Modal>
+
+            </div>
         </div>
     )
 }
