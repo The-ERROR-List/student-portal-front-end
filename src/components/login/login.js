@@ -30,10 +30,7 @@ export default function Login() {
         navigate('')
     }
     
-    // function  handelSignOut(){
-    //     auth.signOut()
-    //     redirectHistory()
-    // }
+   
     
     return (
         
@@ -143,9 +140,7 @@ export default function Login() {
                     </form>
                 </div>
                 </div>
-                {/* <When condition={auth.isLoggedIn}>
-                    <Button onClick={handelSignOut} style={{ marginLeft: 500 }}>Sign Out</Button>
-                </When> */}
+                
             </When>
         
     );

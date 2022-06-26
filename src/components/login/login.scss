@@ -5,15 +5,15 @@
   
 }
 .body1{
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
   overflow-y: none; 
   background-color: #004d40;
   height: 100vh;
 }   
 
 div::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  display: none; 
   
 }
 
@@ -45,12 +45,12 @@ label{
 
 
 input[type=email]:focus, input[type=password]:focus {
-  background-color: #004d40;
+  background-color: #ebf3f2;
   opacity: .7;
   outline: none;
 }
 
-/* Set a style for the submit button */
+
 #btn {
  
  border-radius: 10px;
@@ -70,7 +70,7 @@ input[type=email]:focus, input[type=password]:focus {
 }
 
 .input-container {
-  display: -ms-flexbox; /* IE10 */
+  display: -ms-flexbox; 
   display: flex;
   width: 100%;
   margin: 5px 0 15px 0;

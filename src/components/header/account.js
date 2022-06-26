@@ -3,13 +3,8 @@ import { Offcanvas, Button } from 'react-bootstrap/';
 import { When } from 'react-if'
 import { AuthContext } from "../../context/Auth";
 import { useNavigate } from "react-router-dom";
-
-
-
-
 import './header.scss'
 import { useState, useContext } from 'react';
-
 export default function Account() {
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
@@ -24,7 +19,6 @@ export default function Account() {
         auth.signOut()
         redirectHistory()
     }
-
     return (
         <>
             <AccountCircleOutlinedIcon onClick={handleShow} fontSize="large" sx={{ fontSize: 30 }} color="white" /><p>Account</p>

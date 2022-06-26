@@ -1,65 +1,72 @@
-import {
-    Form,
-    Row,
-    Col,
-    FormGroup,
-    Label,
-    Input,
-    Button,
-} from "reactstrap";
-import { Modal } from "react-bootstrap";
-import {  useState } from "react";
+import { Table, Form, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap'
+import { Modal, Alert, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
+import { useState, useContext, useEffect } from 'react'
+import { StateContext } from "../../../context/State";
+import { addStudent } from '../../../redux/type'
+import { useDispatch, useSelector } from 'react-redux'
+import { getStudentAction } from '../../../redux/student';
+import DeleteIcon from '@mui/icons-material/Delete';//*
+import { deleteStudent } from '../../../redux/type';//*
+import cookie from 'react-cookies';
+import EditIcon from "@mui/icons-material/Edit";
+import { api } from '../../../redux/type';
+import Avatar from 'react-avatar';
+import './student.scss'
 
-import { useDispatch } from "react-redux";
-import { addTeacher } from "../../../redux/type";
 export default function AddStudent() {
-    const dispatch = useDispatch();
+
+    // const state = useContext(StateContext)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [infoTeacher, setInfoTeacher] = useState({
+
+    const dispatch = useDispatch();
+    const [infoStudent, setInfoStudent] = useState({
         userName: "",
         email: "",
         password: "",
-        role: "teacher",
+        role: "student",
         firstName: "",
         lastName: "",
         gender: "",
         nationality: "",
-        department: "",
+        major: "",
     });
 
     const handelChange = (e) => {
         e.preventDefault();
-        setInfoTeacher({ ...infoTeacher, [e.target.name]: e.target.value });
+        setInfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
     };
 
-    const handelSubmit = (e) => {
+    function handelSubmit(e) {
         e.preventDefault();
-        dispatch({ type: addTeacher, payload: infoTeacher });
-        handleClose();
+        dispatch({ type: addStudent, payload: infoStudent })
+        handleClose()
     };
+
+    useEffect(() => {
+        dispatch(getStudentAction());
+    }, [handelSubmit]);
+
+
 
     return (
         <>
-            <Button color="success" onClick={handleShow}>
-                Add Teacher
+            <Button
+                color="success"
+                onClick={handleShow}
+            >
+                Add Student
             </Button>
 
-            <Modal
-                show={show}
-                onHide={handleClose}
-                class="modal-dialog modal-lg"
-            >
+            <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">
                 <Modal.Header closeButton>
-                    <Modal.Title>Teacher form</Modal.Title>
+                    <Modal.Title>Student form</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form
-                        onSubmit={handelSubmit}
-                        style={{ width: "70%", margin: "auto" }}
-                    >
+                    <Form onSubmit={handelSubmit} style={{ width: "70%", margin: "auto" }} >
+
                         <Row>
                             <Col md={6}>
                                 <FormGroup>
@@ -77,7 +84,6 @@ export default function AddStudent() {
                                     <Input
                                         id="email"
                                         name="email"
-                                        // value="email";
                                         placeholder="Email..."
                                         type="email"
                                         onChange={handelChange}
@@ -120,15 +126,14 @@ export default function AddStudent() {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={3}>
+                            <Col md={6}>
                                 <FormGroup>
                                     <Label for="role">role</Label>
                                     <Input
                                         id="role"
                                         name="role"
                                         placeholder="role"
-                                        onChange={handelChange}
-                                        value={infoTeacher.role}
+                                        value={infoStudent.role}
                                     />
                                 </FormGroup>
                             </Col>
@@ -151,28 +156,33 @@ export default function AddStudent() {
                                         name="nationality"
                                         placeholder="nationality"
                                         onChange={handelChange}
+
                                     />
                                 </FormGroup>
                             </Col>
                         </Row>
 
                         <FormGroup>
-                            <Label for="department">department</Label>
+                            <Label for="major">major</Label>
                             <Input
-                                id="department"
-                                name="department"
-                                placeholder="department"
+                                id="major"
+                                name="major"
+                                placeholder="major"
                                 onChange={handelChange}
                             />
                         </FormGroup>
 
-                        <Button color="success">Add Teacher</Button>
+                        <Button color="success" onClick={handelSubmit}>
+                            Add Student
+                        </Button>
                     </Form>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button color="danger" onClick={handleClose}>
                         Close
                     </Button>
+
                 </Modal.Footer>
             </Modal>
         </>

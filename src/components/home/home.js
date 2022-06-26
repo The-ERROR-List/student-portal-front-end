@@ -17,7 +17,7 @@ function Home() {
     const auth = useContext(AuthContext);
   
     return (
-      <div className="main">
+      <div className="home">
     
   
           <When condition={auth.isLoggedIn}>
