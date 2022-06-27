@@ -14,7 +14,7 @@ export const initialState = {
 
 export default function addStudentInClassReducer(state = initialState, action) {
   let { type, payload } = action;
-
+console.log("+++++++++",payload);
   switch (type) {
     case addStudentInClass:
     
