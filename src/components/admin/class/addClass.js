@@ -16,10 +16,6 @@ import {
   import { useDispatch } from "react-redux";
   import { getClassAction } from "../../../redux/class";
   import { addClass } from "../../../redux/type";
-
-
-
-
 export default function Submit() {
     const dispatch = useDispatch();
     const state = useContext(StateContext);
