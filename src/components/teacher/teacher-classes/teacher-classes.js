@@ -1,31 +1,31 @@
 // import ClassList  from './classList/classList'
-import {api} from '../../../redux/type'
 import axios from 'axios';
 import cookie from 'react-cookies';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg } from "reactstrap";
+import { api } from '../../../redux/type'
 
 import { Link } from 'react-router-dom';
 const TeacherClasses = (props) => {
-    const [classes,setClasses] =useState([])
+    const [classes, setClasses] = useState([])
     let response;
 
     let params = useParams()
     const fetchItems = async () => {
 
-         response = await axios.get(
-            `http://localhost:3001/get-all-classes-for-course-for-teacher/${params.id}/${cookie.load("id")}`,
+        response = await axios.get(
+            `${api}/get-all-classes-for-course-for-teacher/${params.id}/${cookie.load("id")}`,
             { headers: { Authorization: `Bearer ${cookie.load("token")}` }, }
         );
         console.log(response.data.classes)
-        setClasses(...classes,response.data)
+        setClasses(...classes, response.data)
     };
 
     useEffect(() => {
-        if(cookie.load('role') === 'teacher'){
+        if (cookie.load('role') === 'teacher') {
             fetchItems()
-            
+
         }
         console.log('params', params.id);
         console.log('idteacher', cookie.load('id'))
@@ -40,8 +40,8 @@ const TeacherClasses = (props) => {
 
                 {
                     classes.classes ?
-                    classes.classes.map((classforTeacher, index) => {
-                        {console.log(classforTeacher.id)}
+                        classes.classes.map((classforTeacher, index) => {
+                            { console.log(classforTeacher.id) }
                             return (
                                 <>
                                     <Link to={`/class/${classforTeacher.id}`}>
@@ -69,7 +69,7 @@ const TeacherClasses = (props) => {
 
             </Row>
         </div>
-        
+
     )
 };
 export default TeacherClasses;
