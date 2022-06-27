@@ -48,12 +48,14 @@ export default function Course_Card(props) {
     e.preventDefault();
     setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
   };
+
   function idUser(id) {
     setId({
       ...ids,
       id: id,
     });
   }
+
   function updateUser(e) {
     e.preventDefault();
     fetch(`${api}/courses/${ids.id}`, {
@@ -73,7 +75,10 @@ export default function Course_Card(props) {
 
     handleClose();
   }
+
+
   const state = useContext(StateContext);
+
 
   const deleteFromDB = (idToDelete) => {
     dispatch({ type: deleteCourse, payloadDelete: idToDelete })
@@ -143,6 +148,7 @@ export default function Course_Card(props) {
                     name="courseImg"
                     placeholder="Image..."
                     type="text"
+                    
                     onChange={handelChange}
                   />
                 </FormGroup>

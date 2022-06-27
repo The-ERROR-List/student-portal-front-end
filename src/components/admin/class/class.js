@@ -26,6 +26,7 @@ function Submit() {
     courseName: "",
     userName: "",
     classTime: "",
+    classImage:""
   });
 
 
@@ -33,20 +34,22 @@ function Submit() {
   const handelChange = (e) => {
     e.preventDefault();
     setInfoClass({ ...infoClass, [e.target.name]: e.target.value });
-    // console.log({ [e.target.name]: e.target.value });
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    // console.log("infoClass", infoClass);
     dispatch({ type: addClass, payload: infoClass });
     state.handleClose();
   };
 
+  
   useEffect(() => {
-    dispatch(getClassAction());
-  }, [handelChange]);
-
+    const interval = setInterval(() => {
+        dispatch(getClassAction());
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+  
   return (
     <>
       <Button color="success" onClick={state.handleShow}>
@@ -96,7 +99,16 @@ function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
-
+                <FormGroup>
+                  <Label for="classImage">Image Class</Label>
+                  <Input
+                    id="classImage"
+                    name="classImage"
+                    placeholder="classImage..."
+                    type="classTime"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
                 <FormGroup>
                   <Label for="classTime">Class Time</Label>
                   <Input
@@ -150,9 +162,7 @@ const Class = () => {
         <tbody>
           {
             classes.map((classInfo, i) => {
-              {/* console.log(classInfo,"2222222") */}
               return (
-
                 <tr key={i}>
                   <td>
                   <Link to={`/adminClass/${classInfo.id}`}>{classInfo.className}</Link>

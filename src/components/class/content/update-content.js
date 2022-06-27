@@ -22,17 +22,7 @@ export default function UpdateContents(props) {
 
   return (
     <>
-      {/* <Modal
-        show={show}
-        onHide={handleClose}
-        class="modal-dialog modal-lg"
-      > */}
-      
-        {/* <Modal.Header closeButton>
-          <Modal.Title>Edit Content Model</Modal.Title>
-        </Modal.Header>
-        <Modal.Body> */}
-       
+     
           <Form  onSubmit={() => contentC.updateContent(params.id)} style={{ width: "70%", margin: "auto" }}>
             <Row>
               <Col md={12}>
