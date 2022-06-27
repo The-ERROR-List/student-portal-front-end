@@ -7,7 +7,6 @@ import cookie from 'react-cookies';
 import { api } from './type';
 import { createClass } from './action';
 import {deleteClassesById} from './action';
-import { useSelector } from "react-redux";
 
 
 export const initialState = {

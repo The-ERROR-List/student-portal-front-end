@@ -69,7 +69,7 @@ export default function Course() {
                         }
                     </When> */}
                     
-                    <When condition={cookie.load('role') === 'teacher'}>
+                    {/* <When condition={cookie.load('role') === 'teacher'}>
                         {
                             state.courses.TeacherCourses ?
                                 state.courses.TeacherCourses.map((course, i) => {
@@ -83,7 +83,7 @@ export default function Course() {
                                     )
                                 }) : null
                         }
-                    </When>
+                    </When> */}
                 </Offcanvas.Body>
             </Offcanvas>
         </>

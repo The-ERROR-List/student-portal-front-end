@@ -6,35 +6,22 @@ import { Modal, Button, FormGroup } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { When } from 'react-if';
 import JoinChat from "../../chat/joinChat"
-
-const ClassTool = () => {
+import { zoomContext } from '../../../context/zoom'
+const ClassTool = (props) => {
     const state = useContext(StateContext)
-    const [meeting, setMeeting] = useState({})
-    const [joinUrl, setJoinUrl] = useState("")
+    const zoom = useContext(zoomContext)
     useEffect(() => {
-        console.log('11111', meeting.Meeting)
-        // seturl(meeting.Meeting['join_url'])
-        // console.log('url',meeting.Meeting['join_url'])
-    }, [meeting])
+        console.log('11111', zoom.meeting.Meeting)
+        console.log(zoom.joinUrl)
+
+    }, [zoom.meeting])
     return (
         <div>
             <h1>ClassTool</h1>
             <When condition={cookie.load('role') === 'teacher'}>
 
                 <Button variant="primary" size="lg" onClick={() => {
-
-                    // console.log('clicked me')
-                    axios.get(`${api}/createMeeting`, {
-                        headers: { Authorization: `Bearer ${cookie.load("token")}` },
-
-                    }).then(response => {
-                        setMeeting(response.data)
-                        setJoinUrl(response.data.Meeting.join_url)
-
-                        // seturl(response.data.Meeting.join_url)
-
-
-                    })
+                    zoom.CreateMeeting()
                     state.handleShow()
                 }}>
                     Create Zoom Meeting
@@ -49,13 +36,11 @@ const ClassTool = () => {
                     </Modal.Header>
                     <Modal.Body>
                         {
-
-                            meeting.Meeting ?
-                                //  meeting.Meeting.start_url:null
+                            zoom.meeting.Meeting ?
                                 <button onClick={() => {
-                                    console.log('url', meeting.Meeting.join_url)
+                                    console.log('url', zoom.meeting.Meeting.join_url)
                                 }}>
-                                    <a href={meeting.Meeting.start_url}>
+                                    <a href={zoom.meeting.Meeting.start_url}>
                                         open zoom link
                                     </a>
                                 </button>
@@ -86,18 +71,18 @@ const ClassTool = () => {
                     <Modal.Body>
                         {
 
-                            joinUrl ?
+                            // zoom.joinUrl ?
                                 //  meeting.Meeting.start_url:null
                                 <button onClick={() => {
-                                    console.log(joinUrl)
+                                    console.log(zoom.joinUrl)
                                 }}>
-                                    <a href={joinUrl}>
+                                    <a href={zoom.joinUrl}>
                                         open zoom link
                                     </a>
                                 </button>
-                                : <p>
-                                    no Meetings Available
-                                </p>
+                                // : <p>
+                                //     no Meetings Available
+                                // </p>
                         }
                     </Modal.Body>
                     <Modal.Footer>
@@ -109,8 +94,8 @@ const ClassTool = () => {
 
             </When>
 
-            <JoinChat />
-  
+            <JoinChat id={props.id} />
+
 
         </div>
     )
