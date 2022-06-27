@@ -21,7 +21,7 @@ socket.on("connect", () => {
   //   connectMessage("Connected to server  on socket-id :  " + socket.id);
 });
 
-export default function JoinChat() {
+export default function JoinChat(props) {
   const [userName, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);

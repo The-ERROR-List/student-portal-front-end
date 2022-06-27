@@ -10,12 +10,6 @@ import { Link } from "react-router-dom";
 const Content = (props) => {
   const params = useParams()
   cookie.save('classid',params.id)
-  // const [textArea, setTextArea] = useState("");
-  // const [contentTitle, setContentTitle] = useState("");
-  // const [contentBody, setContentBody] = useState("")
-  // const [contentLink, setContentLink] = useState("")
-  // const [contentCategory, setContentCategory] = useState("")
-  // const [content, setContent] = useState([])
   const contentC = useContext(contentContext)
   const getContents = () => {
     let contentData = axios.get(`${api}/content-for-class/${params.id}`, {

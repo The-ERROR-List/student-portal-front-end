@@ -7,10 +7,11 @@ import { StateContext } from "../../../context/State";
 import { When } from 'react-if';
 import JoinChat from "../../chat/joinChat"
 
-const ClassTool = () => {
+const ClassTool = (props) => {
     const state = useContext(StateContext)
     const [meeting, setMeeting] = useState({})
     const [joinUrl, setJoinUrl] = useState("")
+
     useEffect(() => {
         console.log('11111', meeting.Meeting)
         // seturl(meeting.Meeting['join_url'])
@@ -109,7 +110,7 @@ const ClassTool = () => {
 
             </When>
 
-            <JoinChat />
+            <JoinChat id={props.id}  />
   
 
         </div>

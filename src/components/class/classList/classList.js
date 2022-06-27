@@ -24,6 +24,7 @@ import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 
 function Submit() {
+
   const dispatch = useDispatch();
   const state = useContext(StateContext);
   // const [students, setStudents] = useState([]);
@@ -75,7 +76,7 @@ function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="className">className</Label>
+                  <Label for="className" >className</Label>
                   <Input
                     id="className"
                     name="className"
@@ -114,36 +115,31 @@ const ClassList = (props) => {
   const auth = useContext(AuthContext);
   const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
-
-
-
-  console.log('propsStuside', props)
+  const [indexToEdit, setIndexToEdit] = useState(-1);
+  const [grade,setGrade]=useState(0)
 
 
   const fetchStudents = async () => {
     let response = await axios.get(
       `${api}/get-allStudents-inClass/${params.id}`,
       { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
-    );
-
+    )
     setStudents(...students, response.data);
+
   };
 
 
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       fetchStudents()
-  //     }, 2000);
-  //     return () => clearInterval(interval);
-  //   }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchStudents()
+    }, 2000);
+  }, []);
 
 
 
   return (
     <div>
-      {console.log(students.students)}
-
-      <h1>{ }</h1>
+        <h1>{props.teacherName}</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
@@ -164,7 +160,27 @@ const ClassList = (props) => {
                 <tr key={indx}>
                   <td>{studentListed.studentName}</td>
                   <When condition={auth.user.role !== "student"}>
-                    <td>{studentListed.studentGrade}</td>
+                    <td>
+                      <input type="text" value={grade} disabled={indx !== indexToEdit} onChange={(e) => {
+                        // let _entries = [...students.students];
+                        // _entries[indexToEdit] = e.target.value;
+                        // setStudents(_entries);
+                        setGrade(e.target.value)
+                      }}
+                        onBlur={() => {
+                          setIndexToEdit(-1);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          setIndexToEdit(indx);
+                        }}
+                      >
+                        Edit
+                      </button>
+                    </td>
                   </When>
                 </tr>
               );
