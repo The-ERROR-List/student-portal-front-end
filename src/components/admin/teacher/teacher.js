@@ -78,6 +78,8 @@ const Teacher = () => {
     }).then((res) => res.json().then((data) => { console.console(data) }));
     state.handleClose();
   }
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getTeacherAction());
@@ -85,6 +87,7 @@ const Teacher = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
   function idUser(id) {
     setId({
       ...ids,

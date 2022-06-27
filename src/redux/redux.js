@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import teacherReducer from "./teacher";
-
 import studentReducer from './student';
 import classReducer from './class';
 import courseReducer from './course';
@@ -8,6 +7,8 @@ import courseToCourseReducer from './teacherToCourse';
 import classesInStudentsReducer from './classesInStudents';
 import addStudentInClassReducer from './addStu_class';
 import classesInCourseReducer from './classesInCourse';
+import contentReducer from './content';
+
 export const rootReducer = combineReducers({
     student: studentReducer,
     class: classReducer,
@@ -16,5 +17,6 @@ export const rootReducer = combineReducers({
     teacherTocourse: courseToCourseReducer,
     classesInStudents: classesInStudentsReducer,
     addStudentInClass: addStudentInClassReducer,
-    classesInCourse:classesInCourseReducer
+    classesInCourse:classesInCourseReducer,
+    contentId:contentReducer
 })
