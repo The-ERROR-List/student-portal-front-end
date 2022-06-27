@@ -3,7 +3,7 @@
 //   return (
 //     <div>
 //       <div className="main_content">
-//         <div className="list_content">
+//         <div className="nav_content">
 //           <aside>
 //             <nav>
 //               <a href="" className="nav-link active">

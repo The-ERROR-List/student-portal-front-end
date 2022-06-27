@@ -14,24 +14,26 @@ import {
 export default function UpdateContents(props) {
   const params = useParams()
   const contentC = useContext(contentContext)
-  // const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   return (
     <>
-      <Modal
-        show={contentC.show}
-        // onHide={handleClose}
+      {/* <Modal
+        show={show}
+        onHide={handleClose}
         class="modal-dialog modal-lg"
-      >
-        <Modal.Header closeButton>
+      > */}
+      
+        {/* <Modal.Header closeButton>
           <Modal.Title>Edit Content Model</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form style={{ width: "70%", margin: "auto" }}>
+        <Modal.Body> */}
+       
+          <Form  onSubmit={() => contentC.updateContent(params.id)} style={{ width: "70%", margin: "auto" }}>
             <Row>
               <Col md={12}>
                 <FormGroup>
@@ -58,7 +60,6 @@ export default function UpdateContents(props) {
                 name="contentBody"
                 placeholder="content Body..."
                 type="contentBody"
-                // value={contentBody}
                 onChange={(e) => {
                   contentC.setContentBody(e.target.value)
                 }} />
@@ -74,110 +75,18 @@ export default function UpdateContents(props) {
               />
 
             </FormGroup>
-            <Button color="success" onClick={() => contentC.updateContent(params.id)} >
+            <Button color="success"  type='submit' >
               update Content
             </Button>
           </Form>
-        </Modal.Body>
+        {/* </Modal.Body>
         <Modal.Footer>
-          <Button color="danger" onClick={()=>contentC.setShow(false)}>
+          <Button color="danger" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
+
     </>
   )
-
 }
-
-
-// const updateContent = ((id, indx) => {
-//     console.log('contentid', id);
-//     console.log('indx', indx)
-//     let updatedContent = content.map((ele, i) => {
-//       if (ele.id === id) {
-//         return ele
-//       }
-//     })
-//     console.log('1111222233333',updatedContent.id)
-//     let result = axios.patch(`${api}/content/${updatedContent.id}`, {
-//       contentTitle: names.contentTitle,
-//       contentBody: names.contentBody,
-//       contentLink: names.contentLink,
-//     }, {
-//       headers: { Authorization: `Bearer ${cookie.load("token")}` },
-
-//     }).then(
-//       setContent([...content, result.data.Content])
-//     )
-// })
-// onClick={state.handleShow}
-// const handelChangeforUpdate=(e)=>{
-//   e.preventDefault()
-//   // setNames({...names,[e.target.name]:e.target.value})
-//   console.log(names)
-// }
-{/* <Modal
-                  show={state.show}
-                  onHide={state.handleClose}
-                  class="modal-dialog modal-lg"
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Edit Content Model</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <Form style={{ width: "70%", margin: "auto" }}>
-                      <Row>
-                        <Col md={12}>
-                          <FormGroup>
-                            <Label for="contentTitle">content Title</Label>
-                            <Input
-
-                              id="contentTitle"
-                              name="contentTitle"
-                              // value={contentTitle}
-                              placeholder="content Title..."
-                              type="text"
-                              onChange={(e)=>{
-                                setContentTitle(e.target.value)
-                                 handelChangeforUpdate(e) 
-                              }}
-                              
-                            />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <FormGroup>
-                        <Label for="contentBody">content body</Label>
-                        <Input
-                          id="contentBody"
-                          name="contentBody"
-                          placeholder="content Body..."
-                          type="contentBody"
-                          // value={contentBody}
-                          onChange={(e)=>{
-                            setContentBody(e.target.value)
-                          }}                           />
-                        <Label for="contentLink">content Link</Label>
-                        <Input
-                          id="contentLink"
-                          name="contentLink"
-                          placeholder="content Link..."
-                          type="contentLink"
-                          onChange={(e)=>{
-                            setContentLink(e.target.value)
-                          }}                       
-                          />
-
-                      </FormGroup>
-                      <Button color="success" onClick={()=>updateContent(classContent.id, indx)} >
-                        update Content
-                      </Button>
-                    </Form>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button color="danger" onClick={state.handleClose}>
-                      Close
-                    </Button>
-                  </Modal.Footer>
-                </Modal> */}
