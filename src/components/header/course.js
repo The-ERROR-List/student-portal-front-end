@@ -23,10 +23,18 @@ export default function Course() {
     useEffect(() => {
 
         // dispatch(getClassesInStudentsAction())
-        state.getCourses()
-        console.log({state})
+        
+        if(cookie.load('role') === 'teacher'){
+            state.getCourses()
+        }
+        // console.log({state})
 
     }, [show])
+    function clicked(){
+        handleClose()
+        setTimeout(() =>window.location.reload(),50
+        )
+    }
     return (
         <>
             <LibraryBooksOutlinedIcon onClick={handleShow} fontSize="large" sx={{ fontSize: 30 }} color="white" /><p>Course</p>
@@ -62,15 +70,14 @@ export default function Course() {
                     </When> */}
                     
                     <When condition={cookie.load('role') === 'teacher'}>
-                    <p>hello</p>
                         {
                             state.courses.TeacherCourses ?
                                 state.courses.TeacherCourses.map((course, i) => {
                                     
                                     return (
                                         <ul>
-                                            <Link to={`/course/${course['course id']}`} >
-                                                <li onClick={() => window.location.reload()}> {course['course Name']}</li>
+                                            <Link to={`/course/${course['course id']}`} onClick={clicked}  >
+                                                <li > {course['course Name']}</li>
                                             </Link>
                                         </ul>
                                     )
