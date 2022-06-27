@@ -57,7 +57,7 @@ export default function Admin() {
         <div className="admin-student">
           <Link to="admin-student">
             <Card
-              style={{ width: "22rem", height: "33rem" }}
+              style={{ width: "22rem", height: "33rem",borderRadius:"20px" }}
               className="student"
             >
               <Card.Img
@@ -90,7 +90,7 @@ export default function Admin() {
         <div className="admin-course">
           <Link to="admin-course">
             <Card
-              style={{ width: "22rem", height: "33rem" }}
+              style={{ width: "22rem", height: "33rem",borderRadius:"20px"  }}
               className="course"
             >
               <Card.Img
@@ -121,7 +121,7 @@ export default function Admin() {
         <div className="admin-class">
           <Link to="admin-class">
             <Card
-              style={{ width: "22rem", height: "33rem" }}
+              style={{ width: "22rem", height: "33rem" ,borderRadius:"20px" }}
               className="class"
             >
               <Card.Img
