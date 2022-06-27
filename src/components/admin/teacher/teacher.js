@@ -22,11 +22,10 @@ import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
 import Avatar from 'react-avatar';
 import AddStudent from "./addTeacher"
-
-
 import cookie from "react-cookies";
-
 import "./teacher.scss";
+
+
 const Teacher = () => {
   const [ids, setId] = useState({ id: '' });
   const [infoUpdate, setInfoUpdate] = useState({
@@ -78,6 +77,8 @@ const Teacher = () => {
     }).then((res) => res.json().then((data) => { console.console(data) }));
     state.handleClose();
   }
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getTeacherAction());
@@ -85,6 +86,7 @@ const Teacher = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
   function idUser(id) {
     setId({
       ...ids,
@@ -166,58 +168,35 @@ const Teacher = () => {
                       class="modal-dialog modal-lg"
                     >
                       <Modal.Header closeButton>
-                        <Modal.Title>Teacher form</Modal.Title>
+                        <Modal.Title>Edit Teacher form</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <Form
                           style={{ width: "70%", margin: "auto" }}
                         >
                           <Row>
-                            <Col md={6}>
+                            <Col md={12}>
                               <FormGroup>
                                 <Label for="userName1">userName</Label>
                                 <Input
                                   id="userName1"
                                   name="userName"
-                                  placeholder="userName..."
+                                  placeholder={teacher.userName}
                                   type="userName"
                                   onChange={handelChange}
                                 />
                               </FormGroup>
-                              {/* <FormGroup>
-                                <Label for="exampleEmail1">Email</Label>
-                                <Input
-                                  id="email1"
-                                  name="email"
-                                  placeholder="Email..."
-                                  type="email"
-                                  value={teacher.email}
-                                  onChange={handelChange}
-                                />
-                              </FormGroup> */}
+                             
                             </Col>
-                            {/* <Col md={6}>
-                              <FormGroup>
-                                <Label for="examplePassword1">Password</Label>
-                                <Input
-                                  id="examplePassword1"
-                                  name="password"
-                                  placeholder="password placeholder"
-                                  type="password"
-                                  value={teacher.password}
-                                  onChange={handelChange}
-                                />
-                              </FormGroup>
-                            </Col> */}
                           </Row>
                           <Row>
-                            <Col md={6}>
+                            <Col md={12}>
                               <FormGroup>
                                 <Label for="firstName1">First Name</Label>
                                 <Input
                                   id="firstName1"
                                   name="firstName"
-                                  placeholder="First Name..."
+                                  placeholder={teacher.firstName}
                                   onChange={handelChange}
                                 />
                               </FormGroup>
@@ -226,33 +205,33 @@ const Teacher = () => {
                                 <Input
                                   id="lastName1"
                                   name="lastName"
-                                  placeholder="Last Name...."
+                                  placeholder={teacher.lastName}
                                   onChange={handelChange}
                                 />
                               </FormGroup>
                             </Col>
                           </Row>
                           <Row>
-                            <Col md={3}>
+                            <Col md={12}>
                               <FormGroup>
                                 <Label for="role1">role</Label>
 
                                 <Input
                                   id="role1"
                                   name="role"
-                                  placeholder="role"
-                                  value={infoUpdate.role}
+                                  placeholder={teacher.role}
+                                  value={"teacher"}
                                   onChange={handelChange}
                                 />
                               </FormGroup>
                             </Col>
-                            <Col md={3}>
+                            <Col md={6}>
                               <FormGroup>
                                 <Label for="gender1">gender</Label>
                                 <Input
                                   id="gender1"
                                   name="gender"
-                                  placeholder="gender"
+                                  placeholder={teacher.gender}
                                   onChange={handelChange}
                                 />
                               </FormGroup>
@@ -263,7 +242,7 @@ const Teacher = () => {
                                 <Input
                                   id="nationality1"
                                   name="nationality"
-                                  placeholder="nationality"
+                                  placeholder={teacher.nationality}
                                   onChange={handelChange}
                                 />
                               </FormGroup>
@@ -274,7 +253,7 @@ const Teacher = () => {
                             <Input
                               id="department1"
                               name="department"
-                              placeholder="department"
+                              placeholder={teacher.department}
                               onChange={handelChange}
                             />
                           </FormGroup>
@@ -295,11 +274,6 @@ const Teacher = () => {
             </tbody>
           </Table>
         </div>
-        <div>
-
-        </div>
-
-
       </div>
     </div>
   );

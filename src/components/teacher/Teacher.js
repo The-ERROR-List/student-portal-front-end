@@ -9,9 +9,16 @@ const Teacher = () => {
   const state = useContext(StateContext);
   //'/get-allCourses-for-teacher/:id '
 
+
+
   useEffect(() => {
-    state.getCourses()
-  }, [])
+    const interval = setInterval(() => {
+      state.getCourses()
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  
   return (
 
     <div className="teacherside" style={{ marginRight: "70px" }}>

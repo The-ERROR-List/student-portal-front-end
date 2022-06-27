@@ -23,13 +23,18 @@ export default function Course() {
     useEffect(() => {
 
         // dispatch(getClassesInStudentsAction())
-        if(cookie.load('role')==='teacher'){
+        
+        if(cookie.load('role') === 'teacher'){
             state.getCourses()
-
         }
-        console.log({state})
+        // console.log({state})
 
     }, [show])
+    function clicked(){
+        handleClose()
+        setTimeout(() =>window.location.reload(),50
+        )
+    }
     return (
         <>
             <LibraryBooksOutlinedIcon onClick={handleShow} fontSize="large" sx={{ fontSize: 30 }} color="white" /><p>Course</p>
@@ -71,8 +76,8 @@ export default function Course() {
                                     
                                     return (
                                         <ul>
-                                            <Link to={`/course/${course['course id']}`} >
-                                                <li onClick={() => window.location.reload()}> {course['course Name']}</li>
+                                            <Link to={`/course/${course['course id']}`} onClick={clicked}  >
+                                                <li > {course['course Name']}</li>
                                             </Link>
                                         </ul>
                                     )

@@ -11,6 +11,8 @@ import { useEffect,useState } from 'react';
 import axios from 'axios';
 import {api}from'../../redux/type'
 import cookie from "react-cookies"
+import Nav from './navBar/nav';
+
 const Class = () => {
   const params = useParams();
   console.log('params', params)

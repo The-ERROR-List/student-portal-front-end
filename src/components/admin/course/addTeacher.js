@@ -45,7 +45,7 @@ export default function AddTeacherToCourse() {
                 class="modal-dialog modal-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Course form</Modal.Title>
+                    <Modal.Title>Form Add Course </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form style={{ width: "70%", margin: "auto" }}>

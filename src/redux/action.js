@@ -106,7 +106,7 @@ export function createClass(payload) {
       courseName: payload.courseName,
       userName: payload.userName,
       classTime: payload.classTime,
-
+      classImage: payload.classImage,
     })
   }).then((response) => {
     console.log("response", response.json());

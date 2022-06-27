@@ -1,5 +1,4 @@
 import {
-    
     Form,
     Row,
     Col,
@@ -12,7 +11,6 @@ import {
   import { StateContext } from "../../../context/State";
   import { useState, useEffect } from "react";
   import {  useDispatch } from "react-redux";
-  import { getCourseAction } from "../../../redux/course";
   import { addCourse } from "../../../redux/type";
   import "./course.scss";
   
@@ -34,7 +32,6 @@ import {
     const handelChange = (e) => {
       e.preventDefault();
       setInfoCourse({ ...infoCourse, [e.target.name]: e.target.value });
-      // console.log({ [e.target.name]: e.target.value });
     };
   
     const handelSubmit = (e) => {
