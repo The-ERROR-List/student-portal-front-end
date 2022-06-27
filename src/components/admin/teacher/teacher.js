@@ -102,7 +102,7 @@ const Teacher = () => {
         <div style={{ display: "flex" }}>
           <Breadcrumb listTag="div">
             <BreadcrumbItem
-              href="/"
+              // href="/"
               tag="a"
             >
               Dashboard/
@@ -110,7 +110,7 @@ const Teacher = () => {
           </Breadcrumb>
           <Breadcrumb listTag="div">
             <BreadcrumbItem
-              href="/admin-teacher"
+              // href="/admin-teacher"
               tag="a"
             >
               Teacher
@@ -269,7 +269,6 @@ const Teacher = () => {
                               </FormGroup>
                             </Col>
                           </Row>
-
                           <FormGroup>
                             <Label for="department1">department</Label>
                             <Input
