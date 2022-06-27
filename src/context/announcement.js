@@ -35,7 +35,8 @@ export default function Announcement(props) {
         console.log(22222222, announcements);
     }, [announcements])
 
-    const updateAnnouncement = (id => {
+    const updateAnnouncement = (e,id) => {
+           e.preventDefault();
         console.log('contentid', id);
         let result = axios.patch(`${api}/announcement/${id}`, {
             announcementTitle: announcementTitle,
@@ -51,7 +52,7 @@ export default function Announcement(props) {
         }
         )
         setShow(false)
-    })
+    }
 
 
     const deleteAnnouncement = ((id, indx) => {
@@ -74,7 +75,6 @@ export default function Announcement(props) {
         addAnnouncement,
         deleteAnnouncement,  
         updateAnnouncement,
-
         show,
         setShow,
     }

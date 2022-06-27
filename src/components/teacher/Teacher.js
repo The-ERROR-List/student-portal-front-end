@@ -14,6 +14,7 @@ const Teacher = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       state.getCourses()
+      console.log(2222222222,state.courses.TeacherCourses[0]['course id'])
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -41,6 +42,9 @@ const Teacher = () => {
           {
             state.courses.TeacherCourses ?
               state.courses.TeacherCourses.map((course, i) => (
+
+
+
                 <Link key={i} to={`/course/${course['course id']}`} >
                     <Card key={i} body className="teacherCard" style={{ width: "20rem", height: "28rem" }}>
                       <CardImg top width="60%" style={{width: "20rem", height: "70%" }} src={course['course Image']} alt="Card image cap" />
