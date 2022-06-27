@@ -18,7 +18,7 @@ import { When } from "react-if";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
-import {api} from '../../../redux/type';
+import { api } from '../../../redux/type';
 import { useParams } from "react-router-dom";
 
 import { Routes, Route } from "react-router-dom";
@@ -26,6 +26,7 @@ import { Routes, Route } from "react-router-dom";
 function Submit() {
   const dispatch = useDispatch();
   const state = useContext(StateContext);
+  // const [students, setStudents] = useState([]);
   const [infoStudents, setInfoStudents] = useState({
     className: "",
     userName: "",
@@ -35,13 +36,16 @@ function Submit() {
   function handelChange(e) {
     e.preventDefault();
     setInfoStudents({ ...infoStudents, [e.target.name]: e.target.value });
+
   }
 
   function handelSubmit(e) {
     e.preventDefault();
     dispatch({ type: addStudentInClass, payload: infoStudents });
+    // setStudents([...students, infoStudents])
     state.handleClose();
   }
+
   return (
     <>
       <Button color="success" onClick={state.handleShow}>
@@ -57,7 +61,7 @@ function Submit() {
           <Modal.Title>List form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form style={{ width: "70%", margin: "auto" }}>
+          <Form onSubmit={handelSubmit} style={{ width: "70%", margin: "auto" }}>
             <Row>
               <Col md={16}>
                 <FormGroup>
@@ -92,7 +96,7 @@ function Submit() {
                 </FormGroup>
               </Col>
             </Row>
-            <Button color="success" onSubmit={handelSubmit}>
+            <Button color="success" >
               Add Student
             </Button>
           </Form>
@@ -111,9 +115,9 @@ const ClassList = (props) => {
   const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
 
- 
-  
-  console.log('propsStuside',props)
+
+
+  console.log('propsStuside', props)
 
 
   const fetchStudents = async () => {
@@ -125,11 +129,13 @@ const ClassList = (props) => {
     setStudents(...students, response.data);
   };
 
-  useEffect(() => {
-    fetchStudents()
-    console.log("paramssssss", params.id);
-  }, [state.toggleRender,
-    state.toggleRenderTeacher]);
+
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       fetchStudents()
+  //     }, 2000);
+  //     return () => clearInterval(interval);
+  //   }, []);
 
 
 
@@ -137,7 +143,7 @@ const ClassList = (props) => {
     <div>
       {console.log(students.students)}
 
-      <h1>{}</h1>
+      <h1>{ }</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
@@ -154,15 +160,15 @@ const ClassList = (props) => {
         <tbody>
           {students.students
             ? students.students.map((studentListed, indx) => {
-                return (
-                  <tr key={indx}>
-                    <td>{studentListed.studentName}</td>
-                    <When condition={auth.user.role !== "student"}>
-                      <td>{studentListed.studentGrade}</td>
-                    </When>
-                  </tr>
-                );
-              })
+              return (
+                <tr key={indx}>
+                  <td>{studentListed.studentName}</td>
+                  <When condition={auth.user.role !== "student"}>
+                    <td>{studentListed.studentGrade}</td>
+                  </When>
+                </tr>
+              );
+            })
             : null}
         </tbody>
       </Table>

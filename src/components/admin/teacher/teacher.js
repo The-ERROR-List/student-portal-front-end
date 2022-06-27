@@ -11,8 +11,8 @@ import {
   BreadcrumbItem
 } from "reactstrap";
 import { Alert } from 'react-bootstrap'
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { api } from '../../../redux/type';
 import { Modal } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
@@ -160,143 +160,144 @@ const Teacher = () => {
                         }}
                       />
                     </tr>
+                    <Modal
+                      show={state.show}
+                      onHide={state.handleClose}
+                      class="modal-dialog modal-lg"
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Teacher form</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <Form
+                          style={{ width: "70%", margin: "auto" }}
+                        >
+                          <Row>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="userName1">userName</Label>
+                                <Input
+                                  id="userName1"
+                                  name="userName"
+                                  placeholder="userName..."
+                                  type="userName"
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                              {/* <FormGroup>
+                                <Label for="exampleEmail1">Email</Label>
+                                <Input
+                                  id="email1"
+                                  name="email"
+                                  placeholder="Email..."
+                                  type="email"
+                                  value={teacher.email}
+                                  onChange={handelChange}
+                                />
+                              </FormGroup> */}
+                            </Col>
+                            {/* <Col md={6}>
+                              <FormGroup>
+                                <Label for="examplePassword1">Password</Label>
+                                <Input
+                                  id="examplePassword1"
+                                  name="password"
+                                  placeholder="password placeholder"
+                                  type="password"
+                                  value={teacher.password}
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                            </Col> */}
+                          </Row>
+                          <Row>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="firstName1">First Name</Label>
+                                <Input
+                                  id="firstName1"
+                                  name="firstName"
+                                  placeholder="First Name..."
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                              <FormGroup>
+                                <Label for="lastName1">Last Name </Label>
+                                <Input
+                                  id="lastName1"
+                                  name="lastName"
+                                  placeholder="Last Name...."
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={3}>
+                              <FormGroup>
+                                <Label for="role1">role</Label>
 
+                                <Input
+                                  id="role1"
+                                  name="role"
+                                  placeholder="role"
+                                  value={infoUpdate.role}
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                            </Col>
+                            <Col md={3}>
+                              <FormGroup>
+                                <Label for="gender1">gender</Label>
+                                <Input
+                                  id="gender1"
+                                  name="gender"
+                                  placeholder="gender"
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="nationality1">nationality</Label>
+                                <Input
+                                  id="nationality1"
+                                  name="nationality"
+                                  placeholder="nationality"
+                                  onChange={handelChange}
+                                />
+                              </FormGroup>
+                            </Col>
+                          </Row>
+
+                          <FormGroup>
+                            <Label for="department1">department</Label>
+                            <Input
+                              id="department1"
+                              name="department"
+                              placeholder="department"
+                              onChange={handelChange}
+                            />
+                          </FormGroup>
+                          <Button color="warning" onClick={
+                            updateUser
+                          }
+                          >Update information</Button>
+                        </Form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button color="danger" >
+                          Close
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                   </>);
               })}
             </tbody>
           </Table>
         </div>
         <div>
-          <Modal
-            show={state.show}
-            onHide={state.handleClose}
-            class="modal-dialog modal-lg"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>Teacher form</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Form
-                style={{ width: "70%", margin: "auto" }}
-              >
-                <Row>
-                  <Col md={6}>
-                    <FormGroup>
-                      <Label for="userName1">userName</Label>
-                      <Input
-                        id="userName1"
-                        name="userName"
-                        placeholder="userName..."
-                        type="userName"
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="exampleEmail1">Email</Label>
-                      <Input
-                        id="email1"
-                        name="email"
-                       
-                        placeholder="Email..."
-                        type="email"
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={6}>
-                    <FormGroup>
-                      <Label for="examplePassword1">Password</Label>
-                      <Input
-                        id="examplePassword1"
-                        name="password"
-                        placeholder="password placeholder"
-                        type="password"
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={6}>
-                    <FormGroup>
-                      <Label for="firstName1">First Name</Label>
-                      <Input
-                        id="firstName1"
-                        name="firstName"
-                        placeholder="First Name..."
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="lastName1">Last Name </Label>
-                      <Input
-                        id="lastName1"
-                        name="lastName"
-                        placeholder="Last Name...."
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={3}>
-                    <FormGroup>
-                      <Label for="role1">role</Label>
 
-                      <Input
-                        id="role1"
-                        name="role"
-                        placeholder="role"
-                        onChange={handelChange}
-                        value={infoUpdate.role}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={3}>
-                    <FormGroup>
-                      <Label for="gender1">gender</Label>
-                      <Input
-                        id="gender1"
-                        name="gender"
-                        placeholder="gender"
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={6}>
-                    <FormGroup>
-                      <Label for="nationality1">nationality</Label>
-                      <Input
-                        id="nationality1"
-                        name="nationality"
-                        placeholder="nationality"
-                        onChange={handelChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                </Row>
-
-                <FormGroup>
-                  <Label for="department1">department</Label>
-                  <Input
-                    id="department1"
-                    name="department"
-                    placeholder="department"
-                    onChange={handelChange}
-                  />
-                </FormGroup>
-                <Button color="warning" onClick={
-                  updateUser
-                }
-                >Update information</Button>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button color="danger" >
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </div>
 
 
