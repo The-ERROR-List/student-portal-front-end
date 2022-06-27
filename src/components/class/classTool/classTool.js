@@ -14,8 +14,8 @@ const ClassTool = (props) => {
 
     useEffect(() => {
         console.log('11111', meeting.Meeting)
-        // seturl(meeting.Meeting['join_url'])
-        // console.log('url',meeting.Meeting['join_url'])
+        console.log(joinUrl)
+        
     }, [meeting])
     return (
         <div>
@@ -23,18 +23,12 @@ const ClassTool = (props) => {
             <When condition={cookie.load('role') === 'teacher'}>
 
                 <Button variant="primary" size="lg" onClick={() => {
-
-                    // console.log('clicked me')
                     axios.get(`${api}/createMeeting`, {
                         headers: { Authorization: `Bearer ${cookie.load("token")}` },
 
                     }).then(response => {
                         setMeeting(response.data)
                         setJoinUrl(response.data.Meeting.join_url)
-
-                        // seturl(response.data.Meeting.join_url)
-
-
                     })
                     state.handleShow()
                 }}>
@@ -52,7 +46,6 @@ const ClassTool = (props) => {
                         {
 
                             meeting.Meeting ?
-                                //  meeting.Meeting.start_url:null
                                 <button onClick={() => {
                                     console.log('url', meeting.Meeting.join_url)
                                 }}>
@@ -110,8 +103,8 @@ const ClassTool = (props) => {
 
             </When>
 
-            <JoinChat id={props.id}  />
-  
+            <JoinChat id={props.id} />
+
 
         </div>
     )

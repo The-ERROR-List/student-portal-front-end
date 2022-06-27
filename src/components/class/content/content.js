@@ -1,105 +1,112 @@
 import { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
-import { useParams } from "react-router-dom";
-import { api } from '../../../redux/type'
+import { api } from "../../../redux/type";
 import axios from "axios";
-import './content.css'
-import { contentContext } from "../../../context/content"
+import "./content.css";
+import { contentContext } from "../../../context/content";
 import { When } from "react-if";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Modal, Button, FormGroup } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Label,
+  Input,
+
+} from "reactstrap";
+
+
+// import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddContents from "./addContent";
+
 const Content = (props) => {
-  const params = useParams()
-  cookie.save('classid',params.id)
-  const contentC = useContext(contentContext)
+  const params = useParams();
+  cookie.save("classId", params.id);
+
+  const contentC = useContext(contentContext);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
   const getContents = () => {
-    let contentData = axios.get(`${api}/content-for-class/${params.id}`, {
-      headers: { Authorization: `Bearer ${cookie.load("token")}` },
-    }).then((response) => {
-      console.log('gettttttt', response.data)
-      contentC.setContent(response.data)
-    })
-  }
+    let contentData = axios
+      .get(`${api}/content-for-class/${params.id}`, {
+        headers: { Authorization: `Bearer ${cookie.load("token")}` },
+      })
+      .then((response) => {
+        console.log("gettttttt", response.data);
+        contentC.setContent(response.data);
+      });
+  };
   useEffect(() => {
     // if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
-      getContents()
-
+    getContents();
     // }
-  }, [])
+  }, []);
 
+//   const handelChange = (e) => {
+//     e.preventDefault();
+//     contentC.setNames({ ...contentC.names, [e.target.name]: e.target.value });
+// };
 
 
   function ShowContent() {
     return (
       <>
-        {
-          contentC.content ?
-            contentC.content.map((classContent, indx) => {
+        {contentC.content ?
+
+           contentC.content.map((classContent, indx) => {
               return (
                 <>
-                  <div key={indx.toString()} >
+                  <div key={indx.toString()}>
                     <p> {classContent.contentTitle}</p>
                     <p>{classContent.contentBody}</p>
                     <p>{classContent.contentLink}</p>
                     <p>{classContent.contentCategory}</p>
-                    <When condition={cookie.load('role') !== 'student'}>
-                      <button onClick={() =>
-                        contentC.deleteContent(classContent.id, indx)
-
-                      }>
-                        Delete content
-                      </button>
+                    <When condition={cookie.load("role") === "teacher"}>
+                      <DeleteIcon
+                        sx={{ fontSize: 67 }}
+                        onClick={() =>
+                          contentC.deleteContent(classContent.id, indx)
+                        }
+                      />
                     </When>
 
                     <br />
-                    <When condition={cookie.load('role') !== 'student'}>
-
-                      <Link to={`/updateContent/${classContent.id}`}>
-                        <button >
+                    <When condition={cookie.load("role") === "teacher"}>
+                      <Link to={`/updateContent/${classContent.id}`}> 
+                   <Button color="warning" >
                           update content
-                        </button>
+                          </Button>
+                      {/* <EditIcon
+                        sx={{ fontSize: 67 }}
+                        onClick={() => {
+                          contentC.idUpdateContent(classContent.id);
+                         handleShow();
+                        }}
+                      /> */}
                       </Link>
-
+          
+           
                     </When>
-
                   </div>
-
-
                 </>
               );
-            }) : null
-        }
-
+            })
+          : null}
       </>
     );
   }
 
   return (
     <>
-      <When condition={cookie.load('role') !== 'student'}>
-
-        <form onSubmit={(e) =>
-          contentC.addContent(e)
-        }>
-          <label for="contentTitle" style={{ color: "black" }}>content Title</label>
-          <input className="input-class" id="contentTitle" name="contentTitle" value={contentC.contentTitle} onChange={(e) => contentC.setContentTitle(e.target.value)} />
-
-          <label for="contentBody" style={{ color: "black" }}>content Body</label>
-          <input id="contentBody" className="input-class" name="contentBody" value={contentC.contentBody} onChange={(e) => contentC.setContentBody(e.target.value)} />
-
-
-          <label for="contentLink" style={{ color: "black" }}>content Link</label>
-          <input id="contentLink" className="input-class" name="contentLink" value={contentC.contentLink} onChange={(e) => contentC.setContentLink(e.target.value)} />
-
-          <label for="contentCategory" style={{ color: "black" }}>content category</label>
-          <input id="contentCategory" className="input-class" name="contentCategory" value={contentC.contentCategory} onChange={(e) => contentC.setContentCategory(e.target.value)} />
-          <button type="submit">
-            Add Content
-          </button>
-        </form>
+      <When condition={cookie.load("role") === "teacher"}>
+        <AddContents id={params.id} />
       </When>
-
       <ShowContent />
-
     </>
   );
 };

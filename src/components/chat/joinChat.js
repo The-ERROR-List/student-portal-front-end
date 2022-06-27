@@ -29,7 +29,7 @@ export default function JoinChat(props) {
   function joinRoom() {
     if(cookie.load('username')!==null){
       setUsername(cookie.load('username'))
-      setRoom(socket.id)//room id is username
+      setRoom(props.id)//room id is class id
     }
     if (userName !== "" && room !== "") {
       socket.emit("join_room", room);
@@ -44,16 +44,12 @@ export default function JoinChat(props) {
 
   return (
 
-    <div className="App">
+    <div className="container">
     {!showChat ? (
       <div className="joinChatContainer">
 
-        <When condition={cookie.load('role')==='teacher'}>
-        <h3>chat with your student</h3>
-        </When>
-        <When condition={cookie.load('role')==='student'}>
-        <h3>chat with your Teacher</h3>
-        </When>
+        
+        <h3>chat with your class</h3>
         {/* <input
           type="text"
           placeholder="John..."

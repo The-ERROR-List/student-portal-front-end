@@ -23,7 +23,10 @@ export default function Course() {
     useEffect(() => {
 
         // dispatch(getClassesInStudentsAction())
-        state.getCourses()
+        if(cookie.load('role')==='teacher'){
+            state.getCourses()
+
+        }
         console.log({state})
 
     }, [show])
@@ -61,8 +64,7 @@ export default function Course() {
                         }
                     </When> */}
                     
-                    <When condition={cookie.load('role') === 'teacher'}>
-                    <p>hello</p>
+                    {/* <When condition={cookie.load('role') === 'teacher'}>
                         {
                             state.courses.TeacherCourses ?
                                 state.courses.TeacherCourses.map((course, i) => {
@@ -76,7 +78,7 @@ export default function Course() {
                                     )
                                 }) : null
                         }
-                    </When>
+                    </When> */}
                 </Offcanvas.Body>
             </Offcanvas>
         </>
