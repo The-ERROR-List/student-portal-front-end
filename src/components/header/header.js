@@ -31,7 +31,7 @@ const Header = () => {
                         </div>
 
                         <When condition={cookie.load('role') !== "admin"}>
-                            <div className='btn1'>
+                            <div className='btn'>
                                 <Course />
                             </div>
                         </When>

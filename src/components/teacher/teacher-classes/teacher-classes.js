@@ -15,7 +15,7 @@ const TeacherClasses = (props) => {
     const fetchItems = async () => {
 
          response = await axios.get(
-            `http://localhost:3001/get-all-classes-for-course-for-teacher/${params.id}/${cookie.load("id")}`,
+            `${api}/get-all-classes-for-course-for-teacher/${params.id}/${cookie.load("id")}`,
             { headers: { Authorization: `Bearer ${cookie.load("token")}` }, }
         );
         console.log(response.data.classes)
