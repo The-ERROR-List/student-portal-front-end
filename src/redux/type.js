@@ -20,6 +20,10 @@ export const getTeacher = 'get_teacher';
 export const getCourse = 'get_course';
 export const getClass = 'get_class';
 export const getStudentFromClass = "getStudentFromClass"
+export const getTeacherById = "getTeacherById"
+export const getStudentById = "getTeacherById"
+
+
 //types to delete 
 export const deleteStudent = 'delete_student';
 export const deleteTeacher = 'delete_teacher';
