@@ -18,9 +18,9 @@
 //           </aside>
 //         </div>
 
-//         <div className="display_Content"></div>
-//         <h1/>
-//       </div>
-//     </div>
-//   );
+//                 <div className="display_Content"></div>
+//                 <h1 />
+//             </div>
+//         </div>
+//     );
 // }
