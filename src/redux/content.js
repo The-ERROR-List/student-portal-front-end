@@ -22,14 +22,7 @@ export default function contentReducer(state = initialState, action) {
     }
 }
 
-    // export function addTeacher(payload) {
-    //     return {
-    //         type: addCourseToTeacher,
-    //         payload: payload,
-    //     }
-    // }
 
-    //=====
     // getAllCourseToTeacher 
     export const classContentId = (id) => {
         return async (dispatch) => {

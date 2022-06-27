@@ -137,7 +137,7 @@ const Content = (props) => {
   return (
     <>
       <When condition={cookie.load("role") === "teacher"}>
-        <AddContents id={params.id} />
+        <AddContents id={params.id}  />
       </When>
       <ShowContent />
     </>
