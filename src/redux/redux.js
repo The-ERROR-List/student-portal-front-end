@@ -9,6 +9,9 @@ import addStudentInClassReducer from './addStu_class';
 import classesInCourseReducer from './classesInCourse';
 import contentReducer from './content';
 
+import infoStuById from './studentById';
+
+import infoById from './teacherById';
 export const rootReducer = combineReducers({
     student: studentReducer,
     class: classReducer,
@@ -18,5 +21,7 @@ export const rootReducer = combineReducers({
     classesInStudents: classesInStudentsReducer,
     addStudentInClass: addStudentInClassReducer,
     classesInCourse:classesInCourseReducer,
-    contentId:contentReducer
+    contentId:contentReducer,
+    infoById: infoById,
+    infoStuById: infoStuById,
 })

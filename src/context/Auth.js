@@ -76,6 +76,7 @@ export default function Auth(props) {
         // cookie.remove('userid')//all users
         cookie.remove('role')
         cookie.remove('username')
+        setTimeout(() =>window.location.reload(),50)
     }
     const validToken = (user) => {
         if (user) {
@@ -89,6 +90,10 @@ export default function Auth(props) {
                 console.log(user)
                 if(user.userInfo.role === "teacher" || user.userInfo.role==="student"){
                     cookie.save('id',user.newId)
+                }
+                if(user.userInfo.role === "admin"){
+                cookie.save('adminId',user.userInfo.id)
+                    
                 }
                 // cookie.save('userid',user.userInfo.id)
                 cookie.save('role',user.userInfo.role)
