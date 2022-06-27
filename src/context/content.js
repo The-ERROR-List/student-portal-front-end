@@ -12,16 +12,27 @@ export default function Content(props) {
     const [content, setContent] = useState([])
     const [show, setShow] = useState(true)
     const [names, setNames] = useState({})
+    const [idContent, setIdContent] = useState({ id: "" });
 
-    const addContent = async (e) => {
+
+console.log(idContent);
+    function idUpdateContent(id) {
+        setIdContent({
+            ...idContent,
+            id: id,
+        });
+    }
+
+    const addContent = async (e, id) => {
         e.preventDefault();
         console.log('1', contentTitle, '2', contentBody, '3', contentLink, '4', contentCategory)
-        let result = axios.post(`${api}/content/${cookie.load('classid')}`, {
+
+        let result = axios.post(`${api}/content/${id}`, {
             contentTitle: e.target.contentTitle.value,
             contentBody: e.target.contentBody.value,
             contentLink: e.target.contentLink.value,
             contentCategory: e.target.contentCategory.value,
-            classId: cookie.load('classid'),
+            classId: id,
         }, {
             headers: { Authorization: `Bearer ${cookie.load("token")}` },
         }).then(response => {
@@ -32,9 +43,10 @@ export default function Content(props) {
 
     };
 
-    // useEffect(()=>{
+    useEffect(() => {
+        console.log(22222222, content);
+    }, [content])
 
-    // })
     const updateContent = (id => {
         console.log('contentid', id);
         let result = axios.patch(`${api}/content/${id}`, {
@@ -52,6 +64,8 @@ export default function Content(props) {
         )
         setShow(false)
     })
+
+
     const deleteContent = ((id, indx) => {
         console.log('sssssssss', id)
         axios.delete(`${api}/content/${id}`, {
@@ -76,6 +90,7 @@ export default function Content(props) {
         contentCategory,
         show,
         setShow,
+        idUpdateContent
 
 
     }
