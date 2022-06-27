@@ -79,7 +79,8 @@ export function createCourse(payload) {
     body: JSON.stringify({
       courseName: payload.courseName,
       courseGrade: payload.courseGrade,
-      courseImg: payload.courseImg
+      courseImg: payload.courseImg,
+      courseDescription:payload.courseDescription
     })
   }).then((response) => {
     console.log("response", response.json());

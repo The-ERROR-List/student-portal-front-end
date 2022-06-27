@@ -3,9 +3,9 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg } from "reactstrap";
+import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg, Alert } from "reactstrap";
 import { api } from '../../../redux/type'
-
+import './teacher-class.scss'
 import { Link } from 'react-router-dom';
 const TeacherClasses = (props) => {
     const [classes, setClasses] = useState([])
@@ -33,10 +33,19 @@ const TeacherClasses = (props) => {
 
 
     return (
-        <div>
-            {console.log('resss', classes)}
-            <h1> Teacher classes</h1>
-            <Row style={{ marginTop: "20px" }}>
+        <div className ='teacherClass'>
+            <div >
+                <Alert
+                    style={{
+                        fontSize: "30px",
+                        marginTop: "2%",
+                        marginRight: "2%",
+                        marginLeft: "2%",
+                    }}
+                > The Class In Courses</Alert>
+            </div>
+            {/* <Row style={{ marginTop: "20px" }}> */}
+            <div className='class-cards'>
 
                 {
                     classes.classes ?
@@ -66,8 +75,9 @@ const TeacherClasses = (props) => {
 
                         }) : null
                 }
+            </div>
 
-            </Row>
+            {/* </Row> */}
         </div>
 
     )
