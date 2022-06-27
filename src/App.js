@@ -6,23 +6,25 @@ import Home from "./components/home/home";
 import State from './context/State';
 import Content from './context/content'
 import Announcement from "./context/announcement"
-
+import Zoom from './context/zoom'
 import Style_Content from './components/class/content/style';
 function App() {
   return (
     <div className="App">
       {/* <Style_Content/> */}
-      <Announcement>
-        <Content>
-          <Auth>
+      <Zoom>
 
-            <State>
-              <Home />
-              <Login />
-            </State>
-          </Auth>
-        </Content>
-      </Announcement>
+        <Announcement>
+          <Content>
+            <Auth>
+              <State>
+                <Home />
+                <Login />
+              </State>
+            </Auth>
+          </Content>
+        </Announcement>
+      </Zoom>
 
     </div >
   );
