@@ -27,7 +27,7 @@ function Submit() {
   const dispatch = useDispatch();
   const state = useContext(StateContext);
   // const [students, setStudents] = useState([]);
-  const [infoStudents, setInfoStudents] = useState({
+  const [infoStudentsToClass, setInfoStudentsToClass] = useState({
     className: "",
     userName: "",
     studentGrade: "",
@@ -35,13 +35,13 @@ function Submit() {
 
   function handelChange(e) {
     e.preventDefault();
-    setInfoStudents({ ...infoStudents, [e.target.name]: e.target.value });
+    setInfoStudentsToClass({ ...infoStudentsToClass, [e.target.name]: e.target.value });
 
   }
 
   function handelSubmit(e) {
     e.preventDefault();
-    dispatch({ type: addStudentInClass, payload: infoStudents });
+    dispatch({ type: addStudentInClass, payload: infoStudentsToClass });
     // setStudents([...students, infoStudents])
     state.handleClose();
   }
@@ -130,12 +130,12 @@ const ClassList = (props) => {
   };
 
 
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       fetchStudents()
-  //     }, 2000);
-  //     return () => clearInterval(interval);
-  //   }, []);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        fetchStudents()
+      }, 2000);
+      return () => clearInterval(interval);
+    }, []);
 
 
 

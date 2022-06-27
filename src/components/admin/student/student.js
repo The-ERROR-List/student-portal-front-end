@@ -37,6 +37,7 @@ const Student = () => {
         nationality: "",
         major: "",
     });
+
     const handelChange = (e) => {
         e.preventDefault();
         setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
@@ -70,6 +71,7 @@ const Student = () => {
                 console.log(data);
             })
         );
+        state.handleClose()
     }
     function idUser(id) {
         setId({
