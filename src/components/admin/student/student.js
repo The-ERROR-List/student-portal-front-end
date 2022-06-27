@@ -170,7 +170,7 @@ const Student = () => {
                     class="modal-dialog modal-lg"
                   >
                     <Modal.Header closeButton>
-                      <Modal.Title>Student form</Modal.Title>
+                      <Modal.Title>Edit Student form</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                       <Form style={{ width: "70%", margin: "auto" }}>
@@ -181,32 +181,9 @@ const Student = () => {
                               <Input
                                 id="userName"
                                 name="userName"
-                                value={student.useName}
-                                placeholder="userName..."
+                               
+                                placeholder={student.useName}
                                 type="userName"
-                                onChange={handelChange}
-                              />
-                            </FormGroup>
-                            <FormGroup>
-                              <Label for="exampleEmail">Email</Label>
-                              <Input
-                                id="email"
-                                name="email"
-                                placeholder="Email..."
-                                type="email"
-                                value={student.email}
-                                onChange={handelChange}
-                              />
-                            </FormGroup>
-                          </Col>
-                          <Col md={6}>
-                            <FormGroup>
-                              <Label for="examplePassword">Password</Label>
-                              <Input
-                                id="examplePassword"
-                                name="password"
-                                placeholder="password placeholder"
-                                type="password"
                                 onChange={handelChange}
                               />
                             </FormGroup>
@@ -219,8 +196,7 @@ const Student = () => {
                               <Input
                                 id="firstName"
                                 name="firstName"
-                                value={student.firstName}
-                                placeholder="First Name..."
+                                placeholder={student.useName}
                                 onChange={handelChange}
                               />
                             </FormGroup>
@@ -229,7 +205,7 @@ const Student = () => {
                               <Input
                                 id="lastName"
                                 name="lastName"
-                                placeholder="Last Name...."
+                                placeholder={student.lastName}
                                 onChange={handelChange}
                               />
                             </FormGroup>
@@ -242,9 +218,9 @@ const Student = () => {
                               <Input
                                 id="role"
                                 name="role"
-                                placeholder="role"
-                                value={infoUpdate.role}
-                                // onChange={handelChange}
+                                placeholder={student.role}
+                                value='student'
+                                
                               />
                             </FormGroup>
                           </Col>
@@ -254,7 +230,7 @@ const Student = () => {
                               <Input
                                 id="gender"
                                 name="gender"
-                                placeholder="gender"
+                                placeholder={student.gender}
                                 onChange={handelChange}
                               />
                             </FormGroup>
@@ -265,7 +241,7 @@ const Student = () => {
                               <Input
                                 id="nationality"
                                 name="nationality"
-                                placeholder="nationality"
+                                placeholder={student.nationality}
                                 onChange={handelChange}
                               />
                             </FormGroup>
@@ -277,7 +253,7 @@ const Student = () => {
                           <Input
                             id="major"
                             name="major"
-                            placeholder="major"
+                            placeholder={student.major}
                             onChange={handelChange}
                           />
                         </FormGroup>

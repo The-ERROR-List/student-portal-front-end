@@ -34,7 +34,7 @@ export default function UpdateContents(props) {
                     name="contentTitle"
                     placeholder="content Title..."
                     type="text"
-                    value={contentC.content.contentTitle}
+                    // value={contentC.content.contentTitle}
                     onChange={(e) => {
                       contentC.setContentTitle(e.target.value)
                     }}
