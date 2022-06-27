@@ -9,7 +9,7 @@ export const initialState = {
 
 export default function contentReducer(state = initialState, action) {
     let { type, dataContentId } = action;
-    console.log(111111111111,dataContentId);
+    // console.log(111111111111,dataContentId);
     switch (type) {
 
         case getContentId:

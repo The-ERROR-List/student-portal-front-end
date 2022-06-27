@@ -6,7 +6,8 @@ import './class.scss'
 import { useParams } from "react-router-dom";
 import { Routes, Route, Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import Nav from './navBar/nav'
+import Nav from './navBar/nav';
+
 const Class = () => {
   const params = useParams();
   console.log('params', params)

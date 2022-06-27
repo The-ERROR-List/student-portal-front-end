@@ -23,7 +23,8 @@ const Content = (props) => {
   const dispatch = useDispatch()
   cookie.save("classId", params.id);
   const contentC = useContext(contentContext);
-const [shown,setShown]=useState(false)
+  const [shown, setShown] = useState(false)
+
   const getContents = () => {
     let contentData = axios
       .get(`${api}/content-for-class/${params.id}`, {
@@ -34,6 +35,7 @@ const [shown,setShown]=useState(false)
         contentC.setContent(response.data);
       });
   };
+
   useEffect(() => {
     const interval = setInterval(() => {
       getContents();
@@ -77,7 +79,7 @@ const [shown,setShown]=useState(false)
                     <nav>
 
                       <span>Title</span>
-                      <Button onClick={getID(classContent.id)}> {classContent.contentTitle} </Button>
+                      <Button onClick={()=>getID(classContent.id)}> {classContent.contentTitle} </Button>
                     </nav>
                   </div>
 
@@ -94,28 +96,23 @@ const [shown,setShown]=useState(false)
                           }
                         />
                       </When>
-                     
-                        
-                      
-                      { shown&& 
-                      contentDataById.map((contentEle, i) => {
-                        return (
-                          <>
 
 
-                            <h1> {contentEle.contentTitle}</h1>
-                            <hr />
-                            <p>{contentEle.contentBody}</p>
-                            <hr />
-                            <p> {contentEle.contentLink}</p>
-                            <p>{contentEle.contentCategory}</p>
+
+                      {shown &&contentDataById?
+                        <>
+                          <h1> {contentDataById.contentTitle}</h1>
+                          <hr />
+                          <p>{contentDataById.contentBody}</p>
+                          <hr />
+                          <p> {contentDataById.contentLink}</p>
+                          <p>{contentDataById.contentCategory}</p>
+                        </>
+                          :null
+                      }
 
 
-                          </>
-                        )
 
-                      })}
-                    
                     </div>
 
 
