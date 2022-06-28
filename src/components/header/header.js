@@ -9,7 +9,9 @@ import Account from './account'
 import Course from './course'
 import cookie from "react-cookies";
 import { When } from 'react-if';
-
+import PersonIcon from '@mui/icons-material/Person';
+import GroupIcon from '@mui/icons-material/Group';
+import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 
 const Header = () => {
 
@@ -18,14 +20,40 @@ const Header = () => {
             <Navbar bg="dark" variant="dark"  >
                 <Container >
                     <Nav className="me-auto cont" >
-                        <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70, color: "white", textAlign: 'center', marginLeft: "20px", marginTop: "-30px" }} /></Navbar.Brand>
+                        <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70,textDecoration: "none",color: "inherit", textAlign: 'center', marginLeft: "20px", marginTop: "-30px" }} /></Navbar.Brand>
                         <hr style={{ color: "white" }} />
                         <div className='btn'>
-                            <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '15px', color: 'white' }}
+                            <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
                             >
-                                <Link to='/'>
+                                <Link  style={{ textDecoration: "none",color: "inherit"} } to='/'>
                                     <SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Link></Nav.Link>
                         </div>
+                            <div className='btn'>
+                                <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
+                                >
+                                    <Link  style={{ textDecoration: "none",color: "inherit"} } to='/admin-teacher'>
+                                        <PersonIcon sx={{ fontSize: 30 }} /> <p>Teachers</p> </Link></Nav.Link>
+                            </div>
+
+                            <div className='btn'>
+                                <Nav.Link href="/admin-student" style={{ textAlign: 'center', marginTop: '10px',textDecoration: "none",color: "inherit" }}
+                                >
+                                    <Link style={{ textDecoration: "none",color: "inherit"} } to='/admin-student'>
+                                        <SchoolOutlinedIcon sx={{ fontSize: 30 }} /> <p>Students</p> </Link></Nav.Link>
+                            </div>
+                            <div className='btn'>
+                                <Nav.Link href="/admin-course" style={{ textAlign: 'center', marginTop: '15px', textDecoration: "none",color: "inherit" }}
+                                >
+                                    <Link style={{ textDecoration: "none",color: "inherit"} } to='/admin-course'>
+                                        <LibraryBooksOutlinedIcon sx={{ fontSize: 30 }} /> <p>Courses</p> </Link></Nav.Link>
+                            </div>
+                            <div className='btn'>
+                                <Nav.Link  href="/admin-class" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
+                                >
+                                    <Link   style={{ textDecoration: "none",color: "inherit"} } to='/admin-class'>
+                                        <GroupIcon sx={{ fontSize: 30 }} /> <p>Classes</p> </Link></Nav.Link>
+                            </div>
+                       
                         <div className='btn'>
                             <Account />
                         </div>

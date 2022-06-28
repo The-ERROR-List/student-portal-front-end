@@ -61,7 +61,7 @@ export default function Course() {
 
                                     return (
                                         <ul>
-                                            <Link  onClick={clicked} to={`/class-student/${classs.classId}`}>
+                                            <Link onClick={clicked} to={`/class-student/${classs.classId}`}>
                                                 <li> {classs.className}</li>
                                             </Link>
                                         </ul>
