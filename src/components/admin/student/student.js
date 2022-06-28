@@ -1,13 +1,5 @@
-import {
-  Table,
-  Form,
-  Row,
-  Col,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-} from "reactstrap";
+import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import Table from "react-bootstrap/Table";
 import { Modal, Alert, Breadcrumb, BreadcrumbItem } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { StateContext } from "../../../context/State";
@@ -47,7 +39,6 @@ const Student = () => {
     dispatch({ type: deleteStudent, payloadDelete: idToDelete });
   };
 
-
   function updateUser(e) {
     e.preventDefault();
     fetch(`${api}/student/${ids.id}`, {
@@ -75,7 +66,6 @@ const Student = () => {
     state.handleClose();
   }
 
-  
   function idUser(id) {
     setId({
       ...ids,
@@ -90,37 +80,37 @@ const Student = () => {
     return () => clearInterval(interval);
   }, []);
 
-
   return (
     <div className="admin-student">
       <Alert
+        variant="success"
         style={{
           fontSize: "30px",
-          marginTop: "20px",
-          marginRight: "60px",
-          marginLeft: "55px",
+          color: "#005240",
+          backgroundColor: "#005240",
+          borderColor: "#005240",
         }}
       >
-        <div style={{ display: "flex" }}>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem href="/" tag="a">
-              Dashboard/
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem href="/admin-student" tag="a">
-              Student
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </div>
+        <Alert.Heading
+          style={{
+            color: "white",
+          }}
+        >
+          Student Dashboard
+          <AddStudent />
+        </Alert.Heading>
       </Alert>
-      <div className="student-table">
-        <AddStudent />
-
-        <Table hover className="Student-table">
+      <div className="student-table" style={{marginTop:"30px"}}>
+        <Table striped bordered hover className="Student-table">
           <thead className="headerTable">
-            <tr>
-              <th>Image Student</th>
+            <tr
+              style={{
+                backgroundColor: "#005240",
+                color: "white",
+                fontSize: "20px",
+              }}
+            >
+              <th>Student Image</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Username</th>
@@ -133,7 +123,7 @@ const Student = () => {
             {students.map((student, i) => {
               return (
                 <>
-                  <tr className="content-table" key={i}>
+                  <tr className="content-table" key={i} style={{ fontSize:"20px"}}>
                     <td>
                       <Avatar
                         color={Avatar.getRandomColor("sitebase", [
@@ -154,10 +144,11 @@ const Student = () => {
                     <DeleteIcon
                       sx={{ fontSize: 67 }}
                       onClick={() => deleteFromDB(student.id)}
+                      style={{ color: "#e8003f" }}
                     />
                     <EditIcon
-                    
                       sx={{ fontSize: 67 }}
+                      style={{ color: "#ffd600" }}
                       onClick={() => {
                         idUser(student.id);
                         state.handleShow();
@@ -181,7 +172,6 @@ const Student = () => {
                               <Input
                                 id="userName"
                                 name="userName"
-                               
                                 placeholder={student.useName}
                                 type="userName"
                                 onChange={handelChange}
@@ -219,8 +209,7 @@ const Student = () => {
                                 id="role"
                                 name="role"
                                 placeholder={student.role}
-                                value='student'
-                                
+                                value="student"
                               />
                             </FormGroup>
                           </Col>
