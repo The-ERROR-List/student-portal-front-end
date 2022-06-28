@@ -30,6 +30,7 @@ import { Modal } from "react-bootstrap";
 import { api } from '../../../redux/type';
 
 import "./course.scss";
+import './course-teacher.scss'
 
 export default function Course_Card(props) {
   const [show, setShow] = useState(false);
@@ -71,7 +72,7 @@ export default function Course_Card(props) {
         courseImg: infoUpdate.courseImg,
       })
     }).then((res) => res.json().then((data) => { console.console(data) }));
-    
+
 
     handleClose();
   }
@@ -84,7 +85,7 @@ export default function Course_Card(props) {
     dispatch({ type: deleteCourse, payloadDelete: idToDelete })
   }
 
- 
+
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getAllCourse2Teacher(props.course.id));
@@ -94,9 +95,41 @@ export default function Course_Card(props) {
 
 
   return (
-    <div>
-      <CardGroup style={{ width: "420px" }}>
-        <Card>
+    <div className ="wrapper">
+      <section class="page-contain">
+        <a href="#" class="data-card">
+          <h3 id="corseName">{props.course.courseName}</h3>
+          {/* <h4>{selector.map((teacher, i) => {
+            return (
+            <>
+            {teacher.TeacherName}
+            </>
+            );
+            
+          })}</h4> */}
+          <span class="link-text">
+            <h3>{props.course.courseDescription}</h3>
+          </span>
+          <div class = "edit-delete">
+          <DeleteIcon id="deleteB" sx={{ fontSize: 40 }}  onClick={() => deleteFromDB(props.course.id)} />
+          
+                <EditIcon id="editB"
+
+              sx={{ fontSize: 40 }}
+              onClick={() => {
+                idUser(props.course.id)
+                handleShow()
+              }}
+              
+            />
+             </div>
+
+        </a>
+      </section>
+    
+    
+
+       
           <Modal
             show={show}
             onHide={handleClose}
@@ -163,7 +196,7 @@ export default function Course_Card(props) {
               </Button>
             </Modal.Footer>
           </Modal>
-          <CardImg
+          {/* <CardImg
             top
             src={props.course.courseImg}
 
@@ -194,8 +227,9 @@ export default function Course_Card(props) {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </Card>
-      </CardGroup>
+        </Card> 
+       </CardGroup>  */}
     </div>
   );
 }
+

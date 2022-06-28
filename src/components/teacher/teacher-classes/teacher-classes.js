@@ -7,6 +7,8 @@ import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg, Alert }
 import { api } from '../../../redux/type'
 import './teacher-class.scss'
 import { Link } from 'react-router-dom';
+import Table from 'react-bootstrap/Table'
+
 const TeacherClasses = (props) => {
     const [classes, setClasses] = useState([])
     let response;
@@ -33,51 +35,50 @@ const TeacherClasses = (props) => {
 
 
     return (
-        <div className ='teacherClass'>
+        <div className='teacherClass'>
             <div >
                 <Alert
-                    style={{
-                        fontSize: "30px",
-                        marginTop: "2%",
-                        marginRight: "2%",
-                        marginLeft: "2%",
-                    }}
-                > The Class In Courses</Alert>
+                   style={{
+                    fontSize: "30px",
+                    color: "#ffff",
+                    backgroundColor: "#005240",
+                    borderColor: "#005240",
+                    width: "100%"
+        
+                  }}>
+                 The Class In Courses</Alert>
             </div>
             {/* <Row style={{ marginTop: "20px" }}> */}
-            <div className='class-cards'>
+            <Table striped bordered hover className="teacher-table" >
+                <thead className='headerTable'>
+                    <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
+                        <th>Class Name</th>
+                        <th>Course Name</th>
+                        <th>Teacher Name</th>
+                        <th>Class Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {
+                            classes.classes ?
+                                classes.classes.map((classforTeacher, index) => {
+                                    return (
+                                        <>
+                                            <tr className='content-table' key={index} style={{ fontSize: "20px" }} >
+                                                <Link to={`/class/${classforTeacher.id}`}>
+                                                    <td>{classforTeacher.className}</td>
+                                                </Link>
+                                                <td>{classforTeacher.courseName}</td>
+                                                <td>{classforTeacher.teacherName}</td>
+                                                <td>{classforTeacher.classTime}</td>
+                                            </tr>
+                                           </>
+                                    )
 
-                {
-                    classes.classes ?
-                        classes.classes.map((classforTeacher, index) => {
-                            { console.log(classforTeacher.id) }
-                            return (
-                                <>
-                                    <Link to={`/class/${classforTeacher.id}`}>
-
-                                        <Col key={index} sm="3">
-                                            <Card key={index} body>
-                                                <CardTitle style={{ fontWeight: 500 }} tag="h4">
-                                                    {classforTeacher.className
-                                                    }
-                                                </CardTitle>
-                                                <CardText>
-                                                    {classforTeacher.classTime}
-                                                </CardText>
-                                            </Card>
-                                        </Col>
-                                    </Link>
-
-                                </>
-
-
-                            )
-
-                        }) : null
-                }
-            </div>
-
-            {/* </Row> */}
+                                }) : null
+                        }
+                </tbody>
+            </Table>
         </div>
 
     )
