@@ -20,6 +20,7 @@ export default function Course() {
   }, []);
 
   return (
+    <>
     <div className="admin-coures">
       <Alert
         style={{
@@ -29,19 +30,19 @@ export default function Course() {
           marginLeft: "55px",
         }}
       >
-        <div style={{ display: "flex" }}>
+        <div>
           <Breadcrumb listTag="div">
             <BreadcrumbItem href="/" tag="a">
-              Dashboard/
             </BreadcrumbItem>
           </Breadcrumb>
           <Breadcrumb listTag="div">
             <BreadcrumbItem href="/admin-course" tag="a">
-              Course
+              Courses
             </BreadcrumbItem>
           </Breadcrumb>
         </div>
       </Alert>
+      </div>
       <div className="course-cards">
         <AddCourse />
         <AddTeacherToCourse/>
@@ -49,6 +50,8 @@ export default function Course() {
           return <CourseCard key={i} course={course} />;
         })}
       </div>
-    </div>
+    </>
   );
 }
+
+
