@@ -23,7 +23,7 @@ function Home() {
   
           <When condition={auth.isLoggedIn}>
             <Header />
-            <div style={{marginLeft:"150px"}}>
+            <div style={{marginLeft:"143px"}}>
             <Routes>
             <Route path="/" element = {<Main/>}/>
             <Route path="/course/:id" element={<TeacherClasses/>} />
