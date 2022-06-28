@@ -1,99 +1,114 @@
 * {
   box-sizing: border-box;
-  
-  
-  
 }
-.body1{
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-  overflow-y: none; 
-  background-color: #004d40;
+.body1 {
+	background-color: #63d471;
+	background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: "Open Sans", sans-serif;
+	color: #333333;
   height: 100vh;
-}   
-
-div::-webkit-scrollbar {
-  display: none; 
-  
 }
-
-
-/* Add styles to the form container */
-#container {
-  background-color: #004d40(124, 124, 124); 
-  background-color: #004d40(51, 51, 51, 0.4); 
-  color: #000000;
-  /* font-weight: bold; */
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width:30%;
-  // padding: 20px;
-  text-align: center;
-  
-}
-label{
-  color: #fafafa;
-  font-weight: 400;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  margin-right: auto;
-}
-
-
-input[type=email]:focus, input[type=password]:focus {
-  background-color: #ebf3f2;
-  opacity: .7;
-  outline: none;
-}
-
-
-#btn {
- 
- border-radius: 10px;
-  color: #004d40;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 40%;
-  opacity: 1;
-  height: 30%;
-  margin-bottom: 10px;
-  font-size: 25px;
-}
-
-#btn:hover {
-   opacity: .7; 
-}
-
-.input-container {
-  display: -ms-flexbox; 
-  display: flex;
-  width: 100%;
-  margin: 5px 0 15px 0;
-  background: #004d40;
-
-}
-
-.icon {
-  padding: 5px;
-  // background: #525151;
-  color: white;
-  min-width: 40px;
-  text-align: center;
-  margin: 10px 0 15px 0;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-  
-}
-
-.input-field:focus {
-  border: 3px solid #004d40;
+.box-form {
+	margin: 0 auto;
+	width: 80%;
+	background: #FFFFFF;
+	border-radius: 10px;
+	overflow: hidden;
+	display: flex;
+	flex: 1 1 100%;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 0 20px 6px #194b3485;
+  position: relative;
+  top: 20%;
+	div {
+		height: auto;
+	}
+	.left {
+		color: #FFFFFF;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-image: url("./pexels-ricardo-esquivel-1907785.jpg");
+		overflow: hidden;
+		.overlay {
+			padding: 30px;
+			width: 100%;
+			height: 100%;
+			background: #4d4f4ead;
+			overflow: hidden;
+			box-sizing: border-box;
+			h1 {
+				font-size: 10vmax;
+				line-height: 1;
+				font-weight: 900;
+				margin-top: 40px;
+				margin-bottom: 20px;
+			}
+			span {
+				p {
+					margin-top: 30px;
+					font-weight: 900;
+				}
+			}
+		}
+	}
+	.right {
+		padding: 40px;
+		overflow: hidden;
+    position: relative;
+		h5 {
+			font-size: 6vmax;
+			line-height: 0;
+      margin-bottom:50%;
+		}
+		.inputs {
+			overflow: hidden;
+		}
+		input {
+			width: 100%;
+			padding: 10px;
+			margin-top: 25px;
+			font-size: 16px;
+			border: none;
+			outline: none;
+			border-bottom: 2px solid #B0B3B9;
+		}
+    i{
+      position: absolute;
+      right: 15%;
+      bottom: 30%;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+		button {
+			float: right;
+			color: #fff;
+			font-size: 16px;
+			padding: 12px 35px;
+			border-radius: 50px;
+			display: inline-block;
+			border: 0;
+			outline: 0;
+			background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+      margin-top:10%;
+      :hover{
+        box-shadow: 0px 4px 15px 0px #82c470a6;
+      }
+		}
+	}
+  @media (max-width: 980px) {
+    .box-form {
+      flex-flow: wrap;
+      text-align: center;
+      align-content: center;
+      align-items: center;
+      .right {
+        width: 100%;
+      }
+    }
+  }
 }
