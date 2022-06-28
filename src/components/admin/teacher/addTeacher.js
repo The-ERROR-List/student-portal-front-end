@@ -63,7 +63,7 @@ export default function AddStudent() {
             onSubmit={handelSubmit}
             style={{ width: "70%", margin: "auto" }}
           >
-            <Row style={{marginTop:"0px"}}>
+            <Row style={{ marginTop: "0px" }}>
               <Col md={6}>
                 <FormGroup>
                   <Label for="userName">userName</Label>
@@ -110,13 +110,6 @@ export default function AddStudent() {
                 placeholder="Last Name...."
                 onChange={handelChange}
               />
-              <Label for="gender">gender</Label>
-              <Input
-                id="gender"
-                name="gender"
-                placeholder="gender"
-                onChange={handelChange}
-              />
               <Label for="nationality">nationality</Label>
               <Input
                 id="nationality"
@@ -132,10 +125,28 @@ export default function AddStudent() {
                 onChange={handelChange}
               />
 
-              <Button color="success" style={{marginTop:"30px"}}>Add Teacher</Button>
-            </Row>
+              <select
+                onChange={handelChange}
+                name="gender"
+                required
+                style={{
+                  marginTop: "10px",
+                  color: "gray",
+                  backgroundColor: "white",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  border: "solid",
+                  borderColor: "white",
+                }}
+              >
+                <option value="male">Male</option>
+                <option value="female"> Female</option>
+              </select>
 
-            {/* <Button color="success">Add Teacher</Button> */}
+              <Button color="success" style={{ marginTop: "20px" }}>
+                Add Teacher
+              </Button>
+            </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
