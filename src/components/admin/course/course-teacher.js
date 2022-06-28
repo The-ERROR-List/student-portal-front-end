@@ -126,7 +126,6 @@ export default function Course_Card(props) {
               }}
               
             />
-            
              </div>
 
         </a>

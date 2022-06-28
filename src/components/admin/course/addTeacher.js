@@ -4,13 +4,16 @@ import {
     Col,
     Label,
     Input,
-    
+
 } from "reactstrap";
-import { Modal ,Button,FormGroup } from "react-bootstrap";
+import { Modal, Button, FormGroup } from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addCourseToTeacher } from "../../../redux/type";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import ReactTooltip from "react-tooltip";
+
 export default function AddTeacherToCourse() {
     const state = useContext(StateContext);
     const dispatch = useDispatch();
@@ -30,22 +33,25 @@ export default function AddTeacherToCourse() {
     const handelSubmit = (e) => {
         e.preventDefault();
         dispatch({ type: addCourseToTeacher, payload: infoCourse });
-       handleClose();
+        handleClose();
     };
 
-    
+
     return (
         <>
-            <Button color="warning" onClick={handleShow}>
-                Add Course To Teacher
-            </Button>
+            <AddCircleOutlineIcon style={{marginLeft:"20px"}} color="warning" data-tip="Assign a Teacher to Course" onClick={handleShow}>
+            </AddCircleOutlineIcon>
+
+            <ReactTooltip />
+
+
             <Modal
                 show={show}
                 onHide={handleClose}
                 class="modal-dialog modal-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Form Add Course </Modal.Title>
+                    <Modal.Title> Add Course </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form style={{ width: "70%", margin: "auto" }}>

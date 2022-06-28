@@ -8,6 +8,7 @@ import CourseCard from "./course-teacher";
 import AddCourse from "./addCourse";
 import "./course.scss";
 
+
 export default function Course() {
   const courses = useSelector((state) => state.course.infoCourse);
   const dispatch = useDispatch();
@@ -22,30 +23,29 @@ export default function Course() {
   return (
     <>
     <div className="admin-coures">
-      <Alert
-        style={{
-          fontSize: "30px",
-          marginTop: "20px",
-          marginRight: "60px",
-          marginLeft: "55px",
-        }}
-      >
-        <div>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem href="/" tag="a">
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem href="/admin-course" tag="a">
-              Courses
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </div>
+ 
+  <Alert variant="success" style={{
+        fontSize: "30px",
+       color: "#005240",
+       backgroundColor: "#005240",
+       borderColor: "#005240"
+      }} >
+         <Alert.Heading style={{
+        
+       color: "white",
+      
+      }}>
+           Teacher Dashboard
+           <AddCourse />
+           <AddTeacherToCourse/>
+
+
+         </Alert.Heading>
+    
+
       </Alert>
       </div>
       <div className="course-cards">
-        <AddCourse />
-        <AddTeacherToCourse/>
         {courses.map((course, i) => {
           return <CourseCard key={i} course={course} />;
         })}
