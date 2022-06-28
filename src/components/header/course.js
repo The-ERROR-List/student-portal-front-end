@@ -21,18 +21,20 @@ export default function Course() {
     const handleShow = () => setShow(true);
     const dispatch = useDispatch();
     useEffect(() => {
+        if (cookie.load('role') === 'student') {
 
-        // dispatch(getClassesInStudentsAction())
-        
-        if(cookie.load('role') === 'teacher'){
+            dispatch(getClassesInStudentsAction())
+        }
+
+        if (cookie.load('role') === 'teacher') {
             state.getCourses()
         }
         // console.log({state})
 
     }, [show])
-    function clicked(){
+    function clicked() {
         handleClose()
-        setTimeout(() =>window.location.reload(),50
+        setTimeout(() => window.location.reload(), 50
         )
     }
     return (
@@ -52,14 +54,14 @@ export default function Course() {
                 <Offcanvas.Body>
                     <hr />
                     <br />
-                    {/* <When condition={cookie.load('role') === 'student'}>
+                    <When condition={cookie.load('role') === 'student'}>
                         {
                             selector.classes ?
                                 selector.classes.map((classs, i) => {
 
                                     return (
                                         <ul>
-                                            <Link to={`/class-student/${classs.classId}`}>
+                                            <Link  onClick={clicked} to={`/class-student/${classs.classId}`}>
                                                 <li> {classs.className}</li>
                                             </Link>
                                         </ul>
@@ -67,13 +69,13 @@ export default function Course() {
                                     )
                                 }) : null
                         }
-                    </When> */}
-                    
-                    {/* <When condition={cookie.load('role') === 'teacher'}>
+                    </When>
+
+                    <When condition={cookie.load('role') === 'teacher'}>
                         {
                             state.courses.TeacherCourses ?
                                 state.courses.TeacherCourses.map((course, i) => {
-                                    
+
                                     return (
                                         <ul>
                                             <Link to={`/course/${course['course id']}`} onClick={clicked}  >
@@ -83,7 +85,7 @@ export default function Course() {
                                     )
                                 }) : null
                         }
-                    </When> */}
+                    </When>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
