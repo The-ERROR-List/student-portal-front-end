@@ -1,5 +1,4 @@
 import {
-  Table,
   Form,
   Row,
   Col,
@@ -11,6 +10,7 @@ import {
   BreadcrumbItem
 } from "reactstrap";
 import { Alert } from 'react-bootstrap'
+import Table from 'react-bootstrap/Table'
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { api } from '../../../redux/type';
@@ -95,39 +95,32 @@ const Teacher = () => {
   }
   return (
     <div className="admin-teacher">
-      <Alert style={{
+      <Alert variant="success" style={{
         fontSize: "30px",
-        marginTop: "20px",
-        marginRight: "60px",
-        marginLeft: "55px",
+       color: "#005240",
+       backgroundColor: "#005240",
+       borderColor: "none"
       }} >
-        <div style={{ display: "flex" }}>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem
-              // href="/"
-              tag="a"
-            >
-              Dashboard/
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Breadcrumb listTag="div">
-            <BreadcrumbItem
-              // href="/admin-teacher"
-              tag="a"
-            >
-              Teacher
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </div>
+         <Alert.Heading style={{
+        
+       color: "white",
+      
+      }}>
+           Teacher Dashboard
+           <AddStudent
+           />
+
+         </Alert.Heading>
+    
 
       </Alert>
       <div className='teacher-table' >
-        <AddStudent />
+        
 
         <div>
-          <Table className="teacher-table">
+          <Table striped bordered hover className="teacher-table" >
             <thead className='headerTable'>
-              <tr >
+              <tr style={{backgroundColor:"#005240", color:"white"}} >
                 <th >Image Teacher</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -150,12 +143,11 @@ const Teacher = () => {
                       <td>{teacher.department}</td>
 
                       <DeleteIcon
-                        sx={{ fontSize: 67 }}
-                        color="secondary"
+                        sx={{ fontSize: 67 , color: "#e8003f"}}
                         onClick={() => deleteFromDB(teacher.id)}
                       />
                       <EditIcon
-                        sx={{ fontSize: 67 }}
+                        sx={{ fontSize: 67, color: "yellow" }}
                         onClick={() => {
                           idUser(teacher.id)
                           state.handleShow()
