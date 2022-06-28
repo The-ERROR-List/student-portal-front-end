@@ -20,7 +20,7 @@ export default function AddContents(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const contentC = useContext(contentContext)
-console.log(contentC,333333);
+
 
     const getContents = () => {
     let contentData = axios.get(`${api}/content-for-class/${props.id}`, {
@@ -31,14 +31,14 @@ console.log(contentC,333333);
     })
   }
 
+ 
   useEffect(() => {
-    // if (cookie.load('role') === 'teacher' || cookie.load('role') === 'student') {
+    const interval = setInterval(() => {
         getContents()
-
-    // }
-  }, [])
-
-
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+  
     return (
         <>
             <Button color="success" onClick={handleShow}>
@@ -84,17 +84,7 @@ console.log(contentC,333333);
                                 </FormGroup>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col md={6}>
-                                <FormGroup>
-                                    <Label for="contentCategory">Content Category</Label>
-                                    <Input
-                                        id="contentCategory" className="input-class" name="contentCategory" placeholder="contentCategory" value={"content"} 
-                                    />
-                                </FormGroup>
-                            </Col>
-                        </Row>
-
+                      
                         <Button color="success"  type='submit' onClick={handleClose}>Add content</Button>
                     </Form>
                 </Modal.Body>

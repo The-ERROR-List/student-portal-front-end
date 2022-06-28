@@ -44,3 +44,6 @@ export const getClassesForStudents = 'get_classes_for_students';
 
 //type for teacher id
 export const getTeacherId = 'get_teacher_id';
+
+// get content by id
+export const getContentId = 'get_content_id';

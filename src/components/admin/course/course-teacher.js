@@ -48,12 +48,14 @@ export default function Course_Card(props) {
     e.preventDefault();
     setInfoUpdate({ ...infoUpdate, [e.target.name]: e.target.value });
   };
+
   function idUser(id) {
     setId({
       ...ids,
       id: id,
     });
   }
+
   function updateUser(e) {
     e.preventDefault();
     fetch(`${api}/courses/${ids.id}`, {
@@ -73,7 +75,10 @@ export default function Course_Card(props) {
 
     handleClose();
   }
+
+
   const state = useContext(StateContext);
+
 
   const deleteFromDB = (idToDelete) => {
     dispatch({ type: deleteCourse, payloadDelete: idToDelete })
@@ -109,7 +114,7 @@ export default function Course_Card(props) {
                       <Input
                         id="course"
                         name="courseName"
-                        placeholder="Course..."
+                        placeholder={props.course.courseName}
                         type="text"
                         onChange={handelChange}
                       />
@@ -121,7 +126,7 @@ export default function Course_Card(props) {
                   <Input
                     id="Grade"
                     name="courseGrade"
-                    placeholder="Grade..."
+                    placeholder={props.course.courseGrade}
                     type="number"
                     onChange={handelChange}
                   />
@@ -131,7 +136,7 @@ export default function Course_Card(props) {
                   <Input
                     id="courseDescription"
                     name="courseDescription"
-                    placeholder="course Description..."
+                    placeholder={props.course.courseDescription}
                     type="text"
                     onChange={handelChange}
                   />
@@ -141,8 +146,9 @@ export default function Course_Card(props) {
                   <Input
                     id="courseImg"
                     name="courseImg"
-                    placeholder="Image..."
+                    placeholder={props.course.courseImg}
                     type="text"
+                    
                     onChange={handelChange}
                   />
                 </FormGroup>

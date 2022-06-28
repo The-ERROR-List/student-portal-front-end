@@ -3,7 +3,7 @@ import { Modal} from 'react-bootstrap'
 import { useState,  useEffect } from 'react'
 
 import { addStudent } from '../../../redux/type'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getStudentAction } from '../../../redux/student';
 
 import './student.scss'
@@ -41,10 +41,11 @@ export default function AddStudent() {
     };
 
     useEffect(() => {
+    const interval = setInterval(() => {
         dispatch(getStudentAction());
-    }, [handelSubmit]);
-
-
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
     return (
         <>

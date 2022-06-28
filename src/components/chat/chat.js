@@ -39,7 +39,7 @@ export default function Chat(props) {
         <p> Live Chat</p>{" "}
       </div>
 
-      <div className="chat-body"></div>
+      <div className="chat-body">
       <ScrollToBottom className="message-container">
           {messageList.map((messageContent) => {
             return (
@@ -60,6 +60,7 @@ export default function Chat(props) {
             );
           })}
         </ScrollToBottom>
+        </div>
       <div className="chat-footer">
         <input
           type="text"

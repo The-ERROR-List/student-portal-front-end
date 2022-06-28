@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
-import { Modal, Button, FormGroup } from "react-bootstrap";
+import {  Button, FormGroup } from "react-bootstrap";
 import { contentContext } from "../../../context/content";
 import {
   Form,
@@ -22,17 +22,7 @@ export default function UpdateContents(props) {
 
   return (
     <>
-      {/* <Modal
-        show={show}
-        onHide={handleClose}
-        class="modal-dialog modal-lg"
-      > */}
-      
-        {/* <Modal.Header closeButton>
-          <Modal.Title>Edit Content Model</Modal.Title>
-        </Modal.Header>
-        <Modal.Body> */}
-       
+     
           <Form  onSubmit={() => contentC.updateContent(params.id)} style={{ width: "70%", margin: "auto" }}>
             <Row>
               <Col md={12}>
@@ -44,7 +34,6 @@ export default function UpdateContents(props) {
                     name="contentTitle"
                     placeholder="content Title..."
                     type="text"
-                    value={contentC.content.contentTitle}
                     onChange={(e) => {
                       contentC.setContentTitle(e.target.value)
                     }}
@@ -79,14 +68,6 @@ export default function UpdateContents(props) {
               update Content
             </Button>
           </Form>
-        {/* </Modal.Body>
-        <Modal.Footer>
-          <Button color="danger" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
-
     </>
   )
 }
