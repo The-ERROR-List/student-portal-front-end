@@ -139,7 +139,7 @@ export default function AddStudent() {
                   borderColor: "white",
                 }}
               >
-                <option value="male">Male</option>
+                <option value="male" selected>Male</option>
                 <option value="female"> Female</option>
               </select>
 
