@@ -35,10 +35,7 @@ const Announcement = (props) => {
     // }
   }, []);
 
-  //   const handelChange = (e) => {
-  //     e.preventDefault();
-  //     contentC.setNames({ ...contentC.names, [e.target.name]: e.target.value });
-  // };
+
 
 
   function ShowContent() {
