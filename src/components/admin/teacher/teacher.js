@@ -143,11 +143,13 @@ const Teacher = () => {
                       <td>{teacher.department}</td>
 
                       <DeleteIcon
-                        sx={{ fontSize: 67 , color: "#e8003f"}}
+                        sx={{ fontSize: 67 }}
+                       
                         onClick={() => deleteFromDB(teacher.id)}
                       />
                       <EditIcon
-                        sx={{ fontSize: 67, color: "yellow" }}
+                        sx={{ fontSize: 67 }}
+                        
                         onClick={() => {
                           idUser(teacher.id)
                           state.handleShow()
