@@ -66,18 +66,18 @@ export default function AddStudent() {
             <Row style={{ marginTop: "0px" }}>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="userName">userName</Label>
+                  <Label for="userName"></Label>
                   <Input
                     id="userName"
                     name="userName"
-                    placeholder="userName..."
+                    placeholder="userName"
                     type="userName"
                     onChange={handelChange}
                   />
                 </FormGroup>
               </Col>
               <Col md={6}>
-                <Label for="examplePassword">Password</Label>
+                <Label for="examplePassword"></Label>
                 <Input
                   id="examplePassword"
                   name="password"
@@ -88,36 +88,36 @@ export default function AddStudent() {
               </Col>
             </Row>
             <Row>
-              <Label for="exampleEmail">Email</Label>
+              <Label for="exampleEmail"></Label>
               <Input
                 id="email"
                 name="email"
-                placeholder="Email..."
+                placeholder="Email"
                 type="email"
                 onChange={handelChange}
               />
-              <Label for="firstName">First Name</Label>
+              <Label for="firstName"></Label>
               <Input
                 id="firstName"
                 name="firstName"
-                placeholder="First Name..."
+                placeholder="First Name"
                 onChange={handelChange}
               />
-              <Label for="lastName">Last Name </Label>
+              <Label for="lastName"></Label>
               <Input
                 id="lastName"
                 name="lastName"
-                placeholder="Last Name...."
+                placeholder="Last Name"
                 onChange={handelChange}
               />
-              <Label for="nationality">nationality</Label>
+              <Label for="nationality"></Label>
               <Input
                 id="nationality"
                 name="nationality"
                 placeholder="nationality"
                 onChange={handelChange}
               />
-              <Label for="department">department</Label>
+              <Label for="department"></Label>
               <Input
                 id="department"
                 name="department"
@@ -139,7 +139,7 @@ export default function AddStudent() {
                   borderColor: "white",
                 }}
               >
-                <option value="male" selected>Male</option>
+                <option value="male">Male</option>
                 <option value="female"> Female</option>
               </select>
 
@@ -149,11 +149,11 @@ export default function AddStudent() {
             </Row>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button color="danger" onClick={handleClose}>
             Close
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

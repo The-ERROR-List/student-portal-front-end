@@ -13,7 +13,7 @@ import AdminCourse from '../admin/course/course'
 import AdminClass from '../admin/class/class'
 import Content from '../class/content/content'
 import UpdateContents from'../class/content/update-content'
-
+import UpdateAnnouncement from'../class/announcement/updateAnnao'
 function Home() {
     const auth = useContext(AuthContext);
   
@@ -34,6 +34,7 @@ function Home() {
             <Route path="/admin-student" element={<AdminStudent />} />
             <Route path="/admin-course" element={<AdminCourse />} />
             <Route path="/admin-class" element={<AdminClass />} />
+            <Route path="/updateAnnouncement/:id" element={<UpdateAnnouncement/>}/>
             {/* <Route path="/content-class/:id" element={<Content/>} /> */}
             <Route path="/updateContent/:id" element={<UpdateContents/>}/>
           </Routes>

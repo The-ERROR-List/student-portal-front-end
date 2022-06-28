@@ -76,7 +76,7 @@ export default function AddCourse() {
                 </FormGroup>
               </Col>
             </Row>
-            <FormGroup>
+            {/* <FormGroup>
               <Label for="GradeCourse">Grade course</Label>
               <Input
                 id="Grade"
@@ -85,7 +85,7 @@ export default function AddCourse() {
                 type="number"
                 onChange={handelChange}
               />
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup>
               <Label for="courseDescription">course Description</Label>
               <Input
@@ -96,7 +96,7 @@ export default function AddCourse() {
                 onChange={handelChange}
               />
             </FormGroup>
-            <FormGroup>
+            {/* <FormGroup>
               <Label for="courseImg">Course Img</Label>
               <Input
                 id="courseImg"
@@ -105,7 +105,7 @@ export default function AddCourse() {
                 type="text"
                 onChange={handelChange}
               />
-            </FormGroup>
+            </FormGroup> */}
             <Button color="success" onClick={handelSubmit}>
               Add Course
             </Button>

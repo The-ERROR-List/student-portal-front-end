@@ -10,6 +10,9 @@ import {
   Input,
 
 } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+
+   
 
 export default function UpdateContents(props) {
   const params = useParams()
@@ -18,7 +21,11 @@ export default function UpdateContents(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const navigate = useNavigate();
+const redirect=()=>{
+  navigate(`content-class/${params.id}`)
+  console.log(111)
+}
 
   return (
     <>
@@ -64,7 +71,7 @@ export default function UpdateContents(props) {
               />
 
             </FormGroup>
-            <Button color="success"  type='submit' >
+            <Button color="success"  type='submit' onClick={redirect}>
               update Content
             </Button>
           </Form>
