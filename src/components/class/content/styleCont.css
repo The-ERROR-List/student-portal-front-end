@@ -1,6 +1,58 @@
+#allContent {
+  /* height: calc(100vh - 56px); all side view without h: header */
+  display: flex;
 
+}
 
+#nav-title {
+  height: 100%;
+  width: 280px;
+  background-color: white;
+  overflow-y: auto;
+}
 
+#title_side_content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px;
+  padding-right: 15px;
+}
+
+#title-name {
+  display: flex;
+  flex-direction: row;
+  font-size: 500;
+}
+
+#active-span {
+}
+
+#title-side {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+#operations{
+  display: flex;
+}
+
+#cell_content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+hr{
+    height: 1px;
+    background-color: #e5e5e5;
+    border: none;
+    margin: 10px 0px;
+}
+#bodyContent {
+  display: flex;
+  flex-direction: column;
+}
+/* 
 .main_content{
     margin : 0;
     padding: 0;
@@ -8,12 +60,12 @@
 }
 
 
-.nav_content{
+/* .nav_content{
      height: calc(100vh - 56px);/*all side view without h: header*/
-    display: flex;
-    background-color: #f9f9f9;
-}
+/* display: flex;
+    background-color: #f9f9f9; */
 
+/* 
 aside{
     height: 100%;
     width: 280px;
@@ -52,12 +104,7 @@ color: black;
 #active-span{
     font-size: 500;
 }
-hr{
-    height: 1px;
-    background-color: #e5e5e5;
-    border: none;
-    margin: 10px 0px;
-}
+
 
 .display_Content{
     width: 100%;
@@ -68,5 +115,3 @@ hr{
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
-   
-}

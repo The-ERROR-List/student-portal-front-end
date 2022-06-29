@@ -10,6 +10,8 @@ export default function Content(props) {
     const [contentLink, setContentLink] = useState("")
     const [content, setContent] = useState([])
     const [show, setShow] = useState(true)
+
+    const [showContentBody, setShowContentBody] = useState(false)
     // const [names, setNames] = useState({})
     // const [idContent, setIdContent] = useState({ id: "" });
 
@@ -81,8 +83,8 @@ export default function Content(props) {
         contentLink,
         show,
         setShow,
-        
-
+        setShowContentBody,
+        showContentBody
 
     }
     return (

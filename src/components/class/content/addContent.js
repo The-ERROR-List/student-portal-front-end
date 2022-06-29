@@ -23,22 +23,22 @@ export default function AddContents(props) {
 
 
     const getContents = () => {
-    let contentData = axios.get(`${api}/content-for-class/${props.id}`, {
-      headers: { Authorization: `Bearer ${cookie.load("token")}` },
-    }).then((response) => {
-      console.log('gettttttt', response.data)
-      contentC.setContent(response.data)
-    })
-  }
+        let contentData = axios.get(`${api}/content-for-class/${props.id}`, {
+            headers: { Authorization: `Bearer ${cookie.load("token")}` },
+        }).then((response) => {
+            console.log('gettttttt', response.data)
+            contentC.setContent(response.data)
+        })
+    }
 
- 
-  useEffect(() => {
-    const interval = setInterval(() => {
-        getContents()
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-  
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            getContents()
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <>
             <Button color="success" onClick={handleShow}>
@@ -55,8 +55,11 @@ export default function AddContents(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <Form
-                        onSubmit={(e) =>
-                            contentC.addContent(e,props.id)
+                        onSubmit={(e) => {
+                            contentC.addContent(e, props.id)
+                            contentC.setShowContentBody(false)
+                        }
+
                         }
                         style={{ width: "70%", margin: "auto" }}
                     >
@@ -84,8 +87,8 @@ export default function AddContents(props) {
                                 </FormGroup>
                             </Col>
                         </Row>
-                      
-                        <Button color="success"  type='submit' onClick={handleClose}>Add content</Button>
+
+                        <Button color="success" type='submit' onClick={handleClose}>Add content</Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

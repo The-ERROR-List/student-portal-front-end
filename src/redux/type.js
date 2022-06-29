@@ -1,6 +1,6 @@
 // api
 
-export const api = 'http://localhost:4021';
+export const api = 'http://localhost:4022';
 
 //types add action
 export const addStudent = 'add_student';
