@@ -4,7 +4,6 @@ import "./chat.css";
 import { io } from "socket.io-client";
 import { api } from "../../redux/type";
 import cookie from "react-cookies";
-import { When } from "react-if";
 const socket = io(`${api}/socketMessages`, {
   transports: ["websocket"],
   // reconnectionDelayMax: 10000,

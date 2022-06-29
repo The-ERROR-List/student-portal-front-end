@@ -11,7 +11,7 @@ import AdminTeacher from '../admin/teacher/teacher'
 import AdminStudent from '../admin/student/student'
 import AdminCourse from '../admin/course/course'
 import AdminClass from '../admin/class/class'
-import Content from '../class/content/content'
+// import Content from '../class/content/content'
 import UpdateContents from'../class/content/update-content'
 import UpdateAnnouncement from'../class/announcement/updateAnnao'
 function Home() {
@@ -44,5 +44,4 @@ function Home() {
     </div>
   );
 }
-// `/updateContent/${classContent.id}`
 export default Home;

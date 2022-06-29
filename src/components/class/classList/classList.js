@@ -16,12 +16,10 @@ import { AuthContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import { When } from "react-if";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
 import { api } from '../../../redux/type';
 import { useParams } from "react-router-dom";
-
-import { Routes, Route } from "react-router-dom";
 
 function Submit() {
 
@@ -113,7 +111,7 @@ const ClassList = (props) => {
   const params = useParams();
 
   const auth = useContext(AuthContext);
-  const state = useContext(StateContext);
+  // const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
   const [indexToEdit, setIndexToEdit] = useState(-1);
   const [grade,setGrade]=useState(0)
@@ -134,6 +132,7 @@ const ClassList = (props) => {
         fetchStudents()
       }, 2000);
       return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 

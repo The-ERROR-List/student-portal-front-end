@@ -1,6 +1,6 @@
-import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, Row, Col, FormGroup, Input, Button } from "reactstrap";
 import Table from "react-bootstrap/Table";
-import { Modal, Alert, Breadcrumb, BreadcrumbItem } from "react-bootstrap";
+import { Modal, Alert} from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { StateContext } from "../../../context/State";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,6 +78,7 @@ const Student = () => {
       dispatch(getStudentAction());
     }, 2000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -160,6 +161,7 @@ const Student = () => {
                     show={state.show}
                     onHide={state.handleClose}
                     class="modal-dialog modal-lg"
+                    key={i}
                   >
                     <Modal.Header closeButton>
                       <Modal.Title>Edit Student </Modal.Title>
@@ -176,6 +178,7 @@ const Student = () => {
                                 placeholder={student.useName}
                                 type="userName"
                                 onChange={handelChange}
+                                defaultValue={student.userName}
                               />
                             </FormGroup>
                           </Col>
@@ -189,6 +192,8 @@ const Student = () => {
                                 name="firstName"
                                 placeholder={student.useName}
                                 onChange={handelChange}
+                                defaultValue={student.firstName}
+
                               />
                             </FormGroup>
                             <FormGroup>
@@ -198,6 +203,8 @@ const Student = () => {
                                 name="lastName"
                                 placeholder={student.lastName}
                                 onChange={handelChange}
+                                defaultValue={student.lastName}
+
                               />
                             </FormGroup>
                           </Col>
@@ -222,6 +229,8 @@ const Student = () => {
                                 name="gender"
                                 placeholder={student.gender}
                                 onChange={handelChange}
+                                defaultValue={student.gender}
+
                               />
                             </FormGroup>
                           </Col>
@@ -233,6 +242,8 @@ const Student = () => {
                                 name="nationality"
                                 placeholder={student.nationality}
                                 onChange={handelChange}
+                                defaultValue={student.nationality}
+
                               />
                             </FormGroup>
                           </Col>
@@ -245,9 +256,9 @@ const Student = () => {
                             name="major"
                             placeholder={student.major}
                             onChange={handelChange}
+                            defaultValue={student.major}
                           />
                         </FormGroup>
-
                         <Button color="success" onClick={updateUser}>
                           Update Student
                         </Button>

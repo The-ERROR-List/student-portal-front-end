@@ -3,13 +3,12 @@ import {
   Row,
   Col,
   FormGroup,
-  Label,
   Input,
   Button,
 } from "reactstrap";
 import { Modal } from "react-bootstrap";
-import { StateContext } from "../../../context/State";
-import { useState, useEffect } from "react";
+// import { StateContext } from "../../../context/State";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCourse } from "../../../redux/type";
 import "./course.scss";
@@ -47,7 +46,7 @@ export default function AddCourse() {
   return (
     <>
       <AddCircleOutlineIcon data-tip="Add a new Course"
-        color="success" style={{marginLeft:"20px"}} onClick={handleShow}>
+        color="success" style={{ marginLeft: "20px" }} onClick={handleShow}>
 
       </AddCircleOutlineIcon>
       <ReactTooltip />
@@ -86,16 +85,20 @@ export default function AddCourse() {
                 onChange={handelChange}
               />
             </FormGroup> */}
-            <FormGroup>
-              {/* <Label for="courseDescription">course Description</Label> */}
-              <Input
-                id="courseDescription"
-                name="courseDescription"
-                placeholder="course Description"
-                type="text"
-                onChange={handelChange}
-              />
-            </FormGroup>
+            <Row>
+              <Col md={12}>
+                <FormGroup>
+                  {/* <Label for="courseDescription">course Description</Label> */}
+                  <Input
+                    id="courseDescription"
+                    name="courseDescription"
+                    placeholder="course Description"
+                    type="text"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
             {/* <FormGroup>
               <Label for="courseImg">Course Img</Label>
               <Input

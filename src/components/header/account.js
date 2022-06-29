@@ -1,5 +1,5 @@
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { Offcanvas, Button, Card } from 'react-bootstrap/';
+import { Offcanvas, Button } from 'react-bootstrap/';
 import { When } from 'react-if'
 import { AuthContext } from "../../context/Auth";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,6 @@ export default function Account() {
 
     const auth = useContext(AuthContext);
     const [show, setShow] = useState(false);
-    // console.log({ selector })
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -42,6 +41,7 @@ export default function Account() {
             dispatch(getStudentInfo(cookie.load('id')))
             console.log({ selector2 })
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [show])
     return (
         <>
@@ -70,10 +70,7 @@ export default function Account() {
                                         <h1 className="mb-2 text-muted" style={{ fontSize: '25px' }}>@{selector.userName}</h1>
                                     </div>
                                     <div>
-                                        <h1 style={{ fontSize: "20px", fontWeight: "bold", textAlign: 'center' }}>Full name : {selector.firstName} {selector.lastName}</h1>
-                                        {/* <h1 style={{ fontSize: "18px" }}>Gender : {selector.gender}</h1>
-                                        <h1 style={{ fontSize: "18px" }}>Nationality : {selector.nationality}</h1>
-                                        <h1 style={{ fontSize: "18px" }}>Department : {selector.department}</h1> */}
+                                        <h1 style={{ fontSize: "20px", fontWeight: "bold", textAlign: 'center' }}>{selector.firstName} {selector.lastName}</h1>
                                     </div>
                                 </div> : null
                         }
@@ -95,10 +92,7 @@ export default function Account() {
                                         <h1 className="mb-2 text-muted" style={{ fontSize: '25px' }}>@{selector2.userName}</h1>
                                     </div>
                                     <div>
-                                        <h1 style={{ fontSize: "20px", fontWeight: "bold", textAlign: 'center' }}>Full name : {selector2.firstName} {selector2.lastName}</h1>
-                                        {/* <h1 style={{ fontSize: "18px" }}>Gender : {selector2.gender}</h1>
-                                        <h1 style={{ fontSize: "18px" }}>Nationality : {selector2.nationality}</h1>
-                                        <h1 style={{ fontSize: "18px" }}>Major : {selector2.major}</h1> */}
+                                        <h1 style={{ fontSize: "20px", fontWeight: "bold", textAlign: 'center' }}>{selector2.firstName} {selector2.lastName}</h1>
                                     </div>
                                 </div> 
                                 : null

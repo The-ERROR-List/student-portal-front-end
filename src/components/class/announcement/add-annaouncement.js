@@ -23,7 +23,7 @@ export default function AddAnnouncement(props) {
     const announcementC = useContext(announcementContext)
     console.log('hehehehe', announcementC)
     const getAnnouncements = () => {
-        let announcementData = axios.get(`${api}/announcement-for-class/${props.id}`, {
+        axios.get(`${api}/announcement-for-class/${props.id}`, {
             headers: { Authorization: `Bearer ${cookie.load("token")}` },
         }).then((response) => {
             console.log('gettttttt', response.data)
@@ -36,6 +36,7 @@ export default function AddAnnouncement(props) {
         getAnnouncements()
 
         // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
