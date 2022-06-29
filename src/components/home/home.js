@@ -2,7 +2,7 @@ import Header from "../header/header";
 import { AuthContext } from "../../context/Auth";
 import { When } from "react-if";
 import { useContext } from "react";
-
+// import './home.scss'
 import Main from "../main/main";
 import { Routes, Route } from "react-router-dom";
 import TeacherClasses from "../teacher/teacher-classes/teacher-classes";
@@ -18,7 +18,7 @@ function Home() {
     const auth = useContext(AuthContext);
   
     return (
-      <div className="home">
+      <div className="home" >
     
   
           <When condition={auth.isLoggedIn}>

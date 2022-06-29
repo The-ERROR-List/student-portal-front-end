@@ -1,0 +1,9 @@
+.Announcement{
+    display: flex;
+    flex-direction: column;
+    .show-content{
+        display: flex;
+        justify-content: center;
+
+    }
+}
