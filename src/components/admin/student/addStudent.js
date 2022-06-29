@@ -57,22 +57,22 @@ export default function AddStudent() {
         Add Student
       </AddCircleOutlineIcon>
       <ReactTooltip />
-
-      <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        class="modal-dialog modal-lg"
+      // key={i}
+      >
         <Modal.Header closeButton>
-          <Modal.Title style={{ color: "#005240" }}>
-            Add New Student
-          </Modal.Title>
+          <Modal.Title>Add New Student </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form
-            onSubmit={()=>handelSubmit}
-            style={{ width: "70%", margin: "auto" }}
-          >
-            <Row style={{ marginTop: "0px" }}>
-              <Col md={6}>
+          <Form onSubmit={handelSubmit}
+            style={{ width: "70%", margin: "auto" }} >
+            <Row>
+              <Col md={12}>
                 <FormGroup>
-                  {/* <Label for="userName"></Label> */}
+
                   <Input
                     id="userName"
                     name="userName"
@@ -82,94 +82,110 @@ export default function AddStudent() {
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
-                {/* <Label for="examplePassword"></Label> */}
-                <Input
-                  id="examplePassword"
-                  name="password"
-                  placeholder="password"
-                  type="password"
-                  onChange={handelChange}
-                />
+            </Row>
+
+            <Row>
+              <Col md={12}>
+                <FormGroup>
+
+                  <Input
+                    id="examplePassword"
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
               </Col>
             </Row>
             <Row>
-              {/* <Label for="exampleEmail"></Label> */}
-              <Input
-                id="email"
-                name="email"
-                placeholder="Email"
-                type="email"
-                onChange={handelChange}
-              />
-              {/* <Label for="firstName"></Label> */}
-              <Input
-                id="firstName"
-                name="firstName"
-                placeholder="First Name"
-                onChange={handelChange}
-              />
-              {/* <Label for="lastName"></Label> */}
-              <Input
-                id="lastName"
-                name="lastName"
-                placeholder="Last Name"
-                onChange={handelChange}
-              />
-              {/* <Label for="gender">Gender</Label>
-              <Input
-                id="gender"
-                name="gender"
-                placeholder="gender"
-                onChange={handelChange}
-              /> */}
+              <Col md={12}>
+                <FormGroup>
 
-              {/* <Label for="nationality"></Label> */}
-              <Input
-                id="nationality"
-                name="nationality"
-                placeholder="nationality"
-                onChange={handelChange}
-              />
-
-              {/* <Label for="major"></Label> */}
-              <Input
-                id="major"
-                name="major"
-                placeholder="major"
-                onChange={handelChange}
-              />
-              <select
-                onChange={handelChange}
-                name="gender"
-                required
-                style={{
-                  marginTop: "10px",
-                  color: "gray",
-                  backgroundColor: "white",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  border:"solid",
-                  borderColor:"white"
-                }}
-              >
-                <option value="male" >Male</option>
-                <option value="female"> Female</option>
-              </select>
-
-              <Button color="success" style={{ marginTop: "20px" }}>
-                Add Student
-              </Button>
+                  <Input
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
 
-            {/* <Button color="success">Add Teacher</Button> */}
+            <Row>
+              <Col md={12}>
+                <FormGroup>
+
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First Name"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+                <FormGroup>
+
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last Name"
+                    onChange={handelChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+
+              <Col md={12}>
+                <FormGroup>
+
+                  <Input
+                    id="nationality"
+                    name="nationality"
+                    placeholder="nationality"
+                    onChange={handelChange}
+                  />
+
+                </FormGroup>
+              </Col>
+              <FormGroup>
+
+                <Input
+                  id="major"
+                  name="major"
+                  placeholder="major"
+                  onChange={handelChange}
+                />
+                
+                <Col md={12}>
+                  <select
+                    onChange={handelChange}
+                    name="gender"
+                    required
+                    style={{
+                      marginTop: "10px",
+                      color: "gray",
+                      backgroundColor: "white",
+                      padding: "5px",
+                      borderRadius: "5px",
+                      border: "solid",
+                      borderColor: "white",
+                    }}
+                  >
+                    <option value="male">Male</option>
+                    <option value="female"> Female</option>
+                  </select>
+                </Col>
+              </FormGroup>
+            </Row>
+
+
+            <Button color="success" style={{ marginTop: "20px" }}>
+              Add Student
+            </Button>
           </Form>
         </Modal.Body>
-        {/* <Modal.Footer> */}
-          {/* <Button color="danger" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

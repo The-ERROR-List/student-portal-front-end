@@ -37,7 +37,7 @@ function Submit() {
   const [infoStudentsToClass, setInfoStudentsToClass] = useState({
     className: "",
     userName: "",
-    studentGrade: "",
+    studentGrade: "0",
   });
 
   function handelChange(e) {
@@ -94,14 +94,16 @@ function Submit() {
                 </FormGroup>
                 <FormGroup>
                   {/* <Label for="studentGrade">Student Grade</Label> */}
-                  <Input
+                  {/* <Input
                     id="studentGrade"
                     name="studentGrade"
                     placeholder="studentGrade..."
                     type="text"
                     onChange={handelChange}
-                  />
-                </FormGroup>
+
+                  /> */}
+                </FormGroup> 
+
               </Col>
             </Row>
             <Button color="success" >
