@@ -28,7 +28,6 @@ import { StateContext } from "../../../context/State";
 import EditIcon from "@mui/icons-material/Edit";
 import { Modal } from "react-bootstrap";
 import { api } from '../../../redux/type';
-
 import "./course.scss";
 import './course-teacher.scss'
 
