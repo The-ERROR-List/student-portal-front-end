@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg, Alert } from "reactstrap";
+import {  Alert } from "reactstrap";
 import { Link } from 'react-router-dom';
 import { StateContext } from "../../context/State";
 import { When } from "react-if";
@@ -17,6 +17,7 @@ const Teacher = () => {
       console.log(2222222222, state.courses.TeacherCourses[0]['course id'])
     }, 2000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
