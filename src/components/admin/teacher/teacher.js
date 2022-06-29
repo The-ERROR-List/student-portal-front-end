@@ -119,7 +119,7 @@ const Teacher = () => {
         
 
         <div>
-          <Table striped bordered hover className="teacher-table" >
+          <Table striped bordered hover >
             <thead className="headerTable" style={{ textAlign: "center" }}>
               <tr style={{backgroundColor:"#005240", color:"white", fontSize:"20px"}} >
                 <th style={{ color: "white", textAlign: "center" }}>Teacher Image</th>
