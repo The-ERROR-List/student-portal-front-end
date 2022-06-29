@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTeacherAction } from "../../../redux/teacher";
 import { deleteTeacher } from "../../../redux/type";
 import Avatar from 'react-avatar';
-import AddStudent from "./addTeacher"
+import AddTeacher from "./addTeacher"
 import cookie from "react-cookies";
 import "./teacher.scss";
 
@@ -86,7 +86,7 @@ const Teacher = () => {
     return () => clearInterval(interval);
   }, []);
 
-  
+
   function idUser(id) {
     setId({
       ...ids,
@@ -97,31 +97,31 @@ const Teacher = () => {
     <div className="admin-teacher">
       <Alert variant="success" style={{
         fontSize: "30px",
-       color: "#005240",
-       backgroundColor: "#005240",
-       borderColor: "none"
+        color: "#005240",
+        backgroundColor: "#005240",
+        borderColor: "#005240"
       }} >
-         <Alert.Heading style={{
-        
-       color: "white",
-      
-      }}>
-           Teacher Dashboard
-           <AddStudent
-           />
+        <Alert.Heading style={{
 
-         </Alert.Heading>
-    
+          color: "white",
+
+        }}>
+          Teacher Dashboard
+          <AddTeacher
+          />
+
+        </Alert.Heading>
+
 
       </Alert>
-      <div className='teacher-table' >
-        
+      <div className='teacher-table' style={{ marginTop: "30px" }} >
+
 
         <div>
           <Table striped bordered hover className="teacher-table" >
             <thead className='headerTable'>
-              <tr style={{backgroundColor:"#005240", color:"white"}} >
-                <th >Image Teacher</th>
+              <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
+                <th >Teacher Image</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Username</th>
@@ -134,7 +134,7 @@ const Teacher = () => {
               {teachers.map((teacher, i) => {
                 return (
                   <>
-                    <tr className='content-table' key={i} >
+                    <tr className='content-table' key={i} style={{ fontSize: "20px" }} >
                       <td><Avatar color={Avatar.getRandomColor('sitebase', ['black'])} size={50} round="50%" name={teacher.firstName} /></td>
                       <td>{teacher.firstName}</td>
                       <td>{teacher.lastName}</td>
@@ -143,17 +143,20 @@ const Teacher = () => {
                       <td>{teacher.department}</td>
 
                       <DeleteIcon
-                        sx={{ fontSize: 67 , color: "#e8003f"}}
+                        sx={{ fontSize: 67 }}
                         onClick={() => deleteFromDB(teacher.id)}
+                        style={{ color: "#e8003f" }}
                       />
                       <EditIcon
-                        sx={{ fontSize: 67, color: "yellow" }}
+                        sx={{ fontSize: 67 }}
+                        style={{ color: "#ffd600" }}
                         onClick={() => {
                           idUser(teacher.id)
                           state.handleShow()
                         }}
                       />
                     </tr>
+
                     <Modal
                       show={state.show}
                       onHide={state.handleClose}
@@ -178,7 +181,7 @@ const Teacher = () => {
                                   onChange={handelChange}
                                 />
                               </FormGroup>
-                             
+
                             </Col>
                           </Row>
                           <Row>

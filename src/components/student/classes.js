@@ -1,52 +1,106 @@
-import { Row, Col, Card, CardTitle, CardText, Button, CardBody,CardImg } from "reactstrap";
-import {Link} from 'react-router-dom';
+import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardImg } from "reactstrap";
+import { Link } from 'react-router-dom';
 import React, { useEffect } from "react";
-import {useSelector, useDispatch} from "react-redux"
-import {getClassesInStudentsAction} from "../../redux/classesInStudents"
+import { useSelector, useDispatch } from "react-redux"
+import { getClassesInStudentsAction } from "../../redux/classesInStudents"
+import Table from 'react-bootstrap/Table'
+
+import { Alert } from "reactstrap";
+
+export default function StudentClass() {
+  const selector = useSelector(state => state.classesInStudents.classesStudent)
+  console.log({ selector });
+  const dispatch = useDispatch();
+  useEffect(() => {
+
+    dispatch(getClassesInStudentsAction())
+  }, [])
+  return (
+    <div className="teacherside" style={{ marginRight: "0px", marginLeft: "-29px" }}>
+
+      <div className="teacher-header">
+        <Alert
+          style={{
+            fontSize: "30px",
+            color: "#ffff",
+            backgroundColor: "#005240",
+            borderColor: "#005240",
+            width: "100%"
 
 
-export default function StudentClass(){
-    const selector = useSelector(state => state.classesInStudents.classesStudent)
-    console.log({selector});
-    const dispatch = useDispatch();
-    useEffect(()=>{
+          }}>
 
-        dispatch(getClassesInStudentsAction())
-    },[])
-return (
-    <div>
-        <Card >
-        <CardBody>
-          <CardText>
-            {
-              `welcome ${selector.studentName}`
-            }
-          </CardText>
-        </CardBody>
-      </Card>
+          {
 
-      <Row style={{marginTop:"20px"}}>
-        {
-          selector.classes ?
-          selector.classes.map((classs, i) => {
-              return( <Link to={`/class-student/${classs.classId}`}>
-              <Col key={i} sm="3">
-                <Card key={i} body>
-                <CardImg top width="100%" src={''} alt="Card image cap" />
+            `welcome ${selector.studentName}`
+          }
+        </Alert>
+      </div>
+      <Table striped bordered hover className="teacher-table" >
+        <thead className='headerTable'>
+          <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
+            <th>Class Name</th>
+            <th>Course Name</th>
+            <th>Teacher Name</th>
+            <th>Class Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            selector.classes ?
+              selector.classes.map((classs, i) => {
+                return (
+                  <>
+                    <tr className='content-table' key={i} style={{ fontSize: "20px" }} >
+                      <Link to={`/class-student/${classs.classId}`}>
+                        <td>{classs.className}</td>
+                      </Link>
+                      <td>{classs.courseName}</td>
+                      <td>{classs.teacherName}</td>
+                      <td>{classs.classTime}</td>
+                    </tr>
 
-                  <CardTitle style={{ fontWeight: 500 }} tag="h4">
-                    {classs.className}
-                  </CardTitle>
-                </Card>
-              </Col>
-              </Link>)
-           
-          }) : null
-        }
-      </Row>
-
-      
-
+                  </>
+                )
+              }) : null
+          }
+        </tbody>
+      </Table>
     </div>
-)
+  )
 }
+
+{/* <div> */ }
+{/* <Card >
+    <CardBody>
+      <CardText>
+        {
+          `welcome ${selector.studentName}`
+        }
+      </CardText>
+    </CardBody>
+  </Card> */}
+
+{/* <Row style={{marginTop:"20px"}}>
+    {
+      selector.classes ?
+      selector.classes.map((classs, i) => {
+          return( <Link to={`/class-student/${classs.classId}`}>
+          <Col key={i} sm="3">
+            <Card key={i} body>
+            <CardImg top width="100%" src={''} alt="Card image cap" />
+
+              <CardTitle style={{ fontWeight: 500 }} tag="h4">
+                {classs.className}
+              </CardTitle>
+            </Card>
+          </Col>
+          </Link>)
+       
+      }) : null
+    }
+  </Row> */}
+
+
+
+{/* </div> */ }

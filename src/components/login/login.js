@@ -30,8 +30,8 @@ export default function Login() {
                 <div className='box-form'>
                     <div className='left'>
                         <div className='overlay'>
-                            <h1>ERROR LIST </h1>
-                            <span><p>We are ERROR LIST team We have created this website to serve schools </p></span>
+                            <h1>Elearning Portal </h1>
+                            <span><p>This is an online platform that brings together Students and tachers with the ability to manage educaional records </p></span>
                             <br/>
                             <br/>
                         </div>
