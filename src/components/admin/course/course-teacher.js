@@ -95,7 +95,7 @@ export default function Course_Card(props) {
 
 
   return (
-    <div className ="wrapper">
+    <div >
       <section class="page-contain">
         <a href="#" class="data-card">
           <h3 id="corseName">{props.course.courseName}</h3>

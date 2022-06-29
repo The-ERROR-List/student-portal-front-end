@@ -35,7 +35,7 @@ export default function Course() {
        color: "white",
       
       }}>
-           Teacher Dashboard
+           Courses
            <AddCourse />
            <AddTeacherToCourse/>
 

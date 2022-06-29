@@ -70,37 +70,3 @@ export default function StudentClass() {
   )
 }
 
-{/* <div> */ }
-{/* <Card >
-    <CardBody>
-      <CardText>
-        {
-          `welcome ${selector.studentName}`
-        }
-      </CardText>
-    </CardBody>
-  </Card> */}
-
-{/* <Row style={{marginTop:"20px"}}>
-    {
-      selector.classes ?
-      selector.classes.map((classs, i) => {
-          return( <Link to={`/class-student/${classs.classId}`}>
-          <Col key={i} sm="3">
-            <Card key={i} body>
-            <CardImg top width="100%" src={''} alt="Card image cap" />
-
-              <CardTitle style={{ fontWeight: 500 }} tag="h4">
-                {classs.className}
-              </CardTitle>
-            </Card>
-          </Col>
-          </Link>)
-       
-      }) : null
-    }
-  </Row> */}
-
-
-
-{/* </div> */ }
