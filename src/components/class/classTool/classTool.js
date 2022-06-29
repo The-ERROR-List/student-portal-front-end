@@ -91,7 +91,20 @@ const ClassTool = (props) => {
         </When>
 
         <When condition={cookie.load("role") === "student"}>
-          <Button onClick={state.handleShow}>show zoom Meetings</Button>
+        <div
+            className="zoom-button-clss"
+            style={{ width: "50%", height: "100vh", textAlign: "left" }}
+          >
+            <p style={{fontWeight: "700", lineHeight: "45px", color:"#005240", fontSize:"18px"}}>Generate a zoom meeting link for your class students to join</p>
+            <Button style={{ fontSize: " 1.2rem", backgroundColor:"#005240", marginLeft:"150px", marginTop:"20px" }} onClick={state.handleShow}>
+
+            Show zoom Meetings!
+            </Button>
+          </div>
+          <div
+            class="vl"
+            style={{ borderLeft: "6px solid #004140", height: "520px", boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.3)"  }}
+          ></div>
           <Modal
             show={state.show}
             onHide={state.handleClose}
