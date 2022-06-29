@@ -46,7 +46,7 @@ export default function AddStudent() {
       <AddCircleOutlineIcon
         onClick={handleShow}
         data-tip="Add a new teacher"
-        style={{ marginLeft: "20px" }}
+        style={{ marginLeft: "20px", fontSize: "1.9rem", marginBottom: "5px" }}
       >
         Add Teacher
       </AddCircleOutlineIcon>
