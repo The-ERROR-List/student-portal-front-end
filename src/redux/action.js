@@ -154,7 +154,7 @@ export function addStudentToClass(payload) {
     body: JSON.stringify({
       className: payload.className,
       userName: payload.userName,
-      studentGrade: payload.studentGrade
+      studentGrade: 0
     })
   }).then((response) => {
     console.log("response", response.json());

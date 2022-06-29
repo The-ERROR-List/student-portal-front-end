@@ -50,12 +50,12 @@ const TeacherClasses = (props) => {
             </div>
             {/* <Row style={{ marginTop: "20px" }}> */}
             <Table striped bordered hover className="teacher-table" >
-                <thead className='headerTable'>
+                <thead className='headerTable' style={{ textAlign: "center" }}>
                     <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
-                        <th>Class Name</th>
-                        <th>Course Name</th>
-                        <th>Teacher Name</th>
-                        <th>Class Time</th>
+                        <th style={{ color: "white", textAlign: "center" }}>Class Name</th>
+                        <th style={{ color: "white", textAlign: "center" }}>Course Name</th>
+                        <th style={{ color: "white", textAlign: "center" }}>Teacher Name</th>
+                        <th style={{ color: "white", textAlign: "center" }}>Class Time</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,13 +64,13 @@ const TeacherClasses = (props) => {
                                 classes.classes.map((classforTeacher, index) => {
                                     return (
                                         <>
-                                            <tr className='content-table' key={index} style={{ fontSize: "20px" }} >
-                                                <Link to={`/class/${classforTeacher.id}`}>
-                                                    <td>{classforTeacher.className}</td>
-                                                </Link>
-                                                <td>{classforTeacher.courseName}</td>
-                                                <td>{classforTeacher.teacherName}</td>
-                                                <td>{classforTeacher.classTime}</td>
+                                            <tr className='content-table' key={index} style={{ fontSize: "20px", textAlign: "center" }} >
+                                               
+                                                    <td style={{ textAlign: "center" }}> <Link to={`/class/${classforTeacher.id}`}> {classforTeacher.className}</Link></td>
+                                                
+                                                <td style={{ textAlign: "center" }}>{classforTeacher.courseName}</td>
+                                                <td style={{ textAlign: "center" }}>{classforTeacher.teacherName}</td>
+                                                <td style={{ textAlign: "center" }}>{classforTeacher.classTime}</td>
                                             </tr>
                                            </>
                                     )

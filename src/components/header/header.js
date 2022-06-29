@@ -55,14 +55,15 @@ const Header = () => {
                                         <GroupIcon sx={{ fontSize: 30 }} /> <p>Classes</p> </Link></Nav.Link>
                             </div>
                         </When>
-                        <div className='btn'>
-                            <Account />
-                        </div>
+                       
                         <When condition={cookie.load('role') !== "admin"}>
                             <div className='btn'>
                                 <Course />
                             </div>
                         </When>
+                        <div className='btn'>
+                            <Account />
+                        </div>
                     </Nav>
                 </Container>
             </Navbar>

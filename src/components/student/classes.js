@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { getClassesInStudentsAction } from "../../redux/classesInStudents"
 import Table from 'react-bootstrap/Table'
-
+import './student.scss'
 import { Alert } from "reactstrap";
 
 export default function StudentClass() {
@@ -12,37 +12,37 @@ export default function StudentClass() {
   console.log({ selector });
   const dispatch = useDispatch();
   useEffect(() => {
-
     dispatch(getClassesInStudentsAction())
   }, [])
   return (
-    <div className="teacherside" style={{ marginRight: "0px", marginLeft: "-29px" }}>
+    <div className="studentside" >
 
-      <div className="teacher-header">
+  
         <Alert
           style={{
             fontSize: "30px",
-            color: "#ffff",
+            color: "white",
             backgroundColor: "#005240",
             borderColor: "#005240",
-            width: "100%"
+         
 
 
           }}>
 
           {
 
-            `welcome ${selector.studentName}`
+            `Welcome ${selector.studentName}`
           }
         </Alert>
-      </div>
-      <Table striped bordered hover className="teacher-table" >
-        <thead className='headerTable'>
+        <div className="teacher-table" style={{marginTop:"30px"}}>
+      
+      <Table striped bordered hover>
+        <thead className='headerTable' style={{ textAlign: "center" }}>
           <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
-            <th>Class Name</th>
-            <th>Course Name</th>
-            <th>Teacher Name</th>
-            <th>Class Time</th>
+            <th style={{ color: "white", textAlign: "center" }}>Class Name</th>
+            <th style={{ color: "white", textAlign: "center" }}>Course Name</th>
+            <th style={{ color: "white", textAlign: "center" }}>Teacher Name</th>
+            <th style={{ color: "white", textAlign: "center" }}>Class Time</th>
           </tr>
         </thead>
         <tbody>
@@ -52,12 +52,11 @@ export default function StudentClass() {
                 return (
                   <>
                     <tr className='content-table' key={i} style={{ fontSize: "20px" }} >
-                      <Link to={`/class-student/${classs.classId}`}>
-                        <td>{classs.className}</td>
-                      </Link>
-                      <td>{classs.courseName}</td>
-                      <td>{classs.teacherName}</td>
-                      <td>{classs.classTime}</td>
+                     
+                      <td style={{ textAlign: "center" }}> <Link to={`/class-student/${classs.classId}`}> {classs.className}</Link></td>
+                      <td style={{ textAlign: "center" }}>{classs.courseName}</td>
+                      <td style={{ textAlign: "center" }}>{classs.teacherName}</td>
+                      <td style={{ textAlign: "center" }}>{classs.classTime}</td>
                     </tr>
 
                   </>
@@ -66,6 +65,7 @@ export default function StudentClass() {
           }
         </tbody>
       </Table>
+      </div>
     </div>
   )
 }
