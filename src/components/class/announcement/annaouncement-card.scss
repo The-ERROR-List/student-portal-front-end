@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+// .wrapper{
+//   display: flex;
+//   flex-direction: wrap;
+//   justify-content: space-between;
+//   width: 100%;
+//   height: 100%;
+
+// }
+.page-contain-announcement {
+    min-height: 100px;
+    max-width: 65em;
+    // align-items: flex-start;
+    // justify-content: flex-start;
+    background: #ffffff;
+    // border: 0.75em solid rgb(247, 241, 241);
+    // padding: 2em;
+    box-shadow: #000000;
+    font-family: "Open Sans", sans-serif;
+}
+
+.data-card-announcement {
+    display: flex;
+    flex-direction: column;
+    // width:70%;
+    // max-width: 50em;
+    // min-height: 25em;
+    // max-height: 25em;
+    width: 1000px;
+    max-width: 65em;
+    min-height: 22em;
+    max-height: 16em;
+    min-width: 20em;
+    overflow: hidden;
+    border-radius: 0.5em;
+    text-decoration: none;
+    background: #0f6f5f;
+    margin: 1em;
+    padding: 2.75em 2.5em;
+    box-shadow: 0 1.5em 2.5em -0.5em rgba(#000000, 0.1);
+    transition: transform 0.45s ease, background 0.45s ease;
+
+    #corseName {
+        color: #ffff;
+        font-size: 2.5em;
+        font-weight: 600;
+        line-height: 1;
+        padding-bottom: 0.5em;
+        margin: 0 0 0.142857143em;
+        border-bottom: 2px solid #228a45;
+        transition: color 0.45s ease, border 0.45s ease;
+    }
+
+    h4 {
+        color: #ffff;
+        text-transform: uppercase;
+        font-size: 1.125em;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.1em;
+        margin: 0 0 1.777777778em;
+        transition: color 0.45s ease;
+    }
+
+    p {
+        opacity: 0;
+        color: #753bbd;
+        font-weight: 600;
+        line-height: 1.8;
+        margin: 0 0 1.25em;
+        transform: translateY(-1em);
+        transition: opacity 0.45s ease, transform 0.5s ease;
+    }
+
+    .link-text.announcement {
+        display: block;
+        color: #ffffff;
+        font-size: 1.125em;
+        font-weight: 600;
+        line-height: 1.2;
+        margin: auto 0 0;
+        transition: color 0.45s ease;
+        overflow: auto;
+
+        svg {
+            margin-left: 0.5em;
+            transition: transform 0.6s ease;
+
+            path {
+                transition: fill 0.45s ease;
+            }
+        }
+
+        h3 {
+            margin-bottom: 50px;
+        }
+    }
+
+    &:hover {
+        background: rgb(238, 232, 232);
+        transform: scale(1.02);
+
+        // h3 {
+        //   color: #045749;
+        // }
+        #corseName {
+            color: #045749;
+        }
+
+        h4 {
+            color: #045749;
+        }
+
+        p {
+            opacity: 1;
+            transform: none;
+        }
+
+        .link-text {
+            color: #045749;
+
+            svg {
+                animation: point 1.25s infinite alternate;
+
+                path {
+                    fill: #ffffff;
+                }
+            }
+        }
+
+        #deleteB {
+
+            color: #e8003f
+        }
+
+        #editB {
+
+            color: #ffd600
+        }
+    }
+
+    .edit-delete-announcement {
+        margin-top: 2em;
+        float: right;
+
+        svg {
+            margin-left: 0.5em;
+            transition: transform 0.6s ease;
+            float: right;
+            margin-top:4%;
+        }
+
+
+    }
+}
+
+#deleteB {
+    color: #000000
+}
+
+#editB {
+
+    color: #000000
+}
+
+@keyframes point {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(0.125em);
+    }
+}

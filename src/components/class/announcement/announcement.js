@@ -9,6 +9,8 @@ import { When } from "react-if";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Modal, Button, FormGroup } from "react-bootstrap";
+import AnnouCard from './annaouncement-card'
+import './Announcement.scss'
 
 
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -40,57 +42,50 @@ const Announcement = (props) => {
 
   function ShowContent() {
     return (
-      <>
+
+      <div >
         {announcementC.announcements ?
 
           announcementC.announcements.map((announcementClass, indx) => {
             return (
               <>
-                <div key={indx.toString()}>
-                  <p> {announcementClass.announcementTitle}</p>
-                  <p>{announcementClass.announcementBody}</p>
-                  <p>{announcementClass.announcementLink}</p>
-                  <When condition={cookie.load("role") === "teacher"}>
-                    <DeleteIcon
-                      sx={{ fontSize: 67 }}
-                      onClick={() =>
-                        announcementC.deleteAnnouncement(announcementClass.id, indx)
-                      }
-                    />
-                  </When>
-
-                  <br />
-                  <When condition={cookie.load("role") === "teacher"}>
+                <AnnouCard announcementClass={announcementClass} indx={indx} />
+                <br />
+                {/* <When condition={cookie.load("role") === "teacher"}>
                     <Link to={`updateAnnouncement/${announcementClass.id}`}>
                       <Button  color="warning" >
                         update Announcement
                       </Button>
-                      {/* <EditIcon
+                      <EditIcon
                         sx={{ fontSize: 67 }}
                         onClick={() => {
                           contentC.idUpdateContent(classContent.id);
-                         handleShow();
+                        handleShow();
                         }}
-                      /> */}
+                      /> 
                     </Link>
-                  </When>
-                </div>
+                  </When> */}
               </>
             );
           })
           : null}
-      </>
+      </div>
     );
   }
 
   return (
     <>
-      <h1> annoucmentsssssss</h1>
-      <When condition={cookie.load("role") === "teacher"}>
-        <AddAnnouncement id={params.id} />
-        {/* <UpdateAnnouncement /> */}
-      </When>
-      <ShowContent />
+      <div className="Announcement">
+        <div className="Announcement-header">
+          <When condition={cookie.load("role") === "teacher"}>
+            <AddAnnouncement id={params.id} />
+            {/* <UpdateAnnouncement /> */}
+          </When>
+        </div>
+        <div className="show-content">
+          <ShowContent />
+        </div>
+      </div>
     </>
   );
 };

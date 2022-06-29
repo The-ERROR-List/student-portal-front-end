@@ -1,7 +1,8 @@
-.admin {
+/* .admin {
     display: flex;
     flex-direction: column;
-}
+    overflow: hidden;
+} */
 
 .card-box {
   position: relative;

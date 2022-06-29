@@ -39,7 +39,6 @@ export default function AddAnnouncement(props) {
     }, [])
     return (
         <>
-            <h1 style={{ marginTop: '300px' }}>{props.id}</h1>
             <Button color="success" onClick={handleShow}>
                 Add Announcement
             </Button>
