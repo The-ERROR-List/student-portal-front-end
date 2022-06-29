@@ -43,9 +43,9 @@ const Header = () => {
                                         <SchoolOutlinedIcon sx={{ fontSize: 30 }} /> <p>Students</p> </Link></Nav.Link>
                             </div>
                             <div className='btn'>
-                                <Nav.Link href="/admin-course" style={{ textAlign: 'center', marginTop: '15px', textDecoration: "none",color: "inherit" }}
+                                <Nav.Link href="/admin-course" style={{ textAlign: 'center', marginTop: '15px', textDecoration: "none", color: "inherit" }}
                                 >
-                                    <Link style={{ textDecoration: "none",color: "inherit"} } to='/admin-course'>
+                                    <Link style={{ textDecoration: "none", color: "inherit" }} to='/admin-course'>
                                         <LibraryBooksOutlinedIcon sx={{ fontSize: 30 }} /> <p>Courses</p> </Link></Nav.Link>
                             </div>
                             <div className='btn'>
@@ -58,7 +58,6 @@ const Header = () => {
                         <div className='btn'>
                             <Account />
                         </div>
-
                         <When condition={cookie.load('role') !== "admin"}>
                             <div className='btn'>
                                 <Course />

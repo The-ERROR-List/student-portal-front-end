@@ -1,8 +1,8 @@
-import { api } from "../../../redux/type";
-import axios from "axios";
+// import { api } from "../../../redux/type";
+// import axios from "axios";
 import cookie from "react-cookies";
-import { useContext, useEffect, useState } from "react";
-import { Modal, Button, FormGroup } from "react-bootstrap";
+import { useContext, useEffect } from "react";
+import { Modal, Button} from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { When } from "react-if";
 import JoinChat from "../../chat/joinChat";
@@ -14,6 +14,7 @@ const ClassTool = (props) => {
   useEffect(() => {
     console.log("11111", zoom.meeting.Meeting);
     console.log(zoom.joinUrl);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [zoom.meeting]);
   return (
     <div style={{ marginLeft: "30px" }}>
@@ -90,7 +91,20 @@ const ClassTool = (props) => {
         </When>
 
         <When condition={cookie.load("role") === "student"}>
-          <Button onClick={state.handleShow}>show zoom Meetings</Button>
+        <div
+            className="zoom-button-clss"
+            style={{ width: "50%", height: "100vh", textAlign: "left" }}
+          >
+            <p style={{fontWeight: "700", lineHeight: "45px", color:"#005240", fontSize:"18px"}}>Generate a zoom meeting link for your class students to join</p>
+            <Button style={{ fontSize: " 1.2rem", backgroundColor:"#005240", marginLeft:"150px", marginTop:"20px" }} onClick={state.handleShow}>
+
+            Show zoom Meetings!
+            </Button>
+          </div>
+          <div
+            class="vl"
+            style={{ borderLeft: "6px solid #004140", height: "520px", boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.3)"  }}
+          ></div>
           <Modal
             show={state.show}
             onHide={state.handleClose}

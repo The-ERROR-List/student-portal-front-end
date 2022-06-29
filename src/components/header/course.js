@@ -7,7 +7,6 @@ import cookie from 'react-cookies';
 import { useSelector, useDispatch } from "react-redux"
 import { getClassesInStudentsAction } from "../../redux/classesInStudents"
 import { StateContext } from "../../context/State";
-
 import { Link } from 'react-router-dom'
 
 
@@ -60,6 +59,7 @@ export default function Course() {
                                                 <div className='list-side-bar'>
                                                     <h1> {classs.className}</h1>
                                                 </div>
+                                                <hr/>
                                             </Link>
                                     )
                                 }) : null

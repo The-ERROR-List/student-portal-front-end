@@ -4,7 +4,6 @@ import "./chat.css";
 import { io } from "socket.io-client";
 import { api } from "../../redux/type";
 import cookie from "react-cookies";
-import { When } from "react-if";
 const socket = io(`${api}/socketMessages`, {
   transports: ["websocket"],
   // reconnectionDelayMax: 10000,
@@ -21,25 +20,37 @@ socket.on("connect", () => {
   //   connectMessage("Connected to server  on socket-id :  " + socket.id);
 });
 
+
+
 export default function JoinChat(props) {
   const [userName, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(true);
 
-  useEffect(() => {
-    if (cookie.load("username") !== null) {
-      setUsername(cookie.load("username"));
-      setRoom(props.id); //room id is class id
-    }
-    if (userName !== "" && room !== "") {
-      socket.emit("join_room", room);
-      setShowChat(true);
-    }
-  }, []);
+  socket.on('welcome', ()=>{
+    console.log('hi welcome')
+  })
 
-  // useEffect(() => {
-  //   console.log("your room is", room);
-  // }, [room]);
+  useEffect(()=>{
+    if (cookie.load("username") !== null) {
+      console.log('inside if 1')
+      setUsername(cookie.load("username"));
+      setRoom(props.id); 
+      //room id is class id
+    }
+      
+  },[])
+   
+
+
+   
+  
+
+  useEffect(() => {
+    console.log("your room is", room);
+    socket.emit("join_room", room);
+    setShowChat(true);
+  }, [room]);
 
   return (
     <div className="container">

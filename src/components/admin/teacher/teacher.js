@@ -3,11 +3,8 @@ import {
   Row,
   Col,
   FormGroup,
-  Label,
   Input,
   Button,
-  Breadcrumb,
-  BreadcrumbItem
 } from "reactstrap";
 import { Alert } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table'
@@ -84,9 +81,10 @@ const Teacher = () => {
       dispatch(getTeacherAction());
     }, 2000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
+
   function idUser(id) {
     setId({
       ...ids,
@@ -94,63 +92,63 @@ const Teacher = () => {
     });
   }
   return (
-    <div className="admin-teacher">
+    <div id="admin-teacher">
       <Alert variant="success" style={{
         fontSize: "30px",
-       color: "#005240",
-       backgroundColor: "#005240",
-       borderColor: "#005240"
+        color: "#005240",
+        backgroundColor: "#005240",
+        borderColor: "#005240"
       }} >
 
-         <Alert.Heading style={{
-        
-       color: "white",
-      
-      }}>
-           Teacher Dashboard
-           <AddTeacher
-           />
+        <Alert.Heading style={{
 
-         </Alert.Heading>
-    
+          color: "white",
+
+        }}>
+          Teacher Dashboard
+          <AddTeacher
+          />
+
+        </Alert.Heading>
+
 
       </Alert>
-      <div className='teacher-table' style={{marginTop:"30px"}} >
-        
+      <div className='teacher-table' style={{ marginTop: "30px" }} >
+
 
         <div>
           <Table striped bordered hover className="teacher-table" >
-            <thead className='headerTable'>
+            <thead className="headerTable" style={{ textAlign: "center" }}>
               <tr style={{backgroundColor:"#005240", color:"white", fontSize:"20px"}} >
-                <th >Teacher Image</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Nationality</th>
-                <th>Department</th>
-                <th>Operations</th>
+                <th style={{ color: "white", textAlign: "center" }}>Teacher Image</th>
+                <th style={{ color: "white", textAlign: "center" }}>First Name</th>
+                <th style={{ color: "white", textAlign: "center" }}>Last Name</th>
+                <th style={{ color: "white", textAlign: "center" }}>Username</th>
+                <th style={{ color: "white", textAlign: "center" }}>Nationality</th>
+                <th style={{ color: "white", textAlign: "center" }}>Department</th>
+                <th style={{ color: "white", textAlign: "center" }}>Operations</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{ textAlign: "center" , borderColor:"white" }}>
               {teachers.map((teacher, i) => {
                 return (
                   <>
                     <tr className='content-table' key={i}  style={{ fontSize:"20px"}} >
-                      <td><Avatar color={Avatar.getRandomColor('sitebase', ['black'])} size={50} round="50%" name={teacher.firstName} /></td>
-                      <td>{teacher.firstName}</td>
-                      <td>{teacher.lastName}</td>
-                      <td>{teacher.userName}</td>
-                      <td>{teacher.nationality}</td>
-                      <td>{teacher.department}</td>
+                      <td style={{ textAlign: "center" }}><Avatar color={Avatar.getRandomColor('sitebase', ['black'])} size={50} round="50%" name={teacher.firstName} /></td>
+                      <td style={{ textAlign: "center" }}>{teacher.firstName}</td>
+                      <td style={{ textAlign: "center" }}>{teacher.lastName}</td>
+                      <td style={{ textAlign: "center" }}>{teacher.userName}</td>
+                      <td style={{ textAlign: "center" }}>{teacher.nationality}</td>
+                      <td style={{ textAlign: "center" }}>{teacher.department}</td>
 
                       <DeleteIcon
                         sx={{ fontSize: 67 }}
                         onClick={() => deleteFromDB(teacher.id)}
-                        style={{color:"#e8003f"}}
+                        style={{ color: "#e8003f" }}
                       />
                       <EditIcon
-                        sx={{ fontSize: 67}}
-                        style={{color:"#ffd600"}}
+                        sx={{ fontSize: 67 }}
+                        style={{ color: "#ffd600" }}
                         onClick={() => {
                           idUser(teacher.id)
                           state.handleShow()
@@ -162,6 +160,7 @@ const Teacher = () => {
                       show={state.show}
                       onHide={state.handleClose}
                       class="modal-dialog modal-lg"
+                      key={i}
                     >
                       <Modal.Header closeButton>
                         <Modal.Title>Edit Teacher </Modal.Title>
@@ -180,9 +179,9 @@ const Teacher = () => {
                                   placeholder={teacher.userName}
                                   type="userName"
                                   onChange={handelChange}
+                                  defaultValue={teacher.userName}
                                 />
                               </FormGroup>
-                             
                             </Col>
                           </Row>
                           <Row>
@@ -194,6 +193,7 @@ const Teacher = () => {
                                   name="firstName"
                                   placeholder={teacher.firstName}
                                   onChange={handelChange}
+                                  defaultValue={teacher.firstName}
                                 />
                               </FormGroup>
                               <FormGroup>
@@ -203,6 +203,8 @@ const Teacher = () => {
                                   name="lastName"
                                   placeholder={teacher.lastName}
                                   onChange={handelChange}
+                                  defaultValue={teacher.lastName}
+                                  
                                 />
                               </FormGroup>
                             </Col>
@@ -211,13 +213,13 @@ const Teacher = () => {
                             <Col md={12}>
                               <FormGroup>
                                 {/* <Label for="role1">role</Label> */}
-
                                 <Input
                                   id="role1"
                                   name="role"
                                   placeholder={teacher.role}
                                   value={"teacher"}
                                   onChange={handelChange}
+                                  defaultValue={teacher.role}
                                 />
                               </FormGroup>
                             </Col>
@@ -229,6 +231,7 @@ const Teacher = () => {
                                   name="gender"
                                   placeholder={teacher.gender}
                                   onChange={handelChange}
+                                  defaultValue={teacher.gender}
                                 />
                               </FormGroup>
                             </Col>
@@ -240,6 +243,8 @@ const Teacher = () => {
                                   name="nationality"
                                   placeholder={teacher.nationality}
                                   onChange={handelChange}
+                                  defaultValue={teacher.gender}
+
                                 />
                               </FormGroup>
                             </Col>
@@ -251,6 +256,7 @@ const Teacher = () => {
                               name="department"
                               placeholder={teacher.department}
                               onChange={handelChange}
+                              defaultValue={teacher.department}
                             />
                           </FormGroup>
                           <Button color="warning" onClick={

@@ -28,7 +28,7 @@ export default function Chat(props) {
 
   useEffect(() => {
     props.socket.on('receive_message', (data)=>{
-        console.log(data)
+        console.log("i recieveddddd",data)
         setMessageList((list) => [...list, data]); // save the message im recieving
     })
   }, [props.socket]); // whenever theres a change on the socket server im listening to an event

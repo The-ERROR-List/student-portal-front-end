@@ -4,7 +4,6 @@ import {
   Row,
   Col,
   FormGroup,
-  Label,
   Input,
   Button,
 } from "reactstrap";
@@ -142,6 +141,7 @@ export default function Class() {
                     show={show}
                     onHide={handleClose}
                     class="modal-dialog modal-lg"
+                    key={i}
                   >
                     <Modal.Header closeButton>
                       <Modal.Title>Edit Class </Modal.Title>
@@ -158,6 +158,8 @@ export default function Class() {
                                 placeholder={classInfo.className}
                                 type="text"
                                 onChange={handelChange}
+                                defaultValue={classInfo.className}
+
                               />
                             </FormGroup>
                             <FormGroup>
@@ -168,6 +170,8 @@ export default function Class() {
                                 placeholder={classInfo.courseName}
                                 type="text"
                                 onChange={handelChange}
+                                defaultValue={classInfo.courseName}
+                                
                               />
                             </FormGroup>
 
@@ -179,6 +183,8 @@ export default function Class() {
                                 placeholder="Teacher Name"
                                 type="userName"
                                 onChange={handelChange}
+                                defaultValue={classInfo.userName}
+
                               />
                             </FormGroup>
                             <FormGroup>
@@ -192,6 +198,8 @@ export default function Class() {
                                 placeholder={classInfo.classTime}
                                 type="classTime"
                                 onChange={handelChange}
+                                defaultValue={classInfo.classTime}
+
                               />
                             </FormGroup>
                           </Col>

@@ -26,6 +26,7 @@ export default function AnnouCard(props) {
                         <div class="edit-delete-announcement">
                             <When condition={cookie.load("role") === "teacher"}>
                                 <DeleteIcon
+                                    id ="deletebuttom"
                                     sx={{ fontSize: 67 }}
                                     onClick={() =>
                                         announcementC.deleteAnnouncement(props.announcementClass.id, props.indx)

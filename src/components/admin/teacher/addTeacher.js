@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTeacher } from "../../../redux/type";
 import "./add.css";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ReactTooltip from "react-tooltip";
 
 export default function AddStudent() {
@@ -43,13 +43,13 @@ export default function AddStudent() {
            }}>
                 Add Teacher
             </Button> */}
-      <AddCircleOutlineIcon
+      <PersonAddIcon
         onClick={handleShow}
-        data-tip="Add a new teacher"
+        data-tip="Add new teacher"
         style={{ marginLeft: "20px", fontSize: "1.9rem", marginBottom: "5px" }}
       >
         Add Teacher
-      </AddCircleOutlineIcon>
+      </PersonAddIcon>
       <ReactTooltip />
 
       <Modal show={show} onHide={handleClose} class="modal-dialog modal-lg">

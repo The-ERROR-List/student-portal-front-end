@@ -16,10 +16,8 @@ export default function UpdateAnnouncement(props) {
 
     const params = useParams();
     const announcementC = useContext(announcementContext);
-   
     return (
         <>
-
             <Form
                 onSubmit={(e) =>
                     announcementC.updateAnnouncement(e, params.id)

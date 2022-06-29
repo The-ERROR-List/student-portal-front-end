@@ -18,18 +18,17 @@ const Class = () => {
     const [oneClassName,setOneClassName]=useState('')
   const [oneTeacherName,setOneTeacherName]=useState('')
 
-  // console.log('propsStuside', props)
   const getOneClass=()=>{
     axios.get(`${api}/classes/${params.id}`,
     { headers: { Authorization: `Bearer ${cookie.load("token")}` } }
     ).then((response)=>{
-      // console.log(response.data)
       setOneClassName(response.data.className)
       setOneTeacherName(response.data.teacherName)
   })
   }
   useEffect(()=>{
     getOneClass()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   return (
     <div className="classcomp">
