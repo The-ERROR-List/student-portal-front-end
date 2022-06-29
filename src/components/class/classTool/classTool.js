@@ -78,7 +78,7 @@ const ClassTool = (props) => {
                   <a href={zoom.meeting.Meeting.start_url}>open zoom link</a>
                 </button>
               ) : (
-                <p>no Meetings Are allowd</p>
+                <p>no Meetings Are allowed</p>
               )}
             </Modal.Body>
             <Modal.Footer>

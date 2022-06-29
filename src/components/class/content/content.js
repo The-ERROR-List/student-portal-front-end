@@ -6,16 +6,16 @@ import { contentContext } from "../../../context/content";
 import { When } from "react-if";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Modal, Button, FormGroup } from "react-bootstrap";
+import { Modal, Button, FormGroup, Card, ListGroup } from "react-bootstrap";
 import { Form, Row, Col, Label, Input } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddContents from "./addContent";
 import { getContentId } from "../../../redux/type";
+import "./styleCont.scss";
 import { classContentId } from "../../../redux/content";
-import "./content.css";
-
+import Alert from 'react-bootstrap/Alert'
 const Content = (props) => {
   const params = useParams();
   const contentDataById = useSelector((state) => state.contentId.contentById);
@@ -51,77 +51,96 @@ const Content = (props) => {
 
   function ShowContent() {
     return (
-      <div id="allContent" >
-        <div id='nav-title' >
-          <div
-          id="title_side_content"
-          >
-            <h1 id="title-name">
-              {/* <i class="fa fa-book"></i> */}
-            Content 
-            </h1>
-            {contentC.content
-              ? contentC.content.map((classContent, indx) => {
-                  return (
-                    <>
-                      <hr />
+      <div className="content-div">
+
+
+  {[
+    'dark',
+  ].map((variant) => (
+    <Alert key={variant} variant={variant}>
+       
+        <div className="card_div_scroll">
+          {contentC.content
+            ? contentC.content.map((classContent, indx) => {
+                return (
+                  <>
+                    <div className="content-side" key={indx.toString()}>
                       <div
-                      id="cell_content"
-                        key={indx.toString()}
-                      >
-                        <div
-                        id='title-side'
                         onClick={() => getID(classContent.id)}
+                        style={{ overflow: "auto", flexDirection: "" }}
+                        className="nav_title"
+                      >
+                        <Card className="card_content_title">
+                          <ListGroup variant="flush">
+                            <ListGroup.Item>
+                              <div className="card-content-inside">
+                                <div className="title_card">
+                                  {classContent.contentTitle}
+                                </div>
+                                <div
+                                  style={{ display: "flex" }}
+                                  className="content-body"
+                                >
+                                  <When
+                                    condition={
+                                      cookie.load("role") === "teacher"
+                                    }
+                                  >
+                                    <DeleteIcon
+                                      sx={{ fontSize: 40 }}
+                                      style={{ cursor: "pointer" }}
+                                      onClick={() =>
+                                        contentC.deleteContent(
+                                          classContent.id,
+                                          indx
+                                        )
+                                      }
+                                    />
+                                  </When>
 
-                          className="nav_title"
-                        >
-                          <nav>
-                            <i  class="fa fa-book" >
-                              {" "}
-                              {classContent.contentTitle}{" "}
-                            </i>
-                          </nav>
-                        </div>
-                        <div
-                        id="operations"
-                       
-                    
-                        >
-                          <When condition={cookie.load("role") === "teacher"}>
-                            <DeleteIcon
-                              sx={{ fontSize: 40 }}
-                              style={{  cursor:"pointer" }}
-                              onClick={() =>
-                                contentC.deleteContent(classContent.id, indx)
-                              }
-                            />
-                          </When>
-
-                          <When condition={cookie.load("role") === "teacher"}>
-                            <Link to={`/updateContent/${classContent.id}`}>
-                              <EditIcon sx={{ fontSize: 40 }} style={{  cursor:"pointer" }}/>
-                            </Link>
-                          </When>
-                        </div>
+                                  <When
+                                    condition={
+                                      cookie.load("role") === "teacher"
+                                    }
+                                  >
+                                    <Link
+                                      to={`/updateContent/${classContent.id}`}
+                                    >
+                                      <EditIcon
+                                        sx={{ fontSize: 40 }}
+                                        style={{ cursor: "pointer" }}
+                                      />
+                                    </Link>
+                                  </When>
+                                </div>
+                              </div>
+                            </ListGroup.Item>
+                          </ListGroup>
+                        </Card>
                       </div>
-                    </>
-                  );
-                })
-              : null}
-          </div>
+                    </div>
+                  </>
+                );
+              })
+            : null}
         </div>
-        <div id='bodyContent'>
-          {contentC.showContentBody && contentDataById ? (
-            <>
-              <h1> {contentDataById.contentTitle}</h1>
-              <hr />
-              <p>{contentDataById.contentBody}</p>
-              <hr />
-              <p> {contentDataById.contentLink}</p>
-              <p>{contentDataById.contentCategory}</p>
-            </>
-          ) : null}
-        </div>
+
+        </Alert>
+  ))}
+
+        <Card className="body_content">
+          <dev className="inside_body_content">
+            {contentC.showContentBody && contentDataById ? (
+              <>
+                <h1 className="title_body"> {contentDataById.contentTitle}</h1>
+                <hr />
+                <p className="lorem">{contentDataById.contentBody}</p>
+
+                <a className="link_content"> {contentDataById.contentLink}</a>
+              </>
+            ) : null}
+          </dev>
+        </Card>
       </div>
     );
   }
@@ -129,7 +148,19 @@ const Content = (props) => {
   return (
     <>
       <When condition={cookie.load("role") === "teacher"}>
-        <AddContents id={params.id} />
+        <div style={{ display: "flex", marginBottom: "15px" }}>
+          <h1
+            style={{
+              fontSize: "35px",
+              borderLeft: "2px solid black",
+              marginLeft: "5px",
+              paddingLeft: "5px",
+            }}
+          >
+            Content
+          </h1>
+          <AddContents id={params.id} />
+        </div>
       </When>
       <ShowContent />
     </>

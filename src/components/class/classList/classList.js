@@ -52,7 +52,6 @@ function Submit() {
       <Button color="success" onClick={state.handleShow}>
         Add Student to class
       </Button>
-      <Button color="warning">Update information</Button>
       <Modal
         show={state.show}
         onHide={state.handleClose}
@@ -66,7 +65,7 @@ function Submit() {
             <Row>
               <Col md={16}>
                 <FormGroup>
-                  <Label for="userName">userName</Label>
+                  {/* <Label for="userName">userName</Label> */}
                   <Input
                     id="userName"
                     name="userName"
@@ -76,7 +75,7 @@ function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="className" >className</Label>
+                  {/* <Label for="className" >className</Label> */}
                   <Input
                     id="className"
                     name="className"
@@ -86,7 +85,7 @@ function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="studentGrade">Student Grade</Label>
+                  {/* <Label for="studentGrade">Student Grade</Label> */}
                   <Input
                     id="studentGrade"
                     name="studentGrade"
@@ -94,7 +93,7 @@ function Submit() {
                     type="text"
                     onChange={handelChange}
                   />
-                </FormGroup>
+                </FormGroup> 
               </Col>
             </Row>
             <Button color="success" >
@@ -116,7 +115,7 @@ const ClassList = (props) => {
   const state = useContext(StateContext);
   const [students, setStudents] = useState([]);
   const [indexToEdit, setIndexToEdit] = useState(-1);
-  const [grade,setGrade]=useState(0)
+  const [grade, setGrade] = useState(0)
 
 
   const fetchStudents = async () => {
@@ -129,18 +128,18 @@ const ClassList = (props) => {
   };
 
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        fetchStudents()
-      }, 2000);
-      return () => clearInterval(interval);
-    }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchStudents()
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
 
 
   return (
     <div>
-        <h1>{props.teacherName}</h1>
+      <h1>{props.teacherName}</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
