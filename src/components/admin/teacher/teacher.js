@@ -106,7 +106,7 @@ const Teacher = () => {
           color: "white",
 
         }}>
-          Teacher Dashboard
+          Teachers
           <AddTeacher
           />
 
@@ -163,7 +163,7 @@ const Teacher = () => {
                       class="modal-dialog modal-lg"
                     >
                       <Modal.Header closeButton>
-                        <Modal.Title>Edit Teacher form</Modal.Title>
+                        <Modal.Title>Edit Teacher </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <Form
@@ -172,7 +172,7 @@ const Teacher = () => {
                           <Row>
                             <Col md={12}>
                               <FormGroup>
-                                <Label for="userName1">userName</Label>
+                                {/* <Label for="userName1">userName</Label> */}
                                 <Input
                                   id="userName1"
                                   name="userName"
@@ -187,7 +187,7 @@ const Teacher = () => {
                           <Row>
                             <Col md={12}>
                               <FormGroup>
-                                <Label for="firstName1">First Name</Label>
+                                {/* <Label for="firstName1">First Name</Label> */}
                                 <Input
                                   id="firstName1"
                                   name="firstName"
@@ -196,7 +196,7 @@ const Teacher = () => {
                                 />
                               </FormGroup>
                               <FormGroup>
-                                <Label for="lastName1">Last Name </Label>
+                                {/* <Label for="lastName1">Last Name </Label> */}
                                 <Input
                                   id="lastName1"
                                   name="lastName"
@@ -209,7 +209,7 @@ const Teacher = () => {
                           <Row>
                             <Col md={12}>
                               <FormGroup>
-                                <Label for="role1">role</Label>
+                                {/* <Label for="role1">role</Label> */}
 
                                 <Input
                                   id="role1"
@@ -222,7 +222,7 @@ const Teacher = () => {
                             </Col>
                             <Col md={6}>
                               <FormGroup>
-                                <Label for="gender1">gender</Label>
+                                {/* <Label for="gender1">gender</Label> */}
                                 <Input
                                   id="gender1"
                                   name="gender"
@@ -233,7 +233,7 @@ const Teacher = () => {
                             </Col>
                             <Col md={6}>
                               <FormGroup>
-                                <Label for="nationality1">nationality</Label>
+                                {/* <Label for="nationality1">nationality</Label> */}
                                 <Input
                                   id="nationality1"
                                   name="nationality"
@@ -244,7 +244,7 @@ const Teacher = () => {
                             </Col>
                           </Row>
                           <FormGroup>
-                            <Label for="department1">department</Label>
+                            {/* <Label for="department1">department</Label> */}
                             <Input
                               id="department1"
                               name="department"

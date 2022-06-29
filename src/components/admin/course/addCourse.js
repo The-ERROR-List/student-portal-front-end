@@ -58,18 +58,18 @@ export default function AddCourse() {
         class="modal-dialog modal-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Course form</Modal.Title>
+          <Modal.Title> Add Course </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form style={{ width: "70%", margin: "auto" }}>
             <Row>
               <Col md={12}>
                 <FormGroup>
-                  <Label for="courseName">Course Name</Label>
+                  {/* <Label for="courseName">Course Name</Label> */}
                   <Input
                     id="course"
                     name="courseName"
-                    placeholder="Course..."
+                    placeholder="Course Name"
                     type="text"
                     onChange={handelChange}
                   />
@@ -87,11 +87,11 @@ export default function AddCourse() {
               />
             </FormGroup> */}
             <FormGroup>
-              <Label for="courseDescription">course Description</Label>
+              {/* <Label for="courseDescription">course Description</Label> */}
               <Input
                 id="courseDescription"
                 name="courseDescription"
-                placeholder="course Description..."
+                placeholder="course Description"
                 type="text"
                 onChange={handelChange}
               />

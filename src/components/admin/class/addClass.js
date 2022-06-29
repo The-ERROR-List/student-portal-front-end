@@ -85,18 +85,18 @@ export default function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="courseName"></Label>
+                  {/* <Label for="courseName"></Label> */}
                   <Input
                     id="course"
                     name="courseName"
-                    placeholder="Course"
+                    placeholder="courseName"
                     type="text"
                     onChange={handelChange}
                   />
                 </FormGroup>
 
                 <FormGroup>
-                  <Label for="userName"></Label>
+                  {/* <Label for="userName"></Label> */}
                   <Input
                     id="userName"
                     name="userName"
@@ -105,18 +105,18 @@ export default function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
-                <FormGroup>
-                  <Label for="classImage"></Label>
-                  <Input
+                {/* <FormGroup> */}
+                  {/* <Label for="classImage"></Label> */}
+                  {/* <Input
                     id="classImage"
                     name="classImage"
                     placeholder="classImage"
                     type="classTime"
                     onChange={handelChange}
                   />
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup>
-                  <Label for="classTime"></Label>
+                  {/* <Label for="classTime"></Label> */}
                   <Input
                     id="classTime"
                     name="classTime"
