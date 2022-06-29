@@ -13,20 +13,25 @@ export default function AnnouCard(props) {
 
     return (
         <div>
-            <div style={{padding:' 2.5rem 1.5rem'}}>
+            <div style={{ padding: ' 2.5rem 1.5rem' }}>
                 <section class="page-contain-announcement">
-                    <a href="#" class="data-card-announcement">
-                        <h3 id="corseName">{props.announcementClass.announcementTitle}</h3>
+                    <a  style={{textDecoration: "none", color: "inherit"}} href="#" class="data-card-announcement">
+                        <div id="corseName" style={{display:"flex"}}>
+                        <hr/>
+                            <i class="fa fa-bullhorn fa-1x" aria-hidden="true" ></i>
 
+                            <h3 style={{marginLeft:"9px"}} >{props.announcementClass.announcementTitle}</h3>
+                        </div>
                         <span class="link-text-announcement">
                             <h3>{props.announcementClass.announcementBody}</h3>
+                            
                             <h3>{props.announcementClass.announcementLink}</h3>
 
                         </span>
                         <div class="edit-delete-announcement">
                             <When condition={cookie.load("role") === "teacher"}>
                                 <DeleteIcon
-                                    id ="deletebuttom"
+                                    id="deletebuttom"
                                     sx={{ fontSize: 67 }}
                                     onClick={() =>
                                         announcementC.deleteAnnouncement(props.announcementClass.id, props.indx)
@@ -35,7 +40,6 @@ export default function AnnouCard(props) {
                             </When>
 
                         </div>
-
                     </a>
                 </section>
             </div>

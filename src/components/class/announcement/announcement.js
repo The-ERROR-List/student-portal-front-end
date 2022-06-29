@@ -53,14 +53,14 @@ const Announcement = (props) => {
       </div>
     );
   }
-
   return (
     <>
       <div className="Announcement">
         <div className="Announcement-header">
           <When condition={cookie.load("role") === "teacher"}>
+          
             <AddAnnouncement id={params.id} />
-            {/* <UpdateAnnouncement /> */}
+          
           </When>
         </div>
         <div className="show-content">

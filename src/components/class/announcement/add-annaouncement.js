@@ -14,6 +14,8 @@ import { api } from '../../../redux/type'
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import ReactTooltip from "react-tooltip";
 
 export default function AddAnnouncement(props) {
     console.log(props.id);
@@ -40,10 +42,22 @@ export default function AddAnnouncement(props) {
     }, [])
     return (
         <>
-            <Button color="success" onClick={handleShow}>
-                Add Announcement
-            </Button>
+        <div style={{display:"flex",}}>
+            <h1
+            style={{
+              fontSize: "35px",
+              borderLeft: "2px solid black",
+              marginLeft: "5px",
+              paddingLeft: "5px",
+            }}
+          >
+            Announcements
+          </h1>
+            <AddCircleOutlineIcon style={{marginLeft:"20px",marginTop:"18px"}} color="success" data-tip=" Add Announcement" onClick={handleShow}>
+            </AddCircleOutlineIcon>
 
+            <ReactTooltip />
+            </div>
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -62,23 +76,21 @@ export default function AddAnnouncement(props) {
                         <Row>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="announcementTitle">Announcement Title</Label>
                                     <Input
-                                        className="input-class" id="announcementTitle" name="announcementTitle" placeholder="announcementTitle" value={announcementC.announcementTitle} onChange={(e) => announcementC.setannouncementTitle(e.target.value)}
+                                        className="input-class" id="announcementTitle" name="announcementTitle" placeholder="Title" value={announcementC.announcementTitle} onChange={(e) => announcementC.setannouncementTitle(e.target.value)}
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="announcementBody">Announcement Body</Label>
-                                    <Input
+                                    <textarea
+                                    rows="4" cols="50"
                                         id="announcementBody" className="input-class" name="announcementBody" placeholder="announcementBody" value={announcementC.announcementBody} onChange={(e) => announcementC.setannouncementBody(e.target.value)}
                                     />
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="announcementLink">Announcement Link</Label>
                                     <Input
-                                        id="announcementLink" className="input-class" name="announcementLink" placeholder="announcementLink" value={announcementC.announcementLink} onChange={(e) => announcementC.setannouncementLink(e.target.value)}
+                                        id="announcementLink" className="input-class" name="Link" placeholder="announcementLink" value={announcementC.announcementLink} onChange={(e) => announcementC.setannouncementLink(e.target.value)}
                                     />
                                 </FormGroup>
                             </Col>
@@ -87,11 +99,6 @@ export default function AddAnnouncement(props) {
                         <Button color="success" type='submit' onClick={handleClose}>Add announcement</Button>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button color="danger" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
 
         </>

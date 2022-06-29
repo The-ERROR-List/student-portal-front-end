@@ -72,7 +72,8 @@ export default function AddContents(props) {
                                     />
                                 </FormGroup>
                                 <FormGroup>   
-                                    <Input
+                                <textarea
+                                    rows="4" cols="50"
                                         id="contentBody" className="input-class" name="contentBody" placeholder="contentBody" value={contentC.contentBody} onChange={(e) => contentC.setContentBody(e.target.value)}
                                     />
                                 </FormGroup>
@@ -89,11 +90,6 @@ export default function AddContents(props) {
                         <Button color="success"  onClick={handleClose}>Add content</Button>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button color="danger" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
     );

@@ -103,7 +103,7 @@ const Content = (props) => {
                                     }
                                   >
                                     <Link
-                                      to={`/updateContent/${classContent.id}`}
+                                      to={`updateContent/${classContent.id}`}
                                     >
                                       <EditIcon
                                         sx={{ fontSize: 40 }}

@@ -11,6 +11,7 @@ import { useEffect,useState } from 'react';
 import axios from 'axios';
 import {api}from'../../redux/type'
 import cookie from "react-cookies"
+import UpdateContents from './content/update-content';
 
 const Class = () => {
   const params = useParams();
@@ -45,6 +46,7 @@ const Class = () => {
           <Route path="content-class/:id" element={<Content />} />
           <Route path="classList/:id" element={<ClassList teacherName={oneTeacherName} />} />
           <Route path="ClassTool/:id" element={<ClassTool id={params.id} />} />
+          <Route path='updateContent/:id' element={<UpdateContents/>}/>
         </Routes>
       </div>
     </div>

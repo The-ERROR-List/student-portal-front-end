@@ -4,14 +4,7 @@
     box-sizing: border-box;
 }
 
-// .wrapper{
-//   display: flex;
-//   flex-direction: wrap;
-//   justify-content: space-between;
-//   width: 100%;
-//   height: 100%;
 
-// }
 .page-contain-announcement {
     min-height: 100px;
     max-width: 65em;
@@ -39,9 +32,7 @@
     transition: transform 0.45s ease, background 0.45s ease;
 
     #corseName {
-        // color: #ffff;
         color: #045749;
-
         font-size: 2.5em;
         font-weight: 600;
         line-height: 1;
@@ -75,9 +66,10 @@
     }
 
     .link-text.announcement {
+        margin-top: 20px;
         display: block;
         color: #ffffff;
-        font-size: 1.125em;
+        font-size: 1.5em;
         font-weight: 600;
         line-height: 1.2;
         margin: auto 0 0;
