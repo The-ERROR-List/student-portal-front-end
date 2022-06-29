@@ -1,8 +1,8 @@
-import { api } from "../../../redux/type";
-import axios from "axios";
+// import { api } from "../../../redux/type";
+// import axios from "axios";
 import cookie from "react-cookies";
-import { useContext, useEffect, useState } from "react";
-import { Modal, Button, FormGroup } from "react-bootstrap";
+import { useContext, useEffect } from "react";
+import { Modal, Button} from "react-bootstrap";
 import { StateContext } from "../../../context/State";
 import { When } from "react-if";
 import JoinChat from "../../chat/joinChat";
@@ -14,6 +14,7 @@ const ClassTool = (props) => {
   useEffect(() => {
     console.log("11111", zoom.meeting.Meeting);
     console.log(zoom.joinUrl);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [zoom.meeting]);
   return (
     <div style={{ marginLeft: "30px" }}>

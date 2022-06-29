@@ -1,6 +1,6 @@
-import { Alert, Breadcrumb, BreadcrumbItem } from "react-bootstrap";
-import { StateContext } from "../../../context/State";
-import { useContext, useEffect } from "react";
+import { Alert } from "react-bootstrap";
+// import { StateContext } from "../../../context/State";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCourseAction } from "../../../redux/course";
 import AddTeacherToCourse from "./addTeacher";
@@ -18,32 +18,26 @@ export default function Course() {
       dispatch(getCourseAction());
     }, 2000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-    <div className="admin-coures">
- 
-  <Alert variant="success" style={{
-        fontSize: "30px",
-       color: "#005240",
-       backgroundColor: "#005240",
-       borderColor: "#005240"
-      }} >
-         <Alert.Heading style={{
-        
-       color: "white",
-      
-      }}>
-           Courses
-           <AddCourse />
-           <AddTeacherToCourse/>
-
-
-         </Alert.Heading>
-    
-
-      </Alert>
+      <div className="admin-coures">
+        <Alert variant="success" style={{
+          fontSize: "30px",
+          color: "#005240",
+          backgroundColor: "#005240",
+          borderColor: "#005240"
+        }} >
+          <Alert.Heading style={{
+            color: "white",
+          }}>
+            Courses
+            <AddCourse />
+            <AddTeacherToCourse />
+          </Alert.Heading>
+        </Alert>
       </div>
       <div className="course-cards">
         {courses.map((course, i) => {

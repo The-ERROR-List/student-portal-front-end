@@ -1,9 +1,7 @@
 import React from "react";
 import "./admin.css";
-import { Card, Alert } from "react-bootstrap";
+import {Alert } from "react-bootstrap";
 import { useState } from 'react'
-import { CardColumns, CardImg } from "reactstrap";
-import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import ItemDash from './itemDash/itemDash';
 import Calendar from 'react-calendar';

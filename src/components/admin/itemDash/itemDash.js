@@ -5,17 +5,17 @@ export default function ItemDash() {
         <>
             <section class="wrapper">
                 <div class="row card_row">
-            
-                    <h1 style={{marginLeft:"30px"}} class="column h6 color_label">Some Category</h1>
+
+                    <h1 style={{ marginLeft: "30px" }} class="column h6 color_label">Some Category</h1>
                     <div class="column half_whole">
                         <article class="card box_panel">
-                       
+
                             <label class="card_label">
                                 Dashboard Item
                             </label>
                             <section class="card_body">
                                 <div class="graph">
-                                    <div class="knob_data" style={{marginRight:"25px"}}>89<span class="txt_smaller">%</span></div>
+                                    <div class="knob_data" style={{ marginRight: "25px" }}>89<span class="txt_smaller">%</span></div>
                                     <svg class="graph_media" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266.4 266.4">
                                         <g>
                                             <path class="st0" d="M130.5,32.2V0c-53.3,1.1-99,33.5-119.3,79.6l30,11.8C56.7,57.3,90.7,33.3,130.5,32.2z" />
@@ -83,9 +83,9 @@ export default function ItemDash() {
                                 </div>
                             </section>
                         </article>
-                    </div> 
+                    </div>
                 </div>
-            </section> 
+            </section>
 
         </>
     )

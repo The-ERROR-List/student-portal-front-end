@@ -1,7 +1,6 @@
 import { StateContext } from "../../../context/State";
 import { useEffect, useState, useContext } from "react";
 import {
-  Table,
   Form,
   Row,
   Col,
@@ -16,10 +15,6 @@ import { Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { getClassAction } from "../../../redux/class";
 import { addClass } from "../../../redux/type";
-// <AddCircleOutlineIcon style={{marginLeft:"20px"}} color="warning" data-tip="Assign a Teacher to Course" onClick={handleShow}>
-// </AddCircleOutlineIcon>
-
-// <ReactTooltip />
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ReactTooltip from "react-tooltip";
 
@@ -53,15 +48,14 @@ export default function Submit() {
       dispatch(getClassAction());
     }, 2000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <AddCircleOutlineIcon style={{ marginLeft: "20px" }} color="warning" data-tip="Add a new class" onClick={state.handleShow}>
       </AddCircleOutlineIcon>
-
       <ReactTooltip />
-
       <Modal
         show={state.show}
         onHide={state.handleClose}
