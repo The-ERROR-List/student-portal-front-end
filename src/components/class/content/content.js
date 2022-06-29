@@ -58,7 +58,6 @@ const Content = (props) => {
     'dark',
   ].map((variant) => (
     <Alert key={variant} variant={variant}>
-       
         <div className="card_div_scroll">
           {contentC.content
             ? contentC.content.map((classContent, indx) => {
