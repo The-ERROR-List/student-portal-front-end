@@ -21,6 +21,10 @@ import { addStudentInClass } from "../../../redux/type";
 import { api } from '../../../redux/type';
 import { useParams } from "react-router-dom";
 import "./classList.scss";
+import Avatar from "react-avatar";
+import Calendar from 'react-calendar';
+
+
 
 
 function Submit() {
@@ -116,6 +120,7 @@ const ClassList = (props) => {
   const [students, setStudents] = useState([]);
   const [indexToEdit, setIndexToEdit] = useState(-1);
   const [grade, setGrade] = useState(0)
+  const [value, onChange] = useState(new Date());
 
 
   const fetchStudents = async () => {
@@ -128,75 +133,98 @@ const ClassList = (props) => {
   };
 
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        fetchStudents()
-      }, 2000);
-      return () => clearInterval(interval);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchStudents()
+    }, 2000);
+    return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+  }, []);
 
 
 
   return (
-    <div>
+    <div className="admin-classlist">
+
+
+      <div style={{ display: "flex", flexDirection: "column", marginTop: "50px", marginLeft: "40px", justifyContent:"center" }} className='teacher-into-container'>
+       
+
+        <div>
+          <Calendar onChange={onChange} value={value} />
+        </div>
+    {/* <div>
       <h1>{props.teacherName}</h1>
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
-      <div className="classList-table" style={{marginTop:"30px"}}>
+      <div className="classList-table" style={{marginTop:"30px"}}> */}
 
-      <Table size="" style={{ marginLeft: "20px" }}>
-        <thead className="headerTable" style={{ textAlign: "center" }}>
-          <tr style={{
-                backgroundColor: "#005240",
-                color: "white",
-                fontSize: "20px",
-              }}>
-            <th style={{ color: "white", textAlign: "center" }}> Student Name</th>
-            <When condition={auth.user.role !== "student"}>
-              <th style={{ color: "white", textAlign: "center" }}>Grade</th>
-            </When>
-          </tr>
-        </thead>
-        <tbody>
-          {students.students
-            ? students.students.map((studentListed, indx) => {
-              return (
-                <tr key={indx}>
-                  <td>{studentListed.studentName}</td>
-                  <When condition={auth.user.role !== "student"}>
-                    <td>
-                      <input type="text" value={grade} disabled={indx !== indexToEdit} onChange={(e) => {
-                        // let _entries = [...students.students];
-                        // _entries[indexToEdit] = e.target.value;
-                        // setStudents(_entries);
-                        setGrade(e.target.value)
-                      }}
-                        onBlur={() => {
-                          setIndexToEdit(-1);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          setIndexToEdit(indx);
-                        }}
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </When>
-                </tr>
-              );
-            })
-            : null}
-        </tbody>
-      </Table>
       </div>
 
+
+
+
+      <div className="classList-table" style={{ marginTop: "30px" }}>
+        <When condition={cookie.load("role") === "admin"}>
+          <Submit />
+        </When>
+        <Table size="">
+          <thead className="headerTable" style={{ textAlign: "center" }}>
+            <tr style={{
+              backgroundColor: "#005240",
+              color: "white",
+              fontSize: "20px",
+            }}>
+              <th style={{ color: "white", textAlign: "center" }}> Student Name</th>
+              <When condition={auth.user.role !== "student"}>
+                <th style={{ color: "white", textAlign: "center" }}>Grade</th>
+                <th style={{ color: "#005240", textAlign: "center" }}>Grade</th>
+
+              </When>
+            </tr>
+          </thead>
+          <tbody>
+            {students.students
+              ? students.students.map((studentListed, indx) => {
+                return (
+                  <tr key={indx}>
+                    <td style={{ textAlign: "center" }}>{studentListed.studentName}</td>
+                    <When condition={auth.user.role !== "student"}>
+                      <td style={{ textAlign: "center" }}>
+                        <input style={{ textAlign: "center" }} type="text" value={grade} disabled={indx !== indexToEdit} onChange={(e) => {
+                          // let _entries = [...students.students];
+                          // _entries[indexToEdit] = e.target.value;
+                          // setStudents(_entries);
+                          setGrade(e.target.value)
+                        }}
+                          onBlur={() => {
+                            setIndexToEdit(-1);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            setIndexToEdit(indx);
+                          }}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </When>
+                  </tr>
+                );
+              })
+              : null}
+          </tbody>
+        </Table>
+      </div>
+
+
     </div>
+
+
   );
 };
 export default ClassList;
