@@ -81,7 +81,7 @@ export default function Class() {
   }
 
   return (
-    <div className="admin-teacher">
+    <div className="class">
       <Alert variant="success" style={{
         fontSize: "30px",
         color: "#005240",
@@ -99,29 +99,29 @@ export default function Class() {
 
 
       </Alert>
-      <div style={{marginLeft : "-30px"}}>
-        <Table striped bordered hover className="teacher-table" >
-          <thead className='headerTable'>
+      <div className="class-table" style={{marginTop:"30px"}}>
+        <Table striped bordered hover  >
+          <thead className='headerTable' style={{ textAlign: "center" }}>
             <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
-              <th>Class Name</th>
-              <th>Course Name</th>
-              <th>Teacher Name</th>
-              <th>class Time</th>
-              <th>Operations</th>
+              <th style={{ color: "white", textAlign: "center" }}>Class Name</th>
+              <th style={{ color: "white", textAlign: "center" }}>Course Name</th>
+              <th style={{ color: "white", textAlign: "center" }}>Teacher Name</th>
+              <th style={{ color: "white", textAlign: "center" }}> Time</th>
+              <th style={{ color: "white", textAlign: "center" }}>Operations</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ textAlign: "center" , borderColor:"white" }}>
             {classes.map((classInfo, i) => {
               return (
                 <>
                   <tr className='content-table' key={i} style={{ fontSize: "20px" }} >
-                    <td>
+                    <td  style={{ textAlign: "center" }}>
                       <Link to={`/adminClass/${classInfo.id}`}>
                         {classInfo.className}
                       </Link>
-                    </td>                <td>{classInfo.courseName}</td>
-                    <td>{classInfo.teacherName}</td>
-                    <td>{classInfo.classTime}</td>
+                    </td>                <td  style={{ textAlign: "center" }}>{classInfo.courseName}</td>
+                    <td  style={{ textAlign: "center" }}>{classInfo.teacherName}</td>
+                    <td  style={{ textAlign: "center" }}>{classInfo.classTime}</td>
 
                     <DeleteIcon
                       sx={{ fontSize: 67 }}
