@@ -33,14 +33,16 @@
   overflow: hidden;
   border-radius: 0.5em;
   text-decoration: none;
-  background: #0f6f5f;
+  
+  background: rgb(238, 232, 232);
+
   margin: 1em;
   padding: 2.75em 2.5em;
-  box-shadow: 0 1.5em 2.5em -0.5em rgba(#000000, 0.1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transition: transform 0.45s ease, background 0.45s ease;
 
   #corseName {
-    color: #ffff;
+    color: #0f6f5f;
     font-size: 2.5em;
     font-weight: 600;
     line-height: 1;
@@ -51,7 +53,7 @@
   }
 
   h4 {
-    color: #ffff;
+    color: #0f6f5f;
     text-transform: uppercase;
     font-size: 1.125em;
     font-weight: 700;
@@ -73,8 +75,9 @@
 
   .link-text {
     display: block;
-    color: #ffffff;
+    color: #0f6f5f;
     font-size: 1.125em;
+    overflow: auto;
     font-weight: 600;
     line-height: 1.2;
     margin: auto 0 0;
@@ -94,17 +97,17 @@
   }
 
   &:hover {
-    background: rgb(238, 232, 232);
+    background: #0f6f5f;
     transform: scale(1.02);
 
     // h3 {
     //   color: #045749;
     // }
     #corseName {
-      color: #045749;
+      color: #ffffff;
     }
     h4 {
-      color: #045749;
+      color: #ffffff;
     }
 
     p {
@@ -113,7 +116,7 @@
     }
 
     .link-text {
-      color: #045749;
+      color: #ffffff;
 
       svg {
         animation: point 1.25s infinite alternate;
@@ -124,28 +127,29 @@
       }
     }
     #deleteB{
-
-      color:#e8003f 
+      color:#e8003f;
     }
     #editB{
-    
-      color:#ffd600
+      color:#ffd600;
+
+      
     }
   }
   .edit-delete {
     display: flex;
     justify-content: space-between;
+    margin-left: 150px;
     margin-top: 2em;
 
 
   }
 }
 #deleteB{
-  color:#000000 
+  color:#0f6f5f;
 }
 #editB{
-
-  color:#000000
+  color:#0f6f5f;
+  
 }
 @keyframes point {
   0% {
