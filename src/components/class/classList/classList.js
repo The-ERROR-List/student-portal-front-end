@@ -69,7 +69,7 @@ function Submit() {
             <Row>
               <Col md={16}>
                 <FormGroup>
-                  <Label for="userName">userName</Label>
+                  {/* <Label for="userName">userName</Label> */}
                   <Input
                     id="userName"
                     name="userName"
@@ -79,7 +79,7 @@ function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="className" >className</Label>
+                  {/* <Label for="className" >className</Label> */}
                   <Input
                     id="className"
                     name="className"
@@ -89,7 +89,7 @@ function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="studentGrade">Student Grade</Label>
+                  {/* <Label for="studentGrade">Student Grade</Label> */}
                   <Input
                     id="studentGrade"
                     name="studentGrade"
@@ -97,7 +97,7 @@ function Submit() {
                     type="text"
                     onChange={handelChange}
                   />
-                </FormGroup>
+                </FormGroup> 
               </Col>
             </Row>
             <Button color="success" >
@@ -153,6 +153,12 @@ const ClassList = (props) => {
         <div>
           <Calendar onChange={onChange} value={value} />
         </div>
+    {/* <div>
+      <h1>{props.teacherName}</h1>
+      <When condition={cookie.load("role") === "admin"}>
+        <Submit />
+      </When>
+      <div className="classList-table" style={{marginTop:"30px"}}> */}
 
       </div>
 
