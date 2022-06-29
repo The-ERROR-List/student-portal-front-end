@@ -151,7 +151,7 @@ export default function Class() {
                         <Row>
                           <Col md={16}>
                             <FormGroup>
-                              <Label for="className"></Label>
+                              {/* <Label for="className"></Label> */}
                               <Input
                                 id="class"
                                 name="className"
@@ -161,7 +161,7 @@ export default function Class() {
                               />
                             </FormGroup>
                             <FormGroup>
-                              <Label for="courseName"></Label>
+                              {/* <Label for="courseName"></Label> */}
                               <Input
                                 id="course"
                                 name="courseName"
@@ -172,7 +172,7 @@ export default function Class() {
                             </FormGroup>
 
                             <FormGroup>
-                              <Label for="userName"></Label>
+                              {/* <Label for="userName"></Label> */}
                               <Input
                                 id="userName"
                                 name="userName"
@@ -185,7 +185,7 @@ export default function Class() {
 
                             </FormGroup>
                             <FormGroup>
-                              <Label for="classTime"></Label>
+                              {/* <Label for="classTime"></Label> */}
                               <Input
                                 id="classTime"
                                 name="classTime"

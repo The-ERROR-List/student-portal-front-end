@@ -20,26 +20,26 @@ const Header = () => {
             <Navbar bg="dark" variant="dark"  >
                 <Container >
                     <Nav className="me-auto cont" >
-                        <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70,textDecoration: "none",color: "inherit", textAlign: 'center', marginLeft: "20px", marginTop: "-30px" }} /></Navbar.Brand>
+                        <Navbar.Brand href="/"><SchoolOutlinedIcon sx={{ fontSize: 70, textDecoration: "none", color: "inherit", textAlign: 'center', marginLeft: "20px", marginTop: "-30px" }} /></Navbar.Brand>
                         <hr style={{ color: "white" }} />
                         <div className='btn'>
-                            <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
+                            <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none", color: "inherit" }}
                             >
-                                <Link  style={{ textDecoration: "none",color: "inherit"} } to='/'>
+                                <Link style={{ textDecoration: "none", color: "inherit" }} to='/'>
                                     <SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Link></Nav.Link>
                         </div>
                         <When condition={cookie.load('role') === 'admin'}>
                             <div className='btn'>
-                                <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
+                                <Nav.Link href="/admin-teacher" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none", color: "inherit" }}
                                 >
-                                    <Link  style={{ textDecoration: "none",color: "inherit"} } to='/admin-teacher'>
+                                    <Link style={{ textDecoration: "none", color: "inherit" }} to='/admin-teacher'>
                                         <PersonIcon sx={{ fontSize: 30 }} /> <p>Teachers</p> </Link></Nav.Link>
                             </div>
 
                             <div className='btn'>
-                                <Nav.Link href="/admin-student" style={{ textAlign: 'center', marginTop: '10px',textDecoration: "none",color: "inherit" }}
+                                <Nav.Link href="/admin-student" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none", color: "inherit" }}
                                 >
-                                    <Link style={{ textDecoration: "none",color: "inherit"} } to='/admin-student'>
+                                    <Link style={{ textDecoration: "none", color: "inherit" }} to='/admin-student'>
                                         <SchoolOutlinedIcon sx={{ fontSize: 30 }} /> <p>Students</p> </Link></Nav.Link>
                             </div>
                             <div className='btn'>
@@ -49,12 +49,12 @@ const Header = () => {
                                         <LibraryBooksOutlinedIcon sx={{ fontSize: 30 }} /> <p>Courses</p> </Link></Nav.Link>
                             </div>
                             <div className='btn'>
-                                <Nav.Link  href="/admin-class" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
+                                <Nav.Link href="/admin-class" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none", color: "inherit" }}
                                 >
-                                    <Link   style={{ textDecoration: "none",color: "inherit"} } to='/admin-class'>
+                                    <Link style={{ textDecoration: "none", color: "inherit" }} to='/admin-class'>
                                         <GroupIcon sx={{ fontSize: 30 }} /> <p>Classes</p> </Link></Nav.Link>
                             </div>
-                            </When>
+                        </When>
                         <div className='btn'>
                             <Account />
                         </div>

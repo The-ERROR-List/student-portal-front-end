@@ -51,18 +51,18 @@ export default function AddTeacherToCourse() {
                 class="modal-dialog modal-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title> Add Course </Modal.Title>
+                    <Modal.Title> Add Teacher to Course </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form style={{ width: "70%", margin: "auto" }}>
                         <Row>
                             <Col md={12}>
                                 <FormGroup>
-                                    <Label for="courseName">Course Name</Label>
+                                    {/* <Label for="courseName">Course Name</Label> */}
                                     <Input
                                         id="course"
                                         name="courseName"
-                                        placeholder="Course..."
+                                        placeholder="courseName"
                                         type="text"
                                         onChange={handelChange}
                                     />
@@ -70,11 +70,11 @@ export default function AddTeacherToCourse() {
                             </Col>
                         </Row>
                         <FormGroup>
-                            <Label for="userName">Teacher Name</Label>
+                            {/* <Label for="userName">Teacher Name</Label> */}
                             <Input
                                 id="userName"
                                 name="userName"
-                                placeholder="Teacher userName..."
+                                placeholder="Teacher userName"
                                 type="userName"
                                 onChange={handelChange}
                             />

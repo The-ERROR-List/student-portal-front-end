@@ -52,7 +52,7 @@ export default function AddStudent() {
       <AddCircleOutlineIcon
         onClick={handleShow}
         data-tip="Add a new student"
-        style={{ marginLeft: "20px" }}
+        style={{ marginLeft: "20px", fontSize: "1.9rem", marginBottom: "5px" }}
       >
         Add Student
       </AddCircleOutlineIcon>
@@ -72,7 +72,7 @@ export default function AddStudent() {
             <Row style={{ marginTop: "0px" }}>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="userName"></Label>
+                  {/* <Label for="userName"></Label> */}
                   <Input
                     id="userName"
                     name="userName"
@@ -83,7 +83,7 @@ export default function AddStudent() {
                 </FormGroup>
               </Col>
               <Col md={6}>
-                <Label for="examplePassword"></Label>
+                {/* <Label for="examplePassword"></Label> */}
                 <Input
                   id="examplePassword"
                   name="password"
@@ -94,7 +94,7 @@ export default function AddStudent() {
               </Col>
             </Row>
             <Row>
-              <Label for="exampleEmail"></Label>
+              {/* <Label for="exampleEmail"></Label> */}
               <Input
                 id="email"
                 name="email"
@@ -102,14 +102,14 @@ export default function AddStudent() {
                 type="email"
                 onChange={handelChange}
               />
-              <Label for="firstName"></Label>
+              {/* <Label for="firstName"></Label> */}
               <Input
                 id="firstName"
                 name="firstName"
                 placeholder="First Name"
                 onChange={handelChange}
               />
-              <Label for="lastName"></Label>
+              {/* <Label for="lastName"></Label> */}
               <Input
                 id="lastName"
                 name="lastName"
@@ -124,7 +124,7 @@ export default function AddStudent() {
                 onChange={handelChange}
               /> */}
 
-              <Label for="nationality"></Label>
+              {/* <Label for="nationality"></Label> */}
               <Input
                 id="nationality"
                 name="nationality"
@@ -132,7 +132,7 @@ export default function AddStudent() {
                 onChange={handelChange}
               />
 
-              <Label for="major"></Label>
+              {/* <Label for="major"></Label> */}
               <Input
                 id="major"
                 name="major"

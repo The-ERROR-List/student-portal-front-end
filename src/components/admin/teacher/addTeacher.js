@@ -46,7 +46,7 @@ export default function AddStudent() {
       <AddCircleOutlineIcon
         onClick={handleShow}
         data-tip="Add a new teacher"
-        style={{ marginLeft: "20px" }}
+        style={{ marginLeft: "20px", fontSize: "1.9rem", marginBottom: "5px" }}
       >
         Add Teacher
       </AddCircleOutlineIcon>
@@ -66,7 +66,7 @@ export default function AddStudent() {
             <Row style={{ marginTop: "0px" }}>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="userName"></Label>
+                  {/* <Label for="userName"></Label> */}
                   <Input
                     id="userName"
                     name="userName"
@@ -77,7 +77,7 @@ export default function AddStudent() {
                 </FormGroup>
               </Col>
               <Col md={6}>
-                <Label for="examplePassword"></Label>
+                {/* <Label for="examplePassword"></Label> */}
                 <Input
                   id="examplePassword"
                   name="password"
@@ -88,7 +88,7 @@ export default function AddStudent() {
               </Col>
             </Row>
             <Row>
-              <Label for="exampleEmail"></Label>
+              {/* <Label for="exampleEmail"></Label> */}
               <Input
                 id="email"
                 name="email"
@@ -103,21 +103,21 @@ export default function AddStudent() {
                 placeholder="First Name"
                 onChange={handelChange}
               />
-              <Label for="lastName"></Label>
+              {/* <Label for="lastName"></Label> */}
               <Input
                 id="lastName"
                 name="lastName"
                 placeholder="Last Name"
                 onChange={handelChange}
               />
-              <Label for="nationality"></Label>
+              {/* <Label for="nationality"></Label> */}
               <Input
                 id="nationality"
                 name="nationality"
                 placeholder="nationality"
                 onChange={handelChange}
               />
-              <Label for="department"></Label>
+              {/* <Label for="department"></Label> */}
               <Input
                 id="department"
                 name="department"

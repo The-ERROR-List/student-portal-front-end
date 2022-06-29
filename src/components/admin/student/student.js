@@ -96,13 +96,13 @@ const Student = () => {
             color: "white",
           }}
         >
-          Student Dashboard
+          Students
           <AddStudent />
         </Alert.Heading>
       </Alert>
       <div className="student-table" style={{marginTop:"30px"}}>
         <Table striped bordered hover className="Student-table">
-          <thead className="headerTable">
+          <thead className="headerTable" style={{ textAlign: "center" }}>
             <tr
               style={{
                 backgroundColor: "#005240",
@@ -110,21 +110,21 @@ const Student = () => {
                 fontSize: "20px",
               }}
             >
-              <th>Student Image</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>Nationality</th>
-              <th>Major</th>
-              <th>Operations</th>
+              <th style={{ color: "white", textAlign: "center" }}>Student Image</th>
+              <th style={{ color: "white", textAlign: "center"  }}>First Name</th>
+              <th style={{ color: "white", textAlign: "center"  }}>Last Name</th>
+              <th style={{ color: "white", textAlign: "center"  }}>Username</th>
+              <th style={{ color: "white", textAlign: "center"  }}>Nationality</th>
+              <th style={{ color: "white", textAlign: "center"  }}>Major</th>
+              <th style={{ color: "white", textAlign: "center"  }}>Operations</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ textAlign: "center" , borderColor:"white" }}>
             {students.map((student, i) => {
               return (
                 <>
                   <tr className="content-table" key={i} style={{ fontSize:"20px"}}>
-                    <td>
+                    <td style={{ textAlign: "center" }}>
                       <Avatar
                         color={Avatar.getRandomColor("sitebase", [
                           "red",
@@ -134,13 +134,14 @@ const Student = () => {
                         size={50}
                         round="50%"
                         name={student.firstName}
+                        
                       />
                     </td>
-                    <td>{student.firstName}</td>
-                    <td>{student.lastName}</td>
-                    <td>{student.userName}</td>
-                    <td>{student.nationality}</td>
-                    <td>{student.major}</td>
+                    <td style={{ textAlign: "center" }}>{student.firstName}</td>
+                    <td style={{ textAlign: "center" }}>{student.lastName}</td>
+                    <td style={{ textAlign: "center" }}>{student.userName}</td>
+                    <td style={{ textAlign: "center" }}>{student.nationality}</td>
+                    <td style={{ textAlign: "center" }}>{student.major}</td>
                     <DeleteIcon
                       sx={{ fontSize: 67 }}
                       onClick={() => deleteFromDB(student.id)}
@@ -161,14 +162,14 @@ const Student = () => {
                     class="modal-dialog modal-lg"
                   >
                     <Modal.Header closeButton>
-                      <Modal.Title>Edit Student form</Modal.Title>
+                      <Modal.Title>Edit Student </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                       <Form style={{ width: "70%", margin: "auto" }}>
                         <Row>
                           <Col md={6}>
                             <FormGroup>
-                              <Label for="userName">userName</Label>
+                              {/* <Label for="userName">userName</Label> */}
                               <Input
                                 id="userName"
                                 name="userName"
@@ -182,7 +183,7 @@ const Student = () => {
                         <Row>
                           <Col md={6}>
                             <FormGroup>
-                              <Label for="firstName">First Name</Label>
+                              {/* <Label for="firstName">First Name</Label> */}
                               <Input
                                 id="firstName"
                                 name="firstName"
@@ -191,7 +192,7 @@ const Student = () => {
                               />
                             </FormGroup>
                             <FormGroup>
-                              <Label for="lastName">Last Name </Label>
+                              {/* <Label for="lastName">Last Name </Label> */}
                               <Input
                                 id="lastName"
                                 name="lastName"
@@ -204,7 +205,7 @@ const Student = () => {
                         <Row>
                           <Col md={3}>
                             <FormGroup>
-                              <Label for="role">role</Label>
+                              {/* <Label for="role">role</Label> */}
                               <Input
                                 id="role"
                                 name="role"
@@ -215,7 +216,7 @@ const Student = () => {
                           </Col>
                           <Col md={3}>
                             <FormGroup>
-                              <Label for="gender">gender</Label>
+                              {/* <Label for="gender">gender</Label> */}
                               <Input
                                 id="gender"
                                 name="gender"
@@ -226,7 +227,7 @@ const Student = () => {
                           </Col>
                           <Col md={6}>
                             <FormGroup>
-                              <Label for="nationality">nationality</Label>
+                              {/* <Label for="nationality">nationality</Label> */}
                               <Input
                                 id="nationality"
                                 name="nationality"
@@ -238,7 +239,7 @@ const Student = () => {
                         </Row>
 
                         <FormGroup>
-                          <Label for="major">major</Label>
+                          {/* <Label for="major">major</Label> */}
                           <Input
                             id="major"
                             name="major"
