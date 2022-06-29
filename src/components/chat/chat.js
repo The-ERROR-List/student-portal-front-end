@@ -36,7 +36,7 @@ export default function Chat(props) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p> Live Chat</p>{" "}
+        <p> Classroom Chat</p>{" "}
       </div>
 
       <div className="chat-body">
