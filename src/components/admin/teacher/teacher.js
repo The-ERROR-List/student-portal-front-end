@@ -118,17 +118,6 @@ const Teacher = () => {
 
         <div>
           <Table striped bordered hover className="teacher-table" >
-<<<<<<< HEAD
-            <thead className='headerTable'>
-              <tr style={{ backgroundColor: "#005240", color: "white", fontSize: "20px" }} >
-                <th >Teacher Image</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Nationality</th>
-                <th>Department</th>
-                <th>Operations</th>
-=======
             <thead className="headerTable" style={{ textAlign: "center" }}>
               <tr style={{backgroundColor:"#005240", color:"white", fontSize:"20px"}} >
                 <th style={{ color: "white", textAlign: "center" }}>Teacher Image</th>
@@ -138,22 +127,12 @@ const Teacher = () => {
                 <th style={{ color: "white", textAlign: "center" }}>Nationality</th>
                 <th style={{ color: "white", textAlign: "center" }}>Department</th>
                 <th style={{ color: "white", textAlign: "center" }}>Operations</th>
->>>>>>> dev
               </tr>
             </thead>
             <tbody style={{ textAlign: "center" , borderColor:"white" }}>
               {teachers.map((teacher, i) => {
                 return (
                   <>
-<<<<<<< HEAD
-                    <tr className='content-table' key={i} style={{ fontSize: "20px" }} >
-                      <td><Avatar color={Avatar.getRandomColor('sitebase', ['black'])} size={50} round="50%" name={teacher.firstName} /></td>
-                      <td>{teacher.firstName}</td>
-                      <td>{teacher.lastName}</td>
-                      <td>{teacher.userName}</td>
-                      <td>{teacher.nationality}</td>
-                      <td>{teacher.department}</td>
-=======
                     <tr className='content-table' key={i}  style={{ fontSize:"20px"}} >
                       <td style={{ textAlign: "center" }}><Avatar color={Avatar.getRandomColor('sitebase', ['black'])} size={50} round="50%" name={teacher.firstName} /></td>
                       <td style={{ textAlign: "center" }}>{teacher.firstName}</td>
@@ -161,7 +140,6 @@ const Teacher = () => {
                       <td style={{ textAlign: "center" }}>{teacher.userName}</td>
                       <td style={{ textAlign: "center" }}>{teacher.nationality}</td>
                       <td style={{ textAlign: "center" }}>{teacher.department}</td>
->>>>>>> dev
 
                       <DeleteIcon
                         sx={{ fontSize: 67 }}

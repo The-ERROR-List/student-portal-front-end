@@ -39,14 +39,9 @@ export default function AddTeacherToCourse() {
 
     return (
         <>
-<<<<<<< HEAD
-            <AddCircleOutlineIcon style={{ marginLeft: "20px" }} color="warning" data-tip="Assign a Teacher to Course" onClick={handleShow}>
-            </AddCircleOutlineIcon>
-=======
             <PersonAddIcon style={{marginLeft:"20px"}} color="warning" data-tip="Assign Teacher to Course" onClick={handleShow}>
             </PersonAddIcon>
 
->>>>>>> dev
             <ReactTooltip />
 
             <Modal
