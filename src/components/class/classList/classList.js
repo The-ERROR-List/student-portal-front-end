@@ -23,6 +23,8 @@ import { useParams } from "react-router-dom";
 import "./classList.scss";
 import Avatar from "react-avatar";
 import Calendar from 'react-calendar';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ReactTooltip from "react-tooltip";
 
 
 
@@ -53,9 +55,11 @@ function Submit() {
 
   return (
     <>
-      <Button color="success" onClick={state.handleShow}>
+      <PersonAddIcon onClick={state.handleShow} color="warning" data-tip="Add student to class" style={{ fontSize: "2rem" }}>
         Add Student to class
-      </Button>
+      </PersonAddIcon>
+      <ReactTooltip />
+
       <Modal
         show={state.show}
         onHide={state.handleClose}
@@ -97,7 +101,7 @@ function Submit() {
                     type="text"
                     onChange={handelChange}
                   />
-                </FormGroup> 
+                </FormGroup>
               </Col>
             </Row>
             <Button color="success" >
@@ -147,20 +151,32 @@ const ClassList = (props) => {
     <div className="admin-classlist">
 
 
-      <div style={{ display: "flex", flexDirection: "column", marginTop: "50px", marginLeft: "40px", justifyContent:"center" }} className='teacher-into-container'>
-       
+      {/* <div style={{ display: "flex", flexDirection: "column", marginTop: "50px", marginLeft: "40px", justifyContent: "center" }} className='teacher-into-container'> */}
 
-        <div>
-          <Calendar onChange={onChange} value={value} />
-        </div>
-    {/* <div>
-      <h1>{props.teacherName}</h1>
-      <When condition={cookie.load("role") === "admin"}>
-        <Submit />
-      </When>
-      <div className="classList-table" style={{marginTop:"30px"}}> */}
 
+      <div style={{ display: "flex", flexDirection: "column", margin: "0 40px 260px" }}>
+        <When condition={cookie.load("role") === "teacher"}>
+          <div style={{ display: "flex", marginBottom: "50px" }} >
+            <Avatar
+              color={Avatar.getRandomColor("sitebase", [
+                "red",
+                "green",
+                "aqua",
+              ])}
+              size={50}
+              round="50%"
+              name={props.teacherName}
+
+            />
+            <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>{props.teacherName}</h1>
+          </div>
+        </When>
+
+
+        <Calendar onChange={onChange} value={value} />
       </div>
+
+
 
 
 
