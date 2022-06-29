@@ -66,7 +66,7 @@ export default function AddStudent() {
         </Modal.Header>
         <Modal.Body>
           <Form
-            onSubmit={handelSubmit}
+            onSubmit={()=>handelSubmit}
             style={{ width: "70%", margin: "auto" }}
           >
             <Row style={{ marginTop: "0px" }}>
