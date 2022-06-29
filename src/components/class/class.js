@@ -40,7 +40,7 @@ const Class = () => {
         <Nav id={params.id} />
       </div>
       <Outlet />
-      <div className="class-render" style={{ margin: "70px 0 0 0" }}>
+      <div className="class-render" style={{ margin: "19px 0 0 0" }}>
         <Routes>
           <Route path='*' element={<Announcement id={params.id}/>}/>
           <Route path="content-class/:id" element={<Content />} />
