@@ -28,6 +28,7 @@ const Header = () => {
                                 <Link  style={{ textDecoration: "none",color: "inherit"} } to='/'>
                                     <SpeedOutlinedIcon sx={{ fontSize: 30 }} /> <p>Dashboard</p> </Link></Nav.Link>
                         </div>
+                        <When condition={cookie.load('role') === 'admin'}>
                             <div className='btn'>
                                 <Nav.Link href="/" style={{ textAlign: 'center', marginTop: '10px', textDecoration: "none",color: "inherit" }}
                                 >
@@ -53,7 +54,7 @@ const Header = () => {
                                     <Link   style={{ textDecoration: "none",color: "inherit"} } to='/admin-class'>
                                         <GroupIcon sx={{ fontSize: 30 }} /> <p>Classes</p> </Link></Nav.Link>
                             </div>
-                       
+                            </When>
                         <div className='btn'>
                             <Account />
                         </div>

@@ -1,6 +1,6 @@
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import './header.scss'
+import './course.scss'
 import { useState, useEffect, useContext } from 'react';
 import { When } from 'react-if';
 import cookie from 'react-cookies';
@@ -29,8 +29,6 @@ export default function Course() {
         if (cookie.load('role') === 'teacher') {
             state.getCourses()
         }
-        // console.log({state})
-
     }, [show])
     function clicked() {
         handleClose()
@@ -44,12 +42,11 @@ export default function Course() {
             <Offcanvas show={show} onHide={handleClose} style={{ marginLeft: "140px" }}>
                 <Offcanvas.Header closeButton>
                     <When condition={cookie.load('role') === 'teacher'}>
-                        <Offcanvas.Title>Course</Offcanvas.Title>
+                        <Offcanvas.Title style={{ fontSize: "45px" }}>Course</Offcanvas.Title>
                     </When>
                     <When condition={cookie.load('role') === 'student'}>
-                        <Offcanvas.Title>Classes</Offcanvas.Title>
+                        <Offcanvas.Title style={{ fontSize: "45px" }} >Classes</Offcanvas.Title>
                     </When>
-
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <hr />
@@ -58,30 +55,28 @@ export default function Course() {
                         {
                             selector.classes ?
                                 selector.classes.map((classs, i) => {
-
                                     return (
-                                        <ul>
-                                            <Link onClick={clicked} to={`/class-student/${classs.classId}`}>
-                                                <li> {classs.className}</li>
+                                            <Link  onClick={clicked} to={`/class-student/${classs.classId}`}>
+                                                <div className='list-side-bar'>
+                                                    <h1> {classs.className}</h1>
+                                                </div>
                                             </Link>
-                                        </ul>
-
                                     )
                                 }) : null
                         }
                     </When>
-
                     <When condition={cookie.load('role') === 'teacher'}>
                         {
                             state.courses.TeacherCourses ?
                                 state.courses.TeacherCourses.map((course, i) => {
-
                                     return (
-                                        <ul>
                                             <Link to={`/course/${course['course id']}`} onClick={clicked}  >
-                                                <li > {course['course Name']}</li>
+                                                <div className='list-side-bar'>
+                                                    <h1> {course['course Name']}</h1>
+                                                    
+                                                </div>
+                                                <hr/>
                                             </Link>
-                                        </ul>
                                     )
                                 }) : null
                         }
