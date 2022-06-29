@@ -51,6 +51,7 @@ export default function Login() {
                                         required
                                     />
                                     <br/>
+                                    <dev style={{position: "relative"}}>
                                     <input
                                         class="input-field"
                                         name="password"
@@ -62,6 +63,7 @@ export default function Login() {
                                         required
                                     />
                                     <i onClick={togglePassword} class={passwordShown ? 'far fa-eye-slash' : 'far fa-eye'}></i>
+                                    </dev>
                                 <button
                                     ariant="outline-primary"
                                     type="submit"
