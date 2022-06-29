@@ -48,7 +48,7 @@ export default function Submit() {
       dispatch(getClassAction());
     }, 2000);
     return () => clearInterval(interval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -79,7 +79,7 @@ export default function Submit() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  {/* <Label for="courseName"></Label> */}
+
                   <Input
                     id="course"
                     name="courseName"
@@ -90,7 +90,7 @@ export default function Submit() {
                 </FormGroup>
 
                 <FormGroup>
-                  {/* <Label for="userName"></Label> */}
+
                   <Input
                     id="userName"
                     name="userName"
@@ -99,18 +99,9 @@ export default function Submit() {
                     onChange={handelChange}
                   />
                 </FormGroup>
-                {/* <FormGroup> */}
-                  {/* <Label for="classImage"></Label> */}
-                  {/* <Input
-                    id="classImage"
-                    name="classImage"
-                    placeholder="classImage"
-                    type="classTime"
-                    onChange={handelChange}
-                  />
-                </FormGroup> */}
+
                 <FormGroup>
-                  {/* <Label for="classTime"></Label> */}
+
                   <Input
                     id="classTime"
                     name="classTime"
@@ -129,11 +120,6 @@ export default function Submit() {
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button color="danger" onClick={state.handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

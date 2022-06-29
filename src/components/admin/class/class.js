@@ -144,14 +144,14 @@ export default function Class() {
                     key={i}
                   >
                     <Modal.Header closeButton>
-                      <Modal.Title>Edit Class </Modal.Title>
+                      <Modal.Title> Edit Class </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                       <Form style={{ width: "70%", margin: "auto" }}>
                         <Row>
                           <Col md={16}>
                             <FormGroup>
-                              {/* <Label for="className"></Label> */}
+                             
                               <Input
                                 id="class"
                                 name="className"
@@ -163,7 +163,7 @@ export default function Class() {
                               />
                             </FormGroup>
                             <FormGroup>
-                              {/* <Label for="courseName"></Label> */}
+                            
                               <Input
                                 id="course"
                                 name="courseName"
@@ -176,7 +176,7 @@ export default function Class() {
                             </FormGroup>
 
                             <FormGroup>
-                              {/* <Label for="userName"></Label> */}
+                           
                               <Input
                                 id="userName"
                                 name="userName"
@@ -191,7 +191,7 @@ export default function Class() {
 
                             </FormGroup>
                             <FormGroup>
-                              {/* <Label for="classTime"></Label> */}
+                             
                               <Input
                                 id="classTime"
                                 name="classTime"
@@ -210,18 +210,11 @@ export default function Class() {
                         </Button>
                       </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                      <Button color="danger" onClick={handleClose}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
                   </Modal>
                 </>
               )
             })
             }
-
-
           </tbody>
         </Table>
       </div>
