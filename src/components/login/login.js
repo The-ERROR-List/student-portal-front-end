@@ -31,7 +31,7 @@ export default function Login() {
                     <div className='left'>
                         <div className='overlay'>
                             <h1>E-learning Portal </h1>
-                            <span><p>This is an online platform that brings together Students and tachers with the ability to manage educaional records </p></span>
+                            <span><p>This is an online platform that brings together Students and teachers with the ability to manage educational records </p></span>
                             <br/>
                             <br/>
                         </div>
@@ -45,18 +45,19 @@ export default function Login() {
                                         type="text"
                                         id="text"
                                         name="text"
-                                        placeholder="Enter User Name...."
+                                        placeholder="UserName"
                                         value={userName}
                                         onChange={(e) => setUserName(e.target.value)}
                                         required
                                     />
+   
                                     <br/>
                                     <dev style={{position: "relative"}}>
                                     <input
                                         class="input-field"
                                         name="password"
                                         id="myInput"
-                                        placeholder="Enter password...."
+                                        placeholder="Password"
                                         value={password}
                                         type={passwordShown ? "text" : "password"}
                                         onChange={(e) => setPassword(e.target.value)}
