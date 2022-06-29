@@ -85,7 +85,8 @@ export default function AddContents(props) {
                                 </FormGroup>
                             </Col>
                         </Row>
-                        <Button color="success" type='submit' onClick={handleClose}>Add content</Button>
+                  
+                        <Button color="success"  onClick={handleClose}>Add content</Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

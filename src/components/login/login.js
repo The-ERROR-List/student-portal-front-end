@@ -30,7 +30,7 @@ export default function Login() {
                 <div className='box-form'>
                     <div className='left'>
                         <div className='overlay'>
-                            <h1>Elearning Portal </h1>
+                            <h1>E-learning Portal </h1>
                             <span><p>This is an online platform that brings together Students and tachers with the ability to manage educaional records </p></span>
                             <br/>
                             <br/>
