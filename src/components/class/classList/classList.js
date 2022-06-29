@@ -20,6 +20,8 @@ import { useDispatch } from "react-redux";
 import { addStudentInClass } from "../../../redux/type";
 import { api } from '../../../redux/type';
 import { useParams } from "react-router-dom";
+import "./classList.scss";
+
 
 function Submit() {
 
@@ -143,13 +145,18 @@ const ClassList = (props) => {
       <When condition={cookie.load("role") === "admin"}>
         <Submit />
       </When>
+      <div className="classList-table" style={{marginTop:"30px"}}>
 
       <Table size="" style={{ marginLeft: "20px" }}>
-        <thead>
-          <tr>
-            <th> Student Name</th>
+        <thead className="headerTable" style={{ textAlign: "center" }}>
+          <tr style={{
+                backgroundColor: "#005240",
+                color: "white",
+                fontSize: "20px",
+              }}>
+            <th style={{ color: "white", textAlign: "center" }}> Student Name</th>
             <When condition={auth.user.role !== "student"}>
-              <th>Grade</th>
+              <th style={{ color: "white", textAlign: "center" }}>Grade</th>
             </When>
           </tr>
         </thead>
@@ -188,6 +195,7 @@ const ClassList = (props) => {
             : null}
         </tbody>
       </Table>
+      </div>
 
     </div>
   );
