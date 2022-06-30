@@ -38,11 +38,7 @@ export default function AddStudent() {
 
   return (
     <>
-      {/* <Button color="success" onClick={handleShow} style={{
-             color: "white"
-           }}>
-                Add Teacher
-            </Button> */}
+     
       <PersonAddIcon
         onClick={handleShow}
         data-tip="Add new teacher"
@@ -66,7 +62,7 @@ export default function AddStudent() {
             <Row style={{ marginTop: "0px" }}>
               <Col md={6}>
                 <FormGroup>
-                  {/* <Label for="userName"></Label> */}
+               
                   <Input
                     id="userName"
                     name="userName"
@@ -77,7 +73,7 @@ export default function AddStudent() {
                 </FormGroup>
               </Col>
               <Col md={6}>
-                {/* <Label for="examplePassword"></Label> */}
+              
                 <Input
                   id="examplePassword"
                   name="password"
@@ -88,7 +84,7 @@ export default function AddStudent() {
               </Col>
             </Row>
             <Row>
-              {/* <Label for="exampleEmail"></Label> */}
+             
               <Input
                 id="email"
                 name="email"
@@ -143,17 +139,12 @@ export default function AddStudent() {
                 <option value="female"> Female</option>
               </select>
 
-              <Button color="success" style={{ marginTop: "20px" }}>
+              <Button color="success" style={{ marginTop: "20px"  }}>
                 Add Teacher
               </Button>
             </Row>
           </Form>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button color="danger" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

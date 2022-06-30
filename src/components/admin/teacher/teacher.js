@@ -105,7 +105,7 @@ const Teacher = () => {
           color: "white",
 
         }}>
-          Teacher Dashboard
+          Teachers 
           <AddTeacher
           />
 
@@ -212,7 +212,7 @@ const Teacher = () => {
                           <Row>
                             <Col md={12}>
                               <FormGroup>
-                                {/* <Label for="role1">role</Label> */}
+                              
                                 <Input
                                   id="role1"
                                   name="role"
@@ -225,7 +225,7 @@ const Teacher = () => {
                             </Col>
                             <Col md={6}>
                               <FormGroup>
-                                {/* <Label for="gender1">gender</Label> */}
+                           
                                 <Input
                                   id="gender1"
                                   name="gender"
@@ -237,39 +237,37 @@ const Teacher = () => {
                             </Col>
                             <Col md={6}>
                               <FormGroup>
-                                {/* <Label for="nationality1">nationality</Label> */}
+                               
                                 <Input
                                   id="nationality1"
                                   name="nationality"
                                   placeholder={teacher.nationality}
                                   onChange={handelChange}
-                                  defaultValue={teacher.gender}
+                                  defaultValue={teacher.nationality}
 
                                 />
                               </FormGroup>
                             </Col>
+                            <FormGroup>
+                        
+                            
+                        <Input
+                          id="department1"
+                          name="department"
+                          placeholder={teacher.department}
+                          onChange={handelChange}
+                          defaultValue={teacher.department}
+                        />
+                      </FormGroup>
                           </Row>
-                          <FormGroup>
-                            {/* <Label for="department1">department</Label> */}
-                            <Input
-                              id="department1"
-                              name="department"
-                              placeholder={teacher.department}
-                              onChange={handelChange}
-                              defaultValue={teacher.department}
-                            />
-                          </FormGroup>
+                      
                           <Button color="warning" onClick={
                             updateUser
                           }
                           >Update information</Button>
                         </Form>
                       </Modal.Body>
-                      <Modal.Footer>
-                        <Button color="danger" >
-                          Close
-                        </Button>
-                      </Modal.Footer>
+                    
                     </Modal>
                   </>);
               })}

@@ -12,20 +12,12 @@ export default function Content(props) {
     const [show, setShow] = useState(true)
 
     const [showContentBody, setShowContentBody] = useState(false)
-    // const [names, setNames] = useState({})
-    // const [idContent, setIdContent] = useState({ id: "" });
 
-// console.log(idContent);
-    // function idUpdateContent(id) {
-    //     setIdContent({
-    //         ...idContent,
-    //         id: id,
-    //     });
-    // }
+  
 
     const addContent = async (e, id) => {
         e.preventDefault();
-
+console.log(11111111111111111111111, e.target.contentTitle.value);
         let result = axios.post(`${api}/content/${id}`, {
             contentTitle: e.target.contentTitle.value,
             contentBody: e.target.contentBody.value,

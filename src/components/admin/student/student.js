@@ -169,9 +169,9 @@ const Student = () => {
                     <Modal.Body>
                       <Form style={{ width: "70%", margin: "auto" }}>
                         <Row>
-                          <Col md={6}>
+                          <Col md={12}>
                             <FormGroup>
-                              {/* <Label for="userName">userName</Label> */}
+                         
                               <Input
                                 id="userName"
                                 name="userName"
@@ -184,9 +184,9 @@ const Student = () => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col md={6}>
+                          <Col md={12}>
                             <FormGroup>
-                              {/* <Label for="firstName">First Name</Label> */}
+                           
                               <Input
                                 id="firstName"
                                 name="firstName"
@@ -197,7 +197,7 @@ const Student = () => {
                               />
                             </FormGroup>
                             <FormGroup>
-                              {/* <Label for="lastName">Last Name </Label> */}
+                             
                               <Input
                                 id="lastName"
                                 name="lastName"
@@ -210,9 +210,9 @@ const Student = () => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col md={3}>
+                          <Col md={12}>
                             <FormGroup>
-                              {/* <Label for="role">role</Label> */}
+                             
                               <Input
                                 id="role"
                                 name="role"
@@ -221,9 +221,9 @@ const Student = () => {
                               />
                             </FormGroup>
                           </Col>
-                          <Col md={3}>
+                          <Col md={6}>
                             <FormGroup>
-                              {/* <Label for="gender">gender</Label> */}
+                           
                               <Input
                                 id="gender"
                                 name="gender"
@@ -236,7 +236,7 @@ const Student = () => {
                           </Col>
                           <Col md={6}>
                             <FormGroup>
-                              {/* <Label for="nationality">nationality</Label> */}
+                          
                               <Input
                                 id="nationality"
                                 name="nationality"
@@ -247,10 +247,8 @@ const Student = () => {
                               />
                             </FormGroup>
                           </Col>
-                        </Row>
-
-                        <FormGroup>
-                          {/* <Label for="major">major</Label> */}
+                          <FormGroup>
+                          
                           <Input
                             id="major"
                             name="major"
@@ -259,16 +257,14 @@ const Student = () => {
                             defaultValue={student.major}
                           />
                         </FormGroup>
-                        <Button color="success" onClick={updateUser}>
+                        </Row>
+
+                      
+                        <Button color="warning" onClick={updateUser}>
                           Update Student
                         </Button>
                       </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                      <Button color="danger" onClick={state.handleClose}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
                   </Modal>
                 </>
               );

@@ -8,7 +8,7 @@ import {
 import { Modal, Button, FormGroup } from "react-bootstrap";
 // import { StateContext } from "../../../context/State";
 import { useState } from "react";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCourseToTeacher } from "../../../redux/type";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -39,7 +39,7 @@ export default function AddTeacherToCourse() {
 
     return (
         <>
-            <PersonAddIcon style={{marginLeft:"20px"}} color="warning" data-tip="Assign Teacher to Course" onClick={handleShow}>
+            <PersonAddIcon style={{ marginLeft: "20px" }} color="warning" data-tip="Assign Teacher to Course" onClick={handleShow}>
             </PersonAddIcon>
 
             <ReactTooltip />
@@ -53,11 +53,10 @@ export default function AddTeacherToCourse() {
                     <Modal.Title> Add Teacher to Course </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form style={{ width: "70%", margin: "auto" }}>
+                    <Form   style={{ width: "70%", margin: "auto" }}>
                         <Row>
                             <Col md={12}>
-                                <FormGroup>
-                                    {/* <Label for="courseName">Course Name</Label> */}
+                                <FormGroup style={{marginBottom:"10px"}}>
                                     <Input
                                         id="course"
                                         name="courseName"
@@ -67,32 +66,26 @@ export default function AddTeacherToCourse() {
                                     />
                                 </FormGroup>
                             </Col>
-                        </Row>
-                        <Row>
+
                             <Col md={12}>
-                            <FormGroup>
-                                {/* <Label for="userName">Teacher Name</Label> */}
-                                <Input
-                                    id="userName"
-                                    name="userName"
-                                    placeholder="Teacher userName"
-                                    type="userName"
-                                    onChange={handelChange}
-                                />
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Button color="success" onClick={handelSubmit}>
-                        Add Teacher to Course
-                    </Button>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button color="danger" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
-        </Modal>
+                                <FormGroup>
+
+                                    <Input
+                                        id="userName"
+                                        name="userName"
+                                        placeholder="Teacher userName"
+                                        type="userName"
+                                        onChange={handelChange}
+                                    />
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Button color="success" onClick={handelSubmit} style={{ marginTop: "20px"}}>
+                        Assign Teacher to Course
+                        </Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
         </>
     );
 }

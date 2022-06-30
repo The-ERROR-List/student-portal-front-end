@@ -132,21 +132,12 @@ export default function Course_Card(props) {
                     defaultValue={props.course.courseName}
                   />
                 </FormGroup>
-            <FormGroup>
-              {/* <Label for="GradeCourse">Grade course</Label> */}
-              <Input
-                id="Grade"
-                name="courseGrade"
-                placeholder={props.course.courseGrade}
-                type="number"
-                onChange={handelChange}
-                defaultValue={props.course.courseGrade}
-                
-              />
-            </FormGroup>
+        
             <FormGroup>
               {/* <Label for="courseDescription">course Description</Label> */}
-              <Input
+              <textarea
+              
+                   rows="4" cols="50"
                 id="courseDescription"
                 name="courseDescription"
                 placeholder={props.course.courseDescription}
@@ -156,18 +147,7 @@ export default function Course_Card(props) {
 
               />
             </FormGroup>
-            <FormGroup>
-              {/* <Label for="courseImg">Course Img</Label> */}
-              <Input
-                id="courseImg"
-                name="courseImg"
-                placeholder={props.course.courseImg}
-                type="text"
-                onChange={handelChange}
-                defaultValue={props.course.courseImg}
-
-              />
-            </FormGroup>
+        
             <Button color="warning" onClick={updateUser}>
               update Course
             </Button>
