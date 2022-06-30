@@ -1,5 +1,5 @@
 // api
-export const api = 'http://localhost:4029';
+export const api = 'https://elearning-portal-server.herokuapp.com/';
 
 //types add action
 export const addStudent = 'add_student';
