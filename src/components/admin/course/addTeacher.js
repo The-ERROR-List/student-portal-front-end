@@ -53,7 +53,7 @@ export default function AddTeacherToCourse() {
                     <Modal.Title> Add Teacher to Course </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form style={{ width: "70%", margin: "auto" }}>
+                    <Form   style={{ width: "70%", margin: "auto" }}>
                         <Row>
                             <Col md={12}>
                                 <FormGroup style={{marginBottom:"10px"}}>
@@ -80,8 +80,8 @@ export default function AddTeacherToCourse() {
                                 </FormGroup>
                             </Col>
                         </Row>
-                        <Button color="success" style={{ marginTop: "20px"}}>
-                            Add Teacher to Course
+                        <Button color="success" onClick={handelSubmit} style={{ marginTop: "20px"}}>
+                        Assign Teacher to Course
                         </Button>
                     </Form>
                 </Modal.Body>

@@ -6,7 +6,7 @@ export default function ItemDash() {
             <section class="wrapper">
                 <div class="row card_row">
 
-                    <h1 style={{ marginLeft: "30px" }} class="column h6 color_label"> Category</h1>
+                    <h1 style={{ marginLeft: "30px" }} class="column h6 color_label"> Categories</h1>
                     <div class="column half_whole">
                         <article class="card box_panel">
 

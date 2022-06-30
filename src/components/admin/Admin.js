@@ -45,7 +45,7 @@ export default function Admin() {
                 <div class="inner">
                   <h3> Teachers </h3>
                   <br />
-                  <p> 10 Teachers </p>
+                  <p> 6 Teachers </p>
                 </div>
                 <div class="icon">
 
@@ -60,7 +60,7 @@ export default function Admin() {
                 <div class="inner">
                   <h3> Students  </h3>
                   <br />
-                  <p> 30 Students</p>
+                  <p> 20 Students</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -73,7 +73,7 @@ export default function Admin() {
                 <div class="inner">
                   <h3> Courses</h3>
                   <br />
-                  <p>4 courses  </p>
+                  <p> 4 Courses  </p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-book" aria-hidden="true"> </i>
@@ -86,7 +86,7 @@ export default function Admin() {
                 <div class="inner">
                   <h3>Classes </h3>
                   <br />
-                  <p>5 Classes</p>
+                  <p>2 Classes</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-users"></i>
@@ -103,7 +103,7 @@ export default function Admin() {
             <ItemDash />
           </div>
           <div style={{ marginTop: "110px", width: "600px", height: "600px" }}>
-            {/* <h1 style={{marginLeft:"30px"}} class="column h6 color_label"> Calender </h1> */}
+           
             <Calendar onChange={onChange} value={value} />
 
           </div>

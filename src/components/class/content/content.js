@@ -69,11 +69,11 @@ const Content = (props) => {
                         style={{ overflow: "auto", flexDirection: "" }}
                         className="nav_title"
                       >
-                        <Card className="card_content_title">
+                        <Card className="card_content_title" >
                           <ListGroup variant="flush">
                             <ListGroup.Item>
-                              <div className="card-content-inside">
-                                <div className="title_card">
+                              <div className="card-content-inside" >
+                                <div className="title_card" style={{fontSize:"25px"}}>
                                   {classContent.contentTitle}
                                 </div>
                                 <div
@@ -133,7 +133,7 @@ const Content = (props) => {
               <>
                 <h1 className="title_body"> {contentDataById.contentTitle}</h1>
                 <hr />
-                <p className="lorem">{contentDataById.contentBody}</p>
+                <p style={{forntSize:"30px"}} className="lorem">{contentDataById.contentBody}</p>
 
                 <a className="link_content"> {contentDataById.contentLink}</a>
               </>

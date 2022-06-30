@@ -52,13 +52,13 @@ export default function AddContents(props) {
                 class="modal-dialog modal-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Content </Modal.Title>
+                    <Modal.Title> Add Content </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form
                         onSubmit={(e) => {
                             contentC.addContent(e, props.id)
-                            contentC.setShowContentBody(false)
+                            // contentC.setShowContentBody(false)
                         }
 
                         }
@@ -86,8 +86,7 @@ export default function AddContents(props) {
                                 </FormGroup>
                             </Col>
                         </Row>
-                  
-                        <Button color="success"  onClick={handleClose}>Add content</Button>
+                        <Button color="success" type='submit' onClick={handleClose}>Add content</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

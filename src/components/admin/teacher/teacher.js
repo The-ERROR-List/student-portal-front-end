@@ -243,7 +243,7 @@ const Teacher = () => {
                                   name="nationality"
                                   placeholder={teacher.nationality}
                                   onChange={handelChange}
-                                  defaultValue={teacher.gender}
+                                  defaultValue={teacher.nationality}
 
                                 />
                               </FormGroup>

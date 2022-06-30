@@ -23,7 +23,7 @@ export default function AnnouCard(props) {
                             <h3 style={{marginLeft:"9px"}} >{props.announcementClass.announcementTitle}</h3>
                         </div>
                         <span class="link-text-announcement">
-                            <h3>{props.announcementClass.announcementBody}</h3>
+                            <h3 style={{fontSize:"35px"}}>{props.announcementClass.announcementBody}</h3>
                             
                             <h3>{props.announcementClass.announcementLink}</h3>
 

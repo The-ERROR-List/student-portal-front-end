@@ -89,7 +89,8 @@ export default function AddCourse() {
               <Col md={12}>
                 <FormGroup>
                   {/* <Label for="courseDescription">course Description</Label> */}
-                  <Input
+                  <textarea
+                   rows="4" cols="50"
                     id="courseDescription"
                     name="courseDescription"
                     placeholder="course Description"
