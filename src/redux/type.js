@@ -1,5 +1,6 @@
 // api
-export const api = 'https://elearning-portal-server.herokuapp.com/';
+
+export const api = process.env.REACT_APP_BLOG_API;
 
 //types add action
 export const addStudent = 'add_student';
