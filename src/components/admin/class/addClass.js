@@ -46,7 +46,7 @@ export default function Submit() {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getClassAction());
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -30,7 +30,7 @@ export default function AddStudent() {
 
   const handelChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setInfoStudent({ ...infoStudent, [e.target.name]: e.target.value });
   };
 
@@ -43,7 +43,7 @@ export default function AddStudent() {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getStudentAction());
-    }, 2000);
+    },4000);
     return () => clearInterval(interval);
   }, []);
 

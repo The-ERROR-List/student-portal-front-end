@@ -14,8 +14,8 @@ const Teacher = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       state.getCourses()
-      console.log(2222222222, state.courses.TeacherCourses[0]['course id'])
-    }, 2000);
+      // console.log(2222222222, state.courses.TeacherCourses[0]['course id'])
+    }, 4000);
     return () => clearInterval(interval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

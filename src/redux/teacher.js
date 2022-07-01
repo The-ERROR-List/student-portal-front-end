@@ -4,7 +4,7 @@ import { getTeacher } from "./type";
 import { deleteTeacher } from "./type";
 import { createTeacher } from './action';
 import { deleteTeacherById } from './action';
-import { updateTeacherDB } from './action';
+
 
 
 import axios from 'axios';

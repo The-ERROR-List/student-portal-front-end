@@ -54,7 +54,7 @@ console.log(11111111111111111111111, e.target.contentTitle.value);
 
 
     const deleteContent = ((id, indx) => {
-        console.log('sssssssss', id)
+        // console.log('sssssssss', id)
         axios.delete(`${api}/content/${id}`, {
             headers: { Authorization: `Bearer ${cookie.load("token")}` },
         }).then(

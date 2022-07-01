@@ -39,7 +39,7 @@ const Content = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       getContents();
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 

@@ -76,7 +76,7 @@ const Student = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getStudentAction());
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -1,5 +1,5 @@
 // api
-export const api = 'https://elearning-portal-server.herokuapp.com/';
+export const api = 'https://elearning-portal2022.herokuapp.com/';
 
 //types add action
 export const addStudent = 'add_student';

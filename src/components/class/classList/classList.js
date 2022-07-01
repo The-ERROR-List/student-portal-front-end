@@ -142,7 +142,7 @@ const ClassList = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       fetchStudents()
-    }, 2000);
+    },4000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

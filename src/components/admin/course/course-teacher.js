@@ -75,7 +75,7 @@ export default function Course_Card(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(getAllCourse2Teacher(props.course.id));
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

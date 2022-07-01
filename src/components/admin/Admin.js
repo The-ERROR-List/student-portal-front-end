@@ -8,7 +8,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 export default function Admin() {
   const students = useSelector((state) => state.teacher.infoTeacher);
-  console.log(students);
+  // console.log(students);
   const [value, onChange] = useState(new Date());
   return (
 

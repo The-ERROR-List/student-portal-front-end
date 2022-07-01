@@ -13,7 +13,7 @@ export default function State(props) {
     const [courses, setCourses] = useState([]);
     const selectCategory = (component) => {
         setSelectCategory(component);
-        console.log(selectComponent);
+        // console.log(selectComponent);
     };
 
 function handleUpdateShow() {
